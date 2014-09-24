@@ -1,0 +1,4 @@
+html_document:
+  self_contained: false
+  theme: readable
+  highlight: textmate

@@ -1,7 +1,5 @@
 ---
-title: "HomPal Stats"
-author: "wabarr"
-date: "September 24, 2014"
+title: "Analytical Methods in Evolutionary Anthropology"
 output: html_document
 ---
-Welcome to the webpage for the HomPal Analytical Methods Course.  
+Welcome to the webpage for the HomPal Stats Course.  

@@ -3,3 +3,7 @@ html_document:
   lib_dir: libs
   theme: united
   highlight: textmate
+  include:
+    in_header: include/navbar.html
+  css: css/custom-style.css
+

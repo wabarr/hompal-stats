@@ -1,0 +1,26 @@
+#navbar {
+  background-color: #005581;
+  color: white;
+}
+
+#navbar-ul {
+  height: 30px;
+  display: table-row;
+}
+
+#navbar ul li {
+    height:30px;
+    display: table-cell;
+}
+
+#navbar ul li:hover {
+    background-color:#19668E;
+    
+}
+
+#navbar ul li a {
+  display: table-cell;
+  vertical-align: middle;
+  color:white;
+  padding:10px 10px 10px 10px;
+}

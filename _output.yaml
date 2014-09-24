@@ -1,4 +1,4 @@
 html_document:
   self_contained: false
-  theme: readable
+  theme: united
   highlight: textmate

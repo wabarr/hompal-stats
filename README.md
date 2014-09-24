@@ -1,4 +1,4 @@
-hompal-stats
+ANALYTICAL METHODS IN HUMAN EVOLUTIONARY STUDIES
 ============
 
-course materials for hompal stats course
+Course materials for the HomPal statistics course. 

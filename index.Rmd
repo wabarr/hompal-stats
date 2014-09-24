@@ -1,0 +1,7 @@
+---
+title: "HomPal Stats"
+author: "wabarr"
+date: "September 24, 2014"
+output: html_document
+---
+Welcome to the webpage for the HomPal Analytical Methods Course.  

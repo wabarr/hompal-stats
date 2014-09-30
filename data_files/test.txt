@@ -1,4 +1,0 @@
-name  val
-pete  5
-jim 2
-eliza 15

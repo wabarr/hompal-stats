@@ -3,4 +3,4 @@ title: "Datasets"
 
 ---
 
-*  [William W. Howells Craniometric Data Set](datasets/howell.csv)
+*  [William W. Howells Craniometric Data Set](datasets/Howell.csv)

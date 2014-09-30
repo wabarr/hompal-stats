@@ -3,6 +3,13 @@
   color: white;
 }
 
+#navbar-container {
+  width: 955px ;
+  margin-right: auto;
+  margin-left: auto;
+  
+}
+
 #navbar-ul {
   height: 30px;
   display: table-row;

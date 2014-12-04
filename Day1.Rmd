@@ -1,0 +1,77 @@
+---
+title: "Basics"
+---
+
+## The Interactive Interpreter
+
+Open R and type `2 + 2`.  R tells you that the answer is `4`. Congrats!  You are now using R. This is the most basic way to interact with the interpreter.  Later we will see how you can save a complicated series of commands to a script file and excecute them automatically. 
+
+## Assignment
+
+Sometimes it is useful to assign the results of computations to a named variable that we will use later.  We can create a named variable using the `<-` assignment operator.  For instance, we can do the following.
+
+```{r}
+myVariable <- 2 + 2
+```
+
+Now the result from this computation is assigned to `myVariable` and saved for later use.  Later, we can call this  variable like so: 
+
+```{r}
+myVariable * myVariable
+```
+
+## Vectors
+
+A vector is a series of values stored in a single object.  You can create a vector using the `c()` function (**c** stands for **combine**). **Note**: you can only store a single type of data in a vector (e.g. numeric or character data).
+
+```{r}
+vector1 <- c(1,2,3,4,5,6,7,8,9,10)
+vector2 <- c(11,12,13,14,15,16,17,18,19,20)
+```
+
+Vectors are very powerful, because many of the basic functions and operations in R are **vectorized**, meaning that they operate on all elements of a vector in sequence.  For example, to add the elements of `vector1` with the corresponding elements in `vector2`, you simply add the vectors, because the `+` function is vectorized. You can assume that **most** of the base functions in R are vectorized. This is one of the fundamental advantages of R. 
+
+```{r}
+vector1 + vector2
+```
+
+### Accessing values within a vector
+
+Vectors can be **indexed** with brackets `[]` to get a subset of values.  What value do you get by typing `vector2[3]` in the interpreter? 
+
+### <span class="mega-octicon octicon-puzzle"></span> Challenge <span class="mega-octicon octicon-puzzle">
+
+Explain to the person sitting next to you how this works. HINT: R evaluates expressions 'from the inside out', with regards to brackets and parentheses.
+
+```{r}
+vector2[c(1,4,5)]
+```
+
+## Data Frames
+
+Data frames are a convenient way of storing multiple related vectors of data together in a single object.  They are analogous to a spreadsheet where each row corresponds to an individual (e.g., specimen, species) and each row corresponds to some observation about that individual.
+
+### Accessing data in a dataframe
+
+Using the built in dataframe `iris`, you can explore how to access data within a dataframe.  The most common ways are with the `$` syntax and with the `[row,column]` syntax. `$` is used to access a named column within an dataframe.  The `[row, column]` syntax is used to identify the index number of the row and column desired.  Note that leaving a blank indicates ALL rows or columns.  So `iris$Species` is the same as `iris[,5]`.
+
+```{r}
+#first few rows of iris
+head(iris)
+
+#get the Sepal.Length column
+iris$Sepal.Length
+
+#get the value in the first row, third column
+iris[1,3]
+
+#get the whole first row
+iris[1, ]
+```
+
+## Functions
+
+Functions are the heart of the R language. A function is just a series of commands that is assigned a name.  Functions accept **arguments**, perform a series of commands using the argument values, then **return** a single object. Many functions have default values for arguments. You can see all the arguments and default values by using the `?` operator like this `?mean`.
+
+Notice that the value for `na.rm = FALSE`.  This means that by default, `NA` values are not removed, and if you have some `NA` val
+

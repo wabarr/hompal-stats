@@ -98,7 +98,7 @@ vector2 &lt;- c(11,12,13,14,15,16,17,18,19,20)</code></pre>
 <p>Vectors can be <strong>indexed</strong> with brackets <code>[]</code> to get a subset of values. What value do you get by typing <code>vector2[3]</code> in the interpreter?</p>
 </div>
 <div id="challenge" class="section level3">
-<h3><span class="mega-octicon octicon-puzzle"></span> Challenge <span class="mega-octicon octicon-puzzle"></h3>
+<h3><span class="mega-octicon octicon-puzzle"></span> Challenge</h3>
 <p>Explain to the person sitting next to you how this works. HINT: R evaluates expressions ‘from the inside out’, with regards to brackets and parentheses.</p>
 <pre class="r"><code>vector2[c(1,4,5)]</code></pre>
 <pre><code>## [1] 11 14 15</code></pre>
@@ -142,7 +142,14 @@ iris[1, ]</code></pre>
 <div id="functions" class="section level2">
 <h2>Functions</h2>
 <p>Functions are the heart of the R language. A function is just a series of commands that is assigned a name. Functions accept <strong>arguments</strong>, perform a series of commands using the argument values, then <strong>return</strong> a single object. Many functions have default values for arguments. You can see all the arguments and default values by using the <code>?</code> operator like this <code>?mean</code>.</p>
-<p>Notice that the value for <code>na.rm = FALSE</code>. This means that by default, <code>NA</code> values are not removed, and if you have some <code>NA</code> val</p>
+<div id="challenge-1" class="section level3">
+<h3><span class="mega-octicon octicon-puzzle"></span> Challenge</h3>
+<ol style="list-style-type: decimal">
+<li><pre><code>Create a vector that contains the numbers 1 through 100.  **Hint** use the `?` operator to investigate the `seq` function or explore the `:` operator.</code></pre></li>
+<li><pre><code>Calculate the natural logarithm of each of the 100 elements in the vector you just created. </code></pre></li>
+<li><pre><code>Make a histogram of the natural log values using the `hist()` function</code></pre></li>
+</ol>
+</div>
 </div>
 
 

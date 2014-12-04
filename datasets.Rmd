@@ -3,4 +3,15 @@ title: "Datasets"
 
 ---
 
-*  [William W. Howells Craniometric Data Set](datasets/Howell.csv)
+<ul>
+`r 
+#dynamically create links for database
+paste0('<li><a href=', 
+      list.files("datasets", recursive=TRUE, full=TRUE),
+      '>',
+      list.files("datasets", recursive=TRUE),
+      '</li>',collapse="")
+
+`
+
+</ul>

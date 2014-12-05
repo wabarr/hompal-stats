@@ -4,7 +4,8 @@ html_document:
   theme: united
   highlight: textmate
   include:
-    in_header: include/navbar.html
+    before_body: include/navbar.html
+    in_header: include/googleanalytics.html
   css: [octicons/octicons.css, css/custom-style.css]
 
 

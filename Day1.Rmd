@@ -89,16 +89,16 @@ There is a function called `rnorm()` that produces random numbers from a normal 
 
 ## Scripts
 
-Typing commands interactively into the command-line interpreter is fine for experimentation, but ultimately we want to save every single command to a text file, so that this can be run by ourselves later, shared with collaborators, or published online with the article as supplementary information.  ** This element of reproducibility is a critical benefit of doing scripted data analysis.** In Rstudio, you can creat a new script by using the File >> New File menu. 
+Typing commands interactively into the command-line interpreter is fine for experimentation, but ultimately we want to save every single command to a text file, so that this can be run by ourselves later, shared with collaborators, or published online with the article as supplementary information.  **This element of reproducibility is a critical benefit of doing scripted data analysis.** In Rstudio, you can create a new script by using the File >> New File menu. 
 
 ### <span class="mega-octicon octicon-puzzle"></span> Challenge 
 
 1.  Create a new script file.     
 2.  Create a vector that contains the numbers 1 through 100.  **Hint** use the `?` operator to investigate the `seq` function or explore the `:` operator. Save this to a variable called `numbers`.
-3.    Create a new vector that contains only the numbers greater than 36.  Save this to a variable called `bignumbers`
-4.    Calculate the natural logarithm of each value in `bignumbers`. 
-5.    Make a histogram of `bignumbers` using the `hist()` function
-6.    Save your script file, then clear your workspace to delete ALL saved variables, and re-run your script file to redo all the steps.  
+3.  Create a new vector that contains only the numbers greater than 36.  Save this to a variable called `bignumbers`
+4.  Calculate the natural logarithm of each value in `bignumbers`. 
+5.  Make a histogram of `bignumbers` using the `hist()` function
+6.  Save your script file, then clear your workspace to delete ALL saved variables, and re-run your script file to redo all the steps.  
 
 ## Packages
 

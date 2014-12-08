@@ -8,7 +8,7 @@ Open R and type `2 + 2`.  R tells you that the answer is `4`. Congrats!  You are
 
 ## Assignment
 
-Sometimes it is useful to assign the results of computations to a named variable that we will use later.  We can create a named variable using the `<-` assignment operator.  For instance, we can do the following.
+Sometimes it is useful to assign the results of computations to a named variable that we will use later.  We can create a named variable using the `<-` assignment operator.  For instance, we can do the following. **Note** It is technically possible to use the `=` symbol for assignment, but this is bad practice, as it causes problems down the line.  Get used to typing the `<-` symbol.  
 
 ```{r}
 myVariable <- 2 + 2
@@ -37,7 +37,7 @@ vector1 + vector2
 
 ### Accessing values within a vector
 
-Vectors can be **indexed** with brackets `[]` to get a subset of values.  What value do you get by typing `vector2[3]` in the interpreter? 
+Vectors can be **indexed** with brackets `[]` to get a subset of values.  What value do you get by typing `vector2[3]` in the interpreter? What about `vector2[3:5]`? HINT: the `:` operator makes a sequence of integers.
 
 ### <span class="mega-octicon octicon-puzzle"></span> Challenge 
 
@@ -47,9 +47,45 @@ Explain to the person sitting next to you how this works. HINT: R evaluates expr
 vector2[c(1,4,5)]
 ```
 
+## Logical Tests and Logical Indexing
+
+Logical tests are assertions that R evaluates as either with `TRUE` or `FALSE`. For instance, you might assert that "1 plus 1 equals 10 minus 8"? In R that looks like:
+
+```{r}
+1 + 1 == 10 - 8
+```
+
+R tells us that this is `TRUE`.  Note the double equals symbol, which means something different than a single equals symbol. The logical operators are:
+
+*  `==` is equal to
+*  `!=` does not equal
+*  `>` greater than
+*  `<` less than
+*  `>=` greater than or equal to
+*  `<=` less than or equal to
+
+Like most things in R, logical tests work on vectors.  Remember `vector2` from before? Lets find out which values are greater than 19. 
+
+```{r}
+vector2 > 17
+```
+
+This becomes useful when you only want a subset of values from a vector using logical indexing.  To get **only** the values of `vector2` that are greater than 17, we can use a logical (AKA boolean) vector.  
+
+```{r}
+vector2[vector2 > 17]
+```
+
+You can also pass complicated logical tests using the AND operator `&` or the logical OR operator `|`
+
+```{r}
+vector2[vector2 > 17 & vector2 < 20]
+vector2[vector2 > 17 | vector2 == 13]
+```
+
 ## Data Frames
 
-Data frames are a convenient way of storing multiple related vectors of data together in a single object.  They are analogous to a spreadsheet where each row corresponds to an individual (e.g., specimen, species) and each row corresponds to some observation about that individual.
+Data frames are a convenient way of storing multiple related vectors of data together in a single object.  They are analogous to a spreadsheet where each row corresponds to an individual (e.g., specimen, species) and each row corresponds to some observation about that individual. Usually, you will use the `read.table()` function to read a dataframe directly from a .csv or .txt file that you have saved from MS Excel.
 
 ### Accessing data in a dataframe
 
@@ -71,35 +107,40 @@ iris[1, ]
 
 ## Functions
 
-Functions are the heart of the R language. A function is just a series of commands that is assigned a name.  Functions accept **arguments**, perform a series of commands using the argument values, then **return** a single object. You can create your own functions (and you will!) but there are many hundreds of pre-defined functions available for your use. 
+Functions are the heart of R. A function is just a series of commands that is assigned a name.  Functions accept **arguments**, perform a series of commands using the argument values, then **return** a single object. You can create your own functions (and you will!) but there are many hundreds of pre-defined functions available for your use. 
 
 You call a function by typing its name, followed by parentheses containing any **arguments** necessary. For example, the `print()` function simply prints a single argument to the consonsole.
 
 ```{r}
-print("Arguments get printed to the console")
+print("The quick brown fox jumped over the lazy dog.")
 ```
 
 There is a function called `rnorm()` that produces random numbers from a normal distribution.  It has three arguments: `n` indicates the number of random numbers to produce, `mean` indicates the mean of the desired distribution, and `sd` sets the desired standard deviation of the points. 
 
 ### <span class="mega-octicon octicon-puzzle"></span> Challenge 
 
-1.  Use `rnorm` to create a vector representing student grades from the Anthropology 101 course.  Assume there are 200 students, and the mean grade is 75%, with a standard deviation of 10. 
+1.  Use `rnorm` to create a vector representing student grades from an Anthropology 101 course with  200 students, mean grade of 75%, and a standard deviation of 10. 
 
-2.  Now make a histogram of this grade distribution using the `hist()` function. Note: You can see all the arguments and default values by using the `?` operator like this `?hist`.
+2.  Make a histogram of this grade distribution using the `hist()` function. Note: You can see all the arguments and default values by using the `?` operator like this `?hist`.
 
 ## Scripts
 
-Typing commands interactively into the command-line interpreter is fine for experimentation, but ultimately we want to save every single command to a text file, so that this can be run by ourselves later, shared with collaborators, or published online with the article as supplementary information.  **This element of reproducibility is a critical benefit of doing scripted data analysis.** In Rstudio, you can create a new script by using the File >> New File menu. 
+Typing commands interactively into the command-line interpreter is fine for experimentation, but ultimately we want to save every single command to a text file, so that this can be run later, shared with collaborators, or published online with the article as supplementary information.  **This element of reproducibility is a critical benefit of doing scripted data analysis.** In Rstudio, you can create a new script by using the File >> New File menu. 
 
 ### <span class="mega-octicon octicon-puzzle"></span> Challenge 
 
 1.  Create a new script file.     
-2.  Create a vector that contains the numbers 1 through 100.  **Hint** use the `?` operator to investigate the `seq` function or explore the `:` operator. Save this to a variable called `numbers`.
-3.  Create a new vector that contains only the numbers greater than 36.  Save this to a variable called `bignumbers`
+2.  Create a variable called `numbers` that contains the numbers 1 through 100.  **Hint** use the `?` operator to investigate the `seq` function or explore the `:` operator.
+3.  Create a new vector that contains only the elements of `numbers` that are greater than 36.  Save this to a variable called `bignumbers`
 4.  Calculate the natural logarithm of each value in `bignumbers`. 
 5.  Make a histogram of `bignumbers` using the `hist()` function
-6.  Save your script file, then clear your workspace to delete ALL saved variables, and re-run your script file to redo all the steps.  
+6.  Save your script file, then clear your workspace to delete ALL saved variables, and re-run your script file to redo all the steps.
 
 ## Packages
 
-One of the most important features of R is that it is has a vast ecosystem of user-contributed packages, that extend the base functionality of R.  Packages can be installed from the command line `install.packages('ggplot2')` or using the graphical package manager in Rstudio using the Tools > Install Packages menu.
+One of the most important features of R is that it is has a vast ecosystem of user-contributed packages, which extend the base functionality of R.  Packages can be installed from the command line `install.packages('ggplot2')` or by using the graphical package manager in Rstudio using the Tools > Install Packages menu. Each time you want to use functions from a package, you must make the package available with the `library()` function. E.g. `library(ggplot2)`.
+
+# An example workflow in R
+
+
+

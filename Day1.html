@@ -89,7 +89,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </div>
 <div id="assignment" class="section level2">
 <h2>Assignment</h2>
-<p>Sometimes it is useful to assign the results of computations to a named variable that we will use later. We can create a named variable using the <code>&lt;-</code> assignment operator. For instance, we can do the following.</p>
+<p>Sometimes it is useful to assign the results of computations to a named variable that we will use later. We can create a named variable using the <code>&lt;-</code> assignment operator. For instance, we can do the following. <strong>Note</strong> It is technically possible to use the <code>=</code> symbol for assignment, but this is bad practice, as it causes problems down the line. Get used to typing the <code>&lt;-</code> symbol.</p>
 <pre class="r"><code>myVariable &lt;- 2 + 2</code></pre>
 <p>Now the result from this computation is assigned to <code>myVariable</code> and saved for later use. Later, we can call this variable like so:</p>
 <pre class="r"><code>myVariable * myVariable</code></pre>
@@ -105,7 +105,7 @@ vector2 &lt;- c(11,12,13,14,15,16,17,18,19,20)</code></pre>
 <pre><code>##  [1] 12 14 16 18 20 22 24 26 28 30</code></pre>
 <div id="accessing-values-within-a-vector" class="section level3">
 <h3>Accessing values within a vector</h3>
-<p>Vectors can be <strong>indexed</strong> with brackets <code>[]</code> to get a subset of values. What value do you get by typing <code>vector2[3]</code> in the interpreter?</p>
+<p>Vectors can be <strong>indexed</strong> with brackets <code>[]</code> to get a subset of values. What value do you get by typing <code>vector2[3]</code> in the interpreter? What about <code>vector2[3:5]</code>? HINT: the <code>:</code> operator makes a sequence of integers.</p>
 </div>
 <div id="challenge" class="section level3">
 <h3><span class="mega-octicon octicon-puzzle"></span> Challenge</h3>
@@ -114,9 +114,35 @@ vector2 &lt;- c(11,12,13,14,15,16,17,18,19,20)</code></pre>
 <pre><code>## [1] 11 14 15</code></pre>
 </div>
 </div>
+<div id="logical-tests-and-logical-indexing" class="section level2">
+<h2>Logical Tests and Logical Indexing</h2>
+<p>Logical tests are assertions that R evaluates as either with <code>TRUE</code> or <code>FALSE</code>. For instance, you might assert that “1 plus 1 equals 10 minus 8”? In R that looks like:</p>
+<pre class="r"><code>1 + 1 == 10 - 8</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<p>R tells us that this is <code>TRUE</code>. Note the double equals symbol, which means something different than a single equals symbol. The logical operators are:</p>
+<ul>
+<li><code>==</code> is equal to</li>
+<li><code>!=</code> does not equal</li>
+<li><code>&gt;</code> greater than</li>
+<li><code>&lt;</code> less than</li>
+<li><code>&gt;=</code> greater than or equal to</li>
+<li><code>&lt;=</code> less than or equal to</li>
+</ul>
+<p>Like most things in R, logical tests work on vectors. Remember <code>vector2</code> from before? Lets find out which values are greater than 19.</p>
+<pre class="r"><code>vector2 &gt; 17</code></pre>
+<pre><code>##  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE</code></pre>
+<p>This becomes useful when you only want a subset of values from a vector using logical indexing. To get <strong>only</strong> the values of <code>vector2</code> that are greater than 17, we can use a logical (AKA boolean) vector.</p>
+<pre class="r"><code>vector2[vector2 &gt; 17]</code></pre>
+<pre><code>## [1] 18 19 20</code></pre>
+<p>You can also pass complicated logical tests using the AND operator <code>&amp;</code> or the logical OR operator <code>|</code></p>
+<pre class="r"><code>vector2[vector2 &gt; 17 &amp; vector2 &lt; 20]</code></pre>
+<pre><code>## [1] 18 19</code></pre>
+<pre class="r"><code>vector2[vector2 &gt; 17 | vector2 == 13]</code></pre>
+<pre><code>## [1] 13 18 19 20</code></pre>
+</div>
 <div id="data-frames" class="section level2">
 <h2>Data Frames</h2>
-<p>Data frames are a convenient way of storing multiple related vectors of data together in a single object. They are analogous to a spreadsheet where each row corresponds to an individual (e.g., specimen, species) and each row corresponds to some observation about that individual.</p>
+<p>Data frames are a convenient way of storing multiple related vectors of data together in a single object. They are analogous to a spreadsheet where each row corresponds to an individual (e.g., specimen, species) and each row corresponds to some observation about that individual. Usually, you will use the <code>read.table()</code> function to read a dataframe directly from a .csv or .txt file that you have saved from MS Excel.</p>
 <div id="accessing-data-in-a-dataframe" class="section level3">
 <h3>Accessing data in a dataframe</h3>
 <p>Using the built in dataframe <code>iris</code>, you can explore how to access data within a dataframe. The most common ways are with the <code>$</code> syntax and with the <code>[row,column]</code> syntax. <code>$</code> is used to access a named column within an dataframe. The <code>[row, column]</code> syntax is used to identify the index number of the row and column desired. Note that leaving a blank indicates ALL rows or columns. So <code>iris$Species</code> is the same as <code>iris[,5]</code>.</p>
@@ -151,28 +177,28 @@ iris[1, ]</code></pre>
 </div>
 <div id="functions" class="section level2">
 <h2>Functions</h2>
-<p>Functions are the heart of the R language. A function is just a series of commands that is assigned a name. Functions accept <strong>arguments</strong>, perform a series of commands using the argument values, then <strong>return</strong> a single object. You can create your own functions (and you will!) but there are many hundreds of pre-defined functions available for your use.</p>
+<p>Functions are the heart of R. A function is just a series of commands that is assigned a name. Functions accept <strong>arguments</strong>, perform a series of commands using the argument values, then <strong>return</strong> a single object. You can create your own functions (and you will!) but there are many hundreds of pre-defined functions available for your use.</p>
 <p>You call a function by typing its name, followed by parentheses containing any <strong>arguments</strong> necessary. For example, the <code>print()</code> function simply prints a single argument to the consonsole.</p>
-<pre class="r"><code>print(&quot;Arguments get printed to the console&quot;)</code></pre>
-<pre><code>## [1] &quot;Arguments get printed to the console&quot;</code></pre>
+<pre class="r"><code>print(&quot;The quick brown fox jumped over the lazy dog.&quot;)</code></pre>
+<pre><code>## [1] &quot;The quick brown fox jumped over the lazy dog.&quot;</code></pre>
 <p>There is a function called <code>rnorm()</code> that produces random numbers from a normal distribution. It has three arguments: <code>n</code> indicates the number of random numbers to produce, <code>mean</code> indicates the mean of the desired distribution, and <code>sd</code> sets the desired standard deviation of the points.</p>
 <div id="challenge-1" class="section level3">
 <h3><span class="mega-octicon octicon-puzzle"></span> Challenge</h3>
 <ol style="list-style-type: decimal">
-<li><p>Use <code>rnorm</code> to create a vector representing student grades from the Anthropology 101 course. Assume there are 200 students, and the mean grade is 75%, with a standard deviation of 10.</p></li>
-<li><p>Now make a histogram of this grade distribution using the <code>hist()</code> function. Note: You can see all the arguments and default values by using the <code>?</code> operator like this <code>?hist</code>.</p></li>
+<li><p>Use <code>rnorm</code> to create a vector representing student grades from an Anthropology 101 course with 200 students, mean grade of 75%, and a standard deviation of 10.</p></li>
+<li><p>Make a histogram of this grade distribution using the <code>hist()</code> function. Note: You can see all the arguments and default values by using the <code>?</code> operator like this <code>?hist</code>.</p></li>
 </ol>
 </div>
 </div>
 <div id="scripts" class="section level2">
 <h2>Scripts</h2>
-<p>Typing commands interactively into the command-line interpreter is fine for experimentation, but ultimately we want to save every single command to a text file, so that this can be run by ourselves later, shared with collaborators, or published online with the article as supplementary information. <strong>This element of reproducibility is a critical benefit of doing scripted data analysis.</strong> In Rstudio, you can create a new script by using the File &gt;&gt; New File menu.</p>
+<p>Typing commands interactively into the command-line interpreter is fine for experimentation, but ultimately we want to save every single command to a text file, so that this can be run later, shared with collaborators, or published online with the article as supplementary information. <strong>This element of reproducibility is a critical benefit of doing scripted data analysis.</strong> In Rstudio, you can create a new script by using the File &gt;&gt; New File menu.</p>
 <div id="challenge-2" class="section level3">
 <h3><span class="mega-octicon octicon-puzzle"></span> Challenge</h3>
 <ol style="list-style-type: decimal">
 <li>Create a new script file.<br /></li>
-<li>Create a vector that contains the numbers 1 through 100. <strong>Hint</strong> use the <code>?</code> operator to investigate the <code>seq</code> function or explore the <code>:</code> operator. Save this to a variable called <code>numbers</code>.</li>
-<li>Create a new vector that contains only the numbers greater than 36. Save this to a variable called <code>bignumbers</code></li>
+<li>Create a variable called <code>numbers</code> that contains the numbers 1 through 100. <strong>Hint</strong> use the <code>?</code> operator to investigate the <code>seq</code> function or explore the <code>:</code> operator.</li>
+<li>Create a new vector that contains only the elements of <code>numbers</code> that are greater than 36. Save this to a variable called <code>bignumbers</code></li>
 <li>Calculate the natural logarithm of each value in <code>bignumbers</code>.</li>
 <li>Make a histogram of <code>bignumbers</code> using the <code>hist()</code> function</li>
 <li>Save your script file, then clear your workspace to delete ALL saved variables, and re-run your script file to redo all the steps.</li>
@@ -181,7 +207,10 @@ iris[1, ]</code></pre>
 </div>
 <div id="packages" class="section level2">
 <h2>Packages</h2>
-<p>One of the most important features of R is that it is has a vast ecosystem of user-contributed packages, that extend the base functionality of R. Packages can be installed from the command line <code>install.packages('ggplot2')</code> or using the graphical package manager in Rstudio using the Tools &gt; Install Packages menu.</p>
+<p>One of the most important features of R is that it is has a vast ecosystem of user-contributed packages, which extend the base functionality of R. Packages can be installed from the command line <code>install.packages('ggplot2')</code> or by using the graphical package manager in Rstudio using the Tools &gt; Install Packages menu. Each time you want to use functions from a package, you must make the package available with the <code>library()</code> function. E.g. <code>library(ggplot2)</code>.</p>
+</div>
+<div id="an-example-workflow-in-r" class="section level1">
+<h1>An example workflow in R</h1>
 </div>
 
 

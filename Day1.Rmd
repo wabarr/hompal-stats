@@ -1,5 +1,5 @@
 ---
-title: "Basics"
+title: "Basic Introduction to R"
 ---
 
 ## The Interactive Interpreter
@@ -71,10 +71,35 @@ iris[1, ]
 
 ## Functions
 
-Functions are the heart of the R language. A function is just a series of commands that is assigned a name.  Functions accept **arguments**, perform a series of commands using the argument values, then **return** a single object. Many functions have default values for arguments. You can see all the arguments and default values by using the `?` operator like this `?mean`.
+Functions are the heart of the R language. A function is just a series of commands that is assigned a name.  Functions accept **arguments**, perform a series of commands using the argument values, then **return** a single object. You can create your own functions (and you will!) but there are many hundreds of pre-defined functions available for your use. 
+
+You call a function by typing its name, followed by parentheses containing any **arguments** necessary. For example, the `print()` function simply prints a single argument to the consonsole.
+
+```{r}
+print("Arguments get printed to the console")
+```
+
+There is a function called `rnorm()` that produces random numbers from a normal distribution.  It has three arguments: `n` indicates the number of random numbers to produce, `mean` indicates the mean of the desired distribution, and `sd` sets the desired standard deviation of the points. 
 
 ### <span class="mega-octicon octicon-puzzle"></span> Challenge 
 
-1.    Create a vector that contains the numbers 1 through 100.  **Hint** use the `?` operator to investigate the `seq` function or explore the `:` operator.
-2.    Calculate the natural logarithm of each of the 100 elements in the vector you just created. 
-3.    Make a histogram of the natural log values using the `hist()` function
+1.  Use `rnorm` to create a vector representing student grades from the Anthropology 101 course.  Assume there are 200 students, and the mean grade is 75%, with a standard deviation of 10. 
+
+2.  Now make a histogram of this grade distribution using the `hist()` function. Note: You can see all the arguments and default values by using the `?` operator like this `?hist`.
+
+## Scripts
+
+Typing commands interactively into the command-line interpreter is fine for experimentation, but ultimately we want to save every single command to a text file, so that this can be run by ourselves later, shared with collaborators, or published online with the article as supplementary information.  ** This element of reproducibility is a critical benefit of doing scripted data analysis.** In Rstudio, you can creat a new script by using the File >> New File menu. 
+
+### <span class="mega-octicon octicon-puzzle"></span> Challenge 
+
+1.  Create a new script file.     
+2.  Create a vector that contains the numbers 1 through 100.  **Hint** use the `?` operator to investigate the `seq` function or explore the `:` operator. Save this to a variable called `numbers`.
+3.    Create a new vector that contains only the numbers greater than 36.  Save this to a variable called `bignumbers`
+4.    Calculate the natural logarithm of each value in `bignumbers`. 
+5.    Make a histogram of `bignumbers` using the `hist()` function
+6.    Save your script file, then clear your workspace to delete ALL saved variables, and re-run your script file to redo all the steps.  
+
+## Packages
+
+One of the most important features of R is that it is has a vast ecosystem of user-contributed packages, that extend the base functionality of R.  Packages can be installed from the command line `install.packages('ggplot2')` or using the graphical package manager in Rstudio using the Tools > Install Packages menu.

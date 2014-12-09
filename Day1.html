@@ -99,7 +99,8 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <h2>Vectors</h2>
 <p>A vector is a series of values stored in a single object. You can create a vector using the <code>c()</code> function (<strong>c</strong> stands for <strong>combine</strong>). <strong>Note</strong>: you can only store a single type of data in a vector (e.g. numeric or character data).</p>
 <pre class="r"><code>vector1 &lt;- c(1,2,3,4,5,6,7,8,9,10)
-vector2 &lt;- c(11,12,13,14,15,16,17,18,19,20)</code></pre>
+vector2 &lt;- c(11,12,13,14,15,16,17,18,19,20)
+vector_this_will_be_text &lt;- c(21,22,23,24,25,26,27,28,29,&quot;thirty&quot;)</code></pre>
 <p>Vectors are very powerful, because many of the basic functions and operations in R are <strong>vectorized</strong>, meaning that they operate on all elements of a vector in sequence. For example, to add the elements of <code>vector1</code> with the corresponding elements in <code>vector2</code>, you simply add the vectors, because the <code>+</code> function is vectorized. You can assume that <strong>most</strong> of the base functions in R are vectorized. This is one of the fundamental advantages of R.</p>
 <pre class="r"><code>vector1 + vector2</code></pre>
 <pre><code>##  [1] 12 14 16 18 20 22 24 26 28 30</code></pre>
@@ -109,9 +110,7 @@ vector2 &lt;- c(11,12,13,14,15,16,17,18,19,20)</code></pre>
 </div>
 <div id="challenge" class="section level3">
 <h3><span class="mega-octicon octicon-puzzle"></span> Challenge</h3>
-<p>Explain to the person sitting next to you how this works. HINT: R evaluates expressions ‘from the inside out’, with regards to brackets and parentheses.</p>
-<pre class="r"><code>vector2[c(1,4,5)]</code></pre>
-<pre><code>## [1] 11 14 15</code></pre>
+<p>Extract the first, fifth, and ninth element of <code>vector2</code> that you created earlier.</p>
 </div>
 </div>
 <div id="logical-tests-and-logical-indexing" class="section level2">
@@ -128,7 +127,7 @@ vector2 &lt;- c(11,12,13,14,15,16,17,18,19,20)</code></pre>
 <li><code>&gt;=</code> greater than or equal to</li>
 <li><code>&lt;=</code> less than or equal to</li>
 </ul>
-<p>Like most things in R, logical tests work on vectors. Remember <code>vector2</code> from before? Lets find out which values are greater than 19.</p>
+<p>Like most things in R, logical tests work on vectors. Remember <code>vector2</code> from before? Lets find out which values are greater than 17.</p>
 <pre class="r"><code>vector2 &gt; 17</code></pre>
 <pre><code>##  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE</code></pre>
 <p>This becomes useful when you only want a subset of values from a vector using logical indexing. To get <strong>only</strong> the values of <code>vector2</code> that are greater than 17, we can use a logical (AKA boolean) vector.</p>
@@ -217,7 +216,7 @@ iris[1, ]</code></pre>
 <div id="output-of-r-markdown-after-knitting" class="section level3">
 <h3>Output of R Markdown after knitting</h3>
 <p>This sentence is just normal text, made for humans to read. The following bit is a “code chunk”, which is set off by the ``` characters and consists of actual R code that gets run, and the results knitted back into the document. You can also put R code inline like this. What is 2 + 2? The answer is 4.</p>
-<p><img src="Day1_files/figure-html/unnamed-chunk-12.png" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" width="672" /></p>
+<p><img src="Day1_files/figure-html/unnamed-chunk-11.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" width="672" /></p>
 <p>Here is some more human readable text right after the code chunk.</p>
 </div>
 </div>

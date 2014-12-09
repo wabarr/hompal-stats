@@ -27,6 +27,7 @@ A vector is a series of values stored in a single object.  You can create a vect
 ```{r}
 vector1 <- c(1,2,3,4,5,6,7,8,9,10)
 vector2 <- c(11,12,13,14,15,16,17,18,19,20)
+vector_this_will_be_text <- c(21,22,23,24,25,26,27,28,29,"thirty")
 ```
 
 Vectors are very powerful, because many of the basic functions and operations in R are **vectorized**, meaning that they operate on all elements of a vector in sequence.  For example, to add the elements of `vector1` with the corresponding elements in `vector2`, you simply add the vectors, because the `+` function is vectorized. You can assume that **most** of the base functions in R are vectorized. This is one of the fundamental advantages of R. 
@@ -41,11 +42,7 @@ Vectors can be **indexed** with brackets `[]` to get a subset of values.  What v
 
 ### <span class="mega-octicon octicon-puzzle"></span> Challenge 
 
-Explain to the person sitting next to you how this works. HINT: R evaluates expressions 'from the inside out', with regards to brackets and parentheses.
-
-```{r}
-vector2[c(1,4,5)]
-```
+Extract the first, fifth, and ninth element of `vector2` that you created earlier.
 
 ## Logical Tests and Logical Indexing
 
@@ -64,7 +61,7 @@ R tells us that this is `TRUE`.  Note the double equals symbol, which means some
 *  `>=` greater than or equal to
 *  `<=` less than or equal to
 
-Like most things in R, logical tests work on vectors.  Remember `vector2` from before? Lets find out which values are greater than 19. 
+Like most things in R, logical tests work on vectors.  Remember `vector2` from before? Lets find out which values are greater than 17. 
 
 ```{r}
 vector2 > 17
@@ -182,7 +179,7 @@ The primary function for reading data into R is the `read.table()` function.  Th
 
 ### <span class="mega-octicon octicon-puzzle"></span> Challenge <span class="mega-octicon octicon-puzzle">
 
-Read in the file called [femur_lengths.txt](https://dl.dropboxusercontent.com/u/1648032/datasets_for_R_course/femur_lengths.txt). Save to an object called `femora`.
+Read in the file called [femur_lengths.txt](datasets/femur_lengths.txt). Save to an object called `femora`.
 
 ## Data Output
 
@@ -200,9 +197,8 @@ Usually, I would recommend not writing out modified data frames to text files.  
 Add a new column of log transformed lengths to the femur length dataset and then write out the new file to the Desktop.
 
 ```{r include=FALSE}
-library(RCurl)
-theFile <- getURL("https://dl.dropboxusercontent.com/u/1648032/datasets_for_R_course/femur_lengths.txt")
-femora <- read.table(text=theFile, header=TRUE, sep = "\t")
+baseURL = "http://hompal-stats.wabarr.com/"
+femora <- read.table(url(paste0(baseURL, "datasets/femur_lengths.txt")), header=TRUE, sep = "\t")
 ```
 
 ```{r include=FALSE}

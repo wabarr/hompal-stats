@@ -177,7 +177,7 @@ The primary function for reading data into R is the `read.table()` function.  Th
 *  `header` = Whether or not there is a header row in your text file.  Defaults to `FALSE`, but usually we need it to be `TRUE`.
 
 
-### <span class="mega-octicon octicon-puzzle"></span> Challenge <span class="mega-octicon octicon-puzzle">
+### <span class="mega-octicon octicon-puzzle"></span> Challenge 
 
 Read in the file called [femur_lengths.txt](datasets/femur_lengths.txt). Save to an object called `femora`.
 
@@ -192,16 +192,6 @@ Usually, I would recommend not writing out modified data frames to text files.  
 *  `row.names` = Do you want row names?  Defaults to `TRUE`, but usually you will set to `FALSE`/
 
 
-### <span class="mega-octicon octicon-puzzle"></span> Challenge <span class="mega-octicon octicon-puzzle">
+### <span class="mega-octicon octicon-puzzle"></span> Challenge 
 
 Add a new column of log transformed lengths to the femur length dataset and then write out the new file to the Desktop.
-
-```{r include=FALSE}
-baseURL = "http://hompal-stats.wabarr.com/"
-femora <- read.table(url(paste0(baseURL, "datasets/femur_lengths.txt")), header=TRUE, sep = "\t")
-```
-
-```{r include=FALSE}
-femora$family <- c(rep("Bovidae", 10), rep("Muridae", 12), rep("Hominidae", 18))
-write.table(femora, "~/Desktop/femur_lengths_family.txt", quote=FALSE, sep="\t", row.names=FALSE)
-```

@@ -36,7 +36,11 @@ li.nested ul a {
   display:block;
 }
 
+
 h2 {
   background-color:#FFFF99;
-  padding-left:15px;
+}
+
+h2, h3 {
+  padding-left:5px;
 }

@@ -115,7 +115,7 @@ vector_this_will_be_text &lt;- c(21,22,23,24,25,26,27,28,29,&quot;thirty&quot;)<
 </div>
 <div id="logical-tests-and-logical-indexing" class="section level2">
 <h2>Logical Tests and Logical Indexing</h2>
-<p>Logical tests are assertions that R evaluates as either with <code>TRUE</code> or <code>FALSE</code>. For instance, you might assert that “1 plus 1 equals 10 minus 8”? In R that looks like:</p>
+<p>Logical tests are assertions that R evaluates as either <code>TRUE</code> or <code>FALSE</code>. For instance, you might assert that “1 plus 1 equals 10 minus 8”? In R that looks like:</p>
 <pre class="r"><code>1 + 1 == 10 - 8</code></pre>
 <pre><code>## [1] TRUE</code></pre>
 <p>R tells us that this is <code>TRUE</code>. Note the double equals symbol, which means something different than a single equals symbol. The logical operators are:</p>
@@ -172,21 +172,25 @@ iris[1,3]</code></pre>
 iris[1, ]</code></pre>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 1          5.1         3.5          1.4         0.2  setosa</code></pre>
-<p><strong>Note</strong> You can also create new columns in a dataframe using the <code>$</code> operator.</p>
+<p><strong>Note</strong> You can also create new columns in a dataframe using the <code>$</code> operator. So we can create a new column in the <code>iris</code> data frame called petal area like so:</p>
+<pre class="r"><code>iris$Petal.Area &lt;- iris$Petal.Length * iris$Petal.Width</code></pre>
 </div>
 </div>
 <div id="functions" class="section level2">
 <h2>Functions</h2>
-<p>Functions are the heart of R. A function is just a series of commands that is assigned a name. Functions accept <strong>arguments</strong>, perform a series of commands using the argument values, then <strong>return</strong> a single object. You can create your own functions (and you will!) but there are many hundreds of pre-defined functions available for your use.</p>
-<p>You call a function by typing its name, followed by parentheses containing any <strong>arguments</strong> necessary. For example, the <code>print()</code> function simply prints a single argument to the consonsole.</p>
-<pre class="r"><code>print(&quot;The quick brown fox jumped over the lazy dog.&quot;)</code></pre>
+<p>Functions are the heart of R. A function is just a series of commands that is assigned a name. Functions accept <strong>arguments</strong>, perform a series of commands using the argument values, then <strong>return</strong> a single object. You can create your own functions (and you will!) but there are many hundreds of pre-defined functions available for your use. <strong>A huge part of the learning curve of R is learning which functions exist, which is why they invented google.com!</strong></p>
+<p>You call a function by typing its name, followed by parentheses containing any <strong>arguments</strong> necessary. Arguments are the way you pass data and/or options to a function. For example, the <code>paste()</code> function simply pastes together any arguments you privide into a single text string.</p>
+<pre class="r"><code>part1 &lt;- &quot;The quick brown fox&quot;
+part2 &lt;- &quot;jumped over the lazy dog.&quot;
+paste(part1, part2)</code></pre>
 <pre><code>## [1] &quot;The quick brown fox jumped over the lazy dog.&quot;</code></pre>
 <p>There is a function called <code>rnorm()</code> that produces random numbers from a normal distribution. It has three arguments: <code>n</code> indicates the number of random numbers to produce, <code>mean</code> indicates the mean of the desired distribution, and <code>sd</code> sets the desired standard deviation of the points.</p>
 <div id="challenge-1" class="section level3">
 <h3><span class="mega-octicon octicon-puzzle"></span> Challenge</h3>
 <ol style="list-style-type: decimal">
-<li><p>Use <code>rnorm</code> to create a vector representing student grades from an Anthropology 101 course with 200 students, mean grade of 75%, and a standard deviation of 10.</p></li>
-<li><p>Make a histogram of this grade distribution using the <code>hist()</code> function. Note: You can see all the arguments and default values by using the <code>?</code> operator like this <code>?hist</code>.</p></li>
+<li><p>Use <code>rnorm</code> to create a vector called <code>grades</code> representing student grades from an Anthropology 101 course with 200 students, mean grade of 68%, and a standard deviation of 10.</p></li>
+<li><p>Apply a curve of 7% to the class grades in order to raise the mean to to 75%. Save this to a new variable called <code>curvedgrades</code></p></li>
+<li><p>Make a histogram of <code>curvedgrades</code> using the <code>hist()</code> function. Note: You can see all the arguments and default values for any function using the <code>?</code> operator like this <code>?hist</code>.</p></li>
 </ol>
 </div>
 </div>
@@ -217,7 +221,7 @@ iris[1, ]</code></pre>
 <div id="output-of-r-markdown-after-knitting" class="section level3">
 <h3>Output of R Markdown after knitting</h3>
 <p>This sentence is just normal text, made for humans to read. The following bit is a “code chunk”, which is set off by the ``` characters and consists of actual R code that gets run, and the results knitted back into the document. You can also put R code inline like this. What is 2 + 2? The answer is 4.</p>
-<p><img src="intro_to_R_files/figure-html/unnamed-chunk-11.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" width="672" /></p>
+<p><img src="intro_to_R_files/figure-html/unnamed-chunk-12.png" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" width="672" /></p>
 <p>Here is some more human readable text right after the code chunk.</p>
 </div>
 </div>

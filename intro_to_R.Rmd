@@ -46,7 +46,7 @@ Extract the first, fifth, and ninth element of `vector2` that you created earlie
 
 ## Logical Tests and Logical Indexing
 
-Logical tests are assertions that R evaluates as either with `TRUE` or `FALSE`. For instance, you might assert that "1 plus 1 equals 10 minus 8"? In R that looks like:
+Logical tests are assertions that R evaluates as either `TRUE` or `FALSE`. For instance, you might assert that "1 plus 1 equals 10 minus 8"? In R that looks like:
 
 ```{r}
 1 + 1 == 10 - 8
@@ -102,25 +102,33 @@ iris[1,3]
 iris[1, ]
 ```
 
-**Note** You can also create new columns in a dataframe using the `$` operator. 
+**Note** You can also create new columns in a dataframe using the `$` operator. So we can create a new column in the `iris` data frame called petal area like so:
+
+```{r} 
+iris$Petal.Area <- iris$Petal.Length * iris$Petal.Width
+```
 
 ## Functions
 
-Functions are the heart of R. A function is just a series of commands that is assigned a name.  Functions accept **arguments**, perform a series of commands using the argument values, then **return** a single object. You can create your own functions (and you will!) but there are many hundreds of pre-defined functions available for your use. 
+Functions are the heart of R. A function is just a series of commands that is assigned a name.  Functions accept **arguments**, perform a series of commands using the argument values, then **return** a single object. You can create your own functions (and you will!) but there are many hundreds of pre-defined functions available for your use. **A huge part of the learning curve of R is learning which functions exist, which is why they invented google.com!** 
 
-You call a function by typing its name, followed by parentheses containing any **arguments** necessary. For example, the `print()` function simply prints a single argument to the consonsole.
+You call a function by typing its name, followed by parentheses containing any **arguments** necessary. Arguments are the way you pass data and/or options to a function. For example, the `paste()` function simply pastes together any arguments you privide into a single text string.
 
 ```{r}
-print("The quick brown fox jumped over the lazy dog.")
+part1 <- "The quick brown fox"
+part2 <- "jumped over the lazy dog."
+paste(part1, part2)
 ```
 
 There is a function called `rnorm()` that produces random numbers from a normal distribution.  It has three arguments: `n` indicates the number of random numbers to produce, `mean` indicates the mean of the desired distribution, and `sd` sets the desired standard deviation of the points. 
 
 ### <span class="mega-octicon octicon-puzzle"></span> Challenge 
 
-1.  Use `rnorm` to create a vector representing student grades from an Anthropology 101 course with  200 students, mean grade of 75%, and a standard deviation of 10. 
+1.  Use `rnorm` to create a vector called `grades` representing student grades from an Anthropology 101 course with  200 students, mean grade of 68%, and a standard deviation of 10. 
 
-2.  Make a histogram of this grade distribution using the `hist()` function. Note: You can see all the arguments and default values by using the `?` operator like this `?hist`.
+2.  Apply a curve of 7% to the class grades in order to raise the mean to to 75%.  Save this to a new variable called `curvedgrades`
+
+3.  Make a histogram of `curvedgrades` using the `hist()` function. Note: You can see all the arguments and default values for any function using the `?` operator like this `?hist`.
 
 ## Scripts
 

@@ -2,4 +2,15 @@
 title: "Demonstrations"
 ---
 
-* [Day 1 - January 12, 2014](Day1.html)
+* Jan 12  [Intro to R](intro_to_R.html)
+* Jan 26	[Visualizing Data and Data Wrangling]
+* Feb 2	[Basic Stats: Probability and Distributions]
+* Feb 9	[Basic Stats: Hypothesis Testing]
+* Feb 23	[Correlation and Regression]
+* Mar 16	[ANOVA and ANCOVA]
+* Mar 23	[Accounting for Phylogenetic Signal (PGLS)]
+* Mar 30	[Multivariate Stats: Multiple Regression (Allometry)]
+* Apr 6	[Multivariate Stats: Ordination Methods]
+* Apr 13	[Categorical Data]
+* Apr 20	[Resampling Approaches]
+* Apr 27	[Advanced Data Visualization]

@@ -172,6 +172,7 @@ iris[1,3]</code></pre>
 iris[1, ]</code></pre>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 1          5.1         3.5          1.4         0.2  setosa</code></pre>
+<p><strong>Note</strong> You can also create new columns in a dataframe using the <code>$</code> operator.</p>
 </div>
 </div>
 <div id="functions" class="section level2">
@@ -206,7 +207,7 @@ iris[1, ]</code></pre>
 </div>
 <div id="r-markdown" class="section level2">
 <h2>R Markdown</h2>
-<p>R Markdown documents are like scripts, but better. Instead of creating regular .R script files, you create a special type of file called an R markdown file, which allows you to mix human readable text with snippets of R code. At any time you can “knit” the R Markdown file, which causes the code snippets to be run. Any results (figures or text output) get combined with the human readable parts, and combined into a single pdf, word doc, or html file. This is how I work mostly….basically writing the methods section of the paper interactively as I write the analysis code. This website is written entirely in Rmarkdown.</p>
+<p>R Markdown documents are like scripts, but better. Instead of creating regular .R script files, you create a special type of file called an R markdown file, which allows you to mix human readable text with snippets of R code. At any time you can “knit” the R Markdown file, which causes the code snippets to be run. Any results (figures or text output) get combined with the human readable parts, and combined into a single pdf, word doc, or html file. You can create a new Rmarkdown using the File &gt;&gt; New File menu.</p>
 <div id="example-r-markdown-document" class="section level3">
 <h3>Example R Markdown document</h3>
 <p>This sentence is just normal text, made for humans to read. The following bit is a “code chunk”, which is set off by the ``` characters and consists of actual R code that gets run, and the results knitted back into the document. You can also put R code inline like this. What is 2 + 2? The answer is `r 2 + 2`.</p>
@@ -216,7 +217,7 @@ iris[1, ]</code></pre>
 <div id="output-of-r-markdown-after-knitting" class="section level3">
 <h3>Output of R Markdown after knitting</h3>
 <p>This sentence is just normal text, made for humans to read. The following bit is a “code chunk”, which is set off by the ``` characters and consists of actual R code that gets run, and the results knitted back into the document. You can also put R code inline like this. What is 2 + 2? The answer is 4.</p>
-<p><img src="Day1_files/figure-html/unnamed-chunk-11.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" width="672" /></p>
+<p><img src="intro_to_R_files/figure-html/unnamed-chunk-11.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" width="672" /></p>
 <p>Here is some more human readable text right after the code chunk.</p>
 </div>
 </div>
@@ -226,7 +227,7 @@ iris[1, ]</code></pre>
 </div>
 <div id="data-input" class="section level2">
 <h2>Data Input</h2>
-<p>Getting data into R can be somewhat frustrating for new users. This is mainly because we humans (the author especially) tend to be sloppy when collecting data in a spreadsheet. R has rigid expectations. It expects each column of a text file (usually exported from an Excel sheet) to have a single type of data (text, numeric, factor), plus an optional header row.</p>
+<p>Getting data into R can be somewhat frustrating for new users. This is mainly because humans tend to be sloppy when collecting data in a spreadsheet. R has rigid expectations. It expects each column of a text file (usually exported from an Excel sheet) to have a single type of data (text, numeric, factor), plus an optional header row.</p>
 <p>The primary function for reading data into R is the <code>read.table()</code> function. This function reads plain text files (.txt or .csv) and creates a dataframe in R from the resulting data. There are a variety of arguments to <code>read.data()</code>, the most important of which are:</p>
 <ul>
 <li><code>file</code> = The full path to the file on your computer as a text string. (Use the forward slash <code>/</code>, even on Windows.)</li>
@@ -240,7 +241,7 @@ iris[1, ]</code></pre>
 </div>
 <div id="data-output" class="section level2">
 <h2>Data Output</h2>
-<p>Usually, I would recommend not writing out modified data frames to text files. Far better to have a single input file, and to do all necessary manipulations in your saved R script file. But, if you have huge datasets or need to use another statistical program, it is sometimes necesary to save a dataframe out as a text file. You can do this with <code>write.table()</code></p>
+<p>Usually, I would recommend <strong>not</strong> writing out modified data frames to text files. It is far better to have a single input file, and to do all necessary manipulations in your saved R script file. But, if you have huge datasets or need to use another statistical program, it is sometimes necesary to save a dataframe outside of R as a text file. You can do this with <code>write.table()</code></p>
 <ul>
 <li><code>x</code> = The name of the data frame to be saved.</li>
 <li><code>file</code> = Path to the output file. You can’t use <code>file.choose()</code> though.</li>

@@ -205,12 +205,54 @@ iris[1, ]</code></pre>
 </ol>
 </div>
 </div>
+<div id="r-markdown" class="section level2">
+<h2>R Markdown</h2>
+<p>R Markdown documents are like scripts, but better. Instead of creating regular .R script files, you create a special type of file called an R markdown file, which allows you to mix human readable text with snippets of R code. At any time you can “knit” the R Markdown file, which causes the code snippets to be run. Any results (figures or text output) get combined with the human readable parts, and combined into a single pdf, word doc, or html file. This is how I work mostly….basically writing the methods section of the paper interactively as I write the analysis code. This website is written entirely in Rmarkdown.</p>
+<div id="example-r-markdown-document" class="section level3">
+<h3>Example R Markdown document</h3>
+<p>This sentence is just normal text, made for humans to read. The following bit is a “code chunk”, which is set off by the ``` characters and consists of actual R code that gets run, and the results knitted back into the document. You can also put R code inline like this. What is 2 + 2? The answer is `r 2 + 2`.</p>
+<p>```{r examplechunk}<br> x &lt;- rnorm(100)<br> y &lt;- (x * 0.3) + rnorm(100, sd=0.2)<br> plot(x,y,pch=16)<br> ```</p>
+<p>Here is some more human readable text right after the code chunk.</p>
+</div>
+<div id="output-of-r-markdown-after-knitting" class="section level3">
+<h3>Output of R Markdown after knitting</h3>
+<p>This sentence is just normal text, made for humans to read. The following bit is a “code chunk”, which is set off by the ``` characters and consists of actual R code that gets run, and the results knitted back into the document. You can also put R code inline like this. What is 2 + 2? The answer is 4.</p>
+<p><img src="Day1_files/figure-html/unnamed-chunk-12.png" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" width="672" /></p>
+<p>Here is some more human readable text right after the code chunk.</p>
+</div>
+</div>
 <div id="packages" class="section level2">
 <h2>Packages</h2>
 <p>One of the most important features of R is that it is has a vast ecosystem of user-contributed packages, which extend the base functionality of R. Packages can be installed from the command line <code>install.packages('ggplot2')</code> or by using the graphical package manager in Rstudio using the Tools &gt; Install Packages menu. Each time you want to use functions from a package, you must make the package available with the <code>library()</code> function. E.g. <code>library(ggplot2)</code>.</p>
 </div>
-<div id="an-example-workflow-in-r" class="section level1">
-<h1>An example workflow in R</h1>
+<div id="data-input" class="section level2">
+<h2>Data Input</h2>
+<p>Getting data into R can be somewhat frustrating for new users. This is mainly because we humans (the author especially) tend to be sloppy when collecting data in a spreadsheet. R has rigid expectations. It expects each column of a text file (usually exported from an Excel sheet) to have a single type of data (text, numeric, factor), plus an optional header row.</p>
+<p>The primary function for reading data into R is the <code>read.table()</code> function. This function reads plain text files (.txt or .csv) and creates a dataframe in R from the resulting data. There are a variety of arguments to <code>read.data()</code>, the most important of which are:</p>
+<ul>
+<li><code>file</code> = The full path to the file on your computer as a text string. (Use the forward slash <code>/</code>, even on Windows.)</li>
+<li><code>sep</code> = the character that separates columns in your text file. The default is <code>&quot; &quot;</code>, which kind of sucks because most of our files will be separated by either <code>\t</code> or <code>,</code>.</li>
+<li><code>header</code> = Whether or not there is a header row in your text file. Defaults to <code>FALSE</code>, but usually we need it to be <code>TRUE</code>.</li>
+</ul>
+<div id="challenge-3" class="section level3">
+<h3><span class="mega-octicon octicon-puzzle"></span> Challenge <span class="mega-octicon octicon-puzzle"></h3>
+<p>Read in the file called <a href="https://dl.dropboxusercontent.com/u/1648032/datasets_for_R_course/femur_lengths.txt">femur_lengths.txt</a>. Save to an object called <code>femora</code>.</p>
+</div>
+</div>
+<div id="data-output" class="section level2">
+<h2>Data Output</h2>
+<p>Usually, I would recommend not writing out modified data frames to text files. Far better to have a single input file, and to do all necessary manipulations in your saved R script file. But, if you have huge datasets or need to use another statistical program, it is sometimes necesary to save a dataframe out as a text file. You can do this with <code>write.table()</code></p>
+<ul>
+<li><code>x</code> = The name of the data frame to be saved.</li>
+<li><code>file</code> = Path to the output file. You can’t use <code>file.choose()</code> though.</li>
+<li><code>quote</code> = Do you want quotation marks around strings? Defaults to <code>TRUE</code></li>
+<li><code>sep</code> = Same as for <code>read.table()</code></li>
+<li><code>row.names</code> = Do you want row names? Defaults to <code>TRUE</code>, but usually you will set to <code>FALSE</code>/</li>
+</ul>
+<div id="challenge-4" class="section level3">
+<h3><span class="mega-octicon octicon-puzzle"></span> Challenge <span class="mega-octicon octicon-puzzle"></h3>
+<p>Add a new column of log transformed lengths to the femur length dataset and then write out the new file to the Desktop.</p>
+</div>
 </div>
 
 

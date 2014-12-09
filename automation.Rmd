@@ -1,0 +1,26 @@
+# Automation
+
+R is a programming language, which means that it gives you all the tools you need to automate repetitive tasks.  There are three main ways to do this:
+
+* `for` loops
+* the `apply()` family of functions
+* the `dplyr` package
+
+## for loops
+
+`for` loops will be familiar if you have ever used any other programming languages.  The basic structure looks like this:
+
+```{r results='hide'}
+myVector <- 1:100
+for(counter in myVector){
+  print(paste("counter ^ 2 = ", counter^2))
+}
+```
+
+We loop over a vector `1:100`, and sequentially assign its values to a temporary variable `i`.  Then R does what is within the curly braces `{}` for each iteration of the loop.  In this case, it pastes together some text with the square of the value of `i` and prints this all to the console. 
+
+<span class="mega-octicon octicon-question"></span> After running the above code, compare what happens when you type `myVector` versus `counter`? What happened to `counter`?
+
+```{r}
+
+```

@@ -3,7 +3,7 @@ title: "Demonstrations"
 ---
 
 * Jan 12  [Intro to R](intro_to_R.html)
-* Jan 26	[Visualizing Data and Data Wrangling]
+* Jan 26	[Visualizing Data](visualization.html) & [Automation](automation.html)
 * Feb 2	[Basic Stats: Probability and Distributions]
 * Feb 9	[Basic Stats: Hypothesis Testing]
 * Feb 23	[Correlation and Regression]

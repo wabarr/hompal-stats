@@ -11,7 +11,7 @@
 
 
 
-<title>Analytical Methods in Evolutionary Anthropology</title>
+<title></title>
 
 <script src="libs/jquery-1.11.0/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -78,12 +78,27 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
   </div>
 </div>
 
-<div id="header">
-<h1 class="title">Analytical Methods in Evolutionary Anthropology</h1>
+
+
+<div id="automation" class="section level1">
+<h1>Automation</h1>
+<p>R is a programming language, which means that it gives you all the tools you need to automate repetitive tasks. There are three main ways to do this:</p>
+<ul>
+<li><code>for</code> loops</li>
+<li>the <code>apply()</code> family of functions</li>
+<li>the <code>dplyr</code> package</li>
+</ul>
+<div id="for-loops" class="section level2">
+<h2>for loops</h2>
+<p><code>for</code> loops will be familiar if you have ever used any other programming languages. The basic structure looks like this:</p>
+<pre class="r"><code>vector &lt;- 1:100
+for(counter in vector){
+  print(paste(&quot;counter ^ 2 = &quot;, counter^2))
+}</code></pre>
+<p>We loop over a vector <code>1:100</code>, and sequentially assign its values to a temporary variable <code>i</code>. Then R does what is within the curly braces <code>{}</code> for each iteration of the loop. In this case, it pastes together some text with the square of the value of <code>i</code> and prints this all to the console.</p>
+<p><span class="mega-octicon octicon-question"></span> After running the above code, compare what happens when you type <code>vector</code> versus <code>counter</code>? What happened to <code>counter</code>?</p>
 </div>
-
-
-<p>Welcome to the webpage for the HomPal Stats Course.</p>
+</div>
 
 
 </div>

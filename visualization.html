@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="generator" content="pandoc" />
+
+
+
+<title>Visualizing Data and Automation in R</title>
+
+<script src="libs/jquery-1.11.0/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="libs/bootstrap-2.3.2/css/united.min.css" rel="stylesheet" />
+<link href="libs/bootstrap-2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-57395681-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet"
+      href="libs/highlight/textmate.css"
+      type="text/css" />
+<script src="libs/highlight/highlight.js"></script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+<link rel="stylesheet" href="octicons/octicons.css" type="text/css" />
+<link rel="stylesheet" href="css/custom-style.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+<div class="container-fluid main-container">
+
+<div id="navbar">
+  <div id="navbar-container">
+    <ul id="navbar-ul">
+      <li><a href="index.html"><span class="mega-octicon octicon-home"></a></li>
+      <li><a href="demonstrations.html">Demos</a>
+      <li><a href="datasets.html">Data</a></li>
+      <li><a href="homework.html">Homework</a></li>
+      <li><a href="https://www.dropbox.com/s/5i83xqgfm6ud9td/ANTH6413_syllabus.docx?dl=0">Syllabus</a></li>
+      <li><a href="gettinghelp.html">Getting Help</a></li>
+      
+    </ul>
+  </div>
+</div>
+
+<div id="header">
+<h1 class="title">Visualizing Data and Automation in R</h1>
+</div>
+
+
+<div id="visualizing-data" class="section level2">
+<h2>Visualizing Data</h2>
+<p><strong>I am opinionated when it comes to graphics in R.</strong></p>
+<p>I prefer to not to use the standard graphics facilities in R, which are rather kludgy and take lots of tweaking to make the graphs look great. Instead, I prefer to use the <code>ggplot2</code> package. You need to install this package using the standard package manager: Tools &gt; Package Manager. Then you will load the package using the command <code>library(ggplot2)</code>.</p>
+<p><code>ggplot2</code> provides a convenient function called <code>qplot()</code> for making quick plots that don’t require a lot of customization.</p>
+</div>
+<div id="basic-plotting" class="section level2">
+<h2>Basic Plotting</h2>
+<p>We will use a built in dataset called <code>diamonds</code>. Lets take a look at the head (i.e. first few rows) of this dataset.</p>
+<pre class="r"><code>library(ggplot2)
+head(diamonds)</code></pre>
+<pre><code>##   carat       cut color clarity depth table price    x    y    z
+## 1  0.23     Ideal     E     SI2  61.5    55   326 3.95 3.98 2.43
+## 2  0.21   Premium     E     SI1  59.8    61   326 3.89 3.84 2.31
+## 3  0.23      Good     E     VS1  56.9    65   327 4.05 4.07 2.31
+## 4  0.29   Premium     I     VS2  62.4    58   334 4.20 4.23 2.63
+## 5  0.31      Good     J     SI2  63.3    58   335 4.34 4.35 2.75
+## 6  0.24 Very Good     J    VVS2  62.8    57   336 3.94 3.96 2.48</code></pre>
+<div id="univariate-plot" class="section level3">
+<h3>Univariate plot</h3>
+<p>The simplest usage of <code>qplot()</code> is to provide a variable for the x axis, and a dataframe in which to look for this variable. <code>qplot()</code> will attempt to guess the best <code>geom</code> (graphical geometric representation) with which to display the data. Here we plot a histogram of diamond weights. As we would expect….most diamonds are small, so the graph is skewed to the left.</p>
+<pre class="r"><code>library(ggplot2)
+qplot(x=carat, data=diamonds)</code></pre>
+<pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.</code></pre>
+<p><img src="visualization_files/figure-html/unnamed-chunk-2.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" width="672" /></p>
+</div>
+<div id="bivariate-plot" class="section level3">
+<h3>Bivariate Plot</h3>
+<p>If we specify a variable for the y axis, then the default <code>geom</code> is a scatter of points. This time we will also specify a value for <code>main</code> which is the main title.</p>
+<pre class="r"><code>qplot(x=carat, y=price, data=diamonds, main=&quot;Diamond Weight by Price&quot;)</code></pre>
+<p><img src="visualization_files/figure-html/unnamed-chunk-3.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" width="672" /></p>
+</div>
+<div id="boxplot" class="section level3">
+<h3>Boxplot</h3>
+<p>Now lets plot clarity by carat.</p>
+<pre class="r"><code>qplot(x=clarity, y=carat, data=diamonds)</code></pre>
+<p><img src="visualization_files/figure-html/unnamed-chunk-4.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" width="672" /></p>
+<p>We got points as the <code>geom</code>, but we can explicitly tell <code>qplot()</code> to use a different geom.</p>
+<pre class="r"><code>qplot(x=clarity, y=carat, data=diamonds, geom=&quot;boxplot&quot;)</code></pre>
+<p><img src="visualization_files/figure-html/unnamed-chunk-5.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" width="672" /></p>
+</div>
+</div>
+<div id="layers" class="section level2">
+<h2>Layers</h2>
+<p>The most common layer you will want to add is a line representing a linear regression. To do this, we start with the bivariate plot, then add a new layer.</p>
+<pre class="r"><code>qplot(x=carat, y=price, data=diamonds, main=&quot;Diamond Weight by Price&quot;) + stat_smooth(method=&quot;lm&quot;)</code></pre>
+<p><img src="visualization_files/figure-html/unnamed-chunk-6.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" width="672" /></p>
+<div id="challenge" class="section level3">
+<h3><span class="mega-octicon octicon-puzzle"></span> Challenge</h3>
+<p>The relationship here is clearly not linear. Recreate the plot in log space by computing the natural log of both variables. To save memory space do the log calculations inline, without saving the logged variables.</p>
+</div>
+</div>
+<div id="color-size-shape-fill" class="section level2">
+<h2>Color, Size, Shape, Fill</h2>
+<p>Sometimes we want to see the impact of other variables variables by color coding points, or changing the shape or size of points in relation to another variable. <code>qplot()</code> makes this very easy, and even automatically creates legends for us.</p>
+<pre class="r"><code>qplot(x=carat, y=price, data=diamonds, main=&quot;Diamond Weight by Price&quot;, color=clarity)</code></pre>
+<p><img src="visualization_files/figure-html/unnamed-chunk-71.png" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" width="672" /></p>
+<pre class="r"><code>qplot(x=carat, y=price, data=diamonds, main=&quot;Diamond Weight by Price&quot;, shape=cut)</code></pre>
+<p><img src="visualization_files/figure-html/unnamed-chunk-72.png" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" width="672" /></p>
+</div>
+<div id="facets" class="section level2">
+<h2>Facets</h2>
+<p>When we have so many data points, it is hard to tell what is going on. It would be nice to have a grid of sub-plots, so we can see the effect of these factors on the relationship between price and size. We can use the <code>facets</code> argument and tell it which factors we want to use, as in <code>facets=row_var~column_var</code></p>
+<pre class="r"><code>qplot(x=carat, y=price, data=diamonds, main=&quot;Diamond Weight by Price&quot;, facets=cut~clarity)</code></pre>
+<p><img src="visualization_files/figure-html/unnamed-chunk-8.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" width="672" /></p>
+</div>
+<div id="themes" class="section level2">
+<h2>Themes</h2>
+<p>There are a couple of shortcut theme functions that help you customize the look and feel of plots. A very popular one is <code>theme_bw()</code> which gets rid of the default grey background. You can also specify a value for the base text size, to increase size for presentations, etc. All the text elements will scale intelligently. Also check out <code>theme_classic()</code></p>
+<pre class="r"><code>qplot(x=carat, y=price, data=diamonds, main=&quot;Diamond Weight by Price&quot;, color=clarity)+ theme_bw(20)</code></pre>
+<p><img src="visualization_files/figure-html/unnamed-chunk-91.png" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" width="672" /></p>
+<pre class="r"><code>qplot(x=carat, y=price, data=diamonds, main=&quot;Diamond Weight by Price&quot;, color=clarity) + theme_classic(20)</code></pre>
+<p><img src="visualization_files/figure-html/unnamed-chunk-92.png" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" width="672" /></p>
+</div>
+<div id="default-themes" class="section level2">
+<h2>Default Themes</h2>
+<p>To make all of your plots share the same look and feel you can set the theme at the beginning of your script and the theme elements will be applied for all plots. For instance:</p>
+<pre class="r"><code>theme_set(theme_bw(20))
+qplot(price, data=diamonds)</code></pre>
+<pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.</code></pre>
+<p><img src="visualization_files/figure-html/unnamed-chunk-101.png" title="plot of chunk unnamed-chunk-10" alt="plot of chunk unnamed-chunk-10" width="672" /></p>
+<pre class="r"><code>qplot(depth, table, data=diamonds)</code></pre>
+<p><img src="visualization_files/figure-html/unnamed-chunk-102.png" title="plot of chunk unnamed-chunk-10" alt="plot of chunk unnamed-chunk-10" width="672" /></p>
+</div>
+<div id="automation" class="section level2">
+<h2>Automation</h2>
+<p>R is a programming language, which means that it gives you all the tools you need to automate repetitive tasks. There are three main ways to do this:</p>
+<ul>
+<li><code>for</code> loops</li>
+<li>the <code>apply()</code> family of functions</li>
+<li>the <code>dplyr</code> package</li>
+</ul>
+</div>
+<div id="for-loops" class="section level2">
+<h2>for loops</h2>
+<p><code>for</code> loops will be familiar if you have ever used any other programming languages. The basic structure looks like this:</p>
+<pre class="r"><code>for(i in 1:100){
+  print(paste(&quot;i ^ 2 = &quot;, i^2))
+}</code></pre>
+</div>
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with --self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

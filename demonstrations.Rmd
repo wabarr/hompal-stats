@@ -3,10 +3,14 @@ title: "Demonstrations"
 ---
 
 * Jan 12  [Intro to R](intro_to_R.html)
+* Jan 19  MLK Day, No Class
 * Jan 26	[Visualizing Data](visualization.html) & [Automation](automation.html)
 * Feb 2	[Basic Stats: Probability and Distributions]
 * Feb 9	[Basic Stats: Hypothesis Testing]
+* Feb 16  President's Day, No Class
 * Feb 23	[Correlation and Regression]
+* March 2 Exam I
+* March 9 Spring Break, No Class
 * Mar 16	[ANOVA and ANCOVA]
 * Mar 23	[Accounting for Phylogenetic Signal (PGLS)]
 * Mar 30	[Multivariate Stats: Multiple Regression (Allometry)]
@@ -14,3 +18,4 @@ title: "Demonstrations"
 * Apr 13	[Categorical Data]
 * Apr 20	[Resampling Approaches]
 * Apr 27	[Advanced Data Visualization]
+* Apr 29 Exam II (Note: this is designated Wednesday)

@@ -1,0 +1,22 @@
+---
+title: "Homework"
+---
+## Due at beginning of class on the day listed. 
+
+* Jan 12 - [Try R Tutorial](http://tryr.codeschool.com) - First two modules.
+* Jan 19 - MLK Day, No Class
+* Jan 26 - 
+* Feb 2	- 
+* Feb 9 - 
+* Feb 16 - President's Day, No Class
+* Feb 23 - 
+* March 2 - Exam I
+* March 9 - Spring Break, No Class
+* Mar 16 - 
+* Mar 23 - 
+* Mar 30 - 
+* Apr 6	- 
+* Apr 13 - 
+* Apr 20 - 
+* Apr 27 - 
+* Apr 29 - Exam II (Note: this is designated Wednesday)

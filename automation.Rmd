@@ -57,7 +57,7 @@ plot(1:2000, results, pch=16)
 
 ## lapply
 
-The function `lapply()` is like a for loop, but is optimized and explicitly functional.  `lapply()` usually takes two arguments `X` which is a list or a vector to loop over, and `FUN` which is a function to apply to each element of `X`.  Thus, `FUN` must be able to accept any element of `X` as an argument. 
+The function `lapply()` is like a `for` loop, but is optimized and explicitly functional. `lapply()` usually takes two arguments `X` which is a list or a vector to loop over, and `FUN` which is a function to apply to each element of `X`.  Thus, `FUN` must be able to accept any element of `X` as an argument. 
 
 ## the dplyr package
 

@@ -19,8 +19,45 @@ for(counter in myVector){
 
 We loop over a vector `1:100`, and sequentially assign its values to a temporary variable `i`.  Then R does what is within the curly braces `{}` for each iteration of the loop.  In this case, it pastes together some text with the square of the value of `i` and prints this all to the console. 
 
-<span class="mega-octicon octicon-question"></span> After running the above code, compare what happens when you type `myVector` versus `counter`? What happened to `counter`?
+###<span class="mega-octicon octicon-question"></span> Question
+
+After running the above code, what is the value of `counter`? What is the value of `myVector`? Has this value changed?
+
+Often, we want to do some calculations, and save the results outside of the `for` loop.  To do this, we can create a results vector in advance that is the same length as the vector we are looping over, then we can save the results each time. For instance: we can make a results vector to store the values in the above example, rather than printing them.
 
 ```{r}
+myVector <- 1:100
+results <- numeric(100)
+for(counter in myVector){
+  results[counter] <- paste("counter ^ 2 = ", counter^2)
+}
 
+##now get just one of the stored results
+results[50]
 ```
+
+
+### <span class="mega-octicon octicon-puzzle"></span> Challenge
+
+Write a `for` loop to examine the law of large numbers to illustrate how, as sample size increases, estimates of the mean of a population converge on the true value.  Do this in the following steps:
+
+* create a numeric results vector of length 2000
+* loop over each integer `i` from 1 to 2000
+* at each iteration use the `rnorm()` function to simulate a sample of size `i` from a population with a mean of 100 and standard deviation of 30.
+* be sure to save these results to the appropriate place in the results vector
+* finally, make a plot of the results with the integers 1 to 2000 on the x axis, and the corresponding value from the results vector on the y axis
+
+```{r include=FALSE,results="hide"}
+results <- numeric(2000)
+for(i in 1:2000){
+  results[i] <- mean(rnorm(n=i, mean=100, sd=30))
+}
+plot(1:2000, results, pch=16)
+```
+
+## lapply
+
+The function `lapply()` is like a for loop, but is optimized and explicitly functional.  `lapply()` usually takes two arguments `X` which is a list or a vector to loop over, and `FUN` which is a function to apply to each element of `X`.  Thus, `FUN` must be able to accept any element of `X` as an argument. 
+
+## the dplyr package
+

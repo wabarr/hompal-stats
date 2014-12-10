@@ -1,0 +1,19 @@
+---
+title: Getting Help
+---
+
+## JFGIS
+
+JFGIS (**J**ust **F**ucking **G**oogle **I**t, **S**eriously) is the first principle of using R.  There are over a million active R users out there. Getting a weird error message? Try copying and pasting it into google.  Chances are that hundreds or thousands of other people have had the same error and you will find some help.
+
+## Stackoverflow and the R Mailing List
+
+Can't figure out your problem on the googler? Reach out to the R user community. Getting help from the community is an art.  Remember, these are normal people who are helping you for free.  If you say "omg....why am I getting this error"....you may only hear crickets. If you instead distill the problem down to its simplest form, ideally with a self-contained example, you are likely to have your problem solved within hours. However, it takes some effort to formulate your question clearly, and often you figure out what went wrong in the process.
+
+* [Stack Overflow](http://stackoverflow.com/) - there is an extremely active R user base on Stack Overflow. Questions get answered very quickly...and users can vote on the best answer, so you can avoid wading through unhelpful answers (in the event there are any).
+
+* You can also try emailing the [R help mailing list](https://stat.ethz.ch/mailman/listinfo/r-help). This is another very active community which includes many of the core developers of R. For best results -- especially on this mailing list -- try not to submit poorly formulated questions. **Definitely** [read their posting guide](http://www.r-project.org/posting-guide.html) before submitting. This is not really the place for simple "how do I do this in R" questions. 
+
+## Books & Tutorials
+
+There are LOTS of books available for learning R. [Here is a link](http://www.ancienteco.com/2013/02/getting-started-with-r.html) to a blog post I wrote that has some resources.

@@ -5,7 +5,7 @@ html_document:
   highlight: textmate
   include:
     before_body: include/navbar.html
-    in_header: include/googleanalytics.html
+    in_header: [include/googleanalytics.html, include/favicon.html]
   css: [octicons/octicons.css, css/custom-style.css]
 
 

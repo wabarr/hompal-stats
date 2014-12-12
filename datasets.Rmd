@@ -6,7 +6,7 @@ title: "Datasets"
 
 Dataset Name | Source of data
 -----------  | ----------------
-[Isler_et_al_brains.csv](datasets/Isler_et_al_brains.csv) | [article](http://dx.doi.org/10.1016/j.jhevol.2008.08.004)
+[Isler_et_al_brains.txt](datasets/Isler_et_al_brains.txt) | [article](http://dx.doi.org/10.1016/j.jhevol.2008.08.004)
 [Living_Primates_Diet_Gomez_Verdu_2012.txt](datasets/Living_Primates_Diet_Gomez_Verdu_2012.txt) | [article](http://dx.doi.org/10.1093/sysbio/syr127)
 [Howell_craniometry.csv](datasets/Howell_craniometry.csv) | [website](http://web.utk.edu/~auerbach/HOWL.htm)
 [femur_lengths.txt](datasets/femur_lengths.txt) | fake demonstration data

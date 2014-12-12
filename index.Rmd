@@ -3,7 +3,7 @@ title: "Analytical Methods in Evolutionary Anthropology"
 output: html_document
 ---
 
-## Hompal Stats Course
+## Welcome to the Hompal Stats Course
 
 Instructor | W. Andrew Barr
 ----- | --------

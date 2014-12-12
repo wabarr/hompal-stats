@@ -4,7 +4,7 @@ title: Getting Help
 
 ## JFGIS
 
-JFGIS (**J**ust **F**ucking **G**oogle **I**t, **S**eriously) is the first principle of using R.  There are over a million active R users out there. Getting a weird error message? Try copying and pasting it into google.  Chances are that hundreds or thousands of other people have had the same error and you will find some help.
+JFGIS (**J**ust **F***%king **G**oogle **I**t, **S**eriously) is the first principle of using R.  There are over a million active R users out there. Getting a weird error message? Try copying and pasting it into google.  Chances are that hundreds or thousands of other people have had the same error and you will find some help.
 
 ## Stackoverflow and the R Mailing List
 

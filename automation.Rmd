@@ -17,7 +17,7 @@ for(counter in myVector){
 }
 ```
 
-We loop over a vector `1:100`, and sequentially assign its values to a temporary variable `i`.  Then R does what is within the curly braces `{}` for each iteration of the loop.  In this case, it pastes together some text with the square of the value of `i` and prints this all to the console. 
+We loop over a vector `1:100`, and sequentially assign its values to a temporary variable we are calling `counter`. (Note: we can call this variable whatever we want.) Then R does what is within the curly braces `{}` for each iteration of the loop.  In this case, it pastes together some text with the square of the value of `counter` and prints this all to the console. 
 
 ###<span class="mega-octicon octicon-question"></span> Question
 

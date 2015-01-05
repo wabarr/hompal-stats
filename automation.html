@@ -97,7 +97,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 for(counter in myVector){
   print(paste(&quot;counter ^ 2 = &quot;, counter^2))
 }</code></pre>
-<p>We loop over a vector <code>1:100</code>, and sequentially assign its values to a temporary variable <code>i</code>. Then R does what is within the curly braces <code>{}</code> for each iteration of the loop. In this case, it pastes together some text with the square of the value of <code>i</code> and prints this all to the console.</p>
+<p>We loop over a vector <code>1:100</code>, and sequentially assign its values to a temporary variable we are calling <code>counter</code>. (Note: we can call this variable whatever we want.) Then R does what is within the curly braces <code>{}</code> for each iteration of the loop. In this case, it pastes together some text with the square of the value of <code>counter</code> and prints this all to the console.</p>
 <div id="question" class="section level3">
 <h3><span class="mega-octicon octicon-question"></span> Question</h3>
 <p>After running the above code, what is the value of <code>counter</code>? What is the value of <code>myVector</code>? Has this value changed?</p>

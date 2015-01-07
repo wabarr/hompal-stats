@@ -5,4 +5,8 @@ date: "due January 26, 2015"
 output: html_document
 ---
 
-## Getting Data In and Out
+## Submit a single R Markdown file (.Rmd) with your responses.
+
+1. 
+    * Read in the file http://hompal-stats.wabarr.com/datasets/gorilla_sizes.txt as a dataframe
+    * add a new column called `sex` that that encodes the specimens sex. Hint: do this automatically using the `grep()` function.

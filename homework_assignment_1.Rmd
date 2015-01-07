@@ -9,6 +9,10 @@ output: html_document
 
 1. Organizing data
     * Download [this excel spreadsheet](datasets/bad_data_organization.xls)
+    * This spreadsheet is not in a form that can be read into R.  Think about why not.
+    * Re-organize the excel sheet to make it readable in R, save it as a text file (or .csv) then read in the data. Make sure that your the R markdown file you turn in prints out the dataframe.  
+    * Describe in words at least two major things that were wrong (from the perspective of an R user) with the original organization of this data file.   
+
 2. Manipulation
     * Read in the file http://hompal-stats.wabarr.com/datasets/gorilla_sizes.txt as a dataframe
     * add a new column called `sex` that that encodes the specimens sex. Hint: you can use the `grep()` function to determine the sex from the specimen number.

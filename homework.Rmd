@@ -1,25 +1,25 @@
 ---
-title: "Homework"
+title: "Homework & Readings"
 ---
 
 ## Due at beginning of class on the day listed. 
 
-Date   | Assignment
------- | ----------
-Jan 12 | [Try R Tutorial](http://tryr.codeschool.com) - First two modules.
-Jan 19 | MLK Day, No Class
-Jan 26 |.
-Feb 2	| .
-Feb 9 | . 
-Feb 16 | President's Day, No Class
-Feb 23 | . 
-Mar 2 | Exam I
-Mar 9 | Spring Break, No Class
-Mar 16 | .  
-Mar 23 | .  
-Mar 30 |  .
-Apr 6	|   .
-Apr 13 |  .
-Apr 20 |  .
-Apr 27 |  .
-Apr 29 | Exam II (Note: this is designated Wednesday)
+Date   | Homework  | Reading
+------ | ---------  | ---------
+Jan 12 | [Try R Tutorial](http://tryr.codeschool.com) - First two modules. | -
+Jan 19 | MLK Day, No Class | -
+Jan 26 |. | -
+Feb 2	| .  | Gotelli: Ch 1 - 3
+Feb 9 | .  | Gotelli: Ch 4 - 5
+Feb 16 | President's Day, No Class  | -
+Feb 23 | .  | Gotelli: Ch 9
+Mar 2 | Exam I | -
+Mar 9 | Spring Break, No Class | -
+Mar 16 | .   | Gotelli: Ch 10
+Mar 23 | .   | -
+Mar 30 |  . | -
+Apr 6	|   . | -
+Apr 13 |  . | Gotelli: Ch 11
+Apr 20 |  . | -
+Apr 27 |  . | -
+Apr 29 | Exam II (Note: this is designated Wednesday) | -

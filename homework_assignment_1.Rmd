@@ -7,6 +7,9 @@ output: html_document
 
 ## Submit a single R Markdown file (.Rmd) with your responses.
 
-1. 
+1. Organizing data
+    * Download [this excel spreadsheet](datasets/bad_data_organization.xls)
+2. Manipulation
     * Read in the file http://hompal-stats.wabarr.com/datasets/gorilla_sizes.txt as a dataframe
-    * add a new column called `sex` that that encodes the specimens sex. Hint: do this automatically using the `grep()` function.
+    * add a new column called `sex` that that encodes the specimens sex. Hint: you can use the `grep()` function to determine the sex from the specimen number.
+    

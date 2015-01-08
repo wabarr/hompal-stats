@@ -4,7 +4,7 @@ title: "Basic Introduction to R"
 
 ## The Interactive Interpreter
 
-Open R and type `2 + 2`.  R tells you that the answer is `4`. Congrats!  You are now using R. This is the most basic way to interact with the interpreter.  Later we will see how you can save a complicated series of commands to a script file and excecute them automatically. 
+Open R and type `2 + 2`.  R tells you that the answer is `4`. Congrats!  You are now using R. This is the most basic way to interact with the interpreter.  Later we will see how you can save a complicated series of commands to a script file and execute them automatically. 
 
 ## Assignment
 
@@ -80,6 +80,17 @@ vector2[vector2 > 17 & vector2 < 20]
 vector2[vector2 > 17 | vector2 == 13]
 ```
 
+## Factors
+
+A factor is a special type of vector for storing categorical data.  For instance, we might create a factor of different pets: 
+
+```{r}
+pets <- factor(c("cat", "cat", "dog", "pony", "dog", "dog"))
+pets
+```
+
+R will now treat this differently from other vectors.  These come in useful later on, when we want to summarize by different factor levels.  
+
 ## Data Frames
 
 Data frames are a convenient way of storing multiple related vectors of data together in a single object.  They are analogous to a spreadsheet where each row corresponds to an individual (e.g., specimen, species) and each row corresponds to some observation about that individual. Usually, you will use the `read.table()` function to read a dataframe directly from a .csv or .txt file that you have saved from MS Excel.
@@ -112,23 +123,16 @@ iris$Petal.Area <- iris$Petal.Length * iris$Petal.Width
 
 Functions are the heart of R. A function is just a series of commands that is assigned a name.  Functions accept **arguments**, perform a series of commands using the argument values, then **return** a single object. You can create your own functions (and you will!) but there are many hundreds of pre-defined functions available for your use. **A huge part of the learning curve of R is learning which functions exist, which is why they invented google.com!** 
 
-You call a function by typing its name, followed by parentheses containing any **arguments** necessary. Arguments are the way you pass data and/or options to a function. For example, the `paste()` function simply pastes together any arguments you privide into a single text string.
+You call a function by typing its name, followed by parentheses containing any **arguments** necessary. Arguments are the way you pass data and/or options to a function. For example, the `paste()` function simply pastes together any arguments you provide into a single text string.
 
 ```{r}
 part1 <- "The quick brown fox"
 part2 <- "jumped over the lazy dog."
 paste(part1, part2)
+
 ```
 
-There is a function called `rnorm()` that produces random numbers from a normal distribution.  It has three arguments: `n` indicates the number of random numbers to produce, `mean` indicates the mean of the desired distribution, and `sd` sets the desired standard deviation of the points. 
-
-### <span class="mega-octicon octicon-puzzle"></span> Challenge 
-
-1.  Use `rnorm` to create a vector called `grades` representing student grades from an Anthropology 101 course with  200 students, mean grade of 68%, and a standard deviation of 10. 
-
-2.  Apply a curve of 7% to the class grades in order to raise the mean to to 75%.  Save this to a new variable called `curvedgrades`
-
-3.  Make a histogram of `curvedgrades` using the `hist()` function. Note: You can see all the arguments and default values for any function using the `?` operator like this `?hist`.
+**Note**: You can see all the arguments and default values for any function using the `?` operator like this `?NameOfFunction`.
 
 ## Scripts
 
@@ -182,18 +186,18 @@ Getting data into R can be somewhat frustrating for new users.  This is mainly b
 
 The primary function for reading data into R is the `read.table()` function.  This function reads plain text files (.txt or .csv) and creates a dataframe in R from the resulting data.  There are a variety of arguments to `read.data()`, the most important of which are:
 
-*  `file` = The full path to the file on your computer as a text string. (Use the forward slash `/`, even on Windows.)
+*  `file` = The full path to the file on your computer as a text string. (Use the forward slash `/`, even on Windows.) You can also read from a remote URL like so: `url("http://URLfordata.com")`
 *  `sep` = the character that separates columns in your text file.  The default is `" "`, which kind of sucks because most of our files will be separated by either `\t` or `,`.
 *  `header` = Whether or not there is a header row in your text file.  Defaults to `FALSE`, but usually we need it to be `TRUE`.
 
 
 ### <span class="mega-octicon octicon-puzzle"></span> Challenge 
 
-Read in the file called [femur_lengths.txt](datasets/femur_lengths.txt). Save to an object called `femora`.
+Read in the file called "femur_lengths.txt" directly from the following URL "http://hompal-stats.wabarr.com/datasets/femur_lengths.txt". Save to an object called `femora`.
 
 ## Data Output
 
-Usually, I would recommend **not** writing out modified data frames to text files.  It is far better to have a single input file, and to do all necessary manipulations in your saved R script file. But, if you have huge datasets or need to use another statistical program, it is sometimes necesary to save a dataframe outside of R as a text file.  You can do this with `write.table()`
+Usually, I would recommend **not** writing out modified data frames to text files.  It is far better to have a single input file, and to do all necessary manipulations in your saved R script file. But, if you have huge datasets or need to use another statistical program, it is sometimes necessary to save a dataframe outside of R as a text file.  You can do this with `write.table()`
 
 *  `x` = The name of the data frame to be saved. 
 *  `file` = Path to the output file.  You can't use `file.choose()` though.

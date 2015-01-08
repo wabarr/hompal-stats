@@ -86,7 +86,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 
 <div id="the-interactive-interpreter" class="section level2">
 <h2>The Interactive Interpreter</h2>
-<p>Open R and type <code>2 + 2</code>. R tells you that the answer is <code>4</code>. Congrats! You are now using R. This is the most basic way to interact with the interpreter. Later we will see how you can save a complicated series of commands to a script file and excecute them automatically.</p>
+<p>Open R and type <code>2 + 2</code>. R tells you that the answer is <code>4</code>. Congrats! You are now using R. This is the most basic way to interact with the interpreter. Later we will see how you can save a complicated series of commands to a script file and execute them automatically.</p>
 </div>
 <div id="assignment" class="section level2">
 <h2>Assignment</h2>
@@ -140,6 +140,15 @@ vector_this_will_be_text &lt;- c(21,22,23,24,25,26,27,28,29,&quot;thirty&quot;)<
 <pre class="r"><code>vector2[vector2 &gt; 17 | vector2 == 13]</code></pre>
 <pre><code>## [1] 13 18 19 20</code></pre>
 </div>
+<div id="factors" class="section level2">
+<h2>Factors</h2>
+<p>A factor is a special type of vector for storing categorical data. For instance, we might create a factor of different pets:</p>
+<pre class="r"><code>pets &lt;- factor(c(&quot;cat&quot;, &quot;cat&quot;, &quot;dog&quot;, &quot;pony&quot;, &quot;dog&quot;, &quot;dog&quot;))
+pets</code></pre>
+<pre><code>## [1] cat  cat  dog  pony dog  dog 
+## Levels: cat dog pony</code></pre>
+<p>R will now treat this differently from other vectors. These come in useful later on, when we want to summarize by different factor levels.</p>
+</div>
 <div id="data-frames" class="section level2">
 <h2>Data Frames</h2>
 <p>Data frames are a convenient way of storing multiple related vectors of data together in a single object. They are analogous to a spreadsheet where each row corresponds to an individual (e.g., specimen, species) and each row corresponds to some observation about that individual. Usually, you will use the <code>read.table()</code> function to read a dataframe directly from a .csv or .txt file that you have saved from MS Excel.</p>
@@ -180,25 +189,17 @@ iris[1, ]</code></pre>
 <div id="functions" class="section level2">
 <h2>Functions</h2>
 <p>Functions are the heart of R. A function is just a series of commands that is assigned a name. Functions accept <strong>arguments</strong>, perform a series of commands using the argument values, then <strong>return</strong> a single object. You can create your own functions (and you will!) but there are many hundreds of pre-defined functions available for your use. <strong>A huge part of the learning curve of R is learning which functions exist, which is why they invented google.com!</strong></p>
-<p>You call a function by typing its name, followed by parentheses containing any <strong>arguments</strong> necessary. Arguments are the way you pass data and/or options to a function. For example, the <code>paste()</code> function simply pastes together any arguments you privide into a single text string.</p>
+<p>You call a function by typing its name, followed by parentheses containing any <strong>arguments</strong> necessary. Arguments are the way you pass data and/or options to a function. For example, the <code>paste()</code> function simply pastes together any arguments you provide into a single text string.</p>
 <pre class="r"><code>part1 &lt;- &quot;The quick brown fox&quot;
 part2 &lt;- &quot;jumped over the lazy dog.&quot;
 paste(part1, part2)</code></pre>
 <pre><code>## [1] &quot;The quick brown fox jumped over the lazy dog.&quot;</code></pre>
-<p>There is a function called <code>rnorm()</code> that produces random numbers from a normal distribution. It has three arguments: <code>n</code> indicates the number of random numbers to produce, <code>mean</code> indicates the mean of the desired distribution, and <code>sd</code> sets the desired standard deviation of the points.</p>
-<div id="challenge-1" class="section level3">
-<h3><span class="mega-octicon octicon-puzzle"></span> Challenge</h3>
-<ol style="list-style-type: decimal">
-<li><p>Use <code>rnorm</code> to create a vector called <code>grades</code> representing student grades from an Anthropology 101 course with 200 students, mean grade of 68%, and a standard deviation of 10.</p></li>
-<li><p>Apply a curve of 7% to the class grades in order to raise the mean to to 75%. Save this to a new variable called <code>curvedgrades</code></p></li>
-<li><p>Make a histogram of <code>curvedgrades</code> using the <code>hist()</code> function. Note: You can see all the arguments and default values for any function using the <code>?</code> operator like this <code>?hist</code>.</p></li>
-</ol>
-</div>
+<p><strong>Note</strong>: You can see all the arguments and default values for any function using the <code>?</code> operator like this <code>?NameOfFunction</code>.</p>
 </div>
 <div id="scripts" class="section level2">
 <h2>Scripts</h2>
 <p>Typing commands interactively into the command-line interpreter is fine for experimentation, but ultimately we want to save every single command to a text file, so that this can be run later, shared with collaborators, or published online with the article as supplementary information. <strong>This element of reproducibility is a critical benefit of doing scripted data analysis.</strong> In Rstudio, you can create a new script by using the File &gt;&gt; New File menu.</p>
-<div id="challenge-2" class="section level3">
+<div id="challenge-1" class="section level3">
 <h3><span class="mega-octicon octicon-puzzle"></span> Challenge</h3>
 <ol style="list-style-type: decimal">
 <li>Create a new script file.<br /></li>
@@ -222,7 +223,7 @@ paste(part1, part2)</code></pre>
 <div id="output-of-r-markdown-after-knitting" class="section level3">
 <h3>Output of R Markdown after knitting</h3>
 <p>This sentence is just normal text, made for humans to read. The following bit is a “code chunk”, which is set off by the ``` characters and consists of actual R code that gets run, and the results knitted back into the document. You can also put R code inline like this. What is 2 + 2? The answer is 4.</p>
-<p><img src="intro_to_R_files/figure-html/unnamed-chunk-12.png" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" width="672" /></p>
+<p><img src="intro_to_R_files/figure-html/unnamed-chunk-13.png" title="plot of chunk unnamed-chunk-13" alt="plot of chunk unnamed-chunk-13" width="672" /></p>
 <p>Here is some more human readable text right after the code chunk.</p>
 </div>
 </div>
@@ -235,18 +236,18 @@ paste(part1, part2)</code></pre>
 <p>Getting data into R can be somewhat frustrating for new users. This is mainly because humans tend to be sloppy when collecting data in a spreadsheet. R has rigid expectations. It expects each column of a text file (usually exported from an Excel sheet) to have a single type of data (text, numeric, factor), plus an optional header row. That’s it. Period. No extra rows that are just for formatting and don’t contain data observations.</p>
 <p>The primary function for reading data into R is the <code>read.table()</code> function. This function reads plain text files (.txt or .csv) and creates a dataframe in R from the resulting data. There are a variety of arguments to <code>read.data()</code>, the most important of which are:</p>
 <ul>
-<li><code>file</code> = The full path to the file on your computer as a text string. (Use the forward slash <code>/</code>, even on Windows.)</li>
+<li><code>file</code> = The full path to the file on your computer as a text string. (Use the forward slash <code>/</code>, even on Windows.) You can also read from a remote URL like so: <code>url(&quot;http://URLfordata.com&quot;)</code></li>
 <li><code>sep</code> = the character that separates columns in your text file. The default is <code>&quot; &quot;</code>, which kind of sucks because most of our files will be separated by either <code>\t</code> or <code>,</code>.</li>
 <li><code>header</code> = Whether or not there is a header row in your text file. Defaults to <code>FALSE</code>, but usually we need it to be <code>TRUE</code>.</li>
 </ul>
-<div id="challenge-3" class="section level3">
+<div id="challenge-2" class="section level3">
 <h3><span class="mega-octicon octicon-puzzle"></span> Challenge</h3>
-<p>Read in the file called <a href="datasets/femur_lengths.txt">femur_lengths.txt</a>. Save to an object called <code>femora</code>.</p>
+<p>Read in the file called “femur_lengths.txt” directly from the following URL “<a href="http://hompal-stats.wabarr.com/datasets/femur_lengths.txt">http://hompal-stats.wabarr.com/datasets/femur_lengths.txt</a>”. Save to an object called <code>femora</code>.</p>
 </div>
 </div>
 <div id="data-output" class="section level2">
 <h2>Data Output</h2>
-<p>Usually, I would recommend <strong>not</strong> writing out modified data frames to text files. It is far better to have a single input file, and to do all necessary manipulations in your saved R script file. But, if you have huge datasets or need to use another statistical program, it is sometimes necesary to save a dataframe outside of R as a text file. You can do this with <code>write.table()</code></p>
+<p>Usually, I would recommend <strong>not</strong> writing out modified data frames to text files. It is far better to have a single input file, and to do all necessary manipulations in your saved R script file. But, if you have huge datasets or need to use another statistical program, it is sometimes necessary to save a dataframe outside of R as a text file. You can do this with <code>write.table()</code></p>
 <ul>
 <li><code>x</code> = The name of the data frame to be saved.</li>
 <li><code>file</code> = Path to the output file. You can’t use <code>file.choose()</code> though.</li>
@@ -254,7 +255,7 @@ paste(part1, part2)</code></pre>
 <li><code>sep</code> = Same as for <code>read.table()</code></li>
 <li><code>row.names</code> = Do you want row names? Defaults to <code>TRUE</code>, but usually you will set to <code>FALSE</code>/</li>
 </ul>
-<div id="challenge-4" class="section level3">
+<div id="challenge-3" class="section level3">
 <h3><span class="mega-octicon octicon-puzzle"></span> Challenge</h3>
 <p>Add a new column of log transformed lengths to the femur length dataset and then write out the new file to the Desktop.</p>
 </div>

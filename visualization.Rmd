@@ -103,20 +103,3 @@ qplot(price, data=diamonds)
 qplot(depth, table, data=diamonds)
 ```
 
-## Automation
-
-R is a programming language, which means that it gives you all the tools you need to automate repetitive tasks.  There are three main ways to do this:
-
-* `for` loops
-* the `apply()` family of functions
-* the `dplyr` package
-
-## for loops
-
-`for` loops will be familiar if you have ever used any other programming languages.  The basic structure looks like this:
-
-```{r results='hide'}
-for(i in 1:100){
-  print(paste("i ^ 2 = ", i^2))
-}
-```

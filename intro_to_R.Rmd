@@ -178,7 +178,7 @@ One of the most important features of R is that it is has a vast ecosystem of us
 
 ## Data Input
 
-Getting data into R can be somewhat frustrating for new users.  This is mainly because humans tend to be sloppy when collecting data in a spreadsheet.  R has rigid expectations.  It expects each column of a text file (usually exported from an Excel sheet) to have a single type of data (text, numeric, factor), plus an optional header row. 
+Getting data into R can be somewhat frustrating for new users.  This is mainly because humans tend to be sloppy when collecting data in a spreadsheet.  R has rigid expectations.  It expects each column of a text file (usually exported from an Excel sheet) to have a single type of data (text, numeric, factor), plus an optional header row. That's it. Period.  No extra rows that are just for formatting and don't contain data observations. 
 
 The primary function for reading data into R is the `read.table()` function.  This function reads plain text files (.txt or .csv) and creates a dataframe in R from the resulting data.  There are a variety of arguments to `read.data()`, the most important of which are:
 

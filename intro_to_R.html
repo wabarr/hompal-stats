@@ -233,7 +233,7 @@ paste(part1, part2)</code></pre>
 </div>
 <div id="data-input" class="section level2">
 <h2>Data Input</h2>
-<p>Getting data into R can be somewhat frustrating for new users. This is mainly because humans tend to be sloppy when collecting data in a spreadsheet. R has rigid expectations. It expects each column of a text file (usually exported from an Excel sheet) to have a single type of data (text, numeric, factor), plus an optional header row.</p>
+<p>Getting data into R can be somewhat frustrating for new users. This is mainly because humans tend to be sloppy when collecting data in a spreadsheet. R has rigid expectations. It expects each column of a text file (usually exported from an Excel sheet) to have a single type of data (text, numeric, factor), plus an optional header row. That’s it. Period. No extra rows that are just for formatting and don’t contain data observations.</p>
 <p>The primary function for reading data into R is the <code>read.table()</code> function. This function reads plain text files (.txt or .csv) and creates a dataframe in R from the resulting data. There are a variety of arguments to <code>read.data()</code>, the most important of which are:</p>
 <ul>
 <li><code>file</code> = The full path to the file on your computer as a text string. (Use the forward slash <code>/</code>, even on Windows.)</li>

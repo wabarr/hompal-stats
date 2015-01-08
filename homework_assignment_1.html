@@ -88,7 +88,12 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <div id="submit-a-single-r-markdown-file-.rmd-with-your-responses." class="section level2">
 <h2>Submit a single R Markdown file (.Rmd) with your responses.</h2>
 <ol style="list-style-type: decimal">
-<li>Provie <strong>3 distinct methods</strong> for creating a vector containing all the integers from 1 to 500</li>
+<li>using functions
+<ul>
+<li>Use the <code>rnorm</code> function to create a vector called <code>grades</code> representing student grades from an Anthropology 101 course with 200 students, mean grade of 68%, and a standard deviation of 10.</li>
+<li>Apply a curve of 7% to the class grades in order to raise the mean to to 75%. Save this to a new variable called <code>curvedgrades</code></li>
+<li>Make a histogram of <code>curvedgrades</code> using the <code>hist()</code> function.</li>
+</ul></li>
 <li>Organizing data
 <ul>
 <li>Download <a href="datasets/bad_data_organization.xls">this excel spreadsheet</a></li>
@@ -99,7 +104,8 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <li>Manipulation
 <ul>
 <li>Read in the file <a href="http://hompal-stats.wabarr.com/datasets/gorilla_sizes.txt">http://hompal-stats.wabarr.com/datasets/gorilla_sizes.txt</a> as a dataframe</li>
-<li>add a new column called <code>sex</code> that that encodes the specimens sex. Hint: you can use the <code>grep()</code> function to determine the sex from the specimen number.</li>
+<li>add a new column with a <strong>factor</strong> called <code>sex</code> that that encodes the specimens sex. Hint: you can use the <code>grep()</code> function to determine the sex from the specimen number, and use the <code>factor()</code> function to turn a vector into a factor.</li>
+<li>Produce a simple table showing the counts of males and females.</li>
 </ul></li>
 </ol>
 </div>

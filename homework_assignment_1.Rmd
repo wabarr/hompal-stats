@@ -7,11 +7,9 @@ output: html_document
 
 ## Submit a single R Markdown file (.Rmd) with your responses.
 
-1. using functions  
+1. Using functions  
     * Use the `rnorm` function to create a vector called `grades` representing student grades from an Anthropology 101 course with  200 students, mean grade of 68%, and a standard deviation of 10. 
-
     * Apply a curve of 7% to the class grades in order to raise the mean to to 75%.  Save this to a new variable called `curvedgrades`
-
     * Make a histogram of `curvedgrades` using the `hist()` function. 
     
 2. Organizing data
@@ -22,5 +20,9 @@ output: html_document
 
 3. Manipulation
     * Read in the file http://hompal-stats.wabarr.com/datasets/gorilla_sizes.txt as a dataframe
-    * add a new column called `sex` that that encodes the specimens sex. Hint: you can use the `grep()` function to determine the sex from the specimen number.
+    * Add a new column with a **factor** called `sex` that that encodes the specimens sex. Hint: you can use the `grep()` function to determine the sex from the specimen number, and use the `factor()` function to turn a vector into a factor. 
+    * Produce a simple table showing the counts of males and females.
+    * Use *logical indexing* to subset the dataframe to include only individuals with skull measurements greater than 250. 
+    * Use the `subset()` function to include only individuals with measurements less than 250.
+    
     

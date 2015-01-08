@@ -138,7 +138,7 @@ paste(part1, part2)
 
 Typing commands interactively into the command-line interpreter is fine for experimentation, but ultimately we want to save every single command to a text file, so that this can be run later, shared with collaborators, or published online with the article as supplementary information.  **This element of reproducibility is a critical benefit of doing scripted data analysis.** In Rstudio, you can create a new script by using the File >> New File menu. 
 
-### <span class="mega-octicon octicon-puzzle"></span> Challenge 
+### <span class="mega-octicon octicon-puzzle"></span> Challenge
 
 1.  Create a new script file.     
 2.  Create a variable called `numbers` that contains the numbers 1 through 100.  **Hint** use the `?` operator to investigate the `seq` function or explore the `:` operator.

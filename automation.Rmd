@@ -11,17 +11,25 @@ R is a programming language, which means that it gives you all the tools you nee
 `for` loops will be familiar if you have ever used any other programming languages.  The basic structure looks like this:
 
 ```{r results='hide'}
-myVector <- 1:100
+vector <- 1:10
+for(i in vector){
+  #do something with i
+}
+```
+
+Here is a (slightly) more realistic example. 
+
+```{r }
+myVector <- 1:10
 for(counter in myVector){
-  print(paste("counter ^ 2 = ", counter^2))
+  result <- paste("counter ^ 2 = ", counter^2)
+  print(result)
 }
 ```
 
 We loop over a vector `1:100`, and sequentially assign its values to a temporary variable we are calling `counter`. (Note: we can call this variable whatever we want.) Then R does what is within the curly braces `{}` for each iteration of the loop.  In this case, it pastes together some text with the square of the value of `counter` and prints this all to the console. 
 
-###<span class="mega-octicon octicon-question"></span> Question
-
-After running the above code, what is the value of `counter`? What is the value of `myVector`? Has this value changed?
+<span class="mega-octicon octicon-question"></span> After running the above code, what is the value of `counter`? What is the value of `myVector`? Has this value changed?
 
 Often, we want to do some calculations, and save the results outside of the `for` loop.  To do this, we can create a results vector in advance that is the same length as the vector we are looping over, then we can save the results each time. For instance: we can make a results vector to store the values in the above example, rather than printing them.
 
@@ -58,6 +66,22 @@ plot(1:2000, results, pch=16)
 ## lapply
 
 The function `lapply()` is like a `for` loop, but is optimized and explicitly functional. `lapply()` usually takes two arguments `X` which is a list or a vector to loop over, and `FUN` which is a function to apply to each element of `X`.  Thus, `FUN` must be able to accept any element of `X` as an argument. 
+
+The "l" in `lapply()` stands for "list", because that's what you get as a result.  This is useful, because you allows you to store complex stuff from each iteration.  For example: 
+
+```{r}
+# note, we must accept argument
+# even if we don't do anything with this argument.
+summarizeRandom <- function(x){
+  sample <- rnorm(1000)
+  mySummary <- summary(sample)
+  return(mySummary)
+}
+
+myResults <- lapply(1:100, FUN=summarizeRandom)
+myResults[1:3]
+```
+
 
 ## the dplyr package
 

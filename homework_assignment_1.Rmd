@@ -23,6 +23,6 @@ output: html_document
     * Add a new column with a **factor** called `sex` that that encodes the specimens sex. Hint: you can use the `grep()` function to determine the sex from the specimen number, and use the `factor()` function to turn a vector into a factor. 
     * Produce a simple table showing the counts of males and females.
     * Use *logical indexing* to subset the dataframe to include only individuals with skull measurements greater than 250. 
-    * Use the `subset()` function to include only individuals with measurements less than 250.
+    * Use the `subset()` function to subset the dataframe to include only individuals with measurements less than 250.
     
     

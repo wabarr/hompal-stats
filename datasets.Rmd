@@ -15,6 +15,7 @@ Dataset Name | Source of data
 [Ossenberg-cranial-nonmetric-trait-dbase.csv](datasets/Ossenberg-cranial-nonmetric-trait-dbase.csv) | [article and website](http://dx.doi.org/10.1002/ajpa.22377)
 [Pearce_etal_2012_homerange.csv](datasets/Pearce_etal_2012_homerange.csv) | [article](http://dx.doi.org/10.1098/rspb.2012.2122)
 [gorilla_sizes.txt](datasets/gorilla_sizes.txt) | example data
+[baboons.txt](datasets/baboons.txt) | example data
 
 
 <!--

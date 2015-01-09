@@ -85,3 +85,6 @@ myResults[1:3]
 
 ## the dplyr package
 
+This a user-contributed package that has kind of revolutionized working with data in R.  It provides a consistent and simpler interface to do things that you could also do using loops or base functions in R.
+
+[dplyr vignette](http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html)

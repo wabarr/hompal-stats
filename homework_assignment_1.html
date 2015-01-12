@@ -88,26 +88,37 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <div id="submit-a-single-r-markdown-file-.rmd-with-your-responses." class="section level2">
 <h2>Submit a single R Markdown file (.Rmd) with your responses.</h2>
 <ol style="list-style-type: decimal">
+<li>Indexing Vectors
+<ul>
+<li>Start with this vector of nouns. <code>nouns &lt;- c(&quot;apple&quot;, &quot;flower&quot;, &quot;insect&quot;, &quot;lettuce&quot;, &quot;knife&quot;, &quot;dog&quot;, &quot;cloud&quot;, &quot;person&quot;, &quot;cabinet&quot;, &quot;flower&quot; )</code></li>
+<li>use the <code>length()</code> function to display the number of elements in <code>nouns</code></li>
+<li>use indexing to create a new vector consisting of the first 4 elements of <code>nouns</code>.</li>
+<li>use indexing to create a new vector consisting of only the last 8 elements of <code>nouns</code>.</li>
+<li>use indexing to create a new vector of the 1st, 3rd - 6th, and 10th elements of <code>nouns</code> (the length of the resulting vector should be 6)</li>
+<li>create a new vector with the elements of <code>nouns</code> in reverse order.</li>
+</ul></li>
 <li>Using functions
 <ul>
 <li>Use the <code>rnorm</code> function to create a vector called <code>grades</code> representing student grades from an Anthropology 101 course with 200 students, mean grade of 68%, and a standard deviation of 10.</li>
-<li>Apply a curve of 7% to the class grades in order to raise the mean to to 75%. Save this to a new variable called <code>curvedgrades</code></li>
+<li>Apply a curve of 7% to the class grades. Save this to a new variable called <code>curvedgrades</code></li>
+<li>Use the appropriate functions to calculate the standard deviation, minimum, maximum, and mean of the curved grades.</li>
 <li>Make a histogram of <code>curvedgrades</code> using the <code>hist()</code> function.</li>
 </ul></li>
 <li>Organizing data
 <ul>
 <li>Download <a href="datasets/bad_data_organization.xls">this excel spreadsheet</a></li>
 <li>This spreadsheet is not in a form that can be read into R. Think about why not, keeping in mind <a href="intro_to_R.html#data-input">this information on data input</a>.</li>
-<li>Re-organize the excel sheet to make it readable in R, then export it as a text file (or .csv) and read in the data. Make sure that the R markdown file you turn in prints out the dataframe.</li>
+<li>Re-organize the excel sheet to make it readable in R. Use excel to export it as a text file (or .csv) and read in the data into R. Make sure that the R markdown file you turn in prints out the dataframe, so I can see that you succesfully completed this step.</li>
 <li>Describe in words at least two major things that were wrong (from the perspective of an R user) with the original organization of this data file.</li>
 </ul></li>
 <li>Manipulation
 <ul>
 <li>Read in the file <a href="http://hompal-stats.wabarr.com/datasets/gorilla_sizes.txt">http://hompal-stats.wabarr.com/datasets/gorilla_sizes.txt</a> as a dataframe</li>
-<li>Add a new column with a <strong>factor</strong> called <code>sex</code> that that encodes the specimens sex. Hint: you can use the <code>grep()</code> function to determine the sex from the specimen number, and use the <code>factor()</code> function to turn a vector into a factor.</li>
-<li>Produce a simple table showing the counts of males and females.</li>
-<li>Use <em>logical indexing</em> to subset the dataframe to include only individuals with skull measurements greater than 250.</li>
-<li>Use the <code>subset()</code> function to subset the dataframe to include only individuals with measurements less than 250.</li>
+<li>Add a new column called containing a factor called <code>sex</code> that that encodes the specimens sex. Hint: you can use the <code>grep()</code> function to determine the sex from the specimen number, and use the <code>factor()</code> function to turn a vector into a factor.</li>
+<li>Produce a simple table showing the counts of males and females. Hint: check out the <code>table()</code> function</li>
+<li>Use the <code>hist()</code> function to make a plot of the natural log of the skull measurements.</li>
+<li>Use <em>logical indexing</em> (discused in the in-class demo) to subset the dataframe to include only individuals with skull measurements greater than 250 and save your results to a variable.</li>
+<li>Use the <code>subset()</code> function to subset the dataframe to include only individuals with measurements less than 250, and save your results to a variable.</li>
 </ul></li>
 </ol>
 </div>

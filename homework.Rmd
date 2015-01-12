@@ -4,22 +4,22 @@ title: "Demos, Readings, & Homework"
 
 ## Due at beginning of class on the day listed. 
 
-Date  | Demo | Homework  | Reading
------- | ---------  | --------- | --------
-Jan 12 | [Intro to R](intro_to_R.html) | [Try R Tutorial](http://tryr.codeschool.com) - First two modules. | -
-Jan 19 | - | MLK Day, No Class | -
-Jan 26 | [Visualizing Data](visualization.html) & [Automation](automation.html) | [HW #1]() | -
-Feb 2	|  [Basic Stats: Probability and Distributions] | [HW #2]()  | Gotelli: Ch 1 - 3
-Feb 9 | [Basic Stats: Hypothesis Testing] | [HW #3]()  | Gotelli: Ch 4 - 5
-Feb 16 | - | President's Day, No Class  | -
-Feb 23 | [Correlation and Regression] | [HW #4]()  | Gotelli: Ch 9
-Mar 2 | - | **Exam I** | -
-Mar 9 | - | Spring Break, No Class | -
-Mar 16 | [ANOVA and ANCOVA] | [HW #5]()   | Gotelli: Ch 10
-Mar 23 | [Categorical Data] | [HW #6]()   | Gotelli: Ch 11
-Mar 30 | [Multivariate Stats: I] |  [HW #7]() | Manly Ch. 1 - 5
-Apr 6	| [Multivariate Stats: II] |   [HW #8]() | Manly Ch. 6 - 12
-Apr 13 | [Accounting for Phylogenetic Signal (PGLS)] |  [HW #9]() | -
-Apr 20 | [Resampling Approaches] |  [HW #10]() | -
-Apr 27 | [Mixed-Models] |  [HW #11]() | [Crawley Ch. 10](readings_pdf/Crawley_Ch10_MixedEffects.pdf)
-Apr 29 |  - | **Exam II** (Note: this is designated Wednesday) | -
+Date  | Demo | Homework  | Reading | Student Presentation 
+------ | ---------  | --------- | -------- | ------- 
+Jan 12 | [Intro to R](intro_to_R.html) | [Try R Tutorial](http://tryr.codeschool.com) - First two modules. | - | - 
+Jan 19 | - | MLK Day, No Class | - | - 
+Jan 26 | [Visualizing Data](visualization.html) & [Automation](automation.html) | [HW #1]() | - | - 
+Feb 2	|  [Basic Stats: Probability and Distributions] | [HW #2]()  | Gotelli: Ch 1 - 3 | Sign Up 
+Feb 9 | [Basic Stats: Hypothesis Testing] | [HW #3]()  | Gotelli: Ch 4 - 5 | Sign Up 
+Feb 16 | - | President's Day, No Class  | - | - 
+Feb 23 | [Correlation and Regression] | [HW #4]()  | Gotelli: Ch 9 | Sign Up 
+Mar 2 | - | **Exam I** | - | - 
+Mar 9 | - | Spring Break, No Class | - | - 
+Mar 16 | [ANOVA and ANCOVA] | [HW #5]()   | Gotelli: Ch 10 | Sign Up 
+Mar 23 | [Categorical Data] | [HW #6]()   | Gotelli: Ch 11 | Sign Up 
+Mar 30 | [Multivariate Stats: I] |  [HW #7]() | Manly Ch. 1 - 5 | Sign Up 
+Apr 6	| [Multivariate Stats: II] |   [HW #8]() | Manly Ch. 6 - 12 | Sign Up 
+Apr 13 | [Accounting for Phylogenetic Signal (PGLS)] |  [HW #9]() | - | Sign Up 
+Apr 20 | [Resampling Approaches] |  [HW #10]() | - | Sign Up 
+Apr 27 | [Mixed-Models] |  [HW #11]() | [Crawley Ch. 10](readings_pdf/Crawley_Ch10_MixedEffects.pdf) | Sign Up 
+Apr 29 |  - | **Exam II** (Note: this is designated Wednesday) | - | - 

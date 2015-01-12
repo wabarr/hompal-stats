@@ -44,6 +44,14 @@ Vectors can be **indexed** with brackets `[]` to get a subset of values.  What v
 
 Extract the first, fifth, and ninth element of `vector2` that you created earlier.
 
+### Negative Indexing
+
+When you use negative indices, then the referenced elements are **removed** from the resulting vector. 
+
+### <span class="mega-octicon octicon-puzzle"></span> Challenge 
+
+Remove the 1st, 5th and 9th elements from `vector2`
+
 ## Logical Tests and Logical Indexing
 
 Logical tests are assertions that R evaluates as either `TRUE` or `FALSE`. For instance, you might assert that "1 plus 1 equals 10 minus 8"? In R that looks like:

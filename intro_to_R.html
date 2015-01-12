@@ -113,6 +113,14 @@ vector_this_will_be_text &lt;- c(21,22,23,24,25,26,27,28,29,&quot;thirty&quot;)<
 <h3><span class="mega-octicon octicon-puzzle"></span> Challenge</h3>
 <p>Extract the first, fifth, and ninth element of <code>vector2</code> that you created earlier.</p>
 </div>
+<div id="negative-indexing" class="section level3">
+<h3>Negative Indexing</h3>
+<p>When you use negative indices, then the referenced elements are <strong>removed</strong> from the resulting vector.</p>
+</div>
+<div id="challenge-1" class="section level3">
+<h3><span class="mega-octicon octicon-puzzle"></span> Challenge</h3>
+<p>Remove the 1st, 5th and 9th elements from <code>vector2</code></p>
+</div>
 </div>
 <div id="logical-tests-and-logical-indexing" class="section level2">
 <h2>Logical Tests and Logical Indexing</h2>
@@ -199,7 +207,7 @@ paste(part1, part2)</code></pre>
 <div id="scripts" class="section level2">
 <h2>Scripts</h2>
 <p>Typing commands interactively into the command-line interpreter is fine for experimentation, but ultimately we want to save every single command to a text file, so that this can be run later, shared with collaborators, or published online with the article as supplementary information. <strong>This element of reproducibility is a critical benefit of doing scripted data analysis.</strong> In Rstudio, you can create a new script by using the File &gt;&gt; New File menu.</p>
-<div id="challenge-1" class="section level3">
+<div id="challenge-2" class="section level3">
 <h3><span class="mega-octicon octicon-puzzle"></span> Challenge</h3>
 <ol style="list-style-type: decimal">
 <li>Create a new script file.<br /></li>
@@ -240,7 +248,7 @@ paste(part1, part2)</code></pre>
 <li><code>sep</code> = the character that separates columns in your text file. The default is <code>&quot; &quot;</code>, which kind of sucks because most of our files will be separated by either <code>\t</code> or <code>,</code>.</li>
 <li><code>header</code> = Whether or not there is a header row in your text file. Defaults to <code>FALSE</code>, but usually we need it to be <code>TRUE</code>.</li>
 </ul>
-<div id="challenge-2" class="section level3">
+<div id="challenge-3" class="section level3">
 <h3><span class="mega-octicon octicon-puzzle"></span> Challenge</h3>
 <p>Read in the file called “femur_lengths.txt” directly from the following URL “<a href="http://hompal-stats.wabarr.com/datasets/femur_lengths.txt">http://hompal-stats.wabarr.com/datasets/femur_lengths.txt</a>”. Save to an object called <code>femora</code>.</p>
 </div>
@@ -255,7 +263,7 @@ paste(part1, part2)</code></pre>
 <li><code>sep</code> = Same as for <code>read.table()</code></li>
 <li><code>row.names</code> = Do you want row names? Defaults to <code>TRUE</code>, but usually you will set to <code>FALSE</code>/</li>
 </ul>
-<div id="challenge-3" class="section level3">
+<div id="challenge-4" class="section level3">
 <h3><span class="mega-octicon octicon-puzzle"></span> Challenge</h3>
 <p>Add a new column of log transformed lengths to the femur length dataset and then write out the new file to the Desktop.</p>
 </div>

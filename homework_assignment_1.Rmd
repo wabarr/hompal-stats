@@ -15,8 +15,8 @@ output: html_document
     * create a new vector with the elements of `nouns` in reverse order.
 
 2. Using functions  
-    * Use the `rnorm` function to create a vector called `grades` representing student grades from an Anthropology 101 course with  200 students, mean grade of 68%, and a standard deviation of 10. 
-    * Apply a curve of 7% to the class grades.  Save this to a new variable called `curvedgrades`
+    * Use the `rnorm` function to create a vector called `grades` representing student grades from an Anthropology 101 course with  200 students, mean grade of 68%, and a standard deviation of 10. Hint: remember you can look up help for a function like this: `?rnorm`
+    * Apply a curve of 7% to the class grades (just add 7% to each student's grade).  Save this to a new variable called `curvedgrades`
     * Use the appropriate functions to calculate the standard deviation, minimum, maximum, and mean of the curved grades.
     * Make a histogram of `curvedgrades` using the `hist()` function.
     

@@ -6,11 +6,11 @@ title: "Demos, Readings, & Homework"
 
 Date  | Demo | Homework  | Reading | Student Presentation 
 ------ | ---------  | --------- | -------- | ------- 
-Jan 12 | [Intro to R](intro_to_R.html) | [Try R Tutorial](http://tryr.codeschool.com) - First two modules. | - | - 
+Jan 12 | [Intro to R](intro_to_R.html) | [Try R Tutorial](http://tryr.codeschool.com) | - | - 
 Jan 19 | **MLK Day, No Class** | - | - | - 
 Jan 26 | [Visualizing Data](visualization.html) & [Automation](automation.html) | [HW #1](homework_assignment_1.html) - [Submission Link](https://blackboard.gwu.edu/webapps/assignment/uploadAssignment?content_id=_6406015_1&course_id=_250829_1&assign_group_id=&mode=cpview) | - | - 
 Feb 2	|  [Basic Stats: Probability and Distributions] | [HW #2]()  | Gotelli: Ch 1 - 3 | Sign Up 
-Feb 9 | [Basic Stats: Hypothesis Testing] | [HW #3]()  | Gotelli: Ch 4 - 5 | Sign Up 
+Feb 9 | [Basic Stats: Hypothesis Testing] | [HW #3]()  | [Blog post](https://oikosjournal.wordpress.com/2011/10/11/frequentist-vs-bayesian-statistics-resources-to-help-you-choose/); Gotelli: Ch 4 - 5 | Sign Up 
 Feb 16 | **President's Day, No Class** | -  | - | - 
 Feb 23 | [Correlation and Regression] | [HW #4]()  | Gotelli: Ch 9 | Sign Up 
 Mar 2 | **Exam I** | - | - | - 

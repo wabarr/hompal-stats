@@ -63,9 +63,9 @@ for(i in 1:2000){
 plot(1:2000, results, pch=16)
 ```
 
-## lapply
+## lapply + writing your own functions
 
-The function `lapply()` is like a `for` loop, but is optimized and explicitly functional. `lapply()` usually takes two arguments `X` which is a list or a vector to loop over, and `FUN` which is a function to apply to each element of `X`.  Thus, `FUN` must be able to accept any element of `X` as an argument. 
+The function `lapply()` is like a `for` loop, but is optimized and explicitly functional. `lapply()` usually takes two arguments `X` which is a list or a vector to loop over, and `FUN` which is a function to apply to each element of `X`.  Thus, `FUN` must be able to accept any element of `X` as an argument. The clearest way is to write your own function.  
 
 The "l" in `lapply()` stands for "list", because that's what you get as a result.  This is useful, because you allows you to store complex stuff from each iteration.  For example: 
 

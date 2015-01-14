@@ -152,15 +152,15 @@ myResults &lt;- lapply(1:100, FUN=summarizeRandom)
 myResults[1:3]</code></pre>
 <pre><code>## [[1]]
 ##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-## -3.19800 -0.61030  0.06407  0.04742  0.74170  3.21500 
+## -2.75100 -0.65540 -0.01267  0.00149  0.63410  3.08700 
 ## 
 ## [[2]]
 ##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-## -2.80300 -0.69120 -0.02442 -0.01992  0.64300  3.27400 
+## -3.18300 -0.69330 -0.01723 -0.01088  0.71140  3.36700 
 ## 
 ## [[3]]
-##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
-## -2.832000 -0.657600  0.008817  0.031930  0.647500  3.291000</code></pre>
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+## -2.99800 -0.71910  0.03809  0.03344  0.70740  3.35100</code></pre>
 </div>
 <div id="the-dplyr-package" class="section level2">
 <h2>the dplyr package</h2>
@@ -168,32 +168,38 @@ myResults[1:3]</code></pre>
 <p>dplyr is very consistent: it assumes that you are starting with a dataframe, doing something to that dataframe, and finishing with a different dataframe. (Many of the base functions operate on vectors, which makes it more complicated to apply them to dataframes.) dplyr introduces a series of simple ‘verbs’ that describe many common data manipulation tasks.</p>
 <div id="challenge-1" class="section level3">
 <h3><span class="mega-octicon octicon-puzzle"></span> Challenge</h3>
-<p>We will use a dataset on student loans in public and private universities. Read in this dataset called ‘DMV_2014_Q3_Undergrad_DirectLoans.csv’ and save it to a variable called <code>loans</code></p>
-<p>Your data frame should look like this:</p>
+<p>We will use a dataset on student loans in public and private universities. Read in this dataset called ‘DMV_2014_Q3_Undergrad_DirectLoans.csv’ and save it to a variable called <code>loans</code>.</p>
+<p><strong>Note</strong> before getting started, lets convert our <code>loans</code> object to a tbl_df object, which is just like a normal dataframe, but doesn’t print all its rows to the screen. This function is part of dplyr, so we need to load it first.</p>
+<pre class="r"><code>library(dplyr)
+loans &lt;- tbl_df(loans)</code></pre>
 </div>
 <div id="filter" class="section level3">
 <h3><code>filter()</code></h3>
 <p>This function selects a subset of rows meeting some criterion. Note that the result is a dataframe.</p>
-<pre class="r"><code>library(dplyr)</code></pre>
-<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.1.1</code></pre>
-<pre><code>## 
-## Attaching package: &#39;dplyr&#39;
-## 
-## The following object is masked from &#39;package:stats&#39;:
-## 
-##     filter
-## 
-## The following objects are masked from &#39;package:base&#39;:
-## 
-##     intersect, setdiff, setequal, union</code></pre>
 <pre class="r"><code>filter(loans, School==&quot;GEORGE WASHINGTON UNIVERSITY&quot;)</code></pre>
-<pre><code>##                         School State      School_Type SubsidizedDL_value
-## 1 GEORGE WASHINGTON UNIVERSITY    DC PrivateNonprofit            7463145
-##   UNSubsidizedDL_value
-## 1              5913027</code></pre>
+<pre><code>## Source: local data frame [1 x 5]
+## 
+##                         School State      School_Type SubsidizedDL UNSubsidizedDL
+## 1 GEORGE WASHINGTON UNIVERSITY    DC PrivateNonprofit      7463145        5913027</code></pre>
 </div>
 <div id="arrange" class="section level3">
 <h3><code>arrange()</code></h3>
+<p>This function is like the “sort” function in MS Excel. You give it a list of column names to sort by</p>
+<pre class="r"><code>arrange(loans, State, SubsidizedDL)</code></pre>
+<pre><code>## Source: local data frame [210 x 5]
+## 
+##                                    School State      School_Type SubsidizedDL UNSubsidizedDL
+## 1  NATIONAL CONSERVATORY OF DRAMATIC ARTS    DC PrivateNonprofit        40812          21963
+## 2              TECHNICAL LEARNING CENTERS    DC      Proprietary        84000         128000
+## 3                BENNETT CAREER INSTITUTE    DC      Proprietary       107642          88632
+## 4                         RADIANS COLLEGE    DC      Proprietary       340038         514081
+## 5      CORCORAN COLLEGE OF ART AND DESIGN    DC PrivateNonprofit       356355         360715
+## 6              CAREER TECHNICAL INSTITUTE    DC      Proprietary       416911         685909
+## 7                    GALLAUDET UNIVERSITY    DC PrivateNonprofit       679602         561785
+## 8                         TRINITY COLLEGE    DC PrivateNonprofit      2522961        2850888
+## 9          CATHOLIC UNIVERSITY OF AMERICA    DC PrivateNonprofit      3619502        3520966
+## 10                  GEORGETOWN UNIVERSITY    DC PrivateNonprofit      3824260        1318290
+## ..                                    ...   ...              ...          ...            ...</code></pre>
 </div>
 <div id="select" class="section level3">
 <h3><code>select()</code></h3>

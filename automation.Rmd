@@ -1,3 +1,6 @@
+```{r include=FALSE, echo=FALSE}
+options(width = 100)
+```
 # Automation
 
 R is a programming language, which means that it gives you all the tools you need to automate repetitive tasks.  There are three main ways to do this:
@@ -91,23 +94,38 @@ dplyr is very consistent: it assumes that you are starting with a dataframe, doi
 
 ### <span class="mega-octicon octicon-puzzle"></span> Challenge 
 
-We will use a dataset on student loans in public and private universities.  Read in this dataset called 'DMV_2014_Q3_Undergrad_DirectLoans.csv' and save it to a variable called `loans` 
+We will use a dataset on student loans in public and private universities.  Read in this dataset called 'DMV_2014_Q3_Undergrad_DirectLoans.csv' and save it to a variable called `loans`.
 
-Your data frame should look like this:
+**Note** before getting started, lets convert our `loans` object to a tbl_df object, which is just like a normal dataframe, but doesn't print all its rows to the screen. This function is part of dplyr, so we need to load it first. 
 
 ```{r echo = FALSE}
 loans <- read.table("http://hompal-stats.wabarr.com/datasets/DMV_2014_Q3_Undergrad_DirectLoans.csv", sep=",", header=TRUE)
 ```
+
+```{r warning=FALSE, message=FALSE}
+library(dplyr)
+loans <- tbl_df(loans)
+```
+
+
 ### `filter()` 
 
 This function selects a subset of rows meeting some criterion.  Note that the result is a dataframe. 
 
-```{r}
-library(dplyr)
+```{r warning=FALSE, message=FALSE}
 filter(loans, School=="GEORGE WASHINGTON UNIVERSITY")
 ```
+
 ### `arrange()`
+
+This function is like the "sort" function in MS Excel.  You give it a list of column names to sort by
+
+```{r}
+arrange(loans, State, SubsidizedDL)
+```
+
 ### `select()`
+
 ### `distinct()`
 ### `mutate()`
 ### `summarise()`

@@ -136,9 +136,9 @@ results[50]</code></pre>
 </ul>
 </div>
 </div>
-<div id="lapply" class="section level2">
-<h2>lapply</h2>
-<p>The function <code>lapply()</code> is like a <code>for</code> loop, but is optimized and explicitly functional. <code>lapply()</code> usually takes two arguments <code>X</code> which is a list or a vector to loop over, and <code>FUN</code> which is a function to apply to each element of <code>X</code>. Thus, <code>FUN</code> must be able to accept any element of <code>X</code> as an argument.</p>
+<div id="lapply-writing-your-own-functions" class="section level2">
+<h2>lapply + writing your own functions</h2>
+<p>The function <code>lapply()</code> is like a <code>for</code> loop, but is optimized and explicitly functional. <code>lapply()</code> usually takes two arguments <code>X</code> which is a list or a vector to loop over, and <code>FUN</code> which is a function to apply to each element of <code>X</code>. Thus, <code>FUN</code> must be able to accept any element of <code>X</code> as an argument. The clearest way is to write your own function.</p>
 <p>The “l” in <code>lapply()</code> stands for “list”, because that’s what you get as a result. This is useful, because you allows you to store complex stuff from each iteration. For example:</p>
 <pre class="r"><code># note, we must accept argument
 # even if we don&#39;t do anything with this argument.
@@ -151,21 +151,63 @@ summarizeRandom &lt;- function(x){
 myResults &lt;- lapply(1:100, FUN=summarizeRandom)
 myResults[1:3]</code></pre>
 <pre><code>## [[1]]
-##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  -3.130  -0.599   0.035   0.011   0.687   3.410 
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+## -3.19800 -0.61030  0.06407  0.04742  0.74170  3.21500 
 ## 
 ## [[2]]
-##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-## -2.9500 -0.6820 -0.0127 -0.0226  0.6370  3.0700 
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+## -2.80300 -0.69120 -0.02442 -0.01992  0.64300  3.27400 
 ## 
 ## [[3]]
-##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  -2.680  -0.688  -0.020   0.015   0.645   3.790</code></pre>
+##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+## -2.832000 -0.657600  0.008817  0.031930  0.647500  3.291000</code></pre>
 </div>
 <div id="the-dplyr-package" class="section level2">
 <h2>the dplyr package</h2>
-<p>This a user-contributed package that has kind of revolutionized working with data in R. It provides a consistent and simpler interface to do things that you could also do using loops or base functions in R.</p>
-<p><a href="http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html">dplyr vignette</a></p>
+<p>This a user-contributed package that has kind of revolutionized working with data in R. It provides a consistent and simpler interface to do things that you could also do using loops or base functions in R. It is less flexible than a for loop or <code>lapply()</code>, but it is easier to use, and works for the most common data manipulation tasks.</p>
+<p>dplyr is very consistent: it assumes that you are starting with a dataframe, doing something to that dataframe, and finishing with a different dataframe. (Many of the base functions operate on vectors, which makes it more complicated to apply them to dataframes.) dplyr introduces a series of simple ‘verbs’ that describe many common data manipulation tasks.</p>
+<div id="challenge-1" class="section level3">
+<h3><span class="mega-octicon octicon-puzzle"></span> Challenge</h3>
+<p>We will use a dataset on student loans in public and private universities. Read in this dataset called ‘DMV_2014_Q3_Undergrad_DirectLoans.csv’ and save it to a variable called <code>loans</code></p>
+<p>Your data frame should look like this:</p>
+</div>
+<div id="filter" class="section level3">
+<h3><code>filter()</code></h3>
+<p>This function selects a subset of rows meeting some criterion. Note that the result is a dataframe.</p>
+<pre class="r"><code>library(dplyr)</code></pre>
+<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.1.1</code></pre>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;
+## 
+## The following object is masked from &#39;package:stats&#39;:
+## 
+##     filter
+## 
+## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<pre class="r"><code>filter(loans, School==&quot;GEORGE WASHINGTON UNIVERSITY&quot;)</code></pre>
+<pre><code>##                         School State      School_Type SubsidizedDL_value
+## 1 GEORGE WASHINGTON UNIVERSITY    DC PrivateNonprofit            7463145
+##   UNSubsidizedDL_value
+## 1              5913027</code></pre>
+</div>
+<div id="arrange" class="section level3">
+<h3><code>arrange()</code></h3>
+</div>
+<div id="select" class="section level3">
+<h3><code>select()</code></h3>
+</div>
+<div id="distinct" class="section level3">
+<h3><code>distinct()</code></h3>
+</div>
+<div id="mutate" class="section level3">
+<h3><code>mutate()</code></h3>
+</div>
+<div id="summarise" class="section level3">
+<h3><code>summarise()</code></h3>
+<p>A more complete introduction is available in the <a href="http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html">dplyr vignette</a></p>
+</div>
 </div>
 </div>
 

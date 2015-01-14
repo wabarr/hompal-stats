@@ -85,6 +85,32 @@ myResults[1:3]
 
 ## the dplyr package
 
-This a user-contributed package that has kind of revolutionized working with data in R.  It provides a consistent and simpler interface to do things that you could also do using loops or base functions in R.
+This a user-contributed package that has kind of revolutionized working with data in R.  It provides a consistent and simpler interface to do things that you could also do using loops or base functions in R. It is less flexible than a for loop or `lapply()`, but it is easier to use, and works for the most common data manipulation tasks. 
 
-[dplyr vignette](http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html)
+dplyr is very consistent: it assumes that you are starting with a dataframe, doing something to that dataframe, and finishing with a different dataframe. (Many of the base functions operate on vectors, which makes it more complicated to apply them to dataframes.) dplyr introduces a series of simple 'verbs' that describe many common data manipulation tasks. 
+
+### <span class="mega-octicon octicon-puzzle"></span> Challenge 
+
+We will use a dataset on student loans in public and private universities.  Read in this dataset called 'DMV_2014_Q3_Undergrad_DirectLoans.csv' and save it to a variable called `loans` 
+
+Your data frame should look like this:
+
+```{r echo = FALSE}
+loans <- read.table("http://hompal-stats.wabarr.com/datasets/DMV_2014_Q3_Undergrad_DirectLoans.csv", sep=",", header=TRUE)
+```
+### `filter()` 
+
+This function selects a subset of rows meeting some criterion.  Note that the result is a dataframe. 
+
+```{r}
+library(dplyr)
+filter(loans, School=="GEORGE WASHINGTON UNIVERSITY")
+```
+### `arrange()`
+### `select()`
+### `distinct()`
+### `mutate()`
+### `summarise()`
+
+
+A more complete introduction is available in the [dplyr vignette](http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html)

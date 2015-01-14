@@ -151,16 +151,16 @@ summarizeRandom &lt;- function(x){
 myResults &lt;- lapply(1:100, FUN=summarizeRandom)
 myResults[1:3]</code></pre>
 <pre><code>## [[1]]
-##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-## -2.75100 -0.65540 -0.01267  0.00149  0.63410  3.08700 
+##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+## -4.090000 -0.670500  0.023560 -0.001636  0.703900  3.089000 
 ## 
 ## [[2]]
 ##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-## -3.18300 -0.69330 -0.01723 -0.01088  0.71140  3.36700 
+## -3.19700 -0.68590 -0.03604 -0.02172  0.64940  3.21200 
 ## 
 ## [[3]]
-##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-## -2.99800 -0.71910  0.03809  0.03344  0.70740  3.35100</code></pre>
+##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+## -3.314000 -0.683400  0.001589  0.004042  0.653800  3.159000</code></pre>
 </div>
 <div id="the-dplyr-package" class="section level2">
 <h2>the dplyr package</h2>
@@ -173,6 +173,9 @@ myResults[1:3]</code></pre>
 <pre class="r"><code>library(dplyr)
 loans &lt;- tbl_df(loans)</code></pre>
 </div>
+<div id="the-basic-dplyr-verbs" class="section level3">
+<h3>The basic dplyr verbs</h3>
+</div>
 <div id="filter" class="section level3">
 <h3><code>filter()</code></h3>
 <p>This function selects a subset of rows meeting some criterion. Note that the result is a dataframe.</p>
@@ -184,7 +187,7 @@ loans &lt;- tbl_df(loans)</code></pre>
 </div>
 <div id="arrange" class="section level3">
 <h3><code>arrange()</code></h3>
-<p>This function is like the “sort” function in MS Excel. You give it a list of column names to sort by</p>
+<p>This function is like the “sort” function in MS Excel. You simply provide a list of column names to sort by:</p>
 <pre class="r"><code>arrange(loans, State, SubsidizedDL)</code></pre>
 <pre><code>## Source: local data frame [210 x 5]
 ## 
@@ -200,18 +203,176 @@ loans &lt;- tbl_df(loans)</code></pre>
 ## 9          CATHOLIC UNIVERSITY OF AMERICA    DC PrivateNonprofit      3619502        3520966
 ## 10                  GEORGETOWN UNIVERSITY    DC PrivateNonprofit      3824260        1318290
 ## ..                                    ...   ...              ...          ...            ...</code></pre>
+<pre class="r"><code>arrange(loans, State, desc(SubsidizedDL))</code></pre>
+<pre><code>## Source: local data frame [210 x 5]
+## 
+##                                    School State      School_Type SubsidizedDL UNSubsidizedDL
+## 1                      STRAYER UNIVERSITY    DC      Proprietary     22490396       34840102
+## 2                       HOWARD UNIVERSITY    DC PrivateNonprofit      9414766        9021712
+## 3            GEORGE WASHINGTON UNIVERSITY    DC PrivateNonprofit      7463145        5913027
+## 4                     AMERICAN UNIVERSITY    DC PrivateNonprofit      6213538        4517728
+## 5  UNIVERSITY OF THE DISTRICT OF COLUMBIA    DC           Public      3850272        4248284
+## 6                   GEORGETOWN UNIVERSITY    DC PrivateNonprofit      3824260        1318290
+## 7          CATHOLIC UNIVERSITY OF AMERICA    DC PrivateNonprofit      3619502        3520966
+## 8                         TRINITY COLLEGE    DC PrivateNonprofit      2522961        2850888
+## 9                    GALLAUDET UNIVERSITY    DC PrivateNonprofit       679602         561785
+## 10             CAREER TECHNICAL INSTITUTE    DC      Proprietary       416911         685909
+## ..                                    ...   ...              ...          ...            ...</code></pre>
 </div>
 <div id="select" class="section level3">
 <h3><code>select()</code></h3>
+<p>This function pulls out colums of interest. You can select ranges of columns using the <code>:</code> operator syntax. (Note: usually this only works with numeric data, but this is a special usage defined in the dplyr package)</p>
+<pre class="r"><code>select(loans, State, SubsidizedDL)</code></pre>
+<pre><code>## Source: local data frame [210 x 2]
+## 
+##    State SubsidizedDL
+## 1     DC      6213538
+## 2     DC      3619502
+## 3     DC      3850272
+## 4     DC       679602
+## 5     DC      7463145
+## 6     DC      3824260
+## 7     DC      9414766
+## 8     DC     22490396
+## 9     DC      2522961
+## 10    DC           NA
+## ..   ...          ...</code></pre>
+<pre class="r"><code>select(loans, -State, -SubsidizedDL)</code></pre>
+<pre><code>## Source: local data frame [210 x 3]
+## 
+##                                    School      School_Type UNSubsidizedDL
+## 1                     AMERICAN UNIVERSITY PrivateNonprofit        4517728
+## 2          CATHOLIC UNIVERSITY OF AMERICA PrivateNonprofit        3520966
+## 3  UNIVERSITY OF THE DISTRICT OF COLUMBIA           Public        4248284
+## 4                    GALLAUDET UNIVERSITY PrivateNonprofit         561785
+## 5            GEORGE WASHINGTON UNIVERSITY PrivateNonprofit        5913027
+## 6                   GEORGETOWN UNIVERSITY PrivateNonprofit        1318290
+## 7                       HOWARD UNIVERSITY PrivateNonprofit        9021712
+## 8                      STRAYER UNIVERSITY      Proprietary       34840102
+## 9                         TRINITY COLLEGE PrivateNonprofit        2850888
+## 10            WESLEY THEOLOGICAL SEMINARY PrivateNonprofit          22250
+## ..                                    ...              ...            ...</code></pre>
+<pre class="r"><code>select(loans, State:SubsidizedDL)</code></pre>
+<pre><code>## Source: local data frame [210 x 3]
+## 
+##    State      School_Type SubsidizedDL
+## 1     DC PrivateNonprofit      6213538
+## 2     DC PrivateNonprofit      3619502
+## 3     DC           Public      3850272
+## 4     DC PrivateNonprofit       679602
+## 5     DC PrivateNonprofit      7463145
+## 6     DC PrivateNonprofit      3824260
+## 7     DC PrivateNonprofit      9414766
+## 8     DC      Proprietary     22490396
+## 9     DC PrivateNonprofit      2522961
+## 10    DC PrivateNonprofit           NA
+## ..   ...              ...          ...</code></pre>
 </div>
 <div id="distinct" class="section level3">
 <h3><code>distinct()</code></h3>
+<p>This function extracts the distinct rows. It is most useful when combined with select</p>
+<pre class="r"><code>distinct(loans)</code></pre>
+<pre><code>## Source: local data frame [210 x 5]
+## 
+##                                    School State      School_Type SubsidizedDL UNSubsidizedDL
+## 1                     AMERICAN UNIVERSITY    DC PrivateNonprofit      6213538        4517728
+## 2          CATHOLIC UNIVERSITY OF AMERICA    DC PrivateNonprofit      3619502        3520966
+## 3  UNIVERSITY OF THE DISTRICT OF COLUMBIA    DC           Public      3850272        4248284
+## 4                    GALLAUDET UNIVERSITY    DC PrivateNonprofit       679602         561785
+## 5            GEORGE WASHINGTON UNIVERSITY    DC PrivateNonprofit      7463145        5913027
+## 6                   GEORGETOWN UNIVERSITY    DC PrivateNonprofit      3824260        1318290
+## 7                       HOWARD UNIVERSITY    DC PrivateNonprofit      9414766        9021712
+## 8                      STRAYER UNIVERSITY    DC      Proprietary     22490396       34840102
+## 9                         TRINITY COLLEGE    DC PrivateNonprofit      2522961        2850888
+## 10            WESLEY THEOLOGICAL SEMINARY    DC PrivateNonprofit           NA          22250
+## ..                                    ...   ...              ...          ...            ...</code></pre>
+<pre class="r"><code>distinct(select(loans, State, School_Type))</code></pre>
+<pre><code>## Source: local data frame [9 x 2]
+## 
+##   State      School_Type
+## 1    DC PrivateNonprofit
+## 2    DC           Public
+## 3    DC      Proprietary
+## 4    MD PrivateNonprofit
+## 5    MD           Public
+## 6    MD      Proprietary
+## 7    VA PrivateNonprofit
+## 8    VA           Public
+## 9    VA      Proprietary</code></pre>
 </div>
 <div id="mutate" class="section level3">
 <h3><code>mutate()</code></h3>
+<p>Adds new columns that are some function of existing columns</p>
+<pre class="r"><code>mutate(loans, Total_Loans = SubsidizedDL + UNSubsidizedDL)</code></pre>
+<pre><code>## Source: local data frame [210 x 6]
+## 
+##                                    School State      School_Type SubsidizedDL UNSubsidizedDL
+## 1                     AMERICAN UNIVERSITY    DC PrivateNonprofit      6213538        4517728
+## 2          CATHOLIC UNIVERSITY OF AMERICA    DC PrivateNonprofit      3619502        3520966
+## 3  UNIVERSITY OF THE DISTRICT OF COLUMBIA    DC           Public      3850272        4248284
+## 4                    GALLAUDET UNIVERSITY    DC PrivateNonprofit       679602         561785
+## 5            GEORGE WASHINGTON UNIVERSITY    DC PrivateNonprofit      7463145        5913027
+## 6                   GEORGETOWN UNIVERSITY    DC PrivateNonprofit      3824260        1318290
+## 7                       HOWARD UNIVERSITY    DC PrivateNonprofit      9414766        9021712
+## 8                      STRAYER UNIVERSITY    DC      Proprietary     22490396       34840102
+## 9                         TRINITY COLLEGE    DC PrivateNonprofit      2522961        2850888
+## 10            WESLEY THEOLOGICAL SEMINARY    DC PrivateNonprofit           NA          22250
+## ..                                    ...   ...              ...          ...            ...
+## Variables not shown: Total_Loans (int)</code></pre>
 </div>
 <div id="summarise" class="section level3">
 <h3><code>summarise()</code></h3>
+<p>Summarizes data into a single row. This may seem not that useful, but it will become useful when we start grouping data.</p>
+<pre class="r"><code>summarise(loans, mean(SubsidizedDL, na.rm=TRUE))</code></pre>
+<pre><code>## Source: local data frame [1 x 1]
+## 
+##   mean(SubsidizedDL, na.rm = TRUE)
+## 1                          2607474</code></pre>
+</div>
+<div id="grouping-data" class="section level3">
+<h3>Grouping Data</h3>
+<p>These functions above get really powerful when you start grouping data based on factors in your dataset.</p>
+</div>
+<div id="group_by" class="section level3">
+<h3><code>group_by</code></h3>
+<pre class="r"><code>groupedLoans &lt;- group_by(loans, State)
+groupedLoans</code></pre>
+<pre><code>## Source: local data frame [210 x 5]
+## Groups: State
+## 
+##                                    School State      School_Type SubsidizedDL UNSubsidizedDL
+## 1                     AMERICAN UNIVERSITY    DC PrivateNonprofit      6213538        4517728
+## 2          CATHOLIC UNIVERSITY OF AMERICA    DC PrivateNonprofit      3619502        3520966
+## 3  UNIVERSITY OF THE DISTRICT OF COLUMBIA    DC           Public      3850272        4248284
+## 4                    GALLAUDET UNIVERSITY    DC PrivateNonprofit       679602         561785
+## 5            GEORGE WASHINGTON UNIVERSITY    DC PrivateNonprofit      7463145        5913027
+## 6                   GEORGETOWN UNIVERSITY    DC PrivateNonprofit      3824260        1318290
+## 7                       HOWARD UNIVERSITY    DC PrivateNonprofit      9414766        9021712
+## 8                      STRAYER UNIVERSITY    DC      Proprietary     22490396       34840102
+## 9                         TRINITY COLLEGE    DC PrivateNonprofit      2522961        2850888
+## 10            WESLEY THEOLOGICAL SEMINARY    DC PrivateNonprofit           NA          22250
+## ..                                    ...   ...              ...          ...            ...</code></pre>
+<pre class="r"><code>summarise(groupedLoans, mean(SubsidizedDL, na.rm=TRUE))</code></pre>
+<pre><code>## Source: local data frame [3 x 2]
+## 
+##   State mean(SubsidizedDL, na.rm = TRUE)
+## 1    DC                          4094947
+## 2    MD                          2132025
+## 3    VA                          2730055</code></pre>
+</div>
+<div id="chaining-operations" class="section level3">
+<h3>Chaining operations</h3>
+<p>dplyr also provides a new way of chaining together commplicated operations with the <code>%&gt;%</code> operator. This prevents having to save intermediate steps, or to have a complicated series of nested functions. For instance.</p>
+<pre class="r"><code>group_by(loans, School_Type) %&gt;%
+  mutate(Total_Loans = SubsidizedDL + UNSubsidizedDL) %&gt;%
+  select(-State) %&gt;%
+  summarise(mean_total_loans = mean(Total_Loans, na.rm=TRUE))</code></pre>
+<pre><code>## Source: local data frame [3 x 2]
+## 
+##        School_Type mean_total_loans
+## 1 PrivateNonprofit          5115076
+## 2      Proprietary          1796278
+## 3           Public         10315783</code></pre>
 <p>A more complete introduction is available in the <a href="http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html">dplyr vignette</a></p>
 </div>
 </div>

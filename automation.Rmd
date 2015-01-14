@@ -107,6 +107,7 @@ library(dplyr)
 loans <- tbl_df(loans)
 ```
 
+### The basic dplyr verbs
 
 ### `filter()` 
 
@@ -118,17 +119,71 @@ filter(loans, School=="GEORGE WASHINGTON UNIVERSITY")
 
 ### `arrange()`
 
-This function is like the "sort" function in MS Excel.  You give it a list of column names to sort by
+This function is like the "sort" function in MS Excel.  You simply provide a list of column names to sort by:
 
 ```{r}
 arrange(loans, State, SubsidizedDL)
+arrange(loans, State, desc(SubsidizedDL))
 ```
 
 ### `select()`
 
+This function pulls out colums of interest.  You can select ranges of columns using the `:` operator syntax. (Note: usually this only works with numeric data, but this is a special usage defined in the dplyr package)
+
+```{r}
+select(loans, State, SubsidizedDL)
+select(loans, -State, -SubsidizedDL)
+select(loans, State:SubsidizedDL)
+```
+
 ### `distinct()`
+
+This function extracts the distinct rows.  It is most useful when combined with select
+
+```{r}
+distinct(loans)
+distinct(select(loans, State, School_Type))
+```
+
 ### `mutate()`
+
+Adds new columns that are some function of existing columns
+
+```{r}
+mutate(loans, Total_Loans = SubsidizedDL + UNSubsidizedDL)
+```
+
 ### `summarise()`
 
+Summarizes data into a single row.  This may seem not that useful, but it will become useful when we start grouping data. 
+
+```{r}
+summarise(loans, mean(SubsidizedDL, na.rm=TRUE))
+```
+
+
+### Grouping Data
+
+These functions above get really powerful when you start grouping data based on factors in your dataset.
+
+###`group_by`
+
+```{r}
+groupedLoans <- group_by(loans, State)
+groupedLoans
+
+summarise(groupedLoans, mean(SubsidizedDL, na.rm=TRUE))
+```
+
+### Chaining operations
+
+dplyr also provides a new way of chaining together commplicated operations with the `%>%` operator.  This prevents having to save intermediate steps, or to have a complicated series of nested functions.  For instance. 
+
+```{r}
+group_by(loans, School_Type) %>%
+  mutate(Total_Loans = SubsidizedDL + UNSubsidizedDL) %>%
+  select(-State) %>%
+  summarise(mean_total_loans = mean(Total_Loans, na.rm=TRUE))
+```
 
 A more complete introduction is available in the [dplyr vignette](http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html)

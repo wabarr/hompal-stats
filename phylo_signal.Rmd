@@ -4,3 +4,9 @@ title: "phylogenetic signal"
 
 ## phylomorphospace
 
+```{r message=FALSE, warning=FALSE}
+library(phytools)
+library(dplyr)
+astrag <- read.table("http://hompal-stats.wabarr.com/datasets/barr_astrag_2014.txt", header=TRUE, sep="\t")
+astrag <- tbl_df(astrag) %>% mutate(geomean = (B*DistRad*LML*MIN*MML*ProxRad*WAF*WAT) ^ 1/8)
+```

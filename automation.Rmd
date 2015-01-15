@@ -90,13 +90,13 @@ myResults[1:3]
 
 This a user-contributed package that has kind of revolutionized working with data in R.  It provides a consistent and simpler interface to do things that you could also do using loops or base functions in R. It is less flexible than a for loop or `lapply()`, but it is easier to use, and works for the most common data manipulation tasks. 
 
-dplyr is very consistent: it assumes that you are starting with a dataframe, doing something to that dataframe, and finishing with a different dataframe. (Many of the base functions operate on vectors, which makes it more complicated to apply them to dataframes.) dplyr introduces a series of simple 'verbs' that describe many common data manipulation tasks. 
+`dplyr` is very consistent: it assumes that you are starting with a dataframe, doing something to that dataframe, and finishing with a different dataframe. (Many of the base functions operate on vectors, which makes it more complicated to apply them to dataframes.) `dplyr` introduces a series of simple 'verbs' that describe many common data manipulation tasks. 
 
 ### <span class="mega-octicon octicon-puzzle"></span> Challenge 
 
 We will use a dataset on student loans in public and private universities.  Read in this dataset called 'DMV_2014_Q3_Undergrad_DirectLoans.csv' and save it to a variable called `loans`.
 
-**Note** before getting started, lets convert our `loans` object to a tbl_df object, which is just like a normal dataframe, but doesn't print all its rows to the screen. This function is part of dplyr, so we need to load it first. 
+**Note** before getting started, lets convert our `loans` object to a tbl_df object, which is just like a normal dataframe, but doesn't print all its rows to the screen. This function is part of `dplyr`, so we need to load it first. 
 
 ```{r echo = FALSE}
 loans <- read.table("http://hompal-stats.wabarr.com/datasets/DMV_2014_Q3_Undergrad_DirectLoans.csv", sep=",", header=TRUE)
@@ -128,7 +128,7 @@ arrange(loans, State, desc(SubsidizedDL))
 
 ### `select()`
 
-This function pulls out colums of interest.  You can select ranges of columns using the `:` operator syntax. (Note: usually this only works with numeric data, but this is a special usage defined in the dplyr package)
+This function pulls out colums of interest.  You can select ranges of columns using the `:` operator syntax. (Note: usually this only works with numeric data, but this is a special usage defined in the `dplyr` package)
 
 ```{r}
 select(loans, State, SubsidizedDL)
@@ -177,7 +177,7 @@ summarise(groupedLoans, mean(SubsidizedDL, na.rm=TRUE))
 
 ### Chaining operations
 
-dplyr also provides a new way of chaining together commplicated operations with the `%>%` operator.  This prevents having to save intermediate steps, or to have a complicated series of nested functions.  For instance. 
+`dplyr` also provides a way of chaining together commplicated operations with the `%>%` operator.  This prevents having to save intermediate steps, or to have a complicated series of nested functions.  Note that the resulting dataframe from each step is passed as the first argument to the next function in the chain. For instance. 
 
 ```{r}
 group_by(loans, School_Type) %>%
@@ -186,4 +186,23 @@ group_by(loans, School_Type) %>%
   summarise(mean_total_loans = mean(Total_Loans, na.rm=TRUE))
 ```
 
-A more complete introduction is available in the [dplyr vignette](http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html)
+**Note:** If you like this idea of chaining operations, this actually comes from a separate package called `magrittr`, which `dplyr` relies on.  If you want you can use this in your non `dplyr` code as well. Notice that in the example below, if you are piping to a 
+
+```{r warning=FALSE}
+library(magrittr)
+library(ggplot2)
+
+#chained syntax
+rnorm(1000, mean=20, sd=1.4) %>% log %>% qplot
+
+#compare with nested function calls 
+
+qplot(log(rnorm(1000, mean=20, sd=1.4)))
+```
+
+
+
+
+A more complete introduction is available in the [`dplyr` vignette](http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html)
+
+More info on `magrittr` [can be found here](http://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html).

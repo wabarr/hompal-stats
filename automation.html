@@ -152,24 +152,24 @@ myResults &lt;- lapply(1:100, FUN=summarizeRandom)
 myResults[1:3]</code></pre>
 <pre><code>## [[1]]
 ##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
-## -4.090000 -0.670500  0.023560 -0.001636  0.703900  3.089000 
+## -3.166000 -0.737400  0.003016  0.026980  0.746300  3.331000 
 ## 
 ## [[2]]
-##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-## -3.19700 -0.68590 -0.03604 -0.02172  0.64940  3.21200 
+##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+## -3.447000 -0.677700 -0.029200  0.004784  0.734700  3.151000 
 ## 
 ## [[3]]
-##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
-## -3.314000 -0.683400  0.001589  0.004042  0.653800  3.159000</code></pre>
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+## -3.48500 -0.69390 -0.02464 -0.01462  0.67410  3.09300</code></pre>
 </div>
 <div id="the-dplyr-package" class="section level2">
 <h2>the dplyr package</h2>
 <p>This a user-contributed package that has kind of revolutionized working with data in R. It provides a consistent and simpler interface to do things that you could also do using loops or base functions in R. It is less flexible than a for loop or <code>lapply()</code>, but it is easier to use, and works for the most common data manipulation tasks.</p>
-<p>dplyr is very consistent: it assumes that you are starting with a dataframe, doing something to that dataframe, and finishing with a different dataframe. (Many of the base functions operate on vectors, which makes it more complicated to apply them to dataframes.) dplyr introduces a series of simple ‘verbs’ that describe many common data manipulation tasks.</p>
+<p><code>dplyr</code> is very consistent: it assumes that you are starting with a dataframe, doing something to that dataframe, and finishing with a different dataframe. (Many of the base functions operate on vectors, which makes it more complicated to apply them to dataframes.) <code>dplyr</code> introduces a series of simple ‘verbs’ that describe many common data manipulation tasks.</p>
 <div id="challenge-1" class="section level3">
 <h3><span class="mega-octicon octicon-puzzle"></span> Challenge</h3>
 <p>We will use a dataset on student loans in public and private universities. Read in this dataset called ‘DMV_2014_Q3_Undergrad_DirectLoans.csv’ and save it to a variable called <code>loans</code>.</p>
-<p><strong>Note</strong> before getting started, lets convert our <code>loans</code> object to a tbl_df object, which is just like a normal dataframe, but doesn’t print all its rows to the screen. This function is part of dplyr, so we need to load it first.</p>
+<p><strong>Note</strong> before getting started, lets convert our <code>loans</code> object to a tbl_df object, which is just like a normal dataframe, but doesn’t print all its rows to the screen. This function is part of <code>dplyr</code>, so we need to load it first.</p>
 <pre class="r"><code>library(dplyr)
 loans &lt;- tbl_df(loans)</code></pre>
 </div>
@@ -221,7 +221,7 @@ loans &lt;- tbl_df(loans)</code></pre>
 </div>
 <div id="select" class="section level3">
 <h3><code>select()</code></h3>
-<p>This function pulls out colums of interest. You can select ranges of columns using the <code>:</code> operator syntax. (Note: usually this only works with numeric data, but this is a special usage defined in the dplyr package)</p>
+<p>This function pulls out colums of interest. You can select ranges of columns using the <code>:</code> operator syntax. (Note: usually this only works with numeric data, but this is a special usage defined in the <code>dplyr</code> package)</p>
 <pre class="r"><code>select(loans, State, SubsidizedDL)</code></pre>
 <pre><code>## Source: local data frame [210 x 2]
 ## 
@@ -362,7 +362,7 @@ groupedLoans</code></pre>
 </div>
 <div id="chaining-operations" class="section level3">
 <h3>Chaining operations</h3>
-<p>dplyr also provides a new way of chaining together commplicated operations with the <code>%&gt;%</code> operator. This prevents having to save intermediate steps, or to have a complicated series of nested functions. For instance.</p>
+<p><code>dplyr</code> also provides a way of chaining together commplicated operations with the <code>%&gt;%</code> operator. This prevents having to save intermediate steps, or to have a complicated series of nested functions. Note that the resulting dataframe from each step is passed as the first argument to the next function in the chain. For instance.</p>
 <pre class="r"><code>group_by(loans, School_Type) %&gt;%
   mutate(Total_Loans = SubsidizedDL + UNSubsidizedDL) %&gt;%
   select(-State) %&gt;%
@@ -373,7 +373,21 @@ groupedLoans</code></pre>
 ## 1 PrivateNonprofit          5115076
 ## 2      Proprietary          1796278
 ## 3           Public         10315783</code></pre>
-<p>A more complete introduction is available in the <a href="http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html">dplyr vignette</a></p>
+<p><strong>Note:</strong> If you like this idea of chaining operations, this actually comes from a separate package called <code>magrittr</code>, which <code>dplyr</code> relies on. If you want you can use this in your non <code>dplyr</code> code as well. Notice that in the example below, if you are piping to a</p>
+<pre class="r"><code>library(magrittr)
+library(ggplot2)
+
+#chained syntax
+rnorm(1000, mean=20, sd=1.4) %&gt;% log %&gt;% qplot</code></pre>
+<pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.</code></pre>
+<p><img src="automation_files/figure-html/unnamed-chunk-17-1.png" title="" alt="" width="672" /></p>
+<pre class="r"><code>#compare with nested function calls 
+
+qplot(log(rnorm(1000, mean=20, sd=1.4)))</code></pre>
+<pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.</code></pre>
+<p><img src="automation_files/figure-html/unnamed-chunk-17-2.png" title="" alt="" width="672" /></p>
+<p>A more complete introduction is available in the <a href="http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html"><code>dplyr</code> vignette</a></p>
+<p>More info on <code>magrittr</code> <a href="http://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html">can be found here</a>.</p>
 </div>
 </div>
 </div>

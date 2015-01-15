@@ -108,13 +108,13 @@ head(diamonds)</code></pre>
 <pre class="r"><code>library(ggplot2)
 qplot(x=carat, data=diamonds)</code></pre>
 <pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.</code></pre>
-<p><img src="visualization_files/figure-html/unnamed-chunk-2.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" width="672" /></p>
+<p><img src="visualization_files/figure-html/unnamed-chunk-2-1.png" title="" alt="" width="672" /></p>
 </div>
 <div id="bivariate-plot" class="section level3">
 <h3>Bivariate Plot</h3>
-<p>If we specify a variable for the y axis, then the default <code>geom</code> is a scatter of points. This time we will also specify a value for <code>main</code> which is the main title.</p>
+<p>If we specify an additional variable for the y axis, then the default <code>geom</code> is a scatter of points. This time we will also specify a value for <code>main</code> which is the main title.</p>
 <pre class="r"><code>qplot(x=carat, y=price, data=diamonds, main=&quot;Diamond Weight by Price&quot;)</code></pre>
-<p><img src="visualization_files/figure-html/unnamed-chunk-3.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" width="672" /></p>
+<p><img src="visualization_files/figure-html/unnamed-chunk-3-1.png" title="" alt="" width="672" /></p>
 </div>
 <div id="boxplot" class="section level3">
 <h3>Boxplot</h3>
@@ -140,9 +140,9 @@ qplot(x=carat, data=diamonds)</code></pre>
 <h2>Color, Size, Shape, Fill</h2>
 <p>Sometimes we want to see the impact of other variables variables by color coding points, or changing the shape or size of points in relation to another variable. <code>qplot()</code> makes this very easy, and even automatically creates legends for us.</p>
 <pre class="r"><code>qplot(x=carat, y=price, data=diamonds, main=&quot;Diamond Weight by Price&quot;, color=clarity)</code></pre>
-<p><img src="visualization_files/figure-html/unnamed-chunk-71.png" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" width="672" /></p>
+<p><img src="visualization_files/figure-html/unnamed-chunk-7-1.png" title="" alt="" width="672" /></p>
 <pre class="r"><code>qplot(x=carat, y=price, data=diamonds, main=&quot;Diamond Weight by Price&quot;, shape=cut)</code></pre>
-<p><img src="visualization_files/figure-html/unnamed-chunk-72.png" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" width="672" /></p>
+<p><img src="visualization_files/figure-html/unnamed-chunk-7-2.png" title="" alt="" width="672" /></p>
 </div>
 <div id="facets" class="section level2">
 <h2>Facets</h2>

@@ -31,7 +31,7 @@ qplot(x=carat, data=diamonds)
 
 ### Bivariate Plot
 
-If we specify a variable for the y axis, then the default `geom` is a scatter of points. This time we will also specify a value for `main` which is the main title. 
+If we specify an additional variable for the y axis, then the default `geom` is a scatter of points. This time we will also specify a value for `main` which is the main title. 
 
 ```{r}
 qplot(x=carat, y=price, data=diamonds, main="Diamond Weight by Price")

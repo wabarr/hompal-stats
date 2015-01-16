@@ -5,7 +5,12 @@ date: "due January 26, 2015"
 output: html_document
 ---
 
-## Submit a single R Markdown file (.Rmd) with your responses.
+#### **Note:** You should write your homework assignments as an R markdown document, and then use the knit button in RStudio to produce a stand-alone html document containing all your R code, as well as the results (including graphs) produced by your R code. Submit this single .html file on blackboard. This [cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/01/rmarkdown-cheatsheet.pdf) is helpful for using R markdown.
+
+![knit button][knitbutton]
+
+***
+
 1.  Indexing Vectors
     * Start with this vector of nouns. `nouns <- c("apple", "flower", "insect", "lettuce", "knife", "dog", "cloud", "person", "cabinet", "flower" )`
     * use the `length()` function to display the number of elements in `nouns`
@@ -33,6 +38,9 @@ output: html_document
     * Use the `hist()` function to make a plot of the natural log of the skull measurements. 
     * Use *logical indexing* (discused in the in-class demo) to subset the dataframe to include only individuals with skull measurements greater than 250 and save your results to a variable. 
     * Use the `subset()` function to subset the dataframe to include only individuals with measurements less than 250, and save your results to a variable. 
+    
+    
+[knitbutton]: knit_button.png "the knit button in R studio"
     
     
     

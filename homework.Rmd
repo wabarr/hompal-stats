@@ -4,6 +4,7 @@ title: "Demos, Readings, & Homework"
 
 ## Due at beginning of class on the day listed. 
 
+
 Date  | Demo | Homework  | Reading | Student Presentation 
 ------ | ---------  | --------- | -------- | ------- 
 Jan 12 | [Intro to R](intro_to_R.html) | [Try R Tutorial](http://tryr.codeschool.com) | - | - 

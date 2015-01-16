@@ -88,6 +88,23 @@ vector2[vector2 > 17 & vector2 < 20]
 vector2[vector2 > 17 | vector2 == 13]
 ```
 
+## Assignment & Indexing
+
+Indexing is not just useful for extracting elements from a vector.  You can also use the assignment operator `<-` to replace particular elements in a vector.  Consider these examples:
+
+```{r}
+primates <- c("lemur", "gibbon", "langur", "gibbon", "gorilla")
+primates
+
+primates[3] <- "bushbaby"
+primates
+
+primates[primates == "gorilla"] <- "chimpanzee"
+primates
+
+
+```
+
 ## Factors
 
 A factor is a special type of vector for storing categorical data.  For instance, we might create a factor of different pets: 

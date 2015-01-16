@@ -148,6 +148,19 @@ vector_this_will_be_text &lt;- c(21,22,23,24,25,26,27,28,29,&quot;thirty&quot;)<
 <pre class="r"><code>vector2[vector2 &gt; 17 | vector2 == 13]</code></pre>
 <pre><code>## [1] 13 18 19 20</code></pre>
 </div>
+<div id="assignment-indexing" class="section level2">
+<h2>Assignment &amp; Indexing</h2>
+<p>Indexing is not just useful for extracting elements from a vector. You can also use the assignment operator <code>&lt;-</code> to replace particular elements in a vector. Consider these examples:</p>
+<pre class="r"><code>primates &lt;- c(&quot;lemur&quot;, &quot;gibbon&quot;, &quot;langur&quot;, &quot;gibbon&quot;, &quot;gorilla&quot;)
+primates</code></pre>
+<pre><code>## [1] &quot;lemur&quot;   &quot;gibbon&quot;  &quot;langur&quot;  &quot;gibbon&quot;  &quot;gorilla&quot;</code></pre>
+<pre class="r"><code>primates[3] &lt;- &quot;bushbaby&quot;
+primates</code></pre>
+<pre><code>## [1] &quot;lemur&quot;    &quot;gibbon&quot;   &quot;bushbaby&quot; &quot;gibbon&quot;   &quot;gorilla&quot;</code></pre>
+<pre class="r"><code>primates[primates == &quot;gorilla&quot;] &lt;- &quot;chimpanzee&quot;
+primates</code></pre>
+<pre><code>## [1] &quot;lemur&quot;      &quot;gibbon&quot;     &quot;bushbaby&quot;   &quot;gibbon&quot;     &quot;chimpanzee&quot;</code></pre>
+</div>
 <div id="factors" class="section level2">
 <h2>Factors</h2>
 <p>A factor is a special type of vector for storing categorical data. For instance, we might create a factor of different pets:</p>
@@ -231,7 +244,7 @@ paste(part1, part2)</code></pre>
 <div id="output-of-r-markdown-after-knitting" class="section level3">
 <h3>Output of R Markdown after knitting</h3>
 <p>This sentence is just normal text, made for humans to read. The following bit is a “code chunk”, which is set off by the ``` characters and consists of actual R code that gets run, and the results knitted back into the document. You can also put R code inline like this. What is 2 + 2? The answer is 4.</p>
-<p><img src="intro_to_R_files/figure-html/unnamed-chunk-13-1.png" title="" alt="" width="672" /></p>
+<p><img src="intro_to_R_files/figure-html/unnamed-chunk-14-1.png" title="" alt="" width="672" /></p>
 <p>Here is some more human readable text right after the code chunk.</p>
 </div>
 </div>

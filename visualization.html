@@ -129,8 +129,12 @@ qplot(x=carat, data=diamonds)</code></pre>
 <div id="layers" class="section level2">
 <h2>Layers</h2>
 <p>The most common layer you will want to add is a line representing a linear regression. To do this, we start with the bivariate plot, then add a new layer.</p>
-<pre class="r"><code>qplot(x=carat, y=price, data=diamonds, main=&quot;Diamond Weight by Price&quot;) + stat_smooth(method=&quot;lm&quot;)</code></pre>
-<p><img src="visualization_files/figure-html/unnamed-chunk-6.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" width="672" /></p>
+<pre class="r"><code>weight_by_price &lt;- qplot(x=carat, y=price, data=diamonds, main=&quot;Diamond Weight by Price&quot;)
+weight_by_price + stat_smooth(method=&quot;lm&quot;)</code></pre>
+<p><img src="visualization_files/figure-html/unnamed-chunk-6-1.png" title="" alt="" width="672" /></p>
+<p>Another common layer you will want to add is an annotation layer. The <code>annotate()</code> function lets you do that.</p>
+<pre class="r"><code>weight_by_price + annotate(&quot;text&quot;, x=2, y=25000, label=&quot;Here is a nice annotation, dear reader.&quot;)</code></pre>
+<p><img src="visualization_files/figure-html/unnamed-chunk-7-1.png" title="" alt="" width="672" /></p>
 <div id="challenge" class="section level3">
 <h3><span class="mega-octicon octicon-puzzle"></span> Challenge</h3>
 <p>The relationship here is clearly not linear. Recreate the plot in log space by computing the natural log of both variables. To save memory space do the log calculations inline, without saving the logged variables.</p>
@@ -140,23 +144,23 @@ qplot(x=carat, data=diamonds)</code></pre>
 <h2>Color, Size, Shape, Fill</h2>
 <p>Sometimes we want to see the impact of other variables variables by color coding points, or changing the shape or size of points in relation to another variable. <code>qplot()</code> makes this very easy, and even automatically creates legends for us.</p>
 <pre class="r"><code>qplot(x=carat, y=price, data=diamonds, main=&quot;Diamond Weight by Price&quot;, color=clarity)</code></pre>
-<p><img src="visualization_files/figure-html/unnamed-chunk-7-1.png" title="" alt="" width="672" /></p>
+<p><img src="visualization_files/figure-html/unnamed-chunk-8-1.png" title="" alt="" width="672" /></p>
 <pre class="r"><code>qplot(x=carat, y=price, data=diamonds, main=&quot;Diamond Weight by Price&quot;, shape=cut)</code></pre>
-<p><img src="visualization_files/figure-html/unnamed-chunk-7-2.png" title="" alt="" width="672" /></p>
+<p><img src="visualization_files/figure-html/unnamed-chunk-8-2.png" title="" alt="" width="672" /></p>
 </div>
 <div id="facets" class="section level2">
 <h2>Facets</h2>
 <p>When we have so many data points, it is hard to tell what is going on. It would be nice to have a grid of sub-plots, so we can see the effect of these factors on the relationship between price and size. We can use the <code>facets</code> argument and tell it which factors we want to use, as in <code>facets=row_var~column_var</code></p>
 <pre class="r"><code>qplot(x=carat, y=price, data=diamonds, main=&quot;Diamond Weight by Price&quot;, facets=cut~clarity)</code></pre>
-<p><img src="visualization_files/figure-html/unnamed-chunk-8.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" width="672" /></p>
+<p><img src="visualization_files/figure-html/unnamed-chunk-9-1.png" title="" alt="" width="672" /></p>
 </div>
 <div id="themes" class="section level2">
 <h2>Themes</h2>
 <p>There are a couple of shortcut theme functions that help you customize the look and feel of plots. A very popular one is <code>theme_bw()</code> which gets rid of the default grey background. You can also specify a value for the base text size, to increase size for presentations, etc. All the text elements will scale intelligently. Also check out <code>theme_classic()</code></p>
 <pre class="r"><code>qplot(x=carat, y=price, data=diamonds, main=&quot;Diamond Weight by Price&quot;, color=clarity)+ theme_bw(20)</code></pre>
-<p><img src="visualization_files/figure-html/unnamed-chunk-91.png" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" width="672" /></p>
+<p><img src="visualization_files/figure-html/unnamed-chunk-10-1.png" title="" alt="" width="672" /></p>
 <pre class="r"><code>qplot(x=carat, y=price, data=diamonds, main=&quot;Diamond Weight by Price&quot;, color=clarity) + theme_classic(20)</code></pre>
-<p><img src="visualization_files/figure-html/unnamed-chunk-92.png" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" width="672" /></p>
+<p><img src="visualization_files/figure-html/unnamed-chunk-10-2.png" title="" alt="" width="672" /></p>
 </div>
 <div id="default-themes" class="section level2">
 <h2>Default Themes</h2>
@@ -164,9 +168,91 @@ qplot(x=carat, data=diamonds)</code></pre>
 <pre class="r"><code>theme_set(theme_bw(20))
 qplot(price, data=diamonds)</code></pre>
 <pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.</code></pre>
-<p><img src="visualization_files/figure-html/unnamed-chunk-101.png" title="plot of chunk unnamed-chunk-10" alt="plot of chunk unnamed-chunk-10" width="672" /></p>
+<p><img src="visualization_files/figure-html/unnamed-chunk-11-1.png" title="" alt="" width="672" /></p>
 <pre class="r"><code>qplot(depth, table, data=diamonds)</code></pre>
-<p><img src="visualization_files/figure-html/unnamed-chunk-102.png" title="plot of chunk unnamed-chunk-10" alt="plot of chunk unnamed-chunk-10" width="672" /></p>
+<p><img src="visualization_files/figure-html/unnamed-chunk-11-2.png" title="" alt="" width="672" /></p>
+</div>
+<div id="the-real-ggplot" class="section level2">
+<h2>The real ggplot()</h2>
+<p>Now I must reveal that you have been using a shortcut, and that you can’t get the full benefit out of <code>ggplot2</code> with the <code>qplot()</code> shortcut.</p>
+<p><code>ggplot2</code> is based on the so-called “Grammar of Graphics”, which is a terminology for describing how data is mapped to aesthetic properties to make informative graphics. Plots are comprised of the following</p>
+<ul>
+<li>background elements (shared by all layers in a plot)
+<ul>
+<li>coordinate system (usually Cartesian, so we don’t often directly change this)</li>
+<li>data - a dataframe which applies to all layers</li>
+<li>scales - mapping of data values into plot values (either coordinates or aesthetic properties like color values)</li>
+<li>facets (optional) - specification of subplots within a plot, mapped to a column in the dataframe</li>
+</ul></li>
+<li>layers which are ummm…..layered over the background
+<ul>
+<li>mapping - optional linking of data columns to aesthetic elements (color,shape,etc), that only apply to a particular layer</li>
+<li>data - an optional additional dataframe used only in a particular layer</li>
+<li>stat - a statistical transformation of rows in the dataframe (often this is the identity transformation)</li>
+<li>geom - choice of how to graphically represent the stat</li>
+</ul></li>
+</ul>
+</div>
+<div id="the-ggplot-workflow" class="section level2">
+<h2>The ggplot() workflow</h2>
+<ul>
+<li>invoke the <code>ggplot()</code> function to set background elements which will apply to all layers.
+<ul>
+<li>supply a base dataframe</li>
+<li>use <code>aes()</code> to map dataframe columns to aesthetics. Things you can set include
+<ul>
+<li><code>color</code></li>
+<li><code>fill</code> (the color of polygons or boxplots)</li>
+<li><code>shape</code></li>
+<li><code>size</code></li>
+<li><code>alpha</code> (i.e. transparency)</li>
+</ul></li>
+<li>Anything not getting mapped to a column (e.g. <code>color=&quot;blue&quot;</code>) doesn’t go inside a call to <code>aes()</code></li>
+<li>Use <code>facet_grid()</code> or <code>facet_wrap()</code> to add faceting formula.</li>
+</ul></li>
+<li>Add layers to the plot, usually using one of the <code>geom_xxx()</code> functions. For a full list of the possibilities try <code>??geom</code> The most common are
+<ul>
+<li><code>geom_point()</code></li>
+<li><code>geom_histogram()</code></li>
+<li><code>geom_bar()</code></li>
+<li><code>geom_path()</code></li>
+<li><code>geom_rect()</code></li>
+<li><code>geom_polygon()</code></li>
+<li><code>geom_abline()</code></li>
+<li><code>geom_text()</code></li>
+<li><code>geom_hline()</code> and <code>geom_vline()</code></li>
+<li><strong>Note</strong> you can map aesthetics specific to a layer by supplying the appropriate arguments to these functions</li>
+</ul></li>
+<li>add an annotation layer <code>annotate()</code> to your plot (you can supply more complicated annotations by using a bonafide text layer using <code>geom_text()</code>)</li>
+<li>Style the plot and tweak axes etc.
+<ul>
+<li>Themes are a useful shortcut</li>
+<li>There are some helper functions for tweaking plots</li>
+<li><code>labs(x=&quot;The X axis label&quot;, title=&quot;my nice little graph&quot;)</code></li>
+<li><code>guides()</code> to tweak legend</li>
+<li><code>scale_x_continuous(limits=c(0,10))</code> to customize x scale</li>
+<li><code>scale_fill_xxx()</code> and <code>scale_color_xxx()</code> for customizing color choices<br /></li>
+</ul></li>
+<li>Export the plot in a useful format using <code>ggsave()</code></li>
+<li>Submit for publication.</li>
+</ul>
+</div>
+<div id="a-full-example" class="section level2">
+<h2>A full example</h2>
+<p>First we set up the background:</p>
+<pre class="r"><code>background &lt;- ggplot(data = diamonds, aes(x = clarity, y=price))</code></pre>
+<p><span class="mega-octicon octicon-question"></span> What happens when you type <code>background</code> in the interpreter at this point?</p>
+<p>Now we add a boxplot layer:</p>
+<pre class="r"><code>with_boxplot &lt;- background + geom_boxplot(aes(fill=cut))
+with_boxplot</code></pre>
+<p><img src="visualization_files/figure-html/unnamed-chunk-13-1.png" title="" alt="" width="1344" /></p>
+<p>Finally, I style my plot with a theme, and make a couple of tweaks</p>
+<pre class="r"><code>with_boxplot + 
+  theme_bw(20) + 
+  labs(title=&quot;Price by Clarity&quot;) + 
+  scale_y_continuous(limits=c(0,25000)) + 
+  annotate(&quot;text&quot;, x=4.5, y=23000, label=&quot;There are lots of outliers, because people feel societal \npressure to pay a lot for engagement rings \n and or get duped by salespeople #speculation&quot;, size= 4)</code></pre>
+<p><img src="visualization_files/figure-html/unnamed-chunk-14-1.png" title="" alt="" width="1344" /></p>
 </div>
 
 

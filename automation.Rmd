@@ -3,7 +3,7 @@ options(width = 100)
 ```
 # Automation
 
-R is a programming language, which means that it gives you all the tools you need to automate repetitive tasks.  There are three main ways to do this:
+R is a programming language, which means that it gives you all the tools you need to automate repetitive tasks.  There are three (or more) main ways to do this:
 
 * `for` loops
 * the `apply()` family of functions
@@ -43,8 +43,9 @@ for(counter in myVector){
   results[counter] <- paste("counter ^ 2 = ", counter^2)
 }
 
-##now get just one of the stored results
+##now get some of the stored results
 results[50]
+results[67]
 ```
 
 
@@ -158,7 +159,7 @@ mutate(loans, Total_Loans = SubsidizedDL + UNSubsidizedDL)
 Summarizes data into a single row.  This may seem not that useful, but it will become useful when we start grouping data. 
 
 ```{r}
-summarise(loans, mean(SubsidizedDL, na.rm=TRUE))
+summarise(loans, meanSubDL = mean(SubsidizedDL, na.rm=TRUE))
 ```
 
 
@@ -172,7 +173,7 @@ These functions above get really powerful when you start grouping data based on 
 groupedLoans <- group_by(loans, State)
 groupedLoans
 
-summarise(groupedLoans, mean(SubsidizedDL, na.rm=TRUE))
+summarise(groupedLoans, meanSubDL = mean(SubsidizedDL, na.rm=TRUE))
 ```
 
 ### Chaining operations
@@ -186,7 +187,7 @@ group_by(loans, School_Type) %>%
   summarise(mean_total_loans = mean(Total_Loans, na.rm=TRUE))
 ```
 
-**Note:** If you like this idea of chaining operations, this actually comes from a separate package called `magrittr`, which `dplyr` relies on.  If you want you can use this in your non `dplyr` code as well. Notice that in the example below, if you are piping to a 
+**Note:** If you like this idea of chaining operations, this actually comes from a separate package called `magrittr`, which `dplyr` relies on.  If you want you can use this in your non `dplyr` code as well. Notice that in the example below, if you are piping to a function that only needs 1 argument, you can leave out the parentheses, and just type the name of the function. 
 
 ```{r warning=FALSE}
 library(magrittr)
@@ -199,8 +200,6 @@ rnorm(1000, mean=20, sd=1.4) %>% log %>% qplot
 
 qplot(log(rnorm(1000, mean=20, sd=1.4)))
 ```
-
-
 
 
 A more complete introduction is available in the [`dplyr` vignette](http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html)

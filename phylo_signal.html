@@ -89,17 +89,22 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <pre class="r"><code>library(phytools)
 library(geiger)
 library(dplyr)
+library(ggplot2)
 
 astrag &lt;- read.table(&quot;http://hompal-stats.wabarr.com/datasets/barr_astrag_2014.txt&quot;, header=TRUE, sep=&quot;\t&quot;)
 astrag &lt;- mutate(astrag, geomean = (B*DistRad*LML*MIN*MML*ProxRad*WAF*WAT) ^ (1/8)) %&gt;%
   filter(Taxon != &quot;Nanger_soemmerringii&quot;)
 
-mean_B_DistRad &lt;- group_by(astrag, Taxon) %&gt;% 
-  summarise(B=mean(B/geomean), DistRad=mean(DistRad/geomean)) 
+PCA &lt;- prcomp(~ B +  DistRad + ProxRad + WAF + WAT + LML + MML, data=astrag, scale=TRUE)
 
+tipsDF &lt;- data.frame(PCA$x)
+tipsDF$Taxon &lt;- astrag$Taxon
+tipsDF &lt;- group_by(tipsDF, Taxon) %&gt;% 
+  summarise(PC2 = mean(PC2), PC3 = mean(PC3))
 
-tip_matrix &lt;- as.matrix(mean_B_DistRad[c(&quot;B&quot;, &quot;DistRad&quot;)])
-row.names(tip_matrix) &lt;- mean_B_DistRad$Taxon
+taxa &lt;- tipsDF$Taxon
+tipsMatrix &lt;- as.matrix(tipsDF[,c(&quot;PC2&quot;, &quot;PC3&quot;)])
+row.names(tipsDF) &lt;- taxa
 
 ruminant &lt;- read.tree(&quot;http://hompal-stats.wabarr.com/datasets/ruminants.phy&quot;)
 
@@ -108,7 +113,7 @@ nonBovids &lt;- name.check(ruminant, astrag, data.names = astrag$Taxon)$tree_not
 bovids &lt;- drop.tip(phy = ruminant, tip = nonBovids)
 
 
-phylomorphospace(tree = bovids, X = tip_matrix, )</code></pre>
+phylomorphospace(tree = bovids, X = tipsMatrix )</code></pre>
 <p><img src="phylo_signal_files/figure-html/unnamed-chunk-1-1.png" title="" alt="" width="672" /></p>
 </div>
 

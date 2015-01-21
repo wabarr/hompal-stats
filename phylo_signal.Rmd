@@ -8,17 +8,23 @@ title: "phylogenetic signal"
 library(phytools)
 library(geiger)
 library(dplyr)
+library(ggplot2)
 
 astrag <- read.table("http://hompal-stats.wabarr.com/datasets/barr_astrag_2014.txt", header=TRUE, sep="\t")
 astrag <- mutate(astrag, geomean = (B*DistRad*LML*MIN*MML*ProxRad*WAF*WAT) ^ (1/8)) %>%
   filter(Taxon != "Nanger_soemmerringii")
 
-mean_B_DistRad <- group_by(astrag, Taxon) %>% 
-  summarise(B=mean(B/geomean), DistRad=mean(DistRad/geomean)) 
+PCA <- prcomp(~ B +  DistRad + ProxRad + WAF + WAT + LML + MML, data=astrag, scale=TRUE)
 
+tipsDF <- data.frame(PCA$x)
+tipsDF$Taxon <- astrag$Taxon
+tipsDF$Hab <- astrag$Habitat
+tipsDF <- group_by(tipsDF, Taxon) %>% 
+  summarise(PC2 = mean(PC2), PC3 = mean(PC3), Hab=unique(Hab))
 
-tip_matrix <- as.matrix(mean_B_DistRad[c("B", "DistRad")])
-row.names(tip_matrix) <- mean_B_DistRad$Taxon
+taxa <- tipsDF$Taxon
+tipsMatrix <- as.matrix(tipsDF[,c("PC2", "PC3")])
+row.names(tipsDF) <- taxa
 
 ruminant <- read.tree("http://hompal-stats.wabarr.com/datasets/ruminants.phy")
 
@@ -27,5 +33,6 @@ nonBovids <- name.check(ruminant, astrag, data.names = astrag$Taxon)$tree_not_da
 bovids <- drop.tip(phy = ruminant, tip = nonBovids)
 
 
-phylomorphospace(tree = bovids, X = tip_matrix, )
+phylomorphospace(tree = bovids, X = tipsMatrix, control=list(node.col=c("red", "blue", "green", "purple")[tipsDF$Hab]))
 ```
+

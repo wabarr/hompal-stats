@@ -10,17 +10,17 @@ Date  | Demo | Homework  | Reading | Student Presentation
 Jan 12 | [Intro to R](intro_to_R.html) | [Try R Tutorial](http://tryr.codeschool.com) | - | - 
 Jan 19 | **MLK Day, No Class** | - | - | - 
 Jan 26 | [Visualizing Data](visualization.html) & [Automation](automation.html) | [HW #1](homework_assignment_1.html) - [Submission Link](https://blackboard.gwu.edu/webapps/assignment/uploadAssignment?content_id=_6406015_1&course_id=_250829_1&assign_group_id=&mode=cpview) | [dplyr vignette](http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html) | - 
-Feb 2	|  [Basic Stats: Probability and Distributions] | [HW #2]()  | Gotelli: Ch 1 - 3 | Sign Up 
-Feb 9 | [Basic Stats: Hypothesis Testing] | [HW #3]()  | [Blog post](https://oikosjournal.wordpress.com/2011/10/11/frequentist-vs-bayesian-statistics-resources-to-help-you-choose/); Gotelli: Ch 4 - 5 | Sign Up 
+Feb 2	|  [Basic Stats: Probability and Distributions] | [HW #2]()  | Gotelli: Ch 1 - 3 | -
+Feb 9 | [Basic Stats: Hypothesis Testing] | [HW #3]()  | [Blog post](https://oikosjournal.wordpress.com/2011/10/11/frequentist-vs-bayesian-statistics-resources-to-help-you-choose/); Gotelli: Ch 4 - 5 | -
 Feb 16 | **President's Day, No Class** | -  | - | - 
-Feb 23 | [Correlation and Regression] | [HW #4]()  | Gotelli: Ch 9 | Sign Up 
+Feb 23 | [Correlation and Regression] | [HW #4]()  | Gotelli: Ch 9 | Clare Kimock
 Mar 2 | **Exam I** | - | - | - 
 Mar 9 | **Spring Break, No Class** | - | - | - 
-Mar 16 | [ANOVA and ANCOVA] | [HW #5]()   | Gotelli: Ch 10 | Sign Up 
-Mar 23 | [Categorical Data] | [HW #6]()   | Gotelli: Ch 11 | Sign Up 
-Mar 30 | [Multivariate Stats: I] |  [HW #7]() | Manly Ch. 1 - 5 | Sign Up 
-Apr 6	| [Multivariate Stats: II] |   [HW #8]() | Manly Ch. 6 - 12 | Sign Up 
-Apr 13 | [Accounting for Phylogenetic Signal (PGLS)] |  [HW #9]() | - | Sign Up 
-Apr 20 | [Resampling Approaches] |  [HW #10]() | - | Sign Up 
-Apr 27 | [Mixed-Models] |  [HW #11]() | [Crawley Ch. 10](readings_pdf/Crawley_Ch10_MixedEffects.pdf) | Sign Up 
+Mar 16 | [ANOVA and ANCOVA] | [HW #5]()   | Gotelli: Ch 10 | Eve Boyle & Lawrence Fatica 
+Mar 23 | [Categorical Data] | [HW #6]()   | Gotelli: Ch 11 | Megan Vakiener
+Mar 30 | [Multivariate Stats: I] |  [HW #7]() | Manly Ch. 1 - 5 | Robert Kaplan & Jon Reeves
+Apr 6	| [Multivariate Stats: II] |   [HW #8]() | Manly Ch. 6 - 12 | Kelly Ostrofsky & Enque Negash
+Apr 13 | [Accounting for Phylogenetic Signal (PGLS)] |  [HW #9]() | - | Brian Schilder
+Apr 20 | [Resampling Approaches] |  [HW #10]() | - | Laurence Dumouchel
+Apr 27 | [Mixed-Models] |  [HW #11]() | [Crawley Ch. 10](readings_pdf/Crawley_Ch10_MixedEffects.pdf) | Sean Lee
 Apr 29 |  **Exam II** (Note: this is designated Wednesday) | - | - | - 

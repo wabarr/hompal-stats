@@ -22,7 +22,7 @@ d.  create a `results` vector, then write a `for` loop to loops through each of 
 
 ## Problem 2
 
-a. Using `dplyr`, calculate the mean of the GOL measuremtn for each Population group by sex.  (i.e., give me a separate mean value for NORSE males and NORSE females).
+a. Using `dplyr`, calculate the mean of the GOL measurement for each population group by sex.  (i.e., calculate the mean value separately for NORSE males and NORSE females, and the same for all groups).
 
 ## Problem 3
 

@@ -201,6 +201,11 @@ rnorm(1000, mean=20, sd=1.4) %>% log %>% qplot
 qplot(log(rnorm(1000, mean=20, sd=1.4)))
 ```
 
+### <span class="mega-octicon octicon-puzzle"></span> Challenge 
+
+Need to put a challenge here. 
+
+### More info
 
 A more complete introduction is available in the [`dplyr` vignette](http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html)
 

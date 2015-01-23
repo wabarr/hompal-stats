@@ -3,9 +3,26 @@ title: "Homework Assignment #2"
 date: "Due Feb. 2nd"
 
 ---
-
+### For each step, make sure your markdown document prints the relevant output, so that I can see <span class="mega-octicon octicon-eye"></span>  that your code works.  
 
 ## Problem 1
+
+a.  Load the [Howell's craniometric dataset](datasets/Howell_craniometry.csv) into R. This dataset includes 82 measurements on 2524 human crania from 28 populations. Note that a 0 indicates missing data in this dataset, so make sure to specify this when you read in the data.
+b.  Evaluate the structure of the dataframe using the `str()` function to make sure that it got read in correctly.  It should have 2524 observations of 86 variables.
+c.  Write a new function called `geomean()` that accepts a vector (of any length) as an argument and returns the geometric mean. 
+    *  **Note:** you will have to figure out how to deal with missing values.
+    *  **Note:** the geometric mean is defined as the *n*-th root of the product of *n* numbers. Thus the geometric mean of 9, 6, 5, 4, and 3 would be calculated like this
+    ```{r}
+    product <- prod(c(9, 6, 5, 4, 3))
+    geomean <- product ^ (1/5)
+    geomean
+    ```
+    
+d.  create a `results` vector, then write a `for` loop to loops through each of the 2524 crania in the Howell's dataset, calculates the geometric mean of all available measurements, and then stores this in the appropriate slot in the `results` vector. Print only first 100 elements of the `results` vector to your markdown document. 
+
+## Problem 2
+
+## Problem 3
 
 Recreate this figure using the tools in `ggplot2`. The data come from the [Zachos et al 2001 deep sea oxygen isotope dataset](datasets/Zachos2001Climate.txt). Plot the o18 values against time, and include rectangular overlays that show the geological epochs of the Cenezoic.  
 
@@ -16,11 +33,11 @@ Use these approximate start dates for the geological epochs:
     epoch = c("Paleocene", "Eocene", "Oligocene", "Miocene", "Pliocene", "Pleistocene", "Holocene")
     start = c(65, 58.8, 33.9, 23.03, 5.5, 1.8, 0.01)
     
-Note: The original dataset is noisy.  Use a convolution filter with the `filter()` function to reduce noise in the dataset.
+**Note:** The original dataset is noisy.  Use a convolution filter with the `filter()` function to reduce noise in the dataset.
 
-Note also: You can use `scale_x_reverse()` to flip an axis.
+**Note also:** You can use `scale_x_reverse()` to flip an axis.
 
-Note one more thing: This is a good example of a case in which you need separate dataframes for separate layers.
+**Note one more thing:** This is a good example of a case in which you need separate dataframes for separate layers.
 
 
 

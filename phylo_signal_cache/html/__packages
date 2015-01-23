@@ -6,3 +6,4 @@ phytools
 geiger
 dplyr
 ggplot2
+magrittr

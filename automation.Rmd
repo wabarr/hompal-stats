@@ -6,7 +6,7 @@ options(width = 100)
 R is a programming language, which means that it gives you all the tools you need to automate repetitive tasks.  There are three (or more) main ways to do this:
 
 * `for` loops
-* the `apply()` family of functions
+* the `lapply()` function
 * the `dplyr` package
 
 ## for loops

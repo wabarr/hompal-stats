@@ -99,8 +99,9 @@ PCA &lt;- prcomp(~ B +  DistRad + ProxRad + WAF + WAT + LML + MML, data=astrag, 
 
 tipsDF &lt;- data.frame(PCA$x)
 tipsDF$Taxon &lt;- astrag$Taxon
+tipsDF$Hab &lt;- astrag$Habitat
 tipsDF &lt;- group_by(tipsDF, Taxon) %&gt;% 
-  summarise(PC2 = mean(PC2), PC3 = mean(PC3))
+  summarise(PC2 = mean(PC2), PC3 = mean(PC3), Hab=unique(Hab))
 
 taxa &lt;- tipsDF$Taxon
 tipsMatrix &lt;- as.matrix(tipsDF[,c(&quot;PC2&quot;, &quot;PC3&quot;)])
@@ -113,7 +114,7 @@ nonBovids &lt;- name.check(ruminant, astrag, data.names = astrag$Taxon)$tree_not
 bovids &lt;- drop.tip(phy = ruminant, tip = nonBovids)
 
 
-phylomorphospace(tree = bovids, X = tipsMatrix )</code></pre>
+phylomorphospace(tree = bovids, X = tipsMatrix, control=list(node.col=c(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;, &quot;purple&quot;)[tipsDF$Hab]))</code></pre>
 <p><img src="phylo_signal_files/figure-html/unnamed-chunk-1-1.png" title="" alt="" width="672" /></p>
 </div>
 

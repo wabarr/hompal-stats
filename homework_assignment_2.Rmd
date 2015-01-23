@@ -22,6 +22,8 @@ d.  create a `results` vector, then write a `for` loop to loops through each of 
 
 ## Problem 2
 
+a. Using `dplyr`, calculate the mean of the GOL measuremtn for each Population group by sex.  (i.e., give me a separate mean value for NORSE males and NORSE females).
+
 ## Problem 3
 
 Recreate this figure using the tools in `ggplot2`. The data come from the [Zachos et al 2001 deep sea oxygen isotope dataset](datasets/Zachos2001Climate.txt). Plot the o18 values against time, and include rectangular overlays that show the geological epochs of the Cenezoic.  

@@ -19,10 +19,12 @@ c.  Write a new function called `geomean()` that accepts a vector (of any length
     ```
     
 d.  create a `results` vector, then write a `for` loop to loops through each of the 2524 crania in the Howell's dataset, calculates the geometric mean of all available measurements, and then stores this in the appropriate slot in the `results` vector. Print only first 100 elements of the `results` vector to your markdown document. 
+e.  add this as a new column to the crania dataframe
 
 ## Problem 2
 
-a. Using `dplyr`, calculate the mean of the GOL measurement for each population group by sex.  (i.e., calculate the mean value separately for NORSE males and NORSE females, and the same for all groups).
+a. Using `dplyr`, calculate the mean of the GOL, XCB, ZYB and SIS measurements for each population group by sex.  (i.e., calculate the mean value separately for NORSE males and NORSE females, and the same for all groups). The resulting data frame should only have 6 columns. 
+b. 
 
 ## Problem 3
 

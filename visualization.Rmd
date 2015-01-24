@@ -1,10 +1,9 @@
 ---
-title: "Visualizing Data and Automation in R"
+title: "Visualizing Data"
 ---
 
-## Visualizing Data
 
-**I am opinionated when it comes to graphics in R.**
+## I am opinionated when it comes to graphics in R.
 
 I prefer to not to use the standard graphics facilities in R, which are rather kludgy and take lots of tweaking to make the graphs look great.  Instead, I prefer to use the `ggplot2` package.  You need to install this package using the standard package manager: Tools > Package Manager. Then you will load the package using the command `library(ggplot2)`.
 

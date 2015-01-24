@@ -118,20 +118,30 @@ for(counter in myVector){
 <h3>getting stuff out of a loop</h3>
 <p>Often, we want to do some calculations, and save the results outside of the <code>for</code> loop. To do this, we can create a results vector in advance that is the same length as the vector we are looping over, then we can save the results each time in the appropriate slot.</p>
 <pre class="r"><code>myVector &lt;- runif(100, min = 1, max=10)
-results &lt;- numeric(100)
+myVector</code></pre>
+<pre><code>##   [1] 3.122504 6.474750 6.205447 1.173584 8.557625 8.244364 7.603628 7.014911 8.238271 9.562272 6.553192 6.888922
+##  [13] 2.751687 8.445793 5.230896 7.630239 5.096211 8.269825 7.519851 3.006433 3.309640 4.103673 1.381267 7.048689
+##  [25] 3.053695 8.604482 8.151622 9.204799 2.307442 2.089273 4.183954 7.989589 8.880970 2.261953 6.399874 4.593428
+##  [37] 9.562551 1.446404 8.166083 4.571646 3.854462 6.697739 8.804064 7.824866 4.145866 6.831817 8.525347 7.317992
+##  [49] 9.069397 3.389658 7.979288 8.402922 7.081274 3.732640 7.591759 6.109090 9.874661 7.872758 3.221091 7.949162
+##  [61] 1.017471 8.320518 1.326278 3.017563 9.218672 8.826138 2.401379 3.876088 6.446886 7.030421 6.710648 6.205610
+##  [73] 7.669697 9.294526 2.577917 1.531215 1.143036 1.381097 1.257743 2.048512 4.048777 3.924977 9.375353 6.947049
+##  [85] 9.516926 7.163713 9.966661 5.621596 2.578985 9.881076 6.033126 2.737455 4.214968 2.792005 9.955013 6.813191
+##  [97] 7.229759 5.046759 6.067493 5.283553</code></pre>
+<pre class="r"><code>results &lt;- numeric(100)
 for(each in 1:length(myVector)){
   results[each] &lt;- paste(myVector[each], &quot;^ 2 = &quot;, myVector[each]^2)
 }
 
 ##now get some of the stored results
 results[50]</code></pre>
-<pre><code>## [1] &quot;1.0440802318044 ^ 2 =  1.09010353044473&quot;</code></pre>
+<pre><code>## [1] &quot;3.38965763826855 ^ 2 =  11.4897789046723&quot;</code></pre>
 <pre class="r"><code>results[67]</code></pre>
-<pre><code>## [1] &quot;1.23186396062374 ^ 2 =  1.51748881748361&quot;</code></pre>
+<pre><code>## [1] &quot;2.40137859922834 ^ 2 =  5.76661917683185&quot;</code></pre>
 </div>
 <div id="if-statements" class="section level3">
 <h3><code>if</code> statements</h3>
-<p>Often during a loop, you may want to do a test and do something different based on the results of the test. Imagine a vector of germination outcomes from a seed experiment. 0 indicates the seed did not germinate due to insect predatoin, 1 indicates that it did not germinate but no insect predation occurrend, 2 indicates that the seed germinated. We can use the <code>if(condition)</code> function to evaluate the outcome and provide context specific output.</p>
+<p>Often during a loop, you may want to do a test and do something different based on the results of the test. Imagine a vector of germination outcomes from a seed experiment. 0 indicates the seed did not germinate due to insect predatoin, 1 indicates that it did not germinate but no insect predation occurrend, 2 indicates that the seed germinated. We can use the <code>if()</code> function to evaluate the outcome and provide context specific output.</p>
 <pre class="r"><code>outcomes &lt;- c(0,1,0,2,0,1,0,2,0,1,0,1,0,0)
 for(trial in outcomes){
   if(trial == 2) print(&quot;Welcome to the world, plantling!&quot;)
@@ -180,16 +190,16 @@ sampleSizes &lt;- 100:200
 myResults &lt;- lapply(sampleSizes, FUN=summarizeRandom)
 myResults[1:3]</code></pre>
 <pre><code>## [[1]]
-##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-## -2.8970 -0.5976 -0.1936 -0.1297  0.5773  3.1650 
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+## -3.10700 -0.84960 -0.01548 -0.09486  0.67800  2.61900 
 ## 
 ## [[2]]
 ##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-## -3.14400 -0.74660  0.05087  0.02483  0.75540  3.10800 
+## -2.52000 -0.81320 -0.06206 -0.06491  0.62110  2.19100 
 ## 
 ## [[3]]
-##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-## -2.5260 -0.7448 -0.0356 -0.1065  0.5623  2.0270</code></pre>
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+## -2.64800 -0.53230  0.03111  0.02683  0.51770  3.54400</code></pre>
 </div>
 <div id="the-dplyr-package" class="section level2">
 <h2>the dplyr package</h2>
@@ -204,7 +214,7 @@ loans &lt;- tbl_df(loans)</code></pre>
 </div>
 <div id="the-basic-dplyr-verbs" class="section level3">
 <h3>The basic dplyr verbs</h3>
-<p>There are a few basic functions in <code>dplyr</code>, which are designed to help you think about the most common data manipulation tasks that you will need to do.</p>
+<p>There are a few basic functions in <code>dplyr</code>, which are designed to help you think about the most common data manipulation tasks that you will need to do. The first argument to these functions is always the dataframe that you want to manipulate. Within these function calls, you can refer to the names of columns in the dataframe without quotation marks and without the usual <code>$</code> syntax.</p>
 </div>
 <div id="filter" class="section level3">
 <h3><code>filter()</code></h3>
@@ -418,7 +428,10 @@ qplot(log(rnorm(1000, mean=20, sd=1.4)))</code></pre>
 </div>
 <div id="challenge-2" class="section level3">
 <h3><span class="mega-octicon octicon-puzzle"></span> Challenge</h3>
-<p>Need to put a challenge here.</p>
+<p>Using the <code>diamonds</code> dataset that is built in to the <code>ggplot2</code> package:</p>
+<ul>
+<li></li>
+</ul>
 </div>
 <div id="more-info" class="section level3">
 <h3>More info</h3>

@@ -40,6 +40,7 @@ Often, we want to do some calculations, and save the results outside of the `for
 
 ```{r}
 myVector <- runif(100, min = 1, max=10)
+myVector
 results <- numeric(100)
 for(each in 1:length(myVector)){
   results[each] <- paste(myVector[each], "^ 2 = ", myVector[each]^2)
@@ -52,7 +53,7 @@ results[67]
 
 ### `if` statements
 
-Often during a loop, you may want to do a test and do something different based on the results of the test. Imagine a vector of germination outcomes from a seed experiment.  0 indicates the seed did not germinate due to insect predatoin,  1 indicates that it did not germinate but no insect predation occurrend, 2 indicates that the seed germinated. We can use the `if(condition)` function to evaluate the outcome and provide context specific output. 
+Often during a loop, you may want to do a test and do something different based on the results of the test. Imagine a vector of germination outcomes from a seed experiment.  0 indicates the seed did not germinate due to insect predatoin,  1 indicates that it did not germinate but no insect predation occurrend, 2 indicates that the seed germinated. We can use the `if()` function to evaluate the outcome and provide context specific output. 
 
 
 ```{r}
@@ -125,7 +126,7 @@ loans <- tbl_df(loans)
 
 ### The basic dplyr verbs
 
-There are a few basic functions in `dplyr`, which are designed to help you think about the most common data manipulation tasks that you will need to do. 
+There are a few basic functions in `dplyr`, which are designed to help you think about the most common data manipulation tasks that you will need to do. The first argument to these functions is always the dataframe that you want to manipulate. Within these function calls, you can refer to the names of columns in the dataframe without quotation marks and without the usual `$` syntax. 
 
 ### `filter()` 
 
@@ -220,7 +221,9 @@ qplot(log(rnorm(1000, mean=20, sd=1.4)))
 
 ### <span class="mega-octicon octicon-puzzle"></span> Challenge 
 
-Need to put a challenge here. 
+Using the `diamonds` dataset that is built in to the `ggplot2` package:
+
+*  
 
 ### More info
 

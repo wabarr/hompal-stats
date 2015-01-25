@@ -23,8 +23,14 @@ e.  add this as a new column to the crania dataframe
 
 ## Problem 2
 
-a. Using `dplyr`, calculate the mean of the GOL, XCB, ZYB and SIS measurements for each population group by sex.  (i.e., calculate the mean value separately for NORSE males and NORSE females, and the same for all groups). The resulting data frame should only have 6 columns. 
-b. 
+a. Using `dplyr`, calculate the mean of the GOL, XCB, ZYB and SIS measurements for each population group by sex.  (i.e., calculate the mean value separately for NORSE males and NORSE females, and likewise for all groups). The resulting data frame should only have 6 columns. (eliminate all the extra columns).
+b. Recreate this figure exactly (including the theme) using the full cranial dataset
+
+```{r cache=TRUE, echo=FALSE,  fig.width=16, fig.height=9}
+library(ggplot2)
+crania <- read.table("http://hompal-stats.wabarr.com/datasets/Howell_craniometry.csv",sep=",", header=TRUE, na=0)
+qplot(GOL, BBH, data=crania) + facet_wrap(~Population) + theme_bw(20)
+```
 
 ## Problem 3
 
@@ -38,8 +44,6 @@ Use these approximate start dates for the geological epochs:
     start = c(65, 58.8, 33.9, 23.03, 5.5, 1.8, 0.01)
     
 **Note:** The original dataset is noisy.  Use a convolution filter with the `filter()` function to reduce noise in the dataset.
-
-**Note also:** You can use `scale_x_reverse()` to flip an axis.
 
 **Note one more thing:** This is a good example of a case in which you need separate dataframes for separate layers.
 

@@ -103,10 +103,16 @@ geomean &lt;- product ^ (1/5)
 geomean</code></pre>
 <pre><code>## [1] 5.03627</code></pre></li>
 <li>create a <code>results</code> vector, then write a <code>for</code> loop to loops through each of the 2524 crania in the Howell’s dataset, calculates the geometric mean of all available measurements, and then stores this in the appropriate slot in the <code>results</code> vector. Print only first 100 elements of the <code>results</code> vector to your markdown document.</li>
+<li>add this as a new column to the crania dataframe</li>
 </ol>
 </div>
 <div id="problem-2" class="section level2">
 <h2>Problem 2</h2>
+<ol style="list-style-type: lower-alpha">
+<li>Using <code>dplyr</code>, calculate the mean of the GOL, XCB, ZYB and SIS measurements for each population group by sex. (i.e., calculate the mean value separately for NORSE males and NORSE females, and likewise for all groups). The resulting data frame should only have 6 columns. (eliminate all the extra columns).</li>
+<li>Recreate this figure exactly (including the theme) using the full cranial dataset</li>
+</ol>
+<p><img src="homework_assignment_2_files/figure-html/unnamed-chunk-2-1.png" title="" alt="" width="1536" /></p>
 </div>
 <div id="problem-3" class="section level2">
 <h2>Problem 3</h2>
@@ -116,7 +122,6 @@ geomean</code></pre>
 <pre><code>epoch = c(&quot;Paleocene&quot;, &quot;Eocene&quot;, &quot;Oligocene&quot;, &quot;Miocene&quot;, &quot;Pliocene&quot;, &quot;Pleistocene&quot;, &quot;Holocene&quot;)
 start = c(65, 58.8, 33.9, 23.03, 5.5, 1.8, 0.01)</code></pre>
 <p><strong>Note:</strong> The original dataset is noisy. Use a convolution filter with the <code>filter()</code> function to reduce noise in the dataset.</p>
-<p><strong>Note also:</strong> You can use <code>scale_x_reverse()</code> to flip an axis.</p>
 <p><strong>Note one more thing:</strong> This is a good example of a case in which you need separate dataframes for separate layers.</p>
 </div>
 

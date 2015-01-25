@@ -48,7 +48,7 @@ for(each in 1:length(myVector)){
 
 ##now get some of the stored results
 results[50]
-results[67]
+results[73]
 ```
 
 ### `if` statements
@@ -86,7 +86,29 @@ plot(1:2000, results, pch=16)
 
 The function `lapply()` is like a `for` loop, but is optimized and explicitly functional. `lapply()` usually takes two arguments `X` which is a list or a vector to loop over, and `FUN` which is a function to apply to each element of `X`.  Thus, `FUN` must be able to accept any element of `X` as an argument. The clearest way is to write your own function.  
 
-The "l" in `lapply()` stands for "list", because that's what you get as a result.  This is useful, because you allows you to store complex stuff from each iteration.  For example: 
+The "l" in `lapply()` stands for "list", because that's what you get as a result. Lists are kind of like vectors, but with important differences:
+
+#### lists can hold any type of data, and not every element needs to be the same type.
+
+```{r}
+myList <- list(firstOne=1, nextOne="too", lastOne=rnorm(10))
+myList
+```
+
+#### you use double brackets `[[]]` to index a list
+
+```{r}
+myList[[3]]
+```
+
+#### lists can (optionally) have named elements, that can be accessed using the `$` operator 
+```{r}
+myList$nextOne
+```
+
+### Lists are useful because of their flexibility. 
+
+We can store complex results from each iteration, and then come back to these results later. 
 
 ```{r}
 # note, we must accept an argument
@@ -223,7 +245,9 @@ qplot(log(rnorm(1000, mean=20, sd=1.4)))
 
 Using the `diamonds` dataset that is built in to the `ggplot2` package:
 
-*  
+*  calculate the mean price of diamonds for each of the different clarity ratings
+*  create a new column called `volume` that is the product of x, y and z
+*  plot `volume` against `carat`
 
 ### More info
 

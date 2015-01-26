@@ -119,15 +119,15 @@ for(counter in myVector){
 <p>Often, we want to do some calculations, and save the results outside of the <code>for</code> loop. To do this, we can create a results vector in advance that is the same length as the vector we are looping over, then we can save the results each time in the appropriate slot.</p>
 <pre class="r"><code>myVector &lt;- runif(100, min = 1, max=10)
 myVector</code></pre>
-<pre><code>##   [1] 4.169032 9.381425 8.262496 9.544557 4.436901 4.822694 5.753550 2.374441 6.454186 2.900714 7.761086 5.262878
-##  [13] 6.566285 9.407271 7.956532 4.724440 6.323211 1.760518 5.189697 1.804985 3.332651 5.443809 2.734080 9.134047
-##  [25] 7.894031 4.351312 7.736285 1.319876 5.160511 4.344400 2.162907 4.056943 2.208939 5.192294 3.997332 9.098933
-##  [37] 5.841177 7.260616 2.173945 8.354821 2.711332 8.382490 8.309526 9.225534 3.455903 7.416200 5.832861 3.155038
-##  [49] 8.248312 3.901136 4.688629 8.967419 7.653447 6.412762 5.965366 6.557148 8.179407 7.179055 7.838160 1.622826
-##  [61] 4.993543 3.808863 9.500588 1.771975 4.017842 5.118576 4.176763 3.477405 8.071101 6.016221 6.342884 5.081467
-##  [73] 3.630910 6.901673 5.237839 5.603000 7.936080 8.070746 2.955768 6.877485 4.252765 5.878201 3.766132 4.372458
-##  [85] 5.023632 6.617605 1.813040 4.384392 2.615013 8.116380 1.078992 2.142113 9.446395 1.467616 7.224622 1.101452
-##  [97] 3.314160 4.384912 2.067689 5.979205</code></pre>
+<pre><code>##   [1] 6.607003 9.692862 5.444176 4.748146 8.833713 4.596215 6.564168 4.848860 2.696456 3.965114 5.497345 2.406339
+##  [13] 1.401822 8.041336 3.485758 4.058546 9.577417 6.015290 7.410805 1.287536 3.777164 9.438812 8.274525 6.451334
+##  [25] 6.911961 7.372483 3.838205 2.063914 2.556646 4.211633 1.654287 4.512662 3.876075 1.928881 2.573089 1.943260
+##  [37] 3.027283 7.554731 2.969709 5.576643 2.791155 2.928296 3.302682 3.321758 7.389931 4.146995 5.193015 4.718434
+##  [49] 7.092931 9.790803 4.585226 5.631485 6.715122 2.221321 4.930676 1.829307 1.205020 7.983958 7.336623 1.654236
+##  [61] 4.817655 4.693708 6.337397 4.240566 9.031517 1.222854 1.447238 1.683177 2.622274 2.713583 6.804874 7.253059
+##  [73] 1.745182 9.660749 2.313303 8.076350 7.669403 3.461993 1.814179 8.679249 5.436453 4.329382 4.850197 9.902828
+##  [85] 1.525541 8.711777 5.984902 4.454385 1.867512 7.818484 7.611648 1.024939 8.355088 5.020087 5.304751 1.860386
+##  [97] 2.660011 2.584258 9.084583 3.221537</code></pre>
 <pre class="r"><code>results &lt;- numeric(100)
 for(each in 1:length(myVector)){
   results[each] &lt;- paste(myVector[each], &quot;^ 2 = &quot;, myVector[each]^2)
@@ -135,9 +135,9 @@ for(each in 1:length(myVector)){
 
 ##now get some of the stored results
 results[50]</code></pre>
-<pre><code>## [1] &quot;3.90113566513173 ^ 2 =  15.2188594777628&quot;</code></pre>
+<pre><code>## [1] &quot;9.79080264386721 ^ 2 =  95.8598164111571&quot;</code></pre>
 <pre class="r"><code>results[73]</code></pre>
-<pre><code>## [1] &quot;3.63090957142413 ^ 2 =  13.1835043158593&quot;</code></pre>
+<pre><code>## [1] &quot;1.74518220918253 ^ 2 =  3.04566094324722&quot;</code></pre>
 </div>
 <div id="if-statements" class="section level3">
 <h3><code>if</code> statements</h3>
@@ -177,9 +177,27 @@ for(trial in outcomes){
 <div id="lapply-writing-your-own-functions" class="section level2">
 <h2>lapply + writing your own functions</h2>
 <p>The function <code>lapply()</code> is like a <code>for</code> loop, but is optimized and explicitly functional. <code>lapply()</code> usually takes two arguments <code>X</code> which is a list or a vector to loop over, and <code>FUN</code> which is a function to apply to each element of <code>X</code>. Thus, <code>FUN</code> must be able to accept any element of <code>X</code> as an argument. The clearest way is to write your own function.</p>
+</div>
+<div id="writing-functions" class="section level2">
+<h2>Writing functions</h2>
+<p>Functions are the best way to encapsulate code that you want to repeat again and again. A function accepts <strong>arguments</strong> and <strong>returns</strong> a single (and only a single) object (but this can be a single number, list, dataframe, vector, etc.). Variable names defined within a function only exist within the function (not within the global environment).</p>
+<pre class="r"><code>is.even &lt;- function(number){
+  if(number %% 2 == 0) {return(&quot;The number is even&quot;)}
+  else {return(&quot;The number is not even&quot;)}
+}
+
+is.even(1233)</code></pre>
+<pre><code>## [1] &quot;The number is not even&quot;</code></pre>
+<pre class="r"><code>is.even(1234)</code></pre>
+<pre><code>## [1] &quot;The number is even&quot;</code></pre>
+<pre class="r"><code>is.even(-1.2)</code></pre>
+<pre><code>## [1] &quot;The number is not even&quot;</code></pre>
+</div>
+<div id="lists" class="section level2">
+<h2>Lists</h2>
 <p>The “l” in <code>lapply()</code> stands for “list”, because that’s what you get as a result. Lists are kind of like vectors, but with important differences:</p>
 <div id="lists-can-hold-any-type-of-data-and-not-every-element-needs-to-be-the-same-type." class="section level4">
-<h4>lists can hold any type of data, and not every element needs to be the same type.</h4>
+<h4><strong>lists can hold any type of data, and not every element needs to be the same type.</strong></h4>
 <pre class="r"><code>myList &lt;- list(firstOne=1, nextOne=&quot;too&quot;, lastOne=rnorm(10))
 myList</code></pre>
 <pre><code>## $firstOne
@@ -189,19 +207,23 @@ myList</code></pre>
 ## [1] &quot;too&quot;
 ## 
 ## $lastOne
-##  [1] -1.35088198  1.28972025  0.83358674 -0.49184546 -0.86115994  1.73056519 -0.22942816  0.74069528 -0.08964557
-## [10] -1.47823069</code></pre>
+##  [1]  0.05391183  1.86599507 -0.03946627  0.64870088 -0.92474533 -0.19205365  1.51686310 -0.04025312 -0.25323028
+## [10] -1.31165633</code></pre>
 </div>
 <div id="you-use-double-brackets-to-index-a-list" class="section level4">
 <h4>you use double brackets <code>[[]]</code> to index a list</h4>
 <pre class="r"><code>myList[[3]]</code></pre>
-<pre><code>##  [1] -1.35088198  1.28972025  0.83358674 -0.49184546 -0.86115994  1.73056519 -0.22942816  0.74069528 -0.08964557
-## [10] -1.47823069</code></pre>
+<pre><code>##  [1]  0.05391183  1.86599507 -0.03946627  0.64870088 -0.92474533 -0.19205365  1.51686310 -0.04025312 -0.25323028
+## [10] -1.31165633</code></pre>
 </div>
 <div id="lists-can-optionally-have-named-elements-that-can-be-accessed-using-the-operator" class="section level4">
 <h4>lists can (optionally) have named elements, that can be accessed using the <code>$</code> operator</h4>
 <pre class="r"><code>myList$nextOne</code></pre>
 <pre><code>## [1] &quot;too&quot;</code></pre>
+</div>
+<div id="where-have-you-seen-the-operator-before" class="section level3">
+<h3><span class="mega-octicon octicon-question"></span> Where have you seen the <code>$</code> operator before?</h3>
+<p>What does this suggest about the relationship between list and dataframes?</p>
 </div>
 <div id="lists-are-useful-because-of-their-flexibility." class="section level3">
 <h3>Lists are useful because of their flexibility.</h3>
@@ -218,16 +240,16 @@ sampleSizes &lt;- 100:200
 myResults &lt;- lapply(sampleSizes, FUN=summarizeRandom)
 myResults[1:3]</code></pre>
 <pre><code>## [[1]]
-##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
-## -2.115000 -0.647000 -0.082130  0.001523  0.738900  2.479000 
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+## -2.63400 -0.59910  0.13100  0.03575  0.73400  1.97800 
 ## 
 ## [[2]]
-##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
-## -2.756000 -0.728300 -0.002824 -0.048310  0.767400  3.210000 
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+## -2.93300 -0.80720  0.02071 -0.11770  0.48010  2.86700 
 ## 
 ## [[3]]
 ##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-## -2.54500 -0.47060  0.13620  0.06689  0.75540  2.19300</code></pre>
+## -2.12200 -0.62650 -0.12730 -0.01093  0.57300  2.28900</code></pre>
 </div>
 </div>
 <div id="the-dplyr-package" class="section level2">
@@ -448,12 +470,12 @@ library(ggplot2)
 #chained syntax
 rnorm(1000, mean=20, sd=1.4) %&gt;% log %&gt;% qplot</code></pre>
 <pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.</code></pre>
-<p><img src="automation_files/figure-html/unnamed-chunk-21-1.png" title="" alt="" width="672" /></p>
+<p><img src="automation_files/figure-html/unnamed-chunk-22-1.png" title="" alt="" width="672" /></p>
 <pre class="r"><code>#compare with nested function calls 
 
 qplot(log(rnorm(1000, mean=20, sd=1.4)))</code></pre>
 <pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.</code></pre>
-<p><img src="automation_files/figure-html/unnamed-chunk-21-2.png" title="" alt="" width="672" /></p>
+<p><img src="automation_files/figure-html/unnamed-chunk-22-2.png" title="" alt="" width="672" /></p>
 </div>
 <div id="challenge-2" class="section level3">
 <h3><span class="mega-octicon octicon-puzzle"></span> Challenge</h3>

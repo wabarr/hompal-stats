@@ -84,11 +84,28 @@ plot(1:2000, results, pch=16)
 
 ## lapply + writing your own functions
 
-The function `lapply()` is like a `for` loop, but is optimized and explicitly functional. `lapply()` usually takes two arguments `X` which is a list or a vector to loop over, and `FUN` which is a function to apply to each element of `X`.  Thus, `FUN` must be able to accept any element of `X` as an argument. The clearest way is to write your own function.  
+The function `lapply()` is like a `for` loop, but is optimized and explicitly functional. `lapply()` usually takes two arguments `X` which is a list or a vector to loop over, and `FUN` which is a function to apply to each element of `X`.  Thus, `FUN` must be able to accept any element of `X` as an argument. The clearest way is to write your own function.
+
+## Writing functions
+
+Functions are the best way to encapsulate code that you want to repeat again and again.  A function accepts **arguments** and **returns** a single (and only a single) object (but this can be a single number, list, dataframe, vector, etc.). Variable names defined within a function only exist within the function (not within the global environment). 
+
+```{r}
+is.even <- function(number){
+  if(number %% 2 == 0) {return("The number is even")}
+  else {return("The number is not even")}
+}
+
+is.even(1233)
+is.even(1234)
+is.even(-1.2)
+```
+
+## Lists
 
 The "l" in `lapply()` stands for "list", because that's what you get as a result. Lists are kind of like vectors, but with important differences:
 
-#### lists can hold any type of data, and not every element needs to be the same type.
+#### **lists can hold any type of data, and not every element needs to be the same type.**
 
 ```{r}
 myList <- list(firstOne=1, nextOne="too", lastOne=rnorm(10))
@@ -105,6 +122,10 @@ myList[[3]]
 ```{r}
 myList$nextOne
 ```
+
+### <span class="mega-octicon octicon-question"></span> Where have you seen the `$` operator before?
+
+What does this suggest about the relationship between list and dataframes?
 
 ### Lists are useful because of their flexibility. 
 

@@ -23,8 +23,15 @@ e.  add this as a new column called `geomean` to the crania dataframe
 
 ## Problem 2
 
-a. Using `dplyr`, calculate the mean of the GOL, XCB, ZYB and SIS measurements for each population group by sex.  (i.e., calculate the mean value separately for NORSE males and NORSE females, and likewise for all groups). The resulting data frame should only have 6 columns. (eliminate all the extra columns).
-b. Recreate this figure exactly (including the theme) using the full cranial dataset
+a. Using `dplyr`, calculate the mean of the GOL, XCB, ZYB and SIS measurements for each population group by sex.  (i.e., calculate the mean value separately for NORSE males and NORSE females, and likewise for all groups). The resulting data frame should only have 6 columns. (one each for sex and population, and one for each of the 4 measurements).
+b. use `lapply()` to loop over each column of the crania dataframe. For each column, apply custom-written function called `myFUN`.  `myFUN` should test if the column contains numeric data (using the `is.numeric()` function).  If it is numeric, calculate and return the mean value, being careful to remove NA values.  If the data are not numeric, return the string "Not Numeric". 
+c. Recreate the below figure exactly (including the theme) using the full cranial dataset. **Note**: you can control the size of the figures in your knitted document by including options in the code chunk. The default size is 6 for width and height.  The figure below is 16 wide and 9 high, like the following.
+
+    \`\`\`{r fig.width=16, fig.height=9}
+
+      `#code to make the figure here`
+
+    \`\`\`
 
 ```{r cache=TRUE, echo=FALSE,  fig.width=16, fig.height=9}
 library(ggplot2)

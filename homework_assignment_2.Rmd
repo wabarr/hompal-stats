@@ -7,10 +7,10 @@ date: "Due Feb. 2nd"
 
 ## Problem 1
 
-a.  Load the [Howell's craniometric dataset](datasets/Howell_craniometry.csv) into R. This dataset includes 82 measurements on 2524 human crania from 28 populations. Note that a 0 indicates missing data in this dataset, so make sure to specify this when you read in the data.
+a.  Load the [Howell's craniometric dataset](datasets/Howell_craniometry.csv) into R. This dataset includes 82 measurements on 2524 human crania from 28 populations [(measurement abbreviations detailed in this pdf)](datasets/Howell_Measurement_definitions.pdf). Note that a 0 indicates missing data in this dataset, so make sure to specify this when you read in the data.
 b.  Evaluate the structure of the dataframe using the `str()` function to make sure that it got read in correctly.  It should have 2524 observations of 86 variables.
-c.  Write a new function called `geomean()` that accepts a vector (of any length) as an argument and returns the geometric mean. 
-    *  **Note:** you will have to figure out how to deal with missing values.
+c.  Write a new function called `geomean()` that accepts a vector (of any length) as an argument and returns the geometric mean of its arguments. 
+    *  **Note:** Your function must deal properly with missing values (NA) as arguments.
     *  **Note:** the geometric mean is defined as the *n*-th root of the product of *n* numbers. Thus the geometric mean of 9, 6, 5, 4, and 3 would be calculated like this
     ```{r}
     product <- prod(c(9, 6, 5, 4, 3))
@@ -18,7 +18,7 @@ c.  Write a new function called `geomean()` that accepts a vector (of any length
     geomean
     ```
     
-d.  create a `results` vector, then write a `for` loop to loops through each of the 2524 crania in the Howell's dataset, calculates the geometric mean of all available measurements, and then stores this in the appropriate slot in the `results` vector. Print only first 100 elements of the `results` vector to your markdown document. 
+d.  create a `results` vector, then write a `for` loop to go through each of the 2524 crania in the Howell's dataset, calculate the geometric mean of all available measurements, and then stores this in the appropriate slot in the `results` vector. Print only first 100 elements of the `results` vector to your markdown document. 
 e.  add this as a new column to the crania dataframe
 
 ## Problem 2

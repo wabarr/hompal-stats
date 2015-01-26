@@ -91,11 +91,11 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <div id="problem-1" class="section level2">
 <h2>Problem 1</h2>
 <ol style="list-style-type: lower-alpha">
-<li>Load the <a href="datasets/Howell_craniometry.csv">Howell’s craniometric dataset</a> into R. This dataset includes 82 measurements on 2524 human crania from 28 populations. Note that a 0 indicates missing data in this dataset, so make sure to specify this when you read in the data.</li>
+<li>Load the <a href="datasets/Howell_craniometry.csv">Howell’s craniometric dataset</a> into R. This dataset includes 82 measurements on 2524 human crania from 28 populations <a href="datasets/Howell_Measurement_definitions.pdf">(measurement abbreviations detailed in this pdf)</a>. Note that a 0 indicates missing data in this dataset, so make sure to specify this when you read in the data.</li>
 <li>Evaluate the structure of the dataframe using the <code>str()</code> function to make sure that it got read in correctly. It should have 2524 observations of 86 variables.</li>
-<li>Write a new function called <code>geomean()</code> that accepts a vector (of any length) as an argument and returns the geometric mean.
+<li>Write a new function called <code>geomean()</code> that accepts a vector (of any length) as an argument and returns the geometric mean of its arguments.
 <ul>
-<li><strong>Note:</strong> you will have to figure out how to deal with missing values.</li>
+<li><strong>Note:</strong> Your function must deal properly with missing values (NA) as arguments.</li>
 <li><strong>Note:</strong> the geometric mean is defined as the <em>n</em>-th root of the product of <em>n</em> numbers. Thus the geometric mean of 9, 6, 5, 4, and 3 would be calculated like this</li>
 </ul>
 <pre class="r"><code>product &lt;- prod(c(9, 6, 5, 4, 3))

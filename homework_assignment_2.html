@@ -102,8 +102,8 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 geomean &lt;- product ^ (1/5)
 geomean</code></pre>
 <pre><code>## [1] 5.03627</code></pre></li>
-<li>create a <code>results</code> vector, then write a <code>for</code> loop to loops through each of the 2524 crania in the Howell’s dataset, calculates the geometric mean of all available measurements, and then stores this in the appropriate slot in the <code>results</code> vector. Print only first 100 elements of the <code>results</code> vector to your markdown document.</li>
-<li>add this as a new column to the crania dataframe</li>
+<li>create a <code>results</code> vector, then write a <code>for</code> loop to go through each of the 2524 crania in the Howell’s dataset, calculate the geometric mean of all available measurements, and then stores this in the appropriate slot in the <code>results</code> vector. Print only first 100 elements of the <code>results</code> vector to your markdown document.</li>
+<li>add this as a new column called <code>geomean</code> to the crania dataframe</li>
 </ol>
 </div>
 <div id="problem-2" class="section level2">
@@ -116,7 +116,7 @@ geomean</code></pre>
 </div>
 <div id="problem-3" class="section level2">
 <h2>Problem 3</h2>
-<p>Recreate this figure using the tools in <code>ggplot2</code>. The data come from the <a href="datasets/Zachos2001Climate.txt">Zachos et al 2001 deep sea oxygen isotope dataset</a>. Plot the o18 values against time, and include rectangular overlays that show the geological epochs of the Cenezoic.</p>
+<p>Recreate this figure using the tools in <code>ggplot2</code>. The data come from the <a href="datasets/Zachos2001Climate.txt">Zachos et al 2001 deep sea oxygen isotope dataset</a>. Make a line graph of the o18 values against time, and include rectangular overlays that show the geological epochs of the Cenozoic.</p>
 <p><img src="zachosdata.png" title="zachos" alt="zachos" /></p>
 <p>Use these approximate start dates for the geological epochs:</p>
 <pre><code>epoch = c(&quot;Paleocene&quot;, &quot;Eocene&quot;, &quot;Oligocene&quot;, &quot;Miocene&quot;, &quot;Pliocene&quot;, &quot;Pleistocene&quot;, &quot;Holocene&quot;)

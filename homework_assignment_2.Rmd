@@ -19,7 +19,7 @@ c.  Write a new function called `geomean()` that accepts a vector (of any length
     ```
     
 d.  create a `results` vector, then write a `for` loop to go through each of the 2524 crania in the Howell's dataset, calculate the geometric mean of all available measurements, and then stores this in the appropriate slot in the `results` vector. Print only first 100 elements of the `results` vector to your markdown document. 
-e.  add this as a new column to the crania dataframe
+e.  add this as a new column called `geomean` to the crania dataframe
 
 ## Problem 2
 
@@ -34,7 +34,7 @@ qplot(GOL, BBH, data=crania) + facet_wrap(~Population) + theme_bw(20)
 
 ## Problem 3
 
-Recreate this figure using the tools in `ggplot2`. The data come from the [Zachos et al 2001 deep sea oxygen isotope dataset](datasets/Zachos2001Climate.txt). Plot the o18 values against time, and include rectangular overlays that show the geological epochs of the Cenezoic.  
+Recreate this figure using the tools in `ggplot2`. The data come from the [Zachos et al 2001 deep sea oxygen isotope dataset](datasets/Zachos2001Climate.txt). Make a line graph of the o18 values against time, and include rectangular overlays that show the geological epochs of the Cenozoic.  
 
 ![zachos][1]
 

@@ -9,7 +9,7 @@ date: "Due Feb. 2nd"
 
 a.  Load the [Howell's craniometric dataset](datasets/Howell_craniometry.csv) into R. This dataset includes 82 measurements on 2524 human crania from 28 populations [(measurement abbreviations detailed in this pdf)](datasets/Howell_Measurement_definitions.pdf). Note that a 0 indicates missing data in this dataset, so make sure to specify this when you read in the data.
 b.  Evaluate the structure of the dataframe using the `str()` function to make sure that it got read in correctly.  It should have 2524 observations of 86 variables.
-c.  Write a new function called `geomean()` that accepts a vector (of any length) as an argument and returns the geometric mean of its arguments. 
+c.  Write a new function called `geomean()` that accepts a vector (of any length) as an argument and returns the geometric mean of that vector. 
     *  **Note:** Your function must deal properly with missing values (NA) as arguments.
     *  **Note:** the geometric mean is defined as the *n*-th root of the product of *n* numbers. Thus the geometric mean of 9, 6, 5, 4, and 3 would be calculated like this
     ```{r}

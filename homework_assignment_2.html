@@ -110,7 +110,7 @@ geomean</code></pre>
 <h2>Problem 2</h2>
 <ol style="list-style-type: lower-alpha">
 <li>Using <code>dplyr</code>, calculate the mean of the GOL, XCB, ZYB and SIS measurements for each population group by sex. (i.e., calculate the mean value separately for NORSE males and NORSE females, and likewise for all groups). The resulting data frame should only have 6 columns. (one each for sex and population, and one for each of the 4 measurements).</li>
-<li>use <code>lapply()</code> to loop over each column of the crania dataframe. For each column, apply custom-written function called <code>myFUN</code>. <code>myFUN</code> should test if the column contains numeric data (using the <code>is.numeric()</code> function). If it is numeric, calculate and return the mean value, being careful to remove NA values. If the data are not numeric, return the string “Not Numeric”.</li>
+<li>use <code>lapply()</code> to loop over each column of the crania dataframe. For each column, apply a custom-written function called <code>myFUN</code>. <code>myFUN</code> should test if the column contains numeric data (using the <code>is.numeric()</code> function). If it is numeric, calculate and return the mean value, being careful to remove NA values. If the data are not numeric, return the string “Not Numeric”.</li>
 <li><p>Recreate the below figure exactly (including the theme) using the full cranial dataset. <strong>Note</strong>: you can control the size of the figures in your knitted document by including options in the code chunk. The default size is 6 for width and height. The figure below is 16 wide and 9 high, like the following.</p>
 <p>```{r fig.width=16, fig.height=9}</p>
 <p><code>#code to make the figure here</code></p>

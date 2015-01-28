@@ -1,0 +1,43 @@
+---
+title: "Distributions"
+output: html_document
+---
+
+## Random Variables
+
+A ***random variable*** --in statistical terms-- is defined as a variable whose value depends on random chance. Each random variable has one or more parameters governing the probability of different outcomes. There are two types of random variables:  ***discrete random variables*** which have a limited number of possible discrete outcomes and ***continuous random variables*** which have a (theoretically) unlimited number of possible outcomes. 
+
+If we plot the values from a random variable using a histogram, we call the result a ***probability distribution***.  The various distributions form the basis of parametric statistics. 
+
+## Discrete Distributions
+
+### Binomial Distribution
+
+A **Bernouili trial** describes an event that has exactly two possibile outcomes: success and failure.  Success occurs with a given probability, for example $p = 0.2$. We know how likely a trial is to result in success, but any given trial may result in either success or failure, and this cannot be predicted for a single trial (the outcome is stochastic).
+
+The result of a series of $n$ Bernoulili trials with $X$ successful outcomes results in a binomial random variable.
+
+Binomial random variables can be simulated in R using the `rbinom()` function. 
+
+```{r}
+# 10 observations, 1 trial
+rbinom(n = 10, size=1, prob = 0.5)
+
+# 1 observation, 10 trials
+rbinom(n = 1, size=10, prob = 0.5)
+
+# 10 observations, 10 trials
+rbinom(n = 10, size=10, prob = 0.5)
+```
+
+### Poisson Distribution
+
+Useful for rare events, when the number of trials $n$ is unknown. Requires a single rate parameter $\lambda$.
+
+## Continuous Distributions
+
+### Uniform Distribution
+
+### Normal Distribution
+
+### Log-normal Distribution

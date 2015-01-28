@@ -1,0 +1,41 @@
+---
+title: "Probability & Descriptive Stats"
+output: html_document
+---
+
+## Basic Probability
+
+Probability measures how likely an event is to occur. The probability of an outcome can be measured as $$ P = \frac{\#\ Outcomes}{\#\ Trials}$$
+
+To get a real measure of this, we have to observe an infinite number of ***trials***, which is impossible so we must observe a ***sample*** of possible trials.  We try to make this sample as representative as we can, but sometimes logistics and chance consipre to make a sample of trials unrepresentative.
+
+* Outcome = what might happen during a particular event
+* Sample space = the universe of possible outcomes.  
+* Outcomes should be ***exhaustive*** and the outcomes should be ***mutually exclusive***
+* When these conditions are met, then the sum of probabilities for all outcomes in the sample space is 1.
+
+
+## Quantifying probability
+
+* Complex events = composites of simple events (Logical OR)
+    *  sum the probabilities of simple events
+        *  e.g. probability of drawing a King from a deck of cards is the sum of the probability of drawing each of the 4 distinct kings  1/52 + 1/52 + 1/52 + 1/52 = 4/52 = 1/13 
+* Shared events = multiple simultaneus occurrences of simple events (Logical AND)
+    *  multiply the probabilities of simple events
+    *  assume that events are ***independent*** of one another
+        *  e.g. probability of drawing the Ace of spades and the 2 of clubs is the product of the probability of draing each one separately 1/52 * 1/52 = 1/2704
+    
+## Set operations
+
+### union
+
+### intersection
+
+### test for membership
+
+### complement
+
+
+## Conditional Probability
+
+$$P(A|B) = \frac{P(A\cap B)}{P(B)}$$

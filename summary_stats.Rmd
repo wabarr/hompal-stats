@@ -1,0 +1,27 @@
+---
+title: "summary_stats"
+output: html_document
+---
+
+Summary statistics serve to summarize of the location and spread of a distribution.
+
+Consider the following distribution of (simulated) mammalian body size data
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+library(ggplot2)
+mammalmass <- rlnorm(999, meanlog = 2.6)
+bmplot <- qplot(mammalmass, xlab="Body Mass (kg)") + theme_bw(20)
+```
+
+## Location
+
+```{r}
+bmplot + 
+  geom_vline(xintercept = mean(mammalmass), color = "red", linetype = "dotdash") + 
+  geom_vline(xintercept = sort(mammalmass)[500], color = "blue", linetype="dotted") + 
+  geom_vline(xintercept = sort(mammalmass)[500], color = "blue", linetype="dotted") 
+```
+
+## Spread
+
+## Population parameters *versus* sample parameters 

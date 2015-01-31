@@ -1,9 +1,9 @@
 ---
-title: "summary_stats"
+title: "summary stats"
 output: html_document
 ---
 
-Summary statistics serve to summarize of the location and spread of a distribution.
+Summary statistics serve to summarize of the central tendancy (or location) and spread of a distribution.
 
 Consider the following distribution of (simulated) mammalian body size data
 
@@ -11,9 +11,22 @@ Consider the following distribution of (simulated) mammalian body size data
 library(ggplot2)
 mammalmass <- rlnorm(999, meanlog = 2.6)
 bmplot <- qplot(mammalmass, xlab="Body Mass (kg)") + theme_bw(20)
+bmplot
 ```
 
 ## Location
+
+The most basic question to ask is where the central tendancy of this distribution is.  There are a variety of measures of central tendency.  The arithmetic mean (often called the average and abbreviated $\bar{Y}$) is the most familiar. 
+
+$$\bar{Y} = \frac{ \sum\limits_{i=1}^{n} Y_i}{n} $$
+
+where $n$ is the number of observations in the sample. 
+
+The mean is relatively easy to understand, but has limitations.  It is very sensitive to outliers, so the mean of the sample need not be very close to many of the actual observations (e.g. mean income is sensitive to the super rich, and thus reflects an income that not many people earn). 
+
+Other measures of central tendency include the median, mode, and geometric mean. The median 
+
+
 
 ```{r}
 bmplot + 

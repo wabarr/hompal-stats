@@ -11,7 +11,7 @@
 
 
 
-<title>summary_stats</title>
+<title>summary stats</title>
 
 <script src="libs/jquery-1.11.0/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -80,14 +80,20 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </div>
 
 <div id="header">
-<h1 class="title">summary_stats</h1>
+<h1 class="title">summary stats</h1>
 </div>
 
 
-<p>Summary statistics serve to summarize of the location and spread of a distribution.</p>
+<p>Summary statistics serve to summarize of the central tendancy (or location) and spread of a distribution.</p>
 <p>Consider the following distribution of (simulated) mammalian body size data</p>
+<p><img src="summary_stats_files/figure-html/unnamed-chunk-1-1.png" title="" alt="" width="672" /></p>
 <div id="location" class="section level2">
 <h2>Location</h2>
+<p>The most basic question to ask is where the central tendancy of this distribution is. There are a variety of measures of central tendency. The arithmetic mean (often called the average and abbreviated <span class="math">\(\bar{Y}\)</span>) is the most familiar.</p>
+<p><span class="math">\[\bar{Y} = \frac{ \sum\limits_{i=1}^{n} Y_i}{n} \]</span></p>
+<p>where <span class="math">\(n\)</span> is the number of observations in the sample.</p>
+<p>The mean is relatively easy to understand, but has limitations. It is very sensitive to outliers, so the mean of the sample need not be very close to many of the actual observations (e.g. mean income is sensitive to the super rich, and thus reflects an income that not many people earn).</p>
+<p>Other measures of central tendency include the median, mode, and geometric mean. The median</p>
 <pre class="r"><code>bmplot + 
   geom_vline(xintercept = mean(mammalmass), color = &quot;red&quot;, linetype = &quot;dotdash&quot;) + 
   geom_vline(xintercept = sort(mammalmass)[500], color = &quot;blue&quot;, linetype=&quot;dotted&quot;) + 

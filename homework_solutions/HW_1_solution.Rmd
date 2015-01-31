@@ -5,6 +5,14 @@ output: html_document
 
 ## 1.  Indexing Vectors
 
+### 5 points possible
+
+*  1pt  length
+*  1pt  first four
+*  1pt  last 8
+*  1pt  various
+*  1pt  reverse
+
 ```{r}
 nouns <- c("apple", "flower", "insect", "lettuce", "knife", "dog", "cloud", "person", "cabinet", "flower" )
 
@@ -31,6 +39,16 @@ rev(nouns)
 
 ## 2. Using functions  
 
+### 7 points possible
+
+*  1pt  grades
+*  1pt  curve
+*  1pt  sd
+*  1pt  min
+*  1pt  max
+*  1pt  mean
+*  1pt  hist
+
 ```{r}
 grades <- rnorm(200, mean = 68, sd=10)
 
@@ -51,11 +69,25 @@ hist(curvedgrades)
     
 ## 3. Organizing data
 
+### 4 points possible
+
+*  2pts - fix data
+*  2pts - describe problems 
+
 The original data file had duplicated column names (length and diameter), relying on another column to differentiate the anatomical element.  This is a no, no.  Column names must stand alone (e.g. tibia_diameter).
 
 The rows containing species names violate the 1 row = 1 observation priciple.  These rows should be turned into a column which records the species for each observation. 
 
 ## 4. Manipulation
+
+### 7 pts possible
+
+*  1pt  gorilla
+*  2pts  sex
+*  1pt  table
+*  1pt  hist
+*  1pt  small
+*  1pt  big
 
 ```{r}
 gorilla <- read.table("http://hompal-stats.wabarr.com/datasets/gorilla_sizes.txt", header=TRUE)

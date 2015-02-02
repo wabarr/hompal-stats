@@ -112,13 +112,13 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <p>Binomial random variables can be simulated in R using the <code>rbinom()</code> function.</p>
 <pre class="r"><code># 10 observations, 1 trial
 rbinom(n = 10, size=1, prob = 0.5)</code></pre>
-<pre><code>##  [1] 1 1 0 0 0 1 1 1 1 1</code></pre>
+<pre><code>##  [1] 1 1 0 0 1 0 1 0 1 1</code></pre>
 <pre class="r"><code># 1 observation, 10 trials
 rbinom(n = 1, size=10, prob = 0.5)</code></pre>
-<pre><code>## [1] 4</code></pre>
+<pre><code>## [1] 6</code></pre>
 <pre class="r"><code># 10 observations, 10 trials
 rbinom(n = 10, size=10, prob = 0.5)</code></pre>
-<pre><code>##  [1] 6 4 4 5 4 3 7 4 3 4</code></pre>
+<pre><code>##  [1] 7 4 2 6 4 6 4 4 2 4</code></pre>
 <p>We can use the <code>dbinom()</code> function to get a sense of the shape of the binomial distribution.</p>
 <pre class="r"><code>library(ggplot2)
 qplot(x=1:25, y=dbinom(1:25, 25, prob = 0.5), geom=&quot;line&quot;, main=&quot;binomial density prob=0.5&quot;)</code></pre>
@@ -157,8 +157,8 @@ qplot(x=1:25, y=dbinom(1:25, 25, prob = 0.5), geom=&quot;line&quot;, main=&quot;
 <h3>Uniform Distribution</h3>
 <p>The uniform distribution represents a function in which the probability density is equal for each sub-interval across the a given range. This results in a flat frequency distribution. The expected value over the range <span class="math">\(a\)</span> to <span class="math">\(b\)</span> is <span class="math">\((a + b)/2\)</span>. An example might be the distribution of trees on a savannah landscape, which are competing with one another for nutrients and light.</p>
 <pre class="r"><code>runif(10, min = 1, max = 10)</code></pre>
-<pre><code>##  [1] 3.632380 1.854632 9.856670 5.914205 4.718075 4.192968 7.244258
-##  [8] 4.839603 2.180726 5.062735</code></pre>
+<pre><code>##  [1] 1.713382 2.508087 1.826311 5.903157 4.690203 7.576093 5.274495
+##  [8] 2.949250 4.246934 8.521341</code></pre>
 <pre class="r"><code>qplot(runif(10000), min=1, max=10, main=&quot;uniform distribution from 1 to 10&quot;)</code></pre>
 <pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.</code></pre>
 <p><img src="distributions_files/figure-html/unnamed-chunk-7-1.png" title="" alt="" width="672" /></p>
@@ -167,8 +167,8 @@ qplot(x=1:25, y=dbinom(1:25, 25, prob = 0.5), geom=&quot;line&quot;, main=&quot;
 <h3>Normal Distribution</h3>
 <p>The normal distribution (also known as the Gaussian distribution) is the familiar bell-curve shaped distribution that is symmetrical around the mean, with diminishing tails as you move away from the mean. Many phenomena in nature are distributed as a normal distribution, especially continuous measurement values. The normal distribution has two parameters, the mean (<span class="math">\(\mu\)</span>) and the standard deviation (<span class="math">\(\sigma\)</span>).</p>
 <pre class="r"><code>rnorm(10, mean=0, sd=1)</code></pre>
-<pre><code>##  [1]  2.3009417  1.2729923 -1.5076045 -0.6678494  0.6575501 -0.1841019
-##  [7] -1.0505558  1.1806942  0.8388142 -1.1875645</code></pre>
+<pre><code>##  [1] -0.948561192 -0.912079202 -1.712246912 -0.006482889 -1.613063832
+##  [6]  0.817608266 -0.545402719 -0.678945851 -0.748813664 -0.055650723</code></pre>
 <pre class="r"><code>qplot(rnorm(10000), mean=0, sd=1, main=&quot;Standard normal distribution &quot;)</code></pre>
 <pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.</code></pre>
 <p><img src="distributions_files/figure-html/unnamed-chunk-8-1.png" title="" alt="" width="672" /></p>
@@ -177,8 +177,8 @@ qplot(x=1:25, y=dbinom(1:25, 25, prob = 0.5), geom=&quot;line&quot;, main=&quot;
 <h3>Log-normal Distribution</h3>
 <p>The log-normal distribution resembles a normal distribution when it is logged.</p>
 <pre class="r"><code>rlnorm(10, meanlog = 0, sdlog = 1)</code></pre>
-<pre><code>##  [1] 2.6324877 1.5844556 0.6393336 1.4708362 1.2413708 0.6435749 1.2453797
-##  [8] 0.9087693 1.4253307 0.9732604</code></pre>
+<pre><code>##  [1] 0.16452853 0.89556387 5.50216652 1.79619154 6.94261488 0.06678411
+##  [7] 0.80667067 1.54376536 1.31609212 0.25836076</code></pre>
 <pre class="r"><code>lnorm &lt;- rlnorm(1000, meanlog = 0, sdlog = 1)
 
 qplot(lnorm, main=&quot;lognormal distribution&quot;)</code></pre>
@@ -188,17 +188,37 @@ qplot(lnorm, main=&quot;lognormal distribution&quot;)</code></pre>
 <pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.</code></pre>
 <p><img src="distributions_files/figure-html/unnamed-chunk-9-2.png" title="" alt="" width="672" /></p>
 </div>
-<div id="tail-cumulative-probability-and-quantiles" class="section level3">
-<h3>Tail (cumulative) probability and quantiles</h3>
+<div id="tail-cumulative-probability" class="section level3">
+<h3>Tail (cumulative) probability</h3>
 <p>It is often very useful to know how much probability density is under a distribution up to a certain point. Consider a normal distribution with a mean of 10 and a standard deviation of 1.5.</p>
 <p>We can calculate the cumulative probability up to a value of 5 like this:</p>
 <pre class="r"><code>pnorm(q = 5, mean = 10, sd = 1.5)</code></pre>
 <pre><code>## [1] 0.0004290603</code></pre>
 <p>This tells us that 4.290603310^{-4} is the proportion of values that are less than or equal to 5 in this probability distribution. If we were dealing with real data, we would be forced to say that an observation of 5 is very uncommon in this distribution, and the cumulative probability gives us an estimate of just how unlikely</p>
 </div>
-<div id="this-is-fundamental-as-this-is-exactly-what-a-p-value-represents-but-more-on-that-next-week." class="section level3">
-<h3>This is fundamental, as this is exactly what a p value represents, but more on that next week.</h3>
+</div>
+<div id="this-is-fundamental-as-this-is-exactly-what-a-p-value-represents-but-more-on-that-next-week." class="section level2">
+<h2>This is fundamental, as this is exactly what a p value represents, but more on that next week.</h2>
 <p><span class="mega-octicon octicon-puzzle"></span> Challenge: What is the cumulative probability at a value of 10 in the same normal distribution?</p>
+<div id="quantiles" class="section level3">
+<h3>Quantiles</h3>
+<p>Quantiles are like cumulative probability turned on its head. Cumulative probabilty asks “how much probability density occurs at less than or equal to a value <span class="math">\(x\)</span>”. A quantile is the opposite: “what is the value of <span class="math">\(x\)</span> at which a given proportion of the probability density occurs?”</p>
+<p>The most familiar examples are percentiles. Take a normal distribution of exam scores.</p>
+<pre class="r"><code>set.seed(1237)
+grades &lt;- rnorm(1000, mean=75, sd=10)
+qplot(grades)</code></pre>
+<pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.</code></pre>
+<p><img src="distributions_files/figure-html/unnamed-chunk-11-1.png" title="" alt="" width="672" /></p>
+<p>We might ask where the 90%th percentile is located. At this <span class="math">\(x\)</span> value, 90% of observations are less than or equal to <span class="math">\(x\)</span>.</p>
+<pre class="r"><code>ninety_percentile &lt;- qnorm(0.9, mean=75, sd = 10)
+qplot(grades, main=&quot;grades distribution with 90th percentile indicated&quot;) + 
+  geom_vline(xintercept=ninety_percentile, color=&quot;red&quot;)</code></pre>
+<pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.</code></pre>
+<p><img src="distributions_files/figure-html/unnamed-chunk-12-1.png" title="" alt="" width="672" /></p>
+<p>We can check to see if this matches by counting how many observations are less than or equal to the <code>ninety_percentile</code> calculted from the<code>qnorm()</code> function.</p>
+<pre class="r"><code>sum(grades &lt;= ninety_percentile) / length(grades)</code></pre>
+<pre><code>## [1] 0.893</code></pre>
+<p><span class="mega-octicon octicon-question"></span> Why isn’t this number exactly 0.9?</p>
 </div>
 <div id="testing-for-normality" class="section level3">
 <h3>Testing for normality</h3>
@@ -212,12 +232,12 @@ qplot(lnorm, main=&quot;lognormal distribution&quot;)</code></pre>
 <h3>Q-Q plot</h3>
 <p>The Q-Q plot compares your empirical cumulative distribution to the theoretical normal cumulative distribution. If the data are normal, then the Q-Q plot will look like a straight line.</p>
 <pre class="r"><code>qqnorm(rnorm(1000))</code></pre>
-<p><img src="distributions_files/figure-html/unnamed-chunk-11-1.png" title="" alt="" width="672" /></p>
+<p><img src="distributions_files/figure-html/unnamed-chunk-14-1.png" title="" alt="" width="672" /></p>
 <p>If your data are not normally distributed, then the Q-Q plot will look curved, or banana shaped. It will take some practice to figure out how far a Q-Q plot can deviate from a straight line without creating too many problems.</p>
 <pre class="r"><code>qqnorm(rnorm(1000)^2)</code></pre>
-<p><img src="distributions_files/figure-html/unnamed-chunk-12-1.png" title="" alt="" width="672" /></p>
+<p><img src="distributions_files/figure-html/unnamed-chunk-15-1.png" title="" alt="" width="672" /></p>
 <pre class="r"><code>qqnorm(rnorm(1000)^3)</code></pre>
-<p><img src="distributions_files/figure-html/unnamed-chunk-12-2.png" title="" alt="" width="672" /></p>
+<p><img src="distributions_files/figure-html/unnamed-chunk-15-2.png" title="" alt="" width="672" /></p>
 </div>
 <div id="shapiro-wilks-test-for-normality" class="section level3">
 <h3>Shapiro-Wilks test for normality</h3>
@@ -227,13 +247,13 @@ qplot(lnorm, main=&quot;lognormal distribution&quot;)</code></pre>
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  rnorm(1000)
-## W = 0.998, p-value = 0.2885</code></pre>
+## W = 0.997, p-value = 0.0608</code></pre>
 <pre class="r"><code>shapiro.test(rnorm(1000)^2)</code></pre>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  rnorm(1000)^2
-## W = 0.6885, p-value &lt; 2.2e-16</code></pre>
+## W = 0.7051, p-value &lt; 2.2e-16</code></pre>
 </div>
 </div>
 

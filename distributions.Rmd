@@ -120,7 +120,7 @@ qplot(lnorm, main="lognormal distribution")
 qplot(log(lnorm), main="logged lognormal distribution")
 ```
 
-### Tail (cumulative) probability and quantiles
+### Tail (cumulative) probability
 
 It is often very useful to know how much probability density is under a distribution up to a certain point.  Consider a normal distribution with a mean of 10 and a standard deviation of 1.5.
 
@@ -132,9 +132,37 @@ pnorm(q = 5, mean = 10, sd = 1.5)
 
 This tells us that `r pnorm(q = 5, mean = 10, sd = 1.5)` is the proportion of values that are less than or equal to 5 in this probability distribution. If we were dealing with real data, we would be forced to say that an observation of 5 is very uncommon in this distribution, and the cumulative probability gives us an estimate of just how unlikely
 
-### This is fundamental, as this is exactly what a p value represents, but more on that next week.
+## This is fundamental, as this is exactly what a p value represents, but more on that next week.
 
 <span class="mega-octicon octicon-puzzle"></span> Challenge: What is the cumulative probability at a value of 10 in the same normal distribution?
+
+### Quantiles
+
+Quantiles are like cumulative probability turned on its head.  Cumulative probabilty asks "how much probability density occurs at less than or equal to a value $x$". A quantile is the opposite: "what is the value of $x$ at which a given proportion of the probability density occurs?"
+
+The most familiar examples are percentiles. Take a normal distribution of exam scores.
+
+```{r}
+set.seed(1237)
+grades <- rnorm(1000, mean=75, sd=10)
+qplot(grades)
+```
+
+We might ask where the 90%th percentile is located. At this $x$ value, 90% of observations are less than or equal to $x$.
+
+```{r}
+ninety_percentile <- qnorm(0.9, mean=75, sd = 10)
+qplot(grades, main="grades distribution with 90th percentile indicated") + 
+  geom_vline(xintercept=ninety_percentile, color="red")
+```
+
+We can check to see if this matches by counting how many observations are less than or equal to the `ninety_percentile` calculted from the`qnorm()` function. 
+
+```{r}
+sum(grades <= ninety_percentile) / length(grades)
+```
+
+<span class="mega-octicon octicon-question"></span> Why isn't this number exactly 0.9?
 
 ### Testing for normality
 

@@ -51,7 +51,7 @@ qplot(x=1:25, y=dbinom(1:25, 25, prob = 0.5), geom="line", main="binomial densit
 qplot(x=1:25, y=dbinom(1:25, 25, prob = 0.2), geom="line", main="binomial density prob=0.5")
 ```
 
-We can also look at this empirically by simulating data. The graph shows that the most common outcome of 5000 trials of a binomial function with a probability of 0.5 is to have approximately 2500 sucessful outcomes.  It is significantly less likely to get many more or less than 2500 successes.  
+We can also look at this empirically by simulating data. The graph shows that the most common outcome of 5000 trials of a binomial function with a probability of 0.5 is to have approximately 2500 sucessful outcomes.  It is significantly less likely to get many more or less than 2500 successes. Note: the binomial distribution approximates the normal distribution at very large values of $n$.
 
 
 ```{r}
@@ -66,8 +66,16 @@ Is similar to the binomial distribution, but describes rare events, when the num
 ```{r}
 rpois(10, lambda = 0.2)
 
-qplot(x=1:5, y=dpois(1:5, lambda = 0.2), main="Poisson distribution with lambda = 0.2", geom="line")
+qplot(x=0:5, y=dpois(0:5, lambda = 0.2), main="Poisson distribution with lambda = 0.2", geom="line")
 ```
+
+
+### At large values of lambda, the Poisson distribution looks very much like a normal distribution with mean $\lambda$.
+
+```{r}
+qplot(x=1:60, y=dpois(1:60, lambda = 30), main="Poisson distribution with lambda = 30", geom="line")
+```
+
 
 ## Continuous Distributions
 

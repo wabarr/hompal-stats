@@ -112,20 +112,20 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <p>Binomial random variables can be simulated in R using the <code>rbinom()</code> function.</p>
 <pre class="r"><code># 10 observations, 1 trial
 rbinom(n = 10, size=1, prob = 0.5)</code></pre>
-<pre><code>##  [1] 0 0 0 0 0 0 0 1 1 0</code></pre>
+<pre><code>##  [1] 0 1 0 0 0 0 0 0 0 0</code></pre>
 <pre class="r"><code># 1 observation, 10 trials
 rbinom(n = 1, size=10, prob = 0.5)</code></pre>
 <pre><code>## [1] 6</code></pre>
 <pre class="r"><code># 10 observations, 10 trials
 rbinom(n = 10, size=10, prob = 0.5)</code></pre>
-<pre><code>##  [1] 5 5 6 4 4 4 7 4 5 4</code></pre>
+<pre><code>##  [1] 6 4 7 4 5 6 5 7 4 5</code></pre>
 <p>We can use the <code>dbinom()</code> function to get a sense of the shape of the binomial distrubution.</p>
 <pre class="r"><code>library(ggplot2)
 qplot(x=1:25, y=dbinom(1:25, 25, prob = 0.5), geom=&quot;line&quot;, main=&quot;binomial density prob=0.5&quot;)</code></pre>
 <p><img src="distributions_files/figure-html/unnamed-chunk-2-1.png" title="" alt="" width="672" /></p>
 <pre class="r"><code>qplot(x=1:25, y=dbinom(1:25, 25, prob = 0.2), geom=&quot;line&quot;, main=&quot;binomial density prob=0.5&quot;)</code></pre>
 <p><img src="distributions_files/figure-html/unnamed-chunk-2-2.png" title="" alt="" width="672" /></p>
-<p>We can also look at this empirically by simulating data. The graph shows that the most common outcome of 5000 trials of a binomial function with a probability of 0.5 is to have approximately 2500 sucessful outcomes. It is significantly less likely to get many more or less than 2500 successes.</p>
+<p>We can also look at this empirically by simulating data. The graph shows that the most common outcome of 5000 trials of a binomial function with a probability of 0.5 is to have approximately 2500 sucessful outcomes. It is significantly less likely to get many more or less than 2500 successes. Note: the binomial distribution approximates the normal distribution at very large values of <span class="math">\(n\)</span>.</p>
 <pre class="r"><code>qplot(rbinom(n = 5000, size=5000, prob = 0.5), main=&quot;binomial distribution p = 0.5&quot;)</code></pre>
 <pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.</code></pre>
 <p><img src="distributions_files/figure-html/unnamed-chunk-3-1.png" title="" alt="" width="672" /></p>
@@ -134,9 +134,14 @@ qplot(x=1:25, y=dbinom(1:25, 25, prob = 0.5), geom=&quot;line&quot;, main=&quot;
 <h3>Poisson Distribution</h3>
 <p>Is similar to the binomial distribution, but describes rare events, when the number of trials <span class="math">\(n\)</span> is unknown. Requires a single rate parameter <span class="math">\(\lambda\)</span>. The expected value and variance for the poisson distribution are both equal to lamba</p>
 <pre class="r"><code>rpois(10, lambda = 0.2)</code></pre>
-<pre><code>##  [1] 0 0 0 0 0 0 0 0 0 0</code></pre>
-<pre class="r"><code>qplot(x=1:5, y=dpois(1:5, lambda = 0.2), main=&quot;Poisson distribution with lambda = 0.2&quot;, geom=&quot;line&quot;)</code></pre>
+<pre><code>##  [1] 0 0 0 0 0 0 0 0 0 1</code></pre>
+<pre class="r"><code>qplot(x=0:5, y=dpois(0:5, lambda = 0.2), main=&quot;Poisson distribution with lambda = 0.2&quot;, geom=&quot;line&quot;)</code></pre>
 <p><img src="distributions_files/figure-html/unnamed-chunk-4-1.png" title="" alt="" width="672" /></p>
+</div>
+<div id="at-large-values-of-lambda-the-poisson-distribution-looks-very-much-like-a-normal-distribution-with-mean-lambda." class="section level3">
+<h3>At large values of lambda, the Poisson distribution looks very much like a normal distribution with mean <span class="math">\(\lambda\)</span>.</h3>
+<pre class="r"><code>qplot(x=1:60, y=dpois(1:60, lambda = 30), main=&quot;Poisson distribution with lambda = 30&quot;, geom=&quot;line&quot;)</code></pre>
+<p><img src="distributions_files/figure-html/unnamed-chunk-5-1.png" title="" alt="" width="672" /></p>
 </div>
 </div>
 <div id="continuous-distributions" class="section level2">
@@ -145,36 +150,36 @@ qplot(x=1:25, y=dbinom(1:25, 25, prob = 0.5), geom=&quot;line&quot;, main=&quot;
 <h3>Uniform Distribution</h3>
 <p>The uniform distribution represents a function in which the probability density is equal for each sub-interval across the a given range. This results in a flat frequency distribution. The expected value over the range <span class="math">\(a\)</span> to <span class="math">\(b\)</span> is <span class="math">\((a + b)/2\)</span></p>
 <pre class="r"><code>runif(10, min = 1, max = 10)</code></pre>
-<pre><code>##  [1] 3.437316 8.348630 7.713995 8.446940 6.161427 7.476520 5.576452
-##  [8] 8.780318 1.705957 9.011614</code></pre>
+<pre><code>##  [1] 3.258068 4.667812 7.834101 3.115475 7.485699 9.163122 2.923267
+##  [8] 7.084322 8.170577 1.998811</code></pre>
 <pre class="r"><code>qplot(runif(1000), min=1, max=10, main=&quot;uniform distribution from 1 to 10&quot;)</code></pre>
 <pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.</code></pre>
-<p><img src="distributions_files/figure-html/unnamed-chunk-5-1.png" title="" alt="" width="672" /></p>
+<p><img src="distributions_files/figure-html/unnamed-chunk-6-1.png" title="" alt="" width="672" /></p>
 </div>
 <div id="normal-distribution" class="section level3">
 <h3>Normal Distribution</h3>
 <p>The normal distribution (also known as the Gausian distribution) is the familiar bell-curve shaped distribution that is symetrical around the mean, with diminishing tails as you move away from the mean. Many phenomena in nature are distributed as a normal distribution. The normal distribution has two parameters, the mean (<span class="math">\(\mu\)</span>) and the standard deviation (<span class="math">\(\sigma\)</span>).</p>
 <pre class="r"><code>rnorm(10, mean=0, sd=1)</code></pre>
-<pre><code>##  [1] -0.1173211  0.3412342  1.2271489 -0.2426766 -0.2238968 -1.1935484
-##  [7] -0.7596147 -1.9921438  2.8413802  0.3211225</code></pre>
+<pre><code>##  [1] -0.94467652 -0.38556040  0.82033266 -1.22708491 -0.69193946
+##  [6] -1.59423449 -0.40354176 -0.01353235  0.11997731  0.80963161</code></pre>
 <pre class="r"><code>qplot(rnorm(10000), mean=0, sd=1, main=&quot;Standard normal distribution &quot;)</code></pre>
 <pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.</code></pre>
-<p><img src="distributions_files/figure-html/unnamed-chunk-6-1.png" title="" alt="" width="672" /></p>
+<p><img src="distributions_files/figure-html/unnamed-chunk-7-1.png" title="" alt="" width="672" /></p>
 </div>
 <div id="log-normal-distribution" class="section level3">
 <h3>Log-normal Distribution</h3>
 <p>The log-normal distribution resembles a normal distribution when it is logged.</p>
 <pre class="r"><code>rlnorm(10, meanlog = 0, sdlog = 1)</code></pre>
-<pre><code>##  [1] 0.2809166 3.5395866 1.0409529 0.5104040 9.2369536 1.9737944 2.4225108
-##  [8] 1.5845101 2.9670814 0.3686999</code></pre>
+<pre><code>##  [1] 1.1454205 0.6636010 0.6869205 9.4913631 0.9180327 1.8895534 0.5289808
+##  [8] 0.2845903 9.1759686 0.1601929</code></pre>
 <pre class="r"><code>lnorm &lt;- rlnorm(1000, meanlog = 0, sdlog = 1)
 
 qplot(lnorm, main=&quot;lognormal distribution&quot;)</code></pre>
 <pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.</code></pre>
-<p><img src="distributions_files/figure-html/unnamed-chunk-7-1.png" title="" alt="" width="672" /></p>
+<p><img src="distributions_files/figure-html/unnamed-chunk-8-1.png" title="" alt="" width="672" /></p>
 <pre class="r"><code>qplot(log(lnorm), main=&quot;logged lognormal distribution&quot;)</code></pre>
 <pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.</code></pre>
-<p><img src="distributions_files/figure-html/unnamed-chunk-7-2.png" title="" alt="" width="672" /></p>
+<p><img src="distributions_files/figure-html/unnamed-chunk-8-2.png" title="" alt="" width="672" /></p>
 </div>
 </div>
 

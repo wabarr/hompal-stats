@@ -1,5 +1,5 @@
 ---
-title: "Probability & Descriptive Stats"
+title: "Probability"
 output: html_document
 ---
 

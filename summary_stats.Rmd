@@ -1,5 +1,5 @@
 ---
-title: "summary stats"
+title: "Summary Statistics"
 output: html_document
 ---
 
@@ -7,34 +7,69 @@ Summary statistics serve to summarize of the central tendancy (or location) and 
 
 Consider the following distribution of (simulated) mammalian body size data
 
-```{r echo=FALSE, warning=FALSE, message=FALSE}
+```{r echo=TRUE, warning=FALSE, message=FALSE}
 library(ggplot2)
-mammalmass <- rlnorm(999, meanlog = 2.6)
+mammalmass <- rlnorm(1000, meanlog = 2.6)
 bmplot <- qplot(mammalmass, xlab="Body Mass (kg)") + theme_bw(20)
 bmplot
 ```
 
 ## Location
 
-The most basic question to ask is where the central tendancy of this distribution is.  There are a variety of measures of central tendency.  The arithmetic mean (often called the average and abbreviated $\bar{Y}$) is the most familiar. 
+The most basic question to ask is where the central tendancy of this distribution is.  There are a variety of measures of central tendency.  
+
+### Mean
+
+The arithmetic mean (often called the average and abbreviated $\bar{Y}$) is the most familiar. 
 
 $$\bar{Y} = \frac{ \sum\limits_{i=1}^{n} Y_i}{n} $$
 
 where $n$ is the number of observations in the sample. 
 
-The mean is relatively easy to understand, but has limitations.  It is very sensitive to outliers, so the mean of the sample need not be very close to many of the actual observations (e.g. mean income is sensitive to the super rich, and thus reflects an income that not many people earn). 
+The mean is relatively easy to understand, but has limitations.  It is very sensitive to outliers, so the mean of the sample need not be very close to many of the actual observations. 
 
-Other measures of central tendency include the median, mode, and geometric mean. The median 
+Other measures of central tendency include the median, mode, and geometric mean.
 
+### Median
 
+The median is the middle value in an ordered distribution (or the average of the two middle values if there are an even number of values in the distribution).  It is much less sensitive to outliers than the mean. (e.g. mean income is sensitive to the super rich, and thus reflects an income that not very many people earn. Median income reflects an income that many more people actually earn.)
 
-```{r}
+The plot below shows the mean versus the median for the `mammalmass` variable. 
+
+```{r, echo=FALSE}
 bmplot + 
-  geom_vline(xintercept = mean(mammalmass), color = "red", linetype = "dotdash") + 
-  geom_vline(xintercept = sort(mammalmass)[500], color = "blue", linetype="dotted") + 
-  geom_vline(xintercept = sort(mammalmass)[500], color = "blue", linetype="dotted") 
+  geom_vline(xintercept = mean(mammalmass), color = "red", linetype = "dashed", size=1.5) + 
+  geom_vline(xintercept = median(mammalmass), color = "blue", linetype="dashed", size=1.5) + 
+  annotate("text", x=80, y=400, color="blue", label="Median") + 
+  annotate("text", x=80, y=370, color="red", label="Mean") 
 ```
+
+### Mode
+
+The mode is the point with the highest probability density. This refers to the "peak" of the probability density function.  There is no really easy way to calculate the mode of a continuous variable in R, but it can be easily detected visually. A distribution may have more than one mode.   
+
+### Geometric Mean
+
+The geometric mean is defined as the $nth$ root of the product of $n$ numbers. The geometric mean is especially useful for summarizing values that are of different scale.  A common use is to calculate an overall size variable from a series of measuremetns that have very different scales (e.g. the length of a toe bone, and the length of a femur). 
+
 
 ## Spread
 
-## Population parameters *versus* sample parameters 
+Measurements of spread tell us how values are distributed around a central tendency. The most basic measure of spread is the variance:
+
+### Variance
+
+The variance is the mean squared deviation divided by the number of observations minus 1. 
+
+$$s^2 = \frac{1}{(n-1)} \sum (Y_i - \bar{Y}) $$
+
+It describes how spread out the values tend to be around the mean value. 
+
+
+### Standard Deviation
+
+The sample standard deviation refers to the square root of the variance.  It is probably the most commonly reported measure of spread.  Standard deviations are related to 95% confidence intervals in that 95% of the observations in a normal distribution will fall within $\pm$ 1.96 standard deviations.
+
+## Moments
+
+The variance is also called the second moment. The third moment indicates the skewness and the fourth indicates the kurtosis (pointiness or flatness).

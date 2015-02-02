@@ -11,7 +11,7 @@
 
 
 
-<title>summary stats</title>
+<title>Summary Statistics</title>
 
 <script src="libs/jquery-1.11.0/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -80,32 +80,61 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </div>
 
 <div id="header">
-<h1 class="title">summary stats</h1>
+<h1 class="title">Summary Statistics</h1>
 </div>
 
 
 <p>Summary statistics serve to summarize of the central tendancy (or location) and spread of a distribution.</p>
 <p>Consider the following distribution of (simulated) mammalian body size data</p>
+<pre class="r"><code>library(ggplot2)
+mammalmass &lt;- rlnorm(1000, meanlog = 2.6)
+bmplot &lt;- qplot(mammalmass, xlab=&quot;Body Mass (kg)&quot;) + theme_bw(20)
+bmplot</code></pre>
 <p><img src="summary_stats_files/figure-html/unnamed-chunk-1-1.png" title="" alt="" width="672" /></p>
 <div id="location" class="section level2">
 <h2>Location</h2>
-<p>The most basic question to ask is where the central tendancy of this distribution is. There are a variety of measures of central tendency. The arithmetic mean (often called the average and abbreviated <span class="math">\(\bar{Y}\)</span>) is the most familiar.</p>
+<p>The most basic question to ask is where the central tendancy of this distribution is. There are a variety of measures of central tendency.</p>
+<div id="mean" class="section level3">
+<h3>Mean</h3>
+<p>The arithmetic mean (often called the average and abbreviated <span class="math">\(\bar{Y}\)</span>) is the most familiar.</p>
 <p><span class="math">\[\bar{Y} = \frac{ \sum\limits_{i=1}^{n} Y_i}{n} \]</span></p>
 <p>where <span class="math">\(n\)</span> is the number of observations in the sample.</p>
-<p>The mean is relatively easy to understand, but has limitations. It is very sensitive to outliers, so the mean of the sample need not be very close to many of the actual observations (e.g. mean income is sensitive to the super rich, and thus reflects an income that not many people earn).</p>
-<p>Other measures of central tendency include the median, mode, and geometric mean. The median</p>
-<pre class="r"><code>bmplot + 
-  geom_vline(xintercept = mean(mammalmass), color = &quot;red&quot;, linetype = &quot;dotdash&quot;) + 
-  geom_vline(xintercept = sort(mammalmass)[500], color = &quot;blue&quot;, linetype=&quot;dotted&quot;) + 
-  geom_vline(xintercept = sort(mammalmass)[500], color = &quot;blue&quot;, linetype=&quot;dotted&quot;) </code></pre>
+<p>The mean is relatively easy to understand, but has limitations. It is very sensitive to outliers, so the mean of the sample need not be very close to many of the actual observations.</p>
+<p>Other measures of central tendency include the median, mode, and geometric mean.</p>
+</div>
+<div id="median" class="section level3">
+<h3>Median</h3>
+<p>The median is the middle value in an ordered distribution (or the average of the two middle values if there are an even number of values in the distribution). It is much less sensitive to outliers than the mean. (e.g. mean income is sensitive to the super rich, and thus reflects an income that not very many people earn. Median income reflects an income that many more people actually earn.)</p>
+<p>The plot below shows the mean versus the median for the <code>mammalmass</code> variable.</p>
 <pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.</code></pre>
 <p><img src="summary_stats_files/figure-html/unnamed-chunk-2-1.png" title="" alt="" width="672" /></p>
 </div>
+<div id="mode" class="section level3">
+<h3>Mode</h3>
+<p>The mode is the point with the highest probability density. This refers to the “peak” of the probability density function. There is no really easy way to calculate the mode of a continuous variable in R, but it can be easily detected visually. A distribution may have more than one mode.</p>
+</div>
+<div id="geometric-mean" class="section level3">
+<h3>Geometric Mean</h3>
+<p>The geometric mean is defined as the <span class="math">\(nth\)</span> root of the product of <span class="math">\(n\)</span> numbers. The geometric mean is especially useful for summarizing values that are of different scale. A common use is to calculate an overall size variable from a series of measuremetns that have very different scales (e.g. the length of a toe bone, and the length of a femur).</p>
+</div>
+</div>
 <div id="spread" class="section level2">
 <h2>Spread</h2>
+<p>Measurements of spread tell us how values are distributed around a central tendency. The most basic measure of spread is the variance:</p>
+<div id="variance" class="section level3">
+<h3>Variance</h3>
+<p>The variance is the mean squared deviation divided by the number of observations minus 1.</p>
+<p><span class="math">\[s^2 = \frac{1}{(n-1)} \sum (Y_i - \bar{Y}) \]</span></p>
+<p>It describes how spread out the values tend to be around the mean value.</p>
 </div>
-<div id="population-parameters-versus-sample-parameters" class="section level2">
-<h2>Population parameters <em>versus</em> sample parameters</h2>
+<div id="standard-deviation" class="section level3">
+<h3>Standard Deviation</h3>
+<p>The sample standard deviation refers to the square root of the variance. It is probably the most commonly reported measure of spread. Standard deviations are related to 95% confidence intervals in that 95% of the observations in a normal distribution will fall within <span class="math">\(\pm\)</span> 1.96 standard deviations.</p>
+</div>
+</div>
+<div id="moments" class="section level2">
+<h2>Moments</h2>
+<p>The variance is also called the second moment. The third moment indicates the skewness and the fourth indicates the kurtosis (pointiness or flatness).</p>
 </div>
 
 

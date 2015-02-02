@@ -12,18 +12,18 @@ Think of two examples of a discrete random variables and two examples of a conti
 
 ## Probability Distributions
 
-If we plot the values from a random variable using a histogram, we call the result a ***probability distribution***.  The various distributions form the basis of parametric statistics. There are four main R functions associated with each probabibility distribution. In of the below, you will replace $dist$ with the abbreviation for that distribuction (norm, binom, etc.)
+If we plot the values from a random variable using a histogram, we call the result a ***probability distribution***.  The various distributions form the basis of parametric statistics. There are four main R functions associated with each probability distribution. In of the below, you will replace $dist$ with the abbreviation for that distribution (norm, binom, etc.)
 
 * rdist - random values drawn from the $dist$ function
 * ddist - probability density of $dist$ at a particular point
-* pdist - cumululative (tail) probability of the $dist$ fuction
+* pdist - cumulative (tail) probability of the $dist$ function
 * qdist - quantiles of $dist$ (quantiles are the converse of cumulative probability)
 
 ## Discrete Distributions
 
 ### Binomial Distribution
 
-A **Bernouili trial** describes an event that has exactly two possibile outcomes: success and failure.  Success occurs with a given probability, for example $p = 0.2$. We know how likely a trial is to result in success, but any given trial may result in either success or failure, and this cannot be predicted for a single trial (the outcome is stochastic).
+A **Bernouili trial** describes an event that has exactly two possible outcomes: success and failure.  Success occurs with a given probability, for example $p = 0.2$. We know how likely a trial is to result in success, but any given trial may result in either success or failure, and this cannot be predicted for a single trial (the outcome is stochastic).
 
 The result of a series of $n$ Bernoulili trials with $X$ successful outcomes results in a binomial random variable.
 
@@ -43,15 +43,23 @@ rbinom(n = 10, size=10, prob = 0.5)
 
 ```
 
-We can use the `dbinom()` function to get a sense of the shape of the binomial distrubution.
+We can use the `dbinom()` function to get a sense of the shape of the binomial distribution.
 
 ```{r}
 library(ggplot2)
 qplot(x=1:25, y=dbinom(1:25, 25, prob = 0.5), geom="line", main="binomial density prob=0.5")
-qplot(x=1:25, y=dbinom(1:25, 25, prob = 0.2), geom="line", main="binomial density prob=0.5")
+qplot(x=1:25, y=dbinom(1:25, 25, prob = 0.2), geom="line", main="binomial density prob=0.2")
 ```
 
-We can also look at this empirically by simulating data. The graph shows that the most common outcome of 5000 trials of a binomial function with a probability of 0.5 is to have approximately 2500 sucessful outcomes.  It is significantly less likely to get many more or less than 2500 successes. Note: the binomial distribution approximates the normal distribution at very large values of $n$.
+***Notice:*** the right tail of this distribution is not at zero, but is asymptotically approaching zero.
+
+```{r}
+dbinom(25, 25, prob = 0.2)
+```
+
+### Simulation
+
+We can also simulating data from a binomial distribution. The graph shows that the most common outcome of 5000 trials of a binomial function with a probability of 0.5 is to have approximately 2500 successful outcomes.  It is significantly less likely to get many more or less than 2500 successes. Note: the binomial distribution approximates the normal distribution at very large values of $n$.
 
 
 ```{r}
@@ -61,7 +69,7 @@ qplot(rbinom(n = 5000, size=5000, prob = 0.5), main="binomial distribution p = 0
 
 ### Poisson Distribution
 
-Is similar to the binomial distribution, but describes rare events, when the number of trials $n$ is unknown. Requires a single rate parameter $\lambda$. The expected value and variance for the poisson distribution are both equal to lamba
+Is similar to the binomial distribution, but describes rare events, when the number of trials $n$ is unknown. Requires a single rate parameter $\lambda$. It is commonly pops up when examining the number of events occuring through time (e.g., the number of pieces of mail recieved per day, or the number of speciation events occuring per millenium). The expected value and variance for the Poisson distribution are both equal to lambda
 
 ```{r}
 rpois(10, lambda = 0.2)
@@ -81,17 +89,17 @@ qplot(x=1:60, y=dpois(1:60, lambda = 30), main="Poisson distribution with lambda
 
 ### Uniform Distribution
 
-The uniform distribution represents a function in which the probability density is equal for each sub-interval across the a given range.  This results in a flat frequency distribution. The expected value over the range $a$ to $b$ is $(a + b)/2$
+The uniform distribution represents a function in which the probability density is equal for each sub-interval across the a given range.  This results in a flat frequency distribution. The expected value over the range $a$ to $b$ is $(a + b)/2$. An example might be the distribution of trees on a savannah landscape, which are competing with one another for nutrients and light.  
 
 ```{r}
 runif(10, min = 1, max = 10)
 
-qplot(runif(1000), min=1, max=10, main="uniform distribution from 1 to 10")
+qplot(runif(10000), min=1, max=10, main="uniform distribution from 1 to 10")
 ```
 
 ### Normal Distribution
 
-The normal distribution (also known as the Gausian distribution) is the familiar bell-curve shaped distribution that is symetrical around the mean, with diminishing tails as you move away from the mean. Many phenomena in nature are distributed as a normal distribution.  The normal distribution has two parameters, the mean ($\mu$) and the standard deviation ($\sigma$).
+The normal distribution (also known as the Gaussian distribution) is the familiar bell-curve shaped distribution that is symmetrical around the mean, with diminishing tails as you move away from the mean. Many phenomena in nature are distributed as a normal distribution, especially continuous measurement values.  The normal distribution has two parameters, the mean ($\mu$) and the standard deviation ($\sigma$).
 
 ```{r}
 rnorm(10, mean=0, sd=1)
@@ -111,3 +119,52 @@ lnorm <- rlnorm(1000, meanlog = 0, sdlog = 1)
 qplot(lnorm, main="lognormal distribution")
 qplot(log(lnorm), main="logged lognormal distribution")
 ```
+
+### Tail (cumulative) probability and quantiles
+
+It is often very useful to know how much probability density is under a distribution up to a certain point.  Consider a normal distribution with a mean of 10 and a standard deviation of 1.5.
+
+We can calculate the cumulative probability up to a value of 5 like this:
+
+```{r}
+pnorm(q = 5, mean = 10, sd = 1.5)
+```
+
+This tells us that `r pnorm(q = 5, mean = 10, sd = 1.5)` is the proportion of values that are less than or equal to 5 in this probability distribution. If we were dealing with real data, we would be forced to say that an observation of 5 is very uncommon in this distribution, and the cumulative probability gives us an estimate of just how unlikely
+
+### This is fundamental, as this is exactly what a p value represents, but more on that next week.
+
+<span class="mega-octicon octicon-puzzle"></span> Challenge: What is the cumulative probability at a value of 10 in the same normal distribution?
+
+### Testing for normality
+
+It is often very useful to test an empirical distribution of values to see how closely it approximates a normal distribution. There are two main ways to do this:
+
+1.  Visually with a Q-Q plot
+2.  Statistically with Shapiro-Wilk normality test
+
+### Q-Q plot
+
+The Q-Q plot compares your empirical cumulative distribution to the theoretical normal cumulative distribution.  If the data are normal, then the Q-Q plot will look like a straight line. 
+
+```{r}
+qqnorm(rnorm(1000))
+```
+
+If your data are not normally distributed, then the Q-Q plot will look curved, or banana shaped. It will take some practice to figure out how far a Q-Q plot can deviate from a straight line without creating too many problems. 
+
+```{r}
+qqnorm(rnorm(1000)^2)
+qqnorm(rnorm(1000)^3)
+```
+
+### Shapiro-Wilks test for normality
+
+The Shapiro-Wilk Test yields a test statistic W, by finding the largest deviation from the expected line in a qqplot. This is a powerful test for normality, but does not work well when there are many ties in the data.
+
+
+```{r}
+shapiro.test(rnorm(1000))
+shapiro.test(rnorm(1000)^2)
+```
+

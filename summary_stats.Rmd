@@ -3,7 +3,7 @@ title: "Summary Statistics"
 output: html_document
 ---
 
-Summary statistics serve to summarize of the central tendancy (or location) and spread of a distribution.
+Summary statistics serve to summarize of the central tendency (or location) and spread of a distribution.
 
 Consider the following distribution of (simulated) mammalian body size data
 
@@ -16,7 +16,7 @@ bmplot
 
 ## Location
 
-The most basic question to ask is where the central tendancy of this distribution is.  There are a variety of measures of central tendency.  
+The most basic question to ask is where the central tendency of this distribution is.  There are a variety of measures of central tendency.  
 
 ### Mean
 
@@ -50,7 +50,7 @@ The mode is the point with the highest probability density. This refers to the "
 
 ### Geometric Mean
 
-The geometric mean is defined as the $nth$ root of the product of $n$ numbers. The geometric mean is especially useful for summarizing values that are of different scale.  A common use is to calculate an overall size variable from a series of measuremetns that have very different scales (e.g. the length of a toe bone, and the length of a femur). 
+The geometric mean is defined as the $nth$ root of the product of $n$ numbers. The geometric mean is especially useful for summarizing values that are of different scale.  A common use is to calculate an overall size variable from a series of measurements that have very different scales (e.g. the length of a toe bone, and the length of a femur). 
 
 
 ## Spread
@@ -68,8 +68,14 @@ It describes how spread out the values tend to be around the mean value.
 
 ### Standard Deviation
 
-The sample standard deviation refers to the square root of the variance.  It is probably the most commonly reported measure of spread.  Standard deviations are related to 95% confidence intervals in that 95% of the observations in a normal distribution will fall within $\pm$ 1.96 standard deviations.
+The sample standard deviation refers to the square root of the variance.  It is probably the most commonly reported measure of spread.  Standard deviations are related to 95% confidence intervals in that 95% of the observations in a normal distribution will fall within $\pm$ 1.96 standard deviations. The sample standard deviation divided by the square root of the sample size is known as the ***standard error of the mean***, or standard error.  The standard error and standard deviation are both widely reported in the literature, and can be converted back and forth as long as the sample size is reported. 
 
 ## Moments
 
 The variance is also called the second moment. The third moment indicates the skewness and the fourth indicates the kurtosis (pointiness or flatness).
+
+### Population versus sample
+
+The foundation of frequentist statistics (which is most of what we will do) is that the population level parameters $\mu$, $\sigma$, and $\sigma^2$ have true, fixed values.  We can never know these true fixed values, so we are forced to approximate them with $\bar{Y}$, $s$ and $s^2$.
+
+The Law of Large Numbers proves that if the population were sampled an infinite number of times, the average of our $\bar{Y}$ approximations would be identical to $\mu$. This is where the name frequentist comes from...if we repeat our experiment an infinite number of times, the most frequent sample estimates of our parameters will converge on the true population value. 

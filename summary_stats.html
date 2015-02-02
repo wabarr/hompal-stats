@@ -84,7 +84,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </div>
 
 
-<p>Summary statistics serve to summarize of the central tendancy (or location) and spread of a distribution.</p>
+<p>Summary statistics serve to summarize of the central tendency (or location) and spread of a distribution.</p>
 <p>Consider the following distribution of (simulated) mammalian body size data</p>
 <pre class="r"><code>library(ggplot2)
 mammalmass &lt;- rlnorm(1000, meanlog = 2.6)
@@ -93,7 +93,7 @@ bmplot</code></pre>
 <p><img src="summary_stats_files/figure-html/unnamed-chunk-1-1.png" title="" alt="" width="672" /></p>
 <div id="location" class="section level2">
 <h2>Location</h2>
-<p>The most basic question to ask is where the central tendancy of this distribution is. There are a variety of measures of central tendency.</p>
+<p>The most basic question to ask is where the central tendency of this distribution is. There are a variety of measures of central tendency.</p>
 <div id="mean" class="section level3">
 <h3>Mean</h3>
 <p>The arithmetic mean (often called the average and abbreviated <span class="math">\(\bar{Y}\)</span>) is the most familiar.</p>
@@ -115,7 +115,7 @@ bmplot</code></pre>
 </div>
 <div id="geometric-mean" class="section level3">
 <h3>Geometric Mean</h3>
-<p>The geometric mean is defined as the <span class="math">\(nth\)</span> root of the product of <span class="math">\(n\)</span> numbers. The geometric mean is especially useful for summarizing values that are of different scale. A common use is to calculate an overall size variable from a series of measuremetns that have very different scales (e.g. the length of a toe bone, and the length of a femur).</p>
+<p>The geometric mean is defined as the <span class="math">\(nth\)</span> root of the product of <span class="math">\(n\)</span> numbers. The geometric mean is especially useful for summarizing values that are of different scale. A common use is to calculate an overall size variable from a series of measurements that have very different scales (e.g. the length of a toe bone, and the length of a femur).</p>
 </div>
 </div>
 <div id="spread" class="section level2">
@@ -129,12 +129,16 @@ bmplot</code></pre>
 </div>
 <div id="standard-deviation" class="section level3">
 <h3>Standard Deviation</h3>
-<p>The sample standard deviation refers to the square root of the variance. It is probably the most commonly reported measure of spread. Standard deviations are related to 95% confidence intervals in that 95% of the observations in a normal distribution will fall within <span class="math">\(\pm\)</span> 1.96 standard deviations.</p>
+<p>The sample standard deviation refers to the square root of the variance. It is probably the most commonly reported measure of spread. Standard deviations are related to 95% confidence intervals in that 95% of the observations in a normal distribution will fall within <span class="math">\(\pm\)</span> 1.96 standard deviations. The sample standard deviation divided by the square root of the sample size is known as the <strong><em>standard error of the mean</em></strong>, or standard error. The standard error and standard deviation are both widely reported in the literature, and can be converted back and forth as long as the sample size is reported.</p>
 </div>
 </div>
 <div id="moments" class="section level2">
 <h2>Moments</h2>
 <p>The variance is also called the second moment. The third moment indicates the skewness and the fourth indicates the kurtosis (pointiness or flatness).</p>
+<div id="population-versus-sample" class="section level3">
+<h3>Population versus sample</h3>
+<p>The foundation of frequentist statistics (which is most of what we will do) is that the population level parameters <span class="math">\(\mu\)</span>, <span class="math">\(\sigma\)</span>, and <span class="math">\(\sigma^2\)</span> have true, fixed values. We can never know these true fixed values, so we are forcet to approximate them with <span class="math">\(\bar_Y\)</span>, <span class="math">\(s\)</span> and <span class="math">\(s^2\)</span>.</p>
+</div>
 </div>
 
 

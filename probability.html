@@ -11,7 +11,7 @@
 
 
 
-<title>Probability &amp; Descriptive Stats</title>
+<title>Probability</title>
 
 <script src="libs/jquery-1.11.0/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -80,7 +80,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </div>
 
 <div id="header">
-<h1 class="title">Probability &amp; Descriptive Stats</h1>
+<h1 class="title">Probability</h1>
 </div>
 
 
@@ -94,9 +94,9 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <p>There are functions that make it very easy to sample from vectors in R. Imagine a vector of 1000 individuals. We can use the <code>sample()</code> function to draw a sample of 10 individuals from this population (without replacement). Notice that when we do this twice, the samples are very rarely identical.</p>
 <pre class="r"><code>individuals &lt;- 1:1000
 sample(individuals, 10)</code></pre>
-<pre><code>##  [1] 956  85 926 475 769 194 458 113 913 669</code></pre>
-<pre class="r"><code>sample(individuals, 10)</code></pre>
-<pre><code>##  [1]  30 586 729 107 240 408 619 369 634  83</code></pre>
+<pre><code>##  [1] 766 507 952 716  71 448 546 388 359 514</code></pre>
+<pre class="r"><code>sample(individuals, 10, replace = TRUE)</code></pre>
+<pre><code>##  [1] 121 339 263 558  76 494 539 444 593 500</code></pre>
 </div>
 <div id="quantifying-probability" class="section level2">
 <h2>Quantifying probability</h2>
@@ -133,6 +133,7 @@ sample(individuals, 10)</code></pre>
 <h3>intersection</h3>
 <p>The intersection of two sets A and B represents the elements in common to both sets. The probability of the intersection of A and B represents the probability of the shared event A AND B. Assuming A and B are independent:</p>
 <p><span class="math">\[ P(A \cap B) = P(A) * P(B) \]</span></p>
+<p><span class="mega-octicon octicon-puzzle"></span> What is the probability of getting the sequence (H, T) on the first two flips? What about the sequence (H, T, T)?</p>
 <p>There is a function in R to calculate the intersection of 2 sets.</p>
 <pre class="r"><code>x &lt;- c(1,2,3)
 y &lt;- c(3,4,5)

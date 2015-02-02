@@ -86,8 +86,21 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 
 <div id="random-variables" class="section level2">
 <h2>Random Variables</h2>
-<p>A <strong><em>random variable</em></strong> –in statistical terms– is defined as a variable whose value depends on random chance. Each random variable has one or more parameters governing the probability of different outcomes. There are two types of random variables: <strong><em>discrete random variables</em></strong> which have a limited number of possible discrete outcomes and <strong><em>continuous random variables</em></strong> which have a (theoretically) unlimited number of possible outcomes.</p>
-<p>If we plot the values from a random variable using a histogram, we call the result a <strong><em>probability distribution</em></strong>. The various distributions form the basis of parametric statistics.</p>
+<p>A <strong><em>random variable</em></strong> –in statistical terms– is a variable whose value depends on random chance. Each random variable has one or more parameters governing the probability of different outcomes. There are two types of random variables: <strong><em>discrete random variables</em></strong> which have a limited number of possible discrete outcomes and <strong><em>continuous random variables</em></strong> which have a (theoretically) unlimited number of possible outcomes.</p>
+<div id="challenge" class="section level3">
+<h3><span class="mega-octicon octicon-puzzle"></span> Challenge</h3>
+<p>Think of two examples of a discrete random variables and two examples of a continuous random variables for your area of scientific interest. What is the sample space for the random variable?</p>
+</div>
+</div>
+<div id="probability-distributions" class="section level2">
+<h2>Probability Distributions</h2>
+<p>If we plot the values from a random variable using a histogram, we call the result a <strong><em>probability distribution</em></strong>. The various distributions form the basis of parametric statistics. There are four main R functions associated with each probabibility distribution. In of the below, you will replace <span class="math">\(dist\)</span> with the abbreviation for that distribuction (norm, binom, etc.)</p>
+<ul>
+<li>rdist - random values drawn from the <span class="math">\(dist\)</span> function</li>
+<li>ddist - probability density of <span class="math">\(dist\)</span> at a particular point</li>
+<li>pdist - cumululative (tail) probability of the <span class="math">\(dist\)</span> fuction</li>
+<li>qdist - quantiles of <span class="math">\(dist\)</span> (quantiles are the converse of cumulative probability)</li>
+</ul>
 </div>
 <div id="discrete-distributions" class="section level2">
 <h2>Discrete Distributions</h2>
@@ -95,32 +108,73 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <h3>Binomial Distribution</h3>
 <p>A <strong>Bernouili trial</strong> describes an event that has exactly two possibile outcomes: success and failure. Success occurs with a given probability, for example <span class="math">\(p = 0.2\)</span>. We know how likely a trial is to result in success, but any given trial may result in either success or failure, and this cannot be predicted for a single trial (the outcome is stochastic).</p>
 <p>The result of a series of <span class="math">\(n\)</span> Bernoulili trials with <span class="math">\(X\)</span> successful outcomes results in a binomial random variable.</p>
+<p>The expected value of the binomial distribution is <span class="math">\(E(x) = np\)</span></p>
 <p>Binomial random variables can be simulated in R using the <code>rbinom()</code> function.</p>
 <pre class="r"><code># 10 observations, 1 trial
 rbinom(n = 10, size=1, prob = 0.5)</code></pre>
-<pre><code>##  [1] 0 0 1 0 0 0 0 1 1 1</code></pre>
+<pre><code>##  [1] 0 0 0 0 0 0 0 1 1 0</code></pre>
 <pre class="r"><code># 1 observation, 10 trials
 rbinom(n = 1, size=10, prob = 0.5)</code></pre>
-<pre><code>## [1] 7</code></pre>
+<pre><code>## [1] 6</code></pre>
 <pre class="r"><code># 10 observations, 10 trials
 rbinom(n = 10, size=10, prob = 0.5)</code></pre>
-<pre><code>##  [1] 6 5 6 6 3 6 6 3 5 8</code></pre>
+<pre><code>##  [1] 5 5 6 4 4 4 7 4 5 4</code></pre>
+<p>We can use the <code>dbinom()</code> function to get a sense of the shape of the binomial distrubution.</p>
+<pre class="r"><code>library(ggplot2)
+qplot(x=1:25, y=dbinom(1:25, 25, prob = 0.5), geom=&quot;line&quot;, main=&quot;binomial density prob=0.5&quot;)</code></pre>
+<p><img src="distributions_files/figure-html/unnamed-chunk-2-1.png" title="" alt="" width="672" /></p>
+<pre class="r"><code>qplot(x=1:25, y=dbinom(1:25, 25, prob = 0.2), geom=&quot;line&quot;, main=&quot;binomial density prob=0.5&quot;)</code></pre>
+<p><img src="distributions_files/figure-html/unnamed-chunk-2-2.png" title="" alt="" width="672" /></p>
+<p>We can also look at this empirically by simulating data. The graph shows that the most common outcome of 5000 trials of a binomial function with a probability of 0.5 is to have approximately 2500 sucessful outcomes. It is significantly less likely to get many more or less than 2500 successes.</p>
+<pre class="r"><code>qplot(rbinom(n = 5000, size=5000, prob = 0.5), main=&quot;binomial distribution p = 0.5&quot;)</code></pre>
+<pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.</code></pre>
+<p><img src="distributions_files/figure-html/unnamed-chunk-3-1.png" title="" alt="" width="672" /></p>
 </div>
 <div id="poisson-distribution" class="section level3">
 <h3>Poisson Distribution</h3>
-<p>Useful for rare events, when the number of trials <span class="math">\(n\)</span> is unknown. Requires a single rate parameter <span class="math">\(\lambda\)</span>.</p>
+<p>Is similar to the binomial distribution, but describes rare events, when the number of trials <span class="math">\(n\)</span> is unknown. Requires a single rate parameter <span class="math">\(\lambda\)</span>. The expected value and variance for the poisson distribution are both equal to lamba</p>
+<pre class="r"><code>rpois(10, lambda = 0.2)</code></pre>
+<pre><code>##  [1] 0 0 0 0 0 0 0 0 0 0</code></pre>
+<pre class="r"><code>qplot(x=1:5, y=dpois(1:5, lambda = 0.2), main=&quot;Poisson distribution with lambda = 0.2&quot;, geom=&quot;line&quot;)</code></pre>
+<p><img src="distributions_files/figure-html/unnamed-chunk-4-1.png" title="" alt="" width="672" /></p>
 </div>
 </div>
 <div id="continuous-distributions" class="section level2">
 <h2>Continuous Distributions</h2>
 <div id="uniform-distribution" class="section level3">
 <h3>Uniform Distribution</h3>
+<p>The uniform distribution represents a function in which the probability density is equal for each sub-interval across the a given range. This results in a flat frequency distribution. The expected value over the range <span class="math">\(a\)</span> to <span class="math">\(b\)</span> is <span class="math">\((a + b)/2\)</span></p>
+<pre class="r"><code>runif(10, min = 1, max = 10)</code></pre>
+<pre><code>##  [1] 3.437316 8.348630 7.713995 8.446940 6.161427 7.476520 5.576452
+##  [8] 8.780318 1.705957 9.011614</code></pre>
+<pre class="r"><code>qplot(runif(1000), min=1, max=10, main=&quot;uniform distribution from 1 to 10&quot;)</code></pre>
+<pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.</code></pre>
+<p><img src="distributions_files/figure-html/unnamed-chunk-5-1.png" title="" alt="" width="672" /></p>
 </div>
 <div id="normal-distribution" class="section level3">
 <h3>Normal Distribution</h3>
+<p>The normal distribution (also known as the Gausian distribution) is the familiar bell-curve shaped distribution that is symetrical around the mean, with diminishing tails as you move away from the mean. Many phenomena in nature are distributed as a normal distribution. The normal distribution has two parameters, the mean (<span class="math">\(\mu\)</span>) and the standard deviation (<span class="math">\(\sigma\)</span>).</p>
+<pre class="r"><code>rnorm(10, mean=0, sd=1)</code></pre>
+<pre><code>##  [1] -0.1173211  0.3412342  1.2271489 -0.2426766 -0.2238968 -1.1935484
+##  [7] -0.7596147 -1.9921438  2.8413802  0.3211225</code></pre>
+<pre class="r"><code>qplot(rnorm(10000), mean=0, sd=1, main=&quot;Standard normal distribution &quot;)</code></pre>
+<pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.</code></pre>
+<p><img src="distributions_files/figure-html/unnamed-chunk-6-1.png" title="" alt="" width="672" /></p>
 </div>
 <div id="log-normal-distribution" class="section level3">
 <h3>Log-normal Distribution</h3>
+<p>The log-normal distribution resembles a normal distribution when it is logged.</p>
+<pre class="r"><code>rlnorm(10, meanlog = 0, sdlog = 1)</code></pre>
+<pre><code>##  [1] 0.2809166 3.5395866 1.0409529 0.5104040 9.2369536 1.9737944 2.4225108
+##  [8] 1.5845101 2.9670814 0.3686999</code></pre>
+<pre class="r"><code>lnorm &lt;- rlnorm(1000, meanlog = 0, sdlog = 1)
+
+qplot(lnorm, main=&quot;lognormal distribution&quot;)</code></pre>
+<pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.</code></pre>
+<p><img src="distributions_files/figure-html/unnamed-chunk-7-1.png" title="" alt="" width="672" /></p>
+<pre class="r"><code>qplot(log(lnorm), main=&quot;logged lognormal distribution&quot;)</code></pre>
+<pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.</code></pre>
+<p><img src="distributions_files/figure-html/unnamed-chunk-7-2.png" title="" alt="" width="672" /></p>
 </div>
 </div>
 

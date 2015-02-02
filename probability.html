@@ -86,53 +86,88 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 
 <div id="basic-probability" class="section level2">
 <h2>Basic Probability</h2>
-<p>Probability measures how likely an event is to occur. The probability of an outcome can be measured as <span class="math">\[ P = \frac{\#\ Outcomes}{\#\ Trials}\]</span></p>
-<p>To get a real measure of this, we have to observe an infinite number of <strong><em>trials</em></strong>, which is impossible so we must observe a <strong><em>sample</em></strong> of possible trials. We try to make this sample as representative as we can, but sometimes logistics and chance consipre to make a sample of trials unrepresentative.</p>
-<ul>
-<li>Outcome = what might happen during a particular event</li>
-<li>Sample space = the universe of possible outcomes.<br /></li>
-<li>Outcomes should be <strong><em>exhaustive</em></strong> and the outcomes should be <strong><em>mutually exclusive</em></strong></li>
-<li>When these conditions are met, then the sum of probabilities for all outcomes in the sample space is 1.</li>
-</ul>
+<p>Probability represents how likely an event is to occur. The probability of an outcome can be measured as <span class="math">\[ P = \frac{\#\ Outcomes}{\#\ Trials}\]</span></p>
+<p>To get a real measure of this, we have to observe an infinite number of <strong><em>trials</em></strong>, which is impossible. Instead, we are stuck merely observing a <strong><em>sample</em></strong> of possible trials. We try to make this sample as representative as we can, but sometimes logistics and chance conspire to make a sample of trials unrepresentative. If the sample of trials is unrepresentative, then our estimate of probability may be badly wrong.</p>
+</div>
+<div id="sampling-in-r" class="section level2">
+<h2>Sampling in R</h2>
+<p>There are functions that make it very easy to sample from vectors in R. Imagine a vector of 1000 individuals. We can use the <code>sample()</code> function to draw a sample of 10 individuals from this population (without replacement). Notice that when we do this twice, the samples are very rarely identical.</p>
+<pre class="r"><code>individuals &lt;- 1:1000
+sample(individuals, 10)</code></pre>
+<pre><code>##  [1] 956  85 926 475 769 194 458 113 913 669</code></pre>
+<pre class="r"><code>sample(individuals, 10)</code></pre>
+<pre><code>##  [1]  30 586 729 107 240 408 619 369 634  83</code></pre>
 </div>
 <div id="quantifying-probability" class="section level2">
 <h2>Quantifying probability</h2>
+<div id="outcome-what-happens-during-a-particular-event" class="section level3">
+<h3>Outcome = what happens during a particular event</h3>
+</div>
+<div id="sample-space-the-universe-of-possible-outcomes." class="section level3">
+<h3>Sample space = the universe of possible outcomes.</h3>
+<p>Outcomes should be <strong><em>exhaustive</em></strong> in describing the sample space and the outcomes should be <strong><em>mutually exclusive</em></strong>. When these conditions are met, then the sum of probabilities for all outcomes in the sample space is 1.</p>
+</div>
+<div id="complex-events-composites-of-simple-events-logical-or" class="section level3">
+<h3>Complex events = composites of simple events (Logical OR)</h3>
 <ul>
-<li>Complex events = composites of simple events (Logical OR)
-<ul>
-<li>sum the probabilities of simple events
-<ul>
-<li>e.g. probability of drawing a King from a deck of cards is the sum of the probability of drawing each of the 4 distinct kings 1/52 + 1/52 + 1/52 + 1/52 = 4/52 = 1/13</li>
-</ul></li>
-</ul></li>
-<li>Shared events = multiple simultaneus occurrences of simple events (Logical AND)
+<li>sum the probabilities of simple events</li>
+<li>e.g. probability of drawing a King from a deck of cards is the sum of the probability of drawing each of the 4 distinct kings <span class="math">\[1/52 + 1/52 + 1/52 + 1/52 = 4/52 = 1/13 \]</span></li>
+</ul>
+</div>
+<div id="shared-events-multiple-simultaneous-occurrences-of-simple-events-logical-and" class="section level3">
+<h3>Shared events = multiple simultaneous occurrences of simple events (Logical AND)</h3>
 <ul>
 <li>multiply the probabilities of simple events</li>
 <li>assume that events are <strong><em>independent</em></strong> of one another
 <ul>
-<li>e.g. probability of drawing the Ace of spades and the 2 of clubs is the product of the probability of draing each one separately 1/52 * 1/52 = 1/2704</li>
-</ul></li>
+<li>e.g. probability of drawing the Ace of spades and the 2 of clubs is the product of the probability of drawing each one separately <span class="math">\[1/52 * 1/52 = 1/2704\]</span></li>
 </ul></li>
 </ul>
 </div>
+</div>
 <div id="set-operations" class="section level2">
 <h2>Set operations</h2>
-<div id="union" class="section level3">
-<h3>union</h3>
-</div>
+<p>The sample space can be described as a <strong><em>set</em></strong> of all possible outcomes. For example, if we flip a coin exactly 3 times and observe the results, then the set of possible outcomes is:</p>
+<p><span class="math">\[ Tosses = \{(H, H, H), (H, H, T), (H, T, H), (H, T, T), (T, H, H), (T, H, T), (T, T, H), (T, T, T)\}\]</span></p>
 <div id="intersection" class="section level3">
 <h3>intersection</h3>
+<p>The intersection of two sets A and B represents the elements in common to both sets. The probability of the intersection of A and B represents the probability of the shared event A AND B. Assuming A and B are independent:</p>
+<p><span class="math">\[ P(A \cap B) = P(A) * P(B) \]</span></p>
+<p>There is a function in R to calculate the intersection of 2 sets.</p>
+<pre class="r"><code>x &lt;- c(1,2,3)
+y &lt;- c(3,4,5)
+intersect(x, y)</code></pre>
+<pre><code>## [1] 3</code></pre>
+</div>
+<div id="union" class="section level3">
+<h3>union</h3>
+<p>The union of two sets A and B consists of all the shared elements of A and B. The probability of the union of two sets represents the probability of the complex event A OR B. To compute it we add the probabilities of A and B, and subtract the probability of the intersection between A and B, so as not to double count.</p>
+<p><span class="math">\[ P(A \cup B) = P(A) + P(B) - P(A \cap B)\]</span></p>
+<p>There is a function in R to calculate the union.</p>
+<pre class="r"><code>union(x, y)</code></pre>
+<pre><code>## [1] 1 2 3 4 5</code></pre>
 </div>
 <div id="test-for-membership" class="section level3">
 <h3>test for membership</h3>
+<p>Sometimes it is useful to test whether an element is a member of a set. There is an R function for that.</p>
+<pre class="r"><code>1 %in% x</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>1 %in% y</code></pre>
+<pre><code>## [1] FALSE</code></pre>
 </div>
 <div id="complement" class="section level3">
 <h3>complement</h3>
+<p>The complement of a set is all the elements that are not in a set. The set <span class="math">\(heads\)</span> is all the elements that start with heads in the <span class="math">\(tosses\)</span> set. The complement of this set <span class="math">\(heads^c\)</span> represents all the other elements that don’t start with heads.</p>
 </div>
 </div>
 <div id="conditional-probability" class="section level2">
 <h2>Conditional Probability</h2>
+<p>Sometimes probabilities in a complex event depend on previous outcomes. To calculate the probability of A given B, we use the following formula.</p>
 <p><span class="math">\[P(A|B) = \frac{P(A\cap B)}{P(B)}\]</span></p>
+</div>
+<div id="conditional-probabilty-is-fundamental" class="section level2">
+<h2>Conditional Probabilty is fundamental</h2>
+<p>It forms the basis of frequentist statistics, as well as Bayesian statistcs, which we will talk about much more next week.</p>
 </div>
 
 

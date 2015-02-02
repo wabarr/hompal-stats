@@ -94,9 +94,9 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <p>There are functions that make it very easy to sample from vectors in R. Imagine a vector of 1000 individuals. We can use the <code>sample()</code> function to draw a sample of 10 individuals from this population (without replacement). Notice that when we do this twice, the samples are very rarely identical.</p>
 <pre class="r"><code>individuals &lt;- 1:1000
 sample(individuals, 10)</code></pre>
-<pre><code>##  [1] 766 507 952 716  71 448 546 388 359 514</code></pre>
+<pre><code>##  [1] 321 311 264 716 444 834 900 146 729 431</code></pre>
 <pre class="r"><code>sample(individuals, 10, replace = TRUE)</code></pre>
-<pre><code>##  [1] 121 339 263 558  76 494 539 444 593 500</code></pre>
+<pre><code>##  [1] 483 222  73 582  60 492 797 972 324 334</code></pre>
 </div>
 <div id="quantifying-probability" class="section level2">
 <h2>Quantifying probability</h2>
@@ -144,6 +144,7 @@ intersect(x, y)</code></pre>
 <h3>union</h3>
 <p>The union of two sets A and B consists of all the shared elements of A and B. The probability of the union of two sets represents the probability of the complex event A OR B. To compute it we add the probabilities of A and B, and subtract the probability of the intersection between A and B, so as not to double count.</p>
 <p><span class="math">\[ P(A \cup B) = P(A) + P(B) - P(A \cap B)\]</span></p>
+<p><span class="mega-octicon octicon-puzzle"></span> What is the probability of getting the same three outcomes for each of three coin flips?</p>
 <p>There is a function in R to calculate the union.</p>
 <pre class="r"><code>union(x, y)</code></pre>
 <pre><code>## [1] 1 2 3 4 5</code></pre>

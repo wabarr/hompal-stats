@@ -112,13 +112,13 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <p>Binomial random variables can be simulated in R using the <code>rbinom()</code> function.</p>
 <pre class="r"><code># 10 observations, 1 trial
 rbinom(n = 10, size=1, prob = 0.5)</code></pre>
-<pre><code>##  [1] 0 1 0 0 0 0 0 0 0 1</code></pre>
+<pre><code>##  [1] 1 1 0 0 0 1 1 1 1 1</code></pre>
 <pre class="r"><code># 1 observation, 10 trials
 rbinom(n = 1, size=10, prob = 0.5)</code></pre>
-<pre><code>## [1] 7</code></pre>
+<pre><code>## [1] 4</code></pre>
 <pre class="r"><code># 10 observations, 10 trials
 rbinom(n = 10, size=10, prob = 0.5)</code></pre>
-<pre><code>##  [1] 5 6 6 3 4 6 5 4 3 4</code></pre>
+<pre><code>##  [1] 6 4 4 5 4 3 7 4 3 4</code></pre>
 <p>We can use the <code>dbinom()</code> function to get a sense of the shape of the binomial distribution.</p>
 <pre class="r"><code>library(ggplot2)
 qplot(x=1:25, y=dbinom(1:25, 25, prob = 0.5), geom=&quot;line&quot;, main=&quot;binomial density prob=0.5&quot;)</code></pre>
@@ -134,13 +134,14 @@ qplot(x=1:25, y=dbinom(1:25, 25, prob = 0.5), geom=&quot;line&quot;, main=&quot;
 <p>We can also simulating data from a binomial distribution. The graph shows that the most common outcome of 5000 trials of a binomial function with a probability of 0.5 is to have approximately 2500 successful outcomes. It is significantly less likely to get many more or less than 2500 successes. Note: the binomial distribution approximates the normal distribution at very large values of <span class="math">\(n\)</span>.</p>
 <pre class="r"><code>qplot(rbinom(n = 5000, size=5000, prob = 0.5), main=&quot;binomial distribution p = 0.5&quot;)</code></pre>
 <pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.</code></pre>
+<pre><code>## Warning: position_stack requires constant width: output may be incorrect</code></pre>
 <p><img src="distributions_files/figure-html/unnamed-chunk-4-1.png" title="" alt="" width="672" /></p>
 </div>
 <div id="poisson-distribution" class="section level3">
 <h3>Poisson Distribution</h3>
 <p>Is similar to the binomial distribution, but describes rare events, when the number of trials <span class="math">\(n\)</span> is unknown. Requires a single rate parameter <span class="math">\(\lambda\)</span>. It is commonly pops up when examining the number of events occuring through time (e.g., the number of pieces of mail recieved per day, or the number of speciation events occuring per millenium). The expected value and variance for the Poisson distribution are both equal to lambda</p>
 <pre class="r"><code>rpois(10, lambda = 0.2)</code></pre>
-<pre><code>##  [1] 0 0 1 0 0 1 0 0 0 0</code></pre>
+<pre><code>##  [1] 0 0 0 0 0 0 0 1 0 0</code></pre>
 <pre class="r"><code>qplot(x=0:5, y=dpois(0:5, lambda = 0.2), main=&quot;Poisson distribution with lambda = 0.2&quot;, geom=&quot;line&quot;)</code></pre>
 <p><img src="distributions_files/figure-html/unnamed-chunk-5-1.png" title="" alt="" width="672" /></p>
 </div>
@@ -156,8 +157,8 @@ qplot(x=1:25, y=dbinom(1:25, 25, prob = 0.5), geom=&quot;line&quot;, main=&quot;
 <h3>Uniform Distribution</h3>
 <p>The uniform distribution represents a function in which the probability density is equal for each sub-interval across the a given range. This results in a flat frequency distribution. The expected value over the range <span class="math">\(a\)</span> to <span class="math">\(b\)</span> is <span class="math">\((a + b)/2\)</span>. An example might be the distribution of trees on a savannah landscape, which are competing with one another for nutrients and light.</p>
 <pre class="r"><code>runif(10, min = 1, max = 10)</code></pre>
-<pre><code>##  [1] 2.031939 1.160067 3.427389 3.423483 1.784166 8.000340 1.185251
-##  [8] 7.856018 3.650256 9.272333</code></pre>
+<pre><code>##  [1] 3.632380 1.854632 9.856670 5.914205 4.718075 4.192968 7.244258
+##  [8] 4.839603 2.180726 5.062735</code></pre>
 <pre class="r"><code>qplot(runif(10000), min=1, max=10, main=&quot;uniform distribution from 1 to 10&quot;)</code></pre>
 <pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.</code></pre>
 <p><img src="distributions_files/figure-html/unnamed-chunk-7-1.png" title="" alt="" width="672" /></p>
@@ -166,8 +167,8 @@ qplot(x=1:25, y=dbinom(1:25, 25, prob = 0.5), geom=&quot;line&quot;, main=&quot;
 <h3>Normal Distribution</h3>
 <p>The normal distribution (also known as the Gaussian distribution) is the familiar bell-curve shaped distribution that is symmetrical around the mean, with diminishing tails as you move away from the mean. Many phenomena in nature are distributed as a normal distribution, especially continuous measurement values. The normal distribution has two parameters, the mean (<span class="math">\(\mu\)</span>) and the standard deviation (<span class="math">\(\sigma\)</span>).</p>
 <pre class="r"><code>rnorm(10, mean=0, sd=1)</code></pre>
-<pre><code>##  [1] -0.3372178  2.1666735 -0.1035784  0.4156665 -0.2187921 -0.1701557
-##  [7]  1.0547098  2.1488499 -2.0173319 -0.5527009</code></pre>
+<pre><code>##  [1]  2.3009417  1.2729923 -1.5076045 -0.6678494  0.6575501 -0.1841019
+##  [7] -1.0505558  1.1806942  0.8388142 -1.1875645</code></pre>
 <pre class="r"><code>qplot(rnorm(10000), mean=0, sd=1, main=&quot;Standard normal distribution &quot;)</code></pre>
 <pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.</code></pre>
 <p><img src="distributions_files/figure-html/unnamed-chunk-8-1.png" title="" alt="" width="672" /></p>
@@ -176,8 +177,8 @@ qplot(x=1:25, y=dbinom(1:25, 25, prob = 0.5), geom=&quot;line&quot;, main=&quot;
 <h3>Log-normal Distribution</h3>
 <p>The log-normal distribution resembles a normal distribution when it is logged.</p>
 <pre class="r"><code>rlnorm(10, meanlog = 0, sdlog = 1)</code></pre>
-<pre><code>##  [1] 0.3871121 0.5344534 0.7551004 0.8972144 5.9100968 0.1726699 0.4094134
-##  [8] 1.2288429 0.3367341 6.7155740</code></pre>
+<pre><code>##  [1] 2.6324877 1.5844556 0.6393336 1.4708362 1.2413708 0.6435749 1.2453797
+##  [8] 0.9087693 1.4253307 0.9732604</code></pre>
 <pre class="r"><code>lnorm &lt;- rlnorm(1000, meanlog = 0, sdlog = 1)
 
 qplot(lnorm, main=&quot;lognormal distribution&quot;)</code></pre>
@@ -212,11 +213,27 @@ qplot(lnorm, main=&quot;lognormal distribution&quot;)</code></pre>
 <p>The Q-Q plot compares your empirical cumulative distribution to the theoretical normal cumulative distribution. If the data are normal, then the Q-Q plot will look like a straight line.</p>
 <pre class="r"><code>qqnorm(rnorm(1000))</code></pre>
 <p><img src="distributions_files/figure-html/unnamed-chunk-11-1.png" title="" alt="" width="672" /></p>
-<p>If your data are not normally distributed, then the Q-Q plot will look curved, or banana shaped.</p>
+<p>If your data are not normally distributed, then the Q-Q plot will look curved, or banana shaped. It will take some practice to figure out how far a Q-Q plot can deviate from a straight line without creating too many problems.</p>
 <pre class="r"><code>qqnorm(rnorm(1000)^2)</code></pre>
 <p><img src="distributions_files/figure-html/unnamed-chunk-12-1.png" title="" alt="" width="672" /></p>
 <pre class="r"><code>qqnorm(rnorm(1000)^3)</code></pre>
 <p><img src="distributions_files/figure-html/unnamed-chunk-12-2.png" title="" alt="" width="672" /></p>
+</div>
+<div id="shapiro-wilks-test-for-normality" class="section level3">
+<h3>Shapiro-Wilks test for normality</h3>
+<p>The Shapiro-Wilk Test yields a test statistic W, by finding the largest deviation from the expected line in a qqplot. This is a powerful test for normality, but does not work well when there are many ties in the data.</p>
+<pre class="r"><code>shapiro.test(rnorm(1000))</code></pre>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  rnorm(1000)
+## W = 0.998, p-value = 0.2885</code></pre>
+<pre class="r"><code>shapiro.test(rnorm(1000)^2)</code></pre>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  rnorm(1000)^2
+## W = 0.6885, p-value &lt; 2.2e-16</code></pre>
 </div>
 </div>
 

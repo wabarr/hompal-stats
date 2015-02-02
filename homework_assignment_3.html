@@ -11,7 +11,7 @@
 
 
 
-<title>HW # 3</title>
+<title>HW # 3 - Probability Distributions</title>
 
 <script src="libs/jquery-1.11.0/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -80,19 +80,30 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </div>
 
 <div id="header">
-<h1 class="title">HW # 3</h1>
+<h1 class="title">HW # 3 - Probability Distributions</h1>
 </div>
 
 
 <div id="question-1" class="section level2">
 <h2>Question #1</h2>
+<p>Using the built-in <code>iris</code> dataset:</p>
+<ol style="list-style-type: lower-alpha">
+<li>use the <code>lapply()</code> function to test each numeric column for normality using the <code>shapiro.test()</code> function…saving the results to a list called <code>iris_results</code>.</li>
+<li>Use the <code>lapply()</code> function again to loop over <code>iris_results</code> and extract the p values.<br /></li>
+<li>make a histogram of each <code>iris</code> numeric variable, and annotate the plot with the corresponding p value.</li>
+<li>calculate the mean and median of <code>iris$Sepal.Length^2</code></li>
+<li>explain in words why these values are different.</li>
+</ol>
+</div>
+<div id="question-2" class="section level2">
+<h2>Question #2</h2>
 <p>One very common problem in bio-statistics is that many characters are not quite normally distributed. To understand how that arises, try the following steps:</p>
 <ol style="list-style-type: lower-alpha">
-<li><p>Generate a vector called body.size for 1000 individuals sampled from a normal distribution with mean = 10 grams and sd = 3 grams.</p></li>
-<li><p>Simulate body growth assuming that each individual grows by some percentage each year so that size(t+1) = g*size(t). A reasonable value of g might be 1.15 (15% growth per year). Write a loop representing 10 years of growth, in which you update the vector body.sizes by multiplying it by the annual growth rate each year for 10 years. Save the result to a new variable called body.sizes2.</p></li>
-<li><p>Next model variable growth rates for each individual. Create a vector of growth rates for the 1000 individuals, with mean 1.15 and standard deviation of 0.2. Again simulate 10 years of growth but with varying growth rates for each individual. Save the results to a new variable called body.sizes3.</p></li>
-<li><p>Finally, simulate stochastic fluctuations in environment reflecting the fact that different years have different environmental conditions. Repeat the variable growth scenario, but each year multiply ALL individuals with a scaling factor representing the productivity that particular year. Have that scaling factor be drawn from a normal distribution with mean 1 and variance 0.2. Save the results to body.sizes4.</p></li>
-<li><p>Test all four distributions for normality. Which ones are normal, which aren’t? Produce qreference plots of all four. Verbally describe the deviations from normality.</p></li>
+<li><p>Generate a vector called <code>body.size</code> for 1000 individuals sampled from a normal distribution with mean = 10 grams and sd = 3 grams.</p></li>
+<li><p>Simulate body growth assuming that each individual grows by some percentage each year (<span class="math">\(t\)</span>) so that <span class="math">\(size(t+1) = g*size(t)\)</span>. A reasonable value of <span class="math">\(g\)</span> might be 1.15 (15% growth per year). Write a loop representing 10 years of growth, in which you update the vector <code>body.sizes</code> by multiplying it by the annual growth rate each year for 10 years. Save the result to a new variable called <code>body.sizes.growth</code>.</p></li>
+<li><p>Next, model variable growth rates for each individual. Create a vector of growth rates for the 1000 individuals, with mean 1.15 and standard deviation of 0.2. Again simulate 10 years of growth but with varying growth rates for each individual. Save the results to a new variable called <code>body.sizes.vargrowth</code>.</p></li>
+<li><p>Finally, simulate stochastic fluctuations in environment reflecting the fact that different years have different environmental conditions. Repeat the variable growth scenario, but each year multiply ALL individuals with a scaling factor representing the productivity that particular year. Have that scaling factor be drawn from a normal distribution with mean 1 and variance 0.2. Save the results to <code>body.sizes.environmentalgrowth</code>.</p></li>
+<li><p>Test all four distributions for normality. Which ones are normal, which aren’t? Produce Q-Q plots of all four. Verbally describe the deviations from normality.</p></li>
 <li><p>To conclude, answer the following questions:</p>
 <ol style="list-style-type: decimal">
 <li>Does growth of a normally-distributed population lead to non-normal distributions?</li>

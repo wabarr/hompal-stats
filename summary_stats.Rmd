@@ -74,7 +74,7 @@ The sample standard deviation refers to the square root of the variance.  It is 
 
 The variance is also called the second moment. The third moment indicates the skewness and the fourth indicates the kurtosis (pointiness or flatness).
 
-### Population versus sample
+## Population versus sample
 
 The foundation of frequentist statistics (which is most of what we will do) is that the population level parameters $\mu$, $\sigma$, and $\sigma^2$ have true, fixed values.  We can never know these true fixed values, so we are forced to approximate them with $\bar{Y}$, $s$ and $s^2$.
 

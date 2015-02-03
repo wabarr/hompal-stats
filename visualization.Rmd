@@ -149,6 +149,7 @@ Now I must reveal that you have been using a shortcut, and that you can't get th
     *  `geom_text()`
     *  `geom_hline()` and `geom_vline()`
     *  **Note** you can map aesthetics specific to a layer by supplying the appropriate arguments to these functions
+    *  **Warning** most of these functions will automatically inherit the aesthetics from the background.  If you want to override this behavior (e.g. to use a different dataframe), you can use the argument `inherit.aes=FALSE`
 *   add an annotation layer `annotate()` to your plot (you can supply more complicated annotations by using a bonafide text layer using `geom_text()`)
 *   Style the plot and tweak axes etc.
     * Themes are a useful shortcut 

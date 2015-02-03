@@ -221,6 +221,7 @@ qplot(price, data=diamonds)</code></pre>
 <li><code>geom_text()</code></li>
 <li><code>geom_hline()</code> and <code>geom_vline()</code></li>
 <li><strong>Note</strong> you can map aesthetics specific to a layer by supplying the appropriate arguments to these functions</li>
+<li><strong>Warning</strong> most of these functions will automatically inherit the aesthetics from the background. If you want to override this behavior (e.g. to use a different dataframe), you can use the argument <code>inherit.aes=FALSE</code></li>
 </ul></li>
 <li>add an annotation layer <code>annotate()</code> to your plot (you can supply more complicated annotations by using a bonafide text layer using <code>geom_text()</code>)</li>
 <li>Style the plot and tweak axes etc.

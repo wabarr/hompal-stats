@@ -1,0 +1,8 @@
+---
+title: "Hypothesis Testing"
+output: html_document
+---
+
+![frequentists_v_bayesians][xkcd]
+
+[xkcd]: frequentists_vs_bayesians.png

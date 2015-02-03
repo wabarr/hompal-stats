@@ -1,8 +1,10 @@
 ---
 title: "Homework Assignment #2"
 date: "Due Feb. 2nd"
-
 ---
+
+Note from Spring 2015:  Students reported spending >20 hours on this assignment. 
+
 ### For each step, make sure your markdown document prints the relevant output, so that I can see <span class="mega-octicon octicon-eye"></span>  that your code works.  
 
 ## Problem 1

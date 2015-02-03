@@ -120,6 +120,25 @@ qplot(lnorm, main="lognormal distribution")
 qplot(log(lnorm), main="logged lognormal distribution")
 ```
 
+### Exponential Distribution
+
+The exponential distribution is the continuous version of the Poisson distribution. It is goverend by a single rate parameter. 
+
+```{r}
+rexp(10, rate=2)
+
+exponential <- rexp(1000, rate=2)
+qplot(exponential, main="Shape of Exponential distribution using random simulated data")
+
+```
+
+Alternatively, we can compute the theoretical density values for a sequence of numbers from 0 to 5. 
+
+```{r}
+qplot(seq(0,5,0.1), dexp(x = seq(0,5,0.1), rate=2), geom="line", main="Theoretical shape of exponential dist with rate = 2")
+```
+
+
 ### Tail (cumulative) probability
 
 It is often very useful to know how much probability density is under a distribution up to a certain point.  Consider a normal distribution with a mean of 10 and a standard deviation of 1.5.

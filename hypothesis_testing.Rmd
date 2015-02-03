@@ -4,5 +4,9 @@ output: html_document
 ---
 
 ![frequentists_v_bayesians][xkcd]
+![type I, type II][errors]
+
+
 
 [xkcd]: frequentists_vs_bayesians.png
+[errors]: typeItype2.jpg

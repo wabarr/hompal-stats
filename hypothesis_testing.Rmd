@@ -3,6 +3,16 @@ title: "Hypothesis Testing"
 output: html_document
 ---
 
+## Induction versus Deduction
+
+## The null hypothesis
+
+## Alternatives to the null
+
+## The all powerful p-value
+
+$$ P(Data|H_0) $$
+
 ![frequentists_v_bayesians][xkcd]
 ![type I, type II][errors]
 

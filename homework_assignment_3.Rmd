@@ -11,7 +11,7 @@ a) use the `lapply()` function to test each numeric column for normality using t
 b) Use the `lapply()` function again to loop over `iris_results` and extract the p values.  
 c) make a histogram of each `iris` numeric variable, and annotate the plot with the corresponding p value.
 d) calculate the mean and median of `iris$Sepal.Length^2`
-e) explain in words why these values are different.
+e) explain in words why these mean and median values are different.
 
 ## Question #2
 

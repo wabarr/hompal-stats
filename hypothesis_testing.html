@@ -178,8 +178,13 @@ qplot(x=xrange, y=dt(xrange, df = 1000), geom=&quot;line&quot;,  main=&quot;Dens
 </tbody>
 </table>
 <p><img src="typeItype2.jpg" alt="type I, type II" /></p>
-<p><strong><em>Statistical power</em></strong> is related to Type II errors, and is calculated as <span class="math">\(1 - \beta\)</span>. It is the the probability of correctly rejecting a null hypothesis, when there is in fact an effect.</p>
-<p>Type I and Type II error rates are necessarily inversely related to one other, so to decrease one is to increase the other. This relationship is not simple, though. Type II error rates depend on a lot of things, like the strength of the effect.</p>
+<p><strong><em>Statistical power</em></strong> is related to Type II errors, and is calculated as <span class="math">\(1 - \beta\)</span>. This tells us how likely we are to detect an effect when one actually exists. Before starting a study it is worth doing a <strong><em>power analysis</em></strong> to determine the rate at which an effect of a given size will be detected with a given sample size.</p>
+<p>Type I and Type II error rates are necessarily inversely related to one other, so to decrease one is to increase the other. This relationship is not simple, though. Type II error rates depend on a lot of things, like the sample size and strength of the effect.</p>
+</div>
+<div id="statistical-significance-versus-biological-significance" class="section level2">
+<h2>Statistical Significance versus Biological Significance</h2>
+<p>Given very large sample sizes, even tiny, virtually meaningless differences can become statistically signficant, because the statistical power increases as sample size increases. It is therefore important (especially in the days of easy access to lots of data) to be careful how you interpret statistical significance.</p>
+<p>For example, imagine that you showed with vast sample sizes that two populations differ in height by an average of 0.6mm, and your p value was 0.00002. This is a very statistically signficant result, but it is unclear if this diference is large enough to have much biological meaning for the. The overwhelming take away message of this statistical test should be that the populations are almost the same. <strong><em>Don’t be a slave to p&lt;0.05!</em></strong></p>
 </div>
 <div id="three-ways-to-test-hypotheses" class="section level2">
 <h2>Three Ways to Test Hypotheses</h2>

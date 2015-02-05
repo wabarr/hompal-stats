@@ -86,17 +86,93 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 
 <div id="induction-versus-deduction" class="section level2">
 <h2>Induction versus Deduction</h2>
+<p>Inductive reasoning is the “bottom-up” approach to reasoning. Proceeding from specific observations to general explanations. Deduction goes the other way: from general to specific. All methods of doing science use both inductive and deductive reasoning, but the emphasis that they receive differs.</p>
+<div id="deduction" class="section level3">
+<h3>Deduction</h3>
+<ul>
+<li>Emphasis is on falsification</li>
+<li>Requires multiple working hypotheses</li>
+<li>In the end, there is (hopefully) only one that hasn’t been falsified</li>
+<li>Limitation: “correct” hypothesis MUST be among the alternatives studied</li>
+</ul>
+<p><img src="hypothetico_deductive.png" alt="hypotheticodeductive" /></p>
 </div>
-<div id="the-null-hypothesis" class="section level2">
-<h2>The null hypothesis</h2>
+<div id="induction" class="section level3">
+<h3>Induction</h3>
+<ul>
+<li>Emphasis is on confirmation</li>
+<li>Builds and modifies hypothesis based on previous knowledge</li>
+<li>Limitation: may “get off on wrong foot” if hypothesis is just plain wrong</li>
+</ul>
+<p><img src="inductive.png" alt="induction" /></p>
 </div>
-<div id="alternatives-to-the-null" class="section level2">
-<h2>Alternatives to the null</h2>
 </div>
-<div id="the-all-powerful-p-value" class="section level2">
-<h2>The all powerful p-value</h2>
-<p><span class="math">\[ P(Data|H_0) \]</span></p>
-<p><img src="frequentists_vs_bayesians.png" alt="frequentists_v_bayesians" /> <img src="typeItype2.jpg" alt="type I, type II" /></p>
+<div id="testing-hypotheses" class="section level2">
+<h2>Testing Hypotheses</h2>
+<p>Consider a <a href="datasets/baboons.txt">fake dataset of body mass and femoral head diameters</a> from male and female baboons.</p>
+<p><span class="mega-octicon octicon-puzzle"></span> Read this into R on your own, and make a boxplot like the one below, with the points overlaid the boxes.</p>
+<pre><code>##      BM SEX  FHD
+## 1  8.62   F 19.9
+## 2  9.07   F 17.9
+## 3  9.98   F 18.9
+## 4 10.43   F 18.8
+## 5 10.89   F 20.3
+## 6 11.34   F 19.5</code></pre>
+<p><img src="hypothesis_testing_files/figure-html/unnamed-chunk-1-1.png" title="" alt="" width="672" /></p>
+<p>Suppose we want to test the scientific hypothesis that there is a relationship between sex and femoral head diamter. To do this, we first create a statistical null hypothesis.</p>
+<div id="the-null-hypothesis" class="section level3">
+<h3>The null hypothesis</h3>
+<p>The null hypothesis is the simplest possible explanation for a phenomenon. This explanation is usually that random variation is responsible for any apparent pattern.</p>
+<p>In the case of our baboons, the null hypothesis is that femoral head diameter is in NO way related to sex, and that any apparent association between the two is due to random chance.</p>
+</div>
+<div id="alternatives-to-the-null" class="section level3">
+<h3>Alternatives to the null</h3>
+<p>Next, we create one or more statistical alternative hypotheses. In our baboon case, the alternative is that the difference between male and female femoral head diameters is too great to be accounted for by chance alone. Most of the time, we don’t explicitly specify the alternative, we just suffice it so say that the alternative is “not <span class="math">\(H_0\)</span>”</p>
+<p><span class="mega-octicon octicon-alert"></span> The alternative hypothesis is simply focussed on the pattern in the data…not the cause of it.</p>
+</div>
+<div id="the-all-powerful-p-value" class="section level3">
+<h3>The all powerful p-value</h3>
+<div id="the-p-value-is-an-estimate-of-how-likely-our-data-are-assuming-the-null-hypothesis-is-true." class="section level4">
+<h4>The p-value is an estimate of how likely our data are, assuming the null hypothesis is true.</h4>
+<p>In terms of conditional probability, the p value represents <span class="math">\[ P(Data|H_0) \]</span></p>
+<p>If we have a very small p-value, this implies that it is very unlikely to observe data that are as extreme as our data, assuming the null hypothesis is true. In the case of our baboons, we would probably use a T-test to compare group means. This T-test would return a very low p value, because it would be highly unlikely to get two sex groups with means as different as our baboons, if the variation was attributable only to chance.</p>
+<p>If you only remember one thing from this class, remember this:</p>
+</div>
+<div id="the-p-value-is-an-estimate-of-how-likely-our-data-are-assuming-the-null-hypothesis-is-true.-1" class="section level4">
+<h4>The p-value is an estimate of how likely our data are, assuming the null hypothesis is true.</h4>
+</div>
+</div>
+<div id="type-i-and-type-ii-errors." class="section level3">
+<h3>Type I and Type II Errors.</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">The Truth</th>
+<th align="left">Retain <span class="math">\(H_0\)</span></th>
+<th align="left">Reject <span class="math">\(H_0\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math">\(H_0\)</span> True</td>
+<td align="left">Correct!</td>
+<td align="left">Type I error (<span class="math">\(\alpha\)</span>)</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math">\(H_0\)</span> False</td>
+<td align="left">Type II error (<span class="math">\(\beta\)</span>)</td>
+<td align="left">Correct!</td>
+</tr>
+</tbody>
+</table>
+<p><img src="typeItype2.jpg" alt="type I, type II" /></p>
+<p><strong><em>Statistical power</em></strong> is related to Type II errors, and is calculated as <span class="math">\(1 - \beta\)</span>. It is the the probability of correctly rejecting a null hypothesis, when there is in fact an effect.</p>
+<p>Type I and Type II error rates are necessarily inversely related to one other, so to decrease one is to increase the other. This relationship is not simple, though. Type II error rates depend on a lot of things, like the strength of the effect.</p>
+</div>
+</div>
+<div id="three-ways-to-test-hypotheses" class="section level2">
+<h2>Three Ways to Test Hypotheses</h2>
+<p><img src="frequentists_vs_bayesians.png" alt="frequentists_v_bayesians" /></p>
 </div>
 
 

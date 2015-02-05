@@ -58,13 +58,24 @@ Next, we create one or more statistical alternative hypotheses.  In our baboon c
 
 In terms of conditional probability, the p value represents $$ P(Data|H_0) $$
 
-If we have a very small p-value, this implies that it is very unlikely to observe data that are as extreme as our data, assuming the null hypothesis is true.  In the case of our baboons, we would probably use a T-test to compare group means.  This T-test would return a very low p value, because it would be highly unlikely to get two sex groups with means as different as our baboons, if the variation was attributable only to chance. 
+If we have a very small p-value, this implies that it is very unlikely to observe data that are as extreme as our data, assuming the null hypothesis is true.  In the case of our baboons, we would probably use a T-test to compare group means. Like all parametric statistics, the T-test returns a ***test statistic*** that is in this case called T, and measures how far the group means are from one another. Because we are assuming that the null hypothesis is true for the moment, we can compute a disribution of how likely it is to get various values of T when there are no differences between groups.
 
-If you only remember one thing from this class, remember this:
+```{r}
+library(ggplot2)
+xrange <- seq(-15, 15, 0.05)
+qplot(x=xrange, y=dt(xrange, df = 1000), geom="line",  main="Density of T-Distribution df=1000")
+qplot(x=xrange, y=dt(xrange, df = 24), geom="line",  main="Density of T-Distribution df=23") +
+  geom_vline(xintercept = -12.4224, col="red") + 
+  annotate(geom="text", x=-9, y=.3, label="Observed T", color="red")
+```
+
+Our T-test would return a very low p value, because it would be highly unlikely to get two sex groups with means as different as our baboons, if the variation was attributable only to chance. We know this because we know the distribution of the T statitic when the null hypothesis if true. 
+
+## If you only remember one thing from this class, remember this:
 
 #### The p-value is an estimate of how likely our data are, assuming the null hypothesis is true.
 
-### Type I and Type II Errors.
+## Type I and Type II Errors.
 
 The Truth | Retain $H_0$ | Reject $H_0$
 ---------|----------------|---------

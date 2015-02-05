@@ -48,3 +48,8 @@ h2, h3 {
 tr:hover {
   background-color:#F2F2F2;
 }
+
+strong {
+  font-size:110%;
+  color: blue;
+}

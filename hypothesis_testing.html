@@ -135,15 +135,27 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <div id="the-p-value-is-an-estimate-of-how-likely-our-data-are-assuming-the-null-hypothesis-is-true." class="section level4">
 <h4>The p-value is an estimate of how likely our data are, assuming the null hypothesis is true.</h4>
 <p>In terms of conditional probability, the p value represents <span class="math">\[ P(Data|H_0) \]</span></p>
-<p>If we have a very small p-value, this implies that it is very unlikely to observe data that are as extreme as our data, assuming the null hypothesis is true. In the case of our baboons, we would probably use a T-test to compare group means. This T-test would return a very low p value, because it would be highly unlikely to get two sex groups with means as different as our baboons, if the variation was attributable only to chance.</p>
-<p>If you only remember one thing from this class, remember this:</p>
+<p>If we have a very small p-value, this implies that it is very unlikely to observe data that are as extreme as our data, assuming the null hypothesis is true. In the case of our baboons, we would probably use a T-test to compare group means. Like all parametric statistics, the T-test returns a <strong><em>test statistic</em></strong> that is in this case called T, and measures how far the group means are from one another. Because we are assuming that the null hypothesis is true for the moment, we can compute a disribution of how likely it is to get various values of T when there are no differences between groups.</p>
+<pre class="r"><code>library(ggplot2)
+xrange &lt;- seq(-15, 15, 0.05)
+qplot(x=xrange, y=dt(xrange, df = 1000), geom=&quot;line&quot;,  main=&quot;Density of T-Distribution df=1000&quot;)</code></pre>
+<p><img src="hypothesis_testing_files/figure-html/unnamed-chunk-2-1.png" title="" alt="" width="672" /></p>
+<pre class="r"><code>qplot(x=xrange, y=dt(xrange, df = 24), geom=&quot;line&quot;,  main=&quot;Density of T-Distribution df=23&quot;) +
+  geom_vline(xintercept = -12.4224, col=&quot;red&quot;) + 
+  annotate(geom=&quot;text&quot;, x=-9, y=.3, label=&quot;Observed T&quot;, color=&quot;red&quot;)</code></pre>
+<p><img src="hypothesis_testing_files/figure-html/unnamed-chunk-2-2.png" title="" alt="" width="672" /></p>
+<p>Our T-test would return a very low p value, because it would be highly unlikely to get two sex groups with means as different as our baboons, if the variation was attributable only to chance. We know this because we know the distribution of the T statitic when the null hypothesis if true.</p>
 </div>
+</div>
+</div>
+<div id="if-you-only-remember-one-thing-from-this-class-remember-this" class="section level2">
+<h2>If you only remember one thing from this class, remember this:</h2>
 <div id="the-p-value-is-an-estimate-of-how-likely-our-data-are-assuming-the-null-hypothesis-is-true.-1" class="section level4">
 <h4>The p-value is an estimate of how likely our data are, assuming the null hypothesis is true.</h4>
 </div>
 </div>
-<div id="type-i-and-type-ii-errors." class="section level3">
-<h3>Type I and Type II Errors.</h3>
+<div id="type-i-and-type-ii-errors." class="section level2">
+<h2>Type I and Type II Errors.</h2>
 <table>
 <thead>
 <tr class="header">
@@ -168,7 +180,6 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <p><img src="typeItype2.jpg" alt="type I, type II" /></p>
 <p><strong><em>Statistical power</em></strong> is related to Type II errors, and is calculated as <span class="math">\(1 - \beta\)</span>. It is the the probability of correctly rejecting a null hypothesis, when there is in fact an effect.</p>
 <p>Type I and Type II error rates are necessarily inversely related to one other, so to decrease one is to increase the other. This relationship is not simple, though. Type II error rates depend on a lot of things, like the strength of the effect.</p>
-</div>
 </div>
 <div id="three-ways-to-test-hypotheses" class="section level2">
 <h2>Three Ways to Test Hypotheses</h2>

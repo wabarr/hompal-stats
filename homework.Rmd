@@ -17,7 +17,7 @@ Feb 23 | [Correlation and Regression] | [HW #4]()  | Gotelli: Ch 9 | Clare Kimoc
 Mar 2 | **Exam I** | - | - | - 
 Mar 9 | **Spring Break, No Class** | - | - | - 
 Mar 16 | [ANOVA and ANCOVA] | [HW #5]()   | Gotelli: Ch 10 | Eve Boyle & Lawrence Fatica 
-Mar 23 | [Categorical Data] | [HW #6]()   | Gotelli: Ch 11 | Megan Vakiener
+Mar 23 | [Categorical Data] | [HW #6]()   | Gotelli: Ch 11 | Megan Vakiener & Emily Brennan
 Mar 30 | [Multivariate Stats: I] |  [HW #7]() | Manly Ch. 1 - 5 | Robert Kaplan & Jon Reeves
 Apr 6	| [Multivariate Stats: II] |   [HW #8]() | Manly Ch. 6 - 12 | Kelly Ostrofsky & Enque Negash
 Apr 13 | [Accounting for Phylogenetic Signal (PGLS)] |  [HW #9]() | - | Brian Schilder

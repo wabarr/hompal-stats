@@ -20,6 +20,7 @@ Dataset Name | Source of data
 [ruminants.phy](datasets/ruminants.phy) | [Hernández Fernández & Vrba, 2007](http://dx.doi.org/10.1017/S1464793104006670)
 [Zachos2001Climate.txt](datasets/Zachos2001Climate.txt) | [Zachos et al, 2001](http://dx.doi.org/10.1126/science.1059412)
 [american_women_feet.txt](datasets/american_women_feet.txt) | fake data
+[gotelli_ants.txt](datasets/gotelli_ants.txt) | Gotelli Chapter 5
 
 <!--
 <ul>

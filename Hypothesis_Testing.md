@@ -1,11 +1,11 @@
 
 
 Hypothesis Testing
-========================================================
+===================================================================
 
 
 Induction versus Deduction
-========================================================
+===================================================================
 
 ***Induction*** is bottom up approach to reasoning, proceeding from specific observations to general explanations.  
 
@@ -14,12 +14,12 @@ Induction versus Deduction
 All methods of doing science use both inductive and deductive reasoning, but the emphasis that they receive differs. 
 
 Deduction
-========================================================
+===================================================================
 
 ![hypotheticodeductive](hypothetico_deductive.png)
 
 Deduction 
-==============
+===================================================================
 
 *  Emphasis is on falsification
 *  Requires multiple working hypotheses
@@ -28,13 +28,13 @@ Deduction
 
 
 Induction
-========================================================
+===================================================================
 
 ![Induction](inductive.png)
 
 
 Induction
-========================================================
+===================================================================
 
 
 *  Emphasis is on confirmation
@@ -43,7 +43,7 @@ Induction
 
 
 Testing Hypotheses
-================
+===================================================================
 
 Consider a [dataset of femoral head diameters](datasets/baboons.txt) from male and female baboons. 
 
@@ -56,14 +56,14 @@ We want to test the hypothesis of a relationship between sex and femoral head di
 ![plot of chunk unnamed-chunk-2](hypothesis_testing-figure/unnamed-chunk-2-1.png) 
 
 Null Hypothesis 
-====================
+===================================================================
 
 The null hypothesis is the simplest possible explanation for a phenomenon.  This explanation is usually that random variation is responsible for any apparent pattern.
 
 In the case of our baboons,  the null hypothesis is that femoral head diameter is in NO way related to sex, and that any apparent association between the two is due to random chance.  
 
 Alternatives to the Null
-========================
+===================================================================
 
 Next, we create one or more statistical alternative hypotheses.  In our baboon case, the alternative is that the difference between male and female femoral head diameters is too great to be accounted for by chance alone. 
 
@@ -72,7 +72,7 @@ Most of the time, we don't explicitly specify the alternative, we just suffice i
 <span class="mega-octicon octicon-alert"></span> The alternative hypothesis is simply focussed on the pattern in the data...not the cause of it. 
 
 The all powerful p-value
-===================
+===================================================================
 
 ***The p-value is an estimate of how likely our data are, assuming the null hypothesis is true.***
 
@@ -81,7 +81,7 @@ In terms of conditional probability, the p value represents
 $$ P(Data|H_0) $$
 
 The all powerful p-value
-===================
+===================================================================
 
 
 In the case of our baboons, we would probably use a T-test to compare group means. Like all parametric statistics, the T-test returns a ***test statistic*** that is in this case called T, and measures how far the group means are from one another. 
@@ -89,7 +89,7 @@ In the case of our baboons, we would probably use a T-test to compare group mean
 Because we are assuming that the null hypothesis is true for the moment, we can compute a disribution of how likely it is to get various values of T when there are no differences between groups.
 
 The all powerful p-value
-===================
+===================================================================
 
 ![plot of chunk unnamed-chunk-3](hypothesis_testing-figure/unnamed-chunk-3-1.png) 
 
@@ -98,19 +98,19 @@ The all powerful p-value
 ![plot of chunk unnamed-chunk-4](hypothesis_testing-figure/unnamed-chunk-4-1.png) 
 
 The all powerful p-value
-===================
+===================================================================
 
 Our T-test would return a very low p value, because it would be highly unlikely to get two sex groups with means as different as our baboons, if the variation was attributable only to chance. 
 
 We know this because we know the distribution of the T statitic when the null hypothesis if true. 
 
 If you only remember one thing...
-====================
+===================================================================
 
 ***The p-value is an estimate of how likely our data are, assuming the null hypothesis is true.***
 
 Type I and Type II Errors.
-======================
+===================================================================
 
 The Truth | Retain $H_0$ | Reject $H_0$
 ---------|----------------|---------
@@ -120,7 +120,7 @@ $H_0$ False | Type II error ($\beta$)| Correct!
 ![errors](typeItype2.jpg)
 
 Type I and Type II Errors.
-======================
+===================================================================
 
 ***Statistical power*** is related to Type II errors, and is calculated as $1 - \beta$. 
 
@@ -129,21 +129,21 @@ This tells us how likely we are to detect an effect when one actually exists.
 Before starting a study it is worth doing a ***power analysis*** to determine the rate at which an effect of a given size will be detected with a given sample size. 
 
 Type I and Type II Errors.
-======================
+===================================================================
 
 Type I and Type II error rates are necessarily inversely related to one other, so to decrease one is to increase the other. 
 
 This relationship is not simple, though. Type II error rates depend on a lot of things, like the sample size and strength of the effect.
 
 Statistical Significance versus Biological Significance
-=================
+===================================================================
 
 Given very large sample sizes, even tiny, virtually meaningless differences can become statistically signficant, because the statistical power increases as sample size increases. 
 
 It is therefore important (especially in the days of easy access to lots of data) to be careful how you interpret statistical significance.  
 
 Statistical Significance versus Biological Significance
-=================
+===================================================================
 
 For example, imagine that you showed with vast sample sizes that two populations differ in height  by an average of 0.6mm, and your p value was 0.00002.  
 
@@ -155,7 +155,7 @@ This is a very statistically signficant result, but it is unclear if this difere
 
 
 Three Hypothesis Testing Frameworks
-===================
+===================================================================
 
 *  Monte Carlo
 *  Parametric
@@ -164,7 +164,7 @@ Three Hypothesis Testing Frameworks
 We will test the same hypothesis using the same data with all three frameworks.
 
 Our example data
-=================
+===================================================================
 
 [Ant data](datasets/gotelli_ants.txt) from Gotelli CH 5 
 
@@ -175,9 +175,9 @@ Our example data
 Lets test the hypothesis that the number of ant nests in forests differs from the number of ant nests in fields. 
 
 Monte Carlo
-================
+===================================================================
 
-Monte Carlo refers to a world-famous casino, in a town the French Riviera (in the Principality of Monaco).
+Monte Carlo refers to a world-famous casino, in a town on the French Riviera (in the Principality of Monaco).
 
 In Monte Carlo analysis, data are randomly reshuffled over and over to specify the null hypothesis, and these reshufflings are compared against the observed data.
 
@@ -186,7 +186,7 @@ In Monte Carlo analysis, data are randomly reshuffled over and over to specify t
 ![montecarlo](http://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Whole_Monaco.jpg/600px-Whole_Monaco.jpg)
 
 Monte Carlo
-============
+===================================================================
 ***There are four steps:***
 
 1.  Decide on a test statistic
@@ -194,15 +194,17 @@ Monte Carlo
 3.  Decided on a one-tailed or two-tailed test
 4.  Compare the observed to the null distribution and calculate the p value.
 
-Monte Carlo - Step 1
-====================
-For our test statistic, we will use the absolute value of the mean of the forest ants minus the mean of the field.  We will want to calculate this over and over, so we will make a function to do it, that we will later use over and over again.
+Monte Carlo - Step 1 - Test statistic
+===================================================================
+We will use the absolute value of the mean group means.  We will need to calculate this over and over, so we will make a function to do it.
 
 
 ```r
 abs.mean <- function(ant_counts, habitats) {
+  
   means <- tapply(ant_counts, habitats, 
                   FUN = mean)
+  
   abs_diff <- abs(means[2] - means[1])
   return(abs_diff)
 }
@@ -215,11 +217,111 @@ Forest
   3.75 
 ```
 
+Monte Carlo - Step 2- Shuffle
+===================================================================
+
+Now, we resuffle the ant nest counts randomly with respect to the habitat category.  We can do this with the `sample()` function. ***Note:*** by default, the function draws a sample of the same size as the original vector, without replacement.
+
+
+```r
+ants$n_Ants
+```
+
+```
+ [1]  9  6  4  6  7 10 12  9 12 10
+```
+
+```r
+sample(ants$n_Ants)
+```
+
+```
+ [1] 12  6  9  6  4 10 10  9 12  7
+```
+
+Monte Carlo - Step 2 - Shuffle
+===================================================================
+We can do this 1000 times by using a for loop
+
+
+
+```r
+results <- numeric(1000)
+
+for(i in 1:1000) {
+  
+  mix <- sample(ants$n_Ants)
+  results[i] <- abs.mean(
+                mix , ants$Habitat
+                )
+}
+```
+
+Monte Carlo - Step 2 - Shuffle
+================================
+We can look at the results with a histogram
+***
+![plot of chunk unnamed-chunk-9](hypothesis_testing-figure/unnamed-chunk-9-1.png) 
+
+Monte Carlo - Step 3 - one or two tailed?
+===================================================================
+When we compute the p value, we will ask how many  differences computed on the ramdomized data are as extreme as our actual mean difference. 
+
+Should we look at just one side of the distribution or both?
+
+We are looking at the absolute value, of the difference, ***so we want a 1 tailed test.***
+***
+![plot of chunk unnamed-chunk-10](hypothesis_testing-figure/unnamed-chunk-10-1.png) 
+
+
+
+Monte Carlo - Step 4 - Calculate p
+===================================================================
+
+To get our 1-tailed p-value, we just count up how many of the mean differences in the randomized data are as big as (or bigger than) our observed mean difference (3.75).
+
+
+```r
+count_extreme_diffs <- sum(results >= 3.75)
+count_extreme_diffs / 1000
+```
+
+```
+[1] 0.029
+```
+
+Monte Carlo 
+============================================================
+
+## ***What does our p value of approx. 0.03 mean?***
+
+
+
+
+Monte Carlo 
+============================================================
+
+## ***What does our p value of approx. 0.03 mean?***
+
+If there is no relationship between habitat and and nest count, we would expect to observe data with a mean difference as extreme as ours about 3% of the time. 
+
+Monte Carlo Pros and Cons
+============================================================
+
+# Pros:
+*  fewest assumptions
+*  null hypothesis is very clear and easy to understand
+
+# Cons:
+*  you have to "roll-your-own"
+*  you don't get the same answer every time
+
+
 Parametric
-================
+===================================================================
 
 Bayesian
-================
+===================================================================
 A key concept in the Bayesian framework is incorporating ***prior*** knowledge into hypothesis testing.  
 
 ***

@@ -169,7 +169,7 @@ This is a very statistically signficant result, but it is unclear if this difere
 
 ***The overwhelming take-away message of this statistical test should be that the populations are almost the same.***  
 
-## Don't be a slave to $p\leq0.05$ !!!!!
+## Don't be a slave to $p<0.05$ !!!!!
 
 
 Three Hypothesis Testing Frameworks
@@ -216,15 +216,18 @@ Monte Carlo
 
 Monte Carlo - Step 1
 ====================
-For our test statistic, we will use the absolute value of the mean of the forest ants minus the mean of the field.  We will want to calculate this over and over, so we will make a function to do it. 
+For our test statistic, we will use the absolute value of the mean of the forest ants minus the mean of the field.  We will want to calculate this over and over, so we will make a function to do it, that we will later use over and over again.
 
 ```{r}
 
 abs.mean <- function(ant_counts, habitats) {
-  means <- tapply(ant_counts, habitats, FUN = mean)
+  means <- tapply(ant_counts, habitats, 
+                  FUN = mean)
   abs_diff <- abs(means[2] - means[1])
   return(abs_diff)
 }
+
+abs.mean(ants$n_Ants, ants$Habitat)
 ```
 
 Parametric
@@ -233,6 +236,7 @@ Parametric
 Bayesian
 ================
 A key concept in the Bayesian framework is incorporating ***prior*** knowledge into hypothesis testing.  
+
 ***
 ![xkcd](frequentists_vs_bayesians.png)
 

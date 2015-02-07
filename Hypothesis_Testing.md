@@ -53,7 +53,7 @@ We want to test the hypothesis of a relationship between sex and femoral head di
 
 ***
 
-![plot of chunk unnamed-chunk-2](Hypothesis_Testing-figure/unnamed-chunk-2-1.png) 
+![plot of chunk unnamed-chunk-2](hypothesis_testing-figure/unnamed-chunk-2-1.png) 
 
 Null Hypothesis 
 ====================
@@ -91,11 +91,11 @@ Because we are assuming that the null hypothesis is true for the moment, we can 
 The all powerful p-value
 ===================
 
-![plot of chunk unnamed-chunk-3](Hypothesis_Testing-figure/unnamed-chunk-3-1.png) 
+![plot of chunk unnamed-chunk-3](hypothesis_testing-figure/unnamed-chunk-3-1.png) 
 
 ***
 
-![plot of chunk unnamed-chunk-4](Hypothesis_Testing-figure/unnamed-chunk-4-1.png) 
+![plot of chunk unnamed-chunk-4](hypothesis_testing-figure/unnamed-chunk-4-1.png) 
 
 The all powerful p-value
 ===================
@@ -151,7 +151,7 @@ This is a very statistically signficant result, but it is unclear if this difere
 
 ***The overwhelming take-away message of this statistical test should be that the populations are almost the same.***  
 
-## Don't be a slave to $p\leq0.05$ !!!!!
+## Don't be a slave to $p<0.05$ !!!!!
 
 
 Three Hypothesis Testing Frameworks
@@ -196,15 +196,23 @@ Monte Carlo
 
 Monte Carlo - Step 1
 ====================
-For our test statistic, we will use the absolute value of the mean of the forest ants minus the mean of the field.  We will want to calculate this over and over, so we will make a function to do it. 
+For our test statistic, we will use the absolute value of the mean of the forest ants minus the mean of the field.  We will want to calculate this over and over, so we will make a function to do it, that we will later use over and over again.
 
 
 ```r
 abs.mean <- function(ant_counts, habitats) {
-  means <- tapply(ant_counts, habitats, FUN = mean)
+  means <- tapply(ant_counts, habitats, 
+                  FUN = mean)
   abs_diff <- abs(means[2] - means[1])
   return(abs_diff)
 }
+
+abs.mean(ants$n_Ants, ants$Habitat)
+```
+
+```
+Forest 
+  3.75 
 ```
 
 Parametric
@@ -213,6 +221,7 @@ Parametric
 Bayesian
 ================
 A key concept in the Bayesian framework is incorporating ***prior*** knowledge into hypothesis testing.  
+
 ***
 ![xkcd](frequentists_vs_bayesians.png)
 

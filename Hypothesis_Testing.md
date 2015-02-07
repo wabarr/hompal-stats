@@ -1,3 +1,5 @@
+
+
 Hypothesis Testing
 ========================================================
 
@@ -51,7 +53,7 @@ We want to test the hypothesis of a relationship between sex and femoral head di
 
 ***
 
-![plot of chunk unnamed-chunk-1](Hypothesis_Testing-figure/unnamed-chunk-1-1.png) 
+![plot of chunk unnamed-chunk-2](Hypothesis_Testing-figure/unnamed-chunk-2-1.png) 
 
 Null Hypothesis 
 ====================
@@ -89,11 +91,11 @@ Because we are assuming that the null hypothesis is true for the moment, we can 
 The all powerful p-value
 ===================
 
-![plot of chunk unnamed-chunk-2](Hypothesis_Testing-figure/unnamed-chunk-2-1.png) 
+![plot of chunk unnamed-chunk-3](Hypothesis_Testing-figure/unnamed-chunk-3-1.png) 
 
 ***
 
-![plot of chunk unnamed-chunk-3](Hypothesis_Testing-figure/unnamed-chunk-3-1.png) 
+![plot of chunk unnamed-chunk-4](Hypothesis_Testing-figure/unnamed-chunk-4-1.png) 
 
 The all powerful p-value
 ===================

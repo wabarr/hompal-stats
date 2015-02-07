@@ -28,12 +28,12 @@ Inductive reasoning is the "bottom-up" approach to reasoning. Proceeding from sp
 
 Consider a [fake dataset of body mass and femoral head diameters](datasets/baboons.txt) from male and female baboons. 
 
-<span class="mega-octicon octicon-puzzle"></span> Read this into R on your own, and make a boxplot like the one below, with the points overlaid the boxes. 
+<span class="mega-octicon octicon-puzzle"></span> Read this into R on your own, and make a boxplot like the one below, with the points overlaid on the boxes. 
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 library(ggplot2)
 baboons <- read.table("datasets/baboons.txt", header=TRUE)
-head(baboons)
+
 
 qplot(x=SEX, y=FHD, data=baboons, main="Baboon FHD by Sex", geom="boxplot") + geom_point(color="red", size=3)
 ```
@@ -75,6 +75,9 @@ Our T-test would return a very low p value, because it would be highly unlikely 
 
 #### The p-value is an estimate of how likely our data are, assuming the null hypothesis is true.
 
+***
+***
+
 ## Type I and Type II Errors.
 
 The Truth | Retain $H_0$ | Reject $H_0$
@@ -92,19 +95,57 @@ Type I and Type II error rates are necessarily inversely related to one other, s
 
 Given very large sample sizes, even tiny, virtually meaningless differences can become statistically signficant, because the statistical power increases as sample size increases. It is therefore important (especially in the days of easy access to lots of data) to be careful how you interpret statistical significance.  
 
-For example, imagine that you showed with vast sample sizes that two populations differ in height  by an average of 0.6mm, and your p value was 0.00002.  This is a very statistically signficant result, but it is unclear if this diference is large enough to have much biological meaning for the.  The overwhelming take away message of this statistical test should be that the populations are almost the same.  ***Don't be a slave to p<0.05!*** 
+For example, imagine that you showed with vast sample sizes that two populations differ in height  by an average of 0.6mm, and your p value was 0.00002.  This is a very statistically signficant result, but it is unclear if this diference is large enough to have much biological meaning for the two populations.  ***The overwhelming take-away message of this statistical test should be that the populations are almost the same.***  
+
+## Don't be a slave to p<0.05! 
+
 
 ## Three Frameworks For Testing Hypotheses
 
-### Monte-Carlo
+
+#### Our example data:  [Ant data](datasets/gotelli_ants.txt) from Gotelli CH 5 
+
+#### Read this data into R yourself
+
+```{r echo=FALSE}
+ants <- read.table("http://hompal-stats.wabarr.com/datasets/gotelli_ants.txt", header=TRUE)
+```
+
+Lets test the hypothesis that the number of ant nest in forests differs from the number of ant nests in fields. 
+
+### Monte Carlo
+
+Monte Carlo refers to a world-famous casino, in a town of the same name on the French Riviera (in the Principality of Monaco).
+
+In Monte Carlo analysis data are randomly reshuffled over and over to specify the null hypothesis, and these reshufflings are compared against the observed data.
+
+There are four steps:
+
+1.  Decide on a test statistic
+2.  By reshuffling, create a distribution of the test statistic that would be expected under the null hypothesis
+3.  Decided on a one-tailed or two-tailed test
+4.  Compare the observed to the null distribution and calculate the p value.
+
+#### 1 
+
+For our test statistic, we will use the absolute value of the mean of the forest ants minus the mean of the field.  We will want to calculate this over and over, so we will make a function to do it. 
+
+```{r}
+
+abs.mean <- function(ant_counts, habitats) {
+  means <- tapply(ant_counts, habitats, FUN = mean)
+  abs_diff <- abs(means[2] - means[1])
+  return(abs_diff)
+}
+```
 
 ### Parametric
 
 ### Bayesian
 
-
-
 ![frequentists_v_bayesians][xkcd]
+
+
 
 [xkcd]: frequentists_vs_bayesians.png
 [errors]: typeItype2.jpg

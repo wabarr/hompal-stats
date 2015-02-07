@@ -110,14 +110,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <div id="testing-hypotheses" class="section level2">
 <h2>Testing Hypotheses</h2>
 <p>Consider a <a href="datasets/baboons.txt">fake dataset of body mass and femoral head diameters</a> from male and female baboons.</p>
-<p><span class="mega-octicon octicon-puzzle"></span> Read this into R on your own, and make a boxplot like the one below, with the points overlaid the boxes.</p>
-<pre><code>##      BM SEX  FHD
-## 1  8.62   F 19.9
-## 2  9.07   F 17.9
-## 3  9.98   F 18.9
-## 4 10.43   F 18.8
-## 5 10.89   F 20.3
-## 6 11.34   F 19.5</code></pre>
+<p><span class="mega-octicon octicon-puzzle"></span> Read this into R on your own, and make a boxplot like the one below, with the points overlaid on the boxes.</p>
 <p><img src="hypothesis_testing_files/figure-html/unnamed-chunk-1-1.png" title="" alt="" width="672" /></p>
 <p>Suppose we want to test the scientific hypothesis that there is a relationship between sex and femoral head diamter. To do this, we first create a statistical null hypothesis.</p>
 <div id="the-null-hypothesis" class="section level3">
@@ -152,6 +145,8 @@ qplot(x=xrange, y=dt(xrange, df = 1000), geom=&quot;line&quot;,  main=&quot;Dens
 <h2>If you only remember one thing from this class, remember this:</h2>
 <div id="the-p-value-is-an-estimate-of-how-likely-our-data-are-assuming-the-null-hypothesis-is-true.-1" class="section level4">
 <h4>The p-value is an estimate of how likely our data are, assuming the null hypothesis is true.</h4>
+<hr />
+<hr />
 </div>
 </div>
 <div id="type-i-and-type-ii-errors." class="section level2">
@@ -184,11 +179,48 @@ qplot(x=xrange, y=dt(xrange, df = 1000), geom=&quot;line&quot;,  main=&quot;Dens
 <div id="statistical-significance-versus-biological-significance" class="section level2">
 <h2>Statistical Significance versus Biological Significance</h2>
 <p>Given very large sample sizes, even tiny, virtually meaningless differences can become statistically signficant, because the statistical power increases as sample size increases. It is therefore important (especially in the days of easy access to lots of data) to be careful how you interpret statistical significance.</p>
-<p>For example, imagine that you showed with vast sample sizes that two populations differ in height by an average of 0.6mm, and your p value was 0.00002. This is a very statistically signficant result, but it is unclear if this diference is large enough to have much biological meaning for the. The overwhelming take away message of this statistical test should be that the populations are almost the same. <strong><em>Don’t be a slave to p&lt;0.05!</em></strong></p>
+<p>For example, imagine that you showed with vast sample sizes that two populations differ in height by an average of 0.6mm, and your p value was 0.00002. This is a very statistically signficant result, but it is unclear if this diference is large enough to have much biological meaning for the two populations. <strong><em>The overwhelming take-away message of this statistical test should be that the populations are almost the same.</em></strong></p>
 </div>
-<div id="three-ways-to-test-hypotheses" class="section level2">
-<h2>Three Ways to Test Hypotheses</h2>
+<div id="dont-be-a-slave-to-p0.05" class="section level2">
+<h2>Don’t be a slave to p&lt;0.05!</h2>
+</div>
+<div id="three-frameworks-for-testing-hypotheses" class="section level2">
+<h2>Three Frameworks For Testing Hypotheses</h2>
+<div id="our-example-data-ant-data-from-gotelli-ch-5" class="section level4">
+<h4>Our example data: <a href="datasets/gotelli_ants.txt">Ant data</a> from Gotelli CH 5</h4>
+</div>
+<div id="read-this-data-into-r-yourself" class="section level4">
+<h4>Read this data into R yourself</h4>
+<p>Lets test the hypothesis that the number of ant nest in forests differs from the number of ant nests in fields.</p>
+</div>
+<div id="monte-carlo" class="section level3">
+<h3>Monte Carlo</h3>
+<p>Monte Carlo refers to a world-famous casino, in a town of the same name on the French Riviera (in the Principality of Monaco).</p>
+<p>In Monte Carlo analysis data are randomly reshuffled over and over to specify the null hypothesis, and these reshufflings are compared against the observed data.</p>
+<p>There are four steps:</p>
+<ol style="list-style-type: decimal">
+<li>Decide on a test statistic</li>
+<li>By reshuffling, create a distribution of the test statistic that would be expected under the null hypothesis</li>
+<li>Decided on a one-tailed or two-tailed test</li>
+<li>Compare the observed to the null distribution and calculate the p value.</li>
+</ol>
+<div id="section" class="section level4">
+<h4>1</h4>
+<p>For our test statistic, we will use the absolute value of the mean of the forest ants minus the mean of the field. We will want to calculate this over and over, so we will make a function to do it.</p>
+<pre class="r"><code>abs.mean &lt;- function(ant_counts, habitats) {
+  means &lt;- tapply(ant_counts, habitats, FUN = mean)
+  abs_diff &lt;- abs(means[2] - means[1])
+  return(abs_diff)
+}</code></pre>
+</div>
+</div>
+<div id="parametric" class="section level3">
+<h3>Parametric</h3>
+</div>
+<div id="bayesian" class="section level3">
+<h3>Bayesian</h3>
 <p><img src="frequentists_vs_bayesians.png" alt="frequentists_v_bayesians" /></p>
+</div>
 </div>
 
 

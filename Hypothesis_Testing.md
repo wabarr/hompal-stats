@@ -43,11 +43,11 @@ Induction
 Testing Hypotheses
 ================
 
-Consider a [fake dataset of body mass and femoral head diameters](datasets/baboons.txt) from male and female baboons. 
+Consider a [dataset of femoral head diameters](datasets/baboons.txt) from male and female baboons. 
 
-<span class="mega-octicon octicon-puzzle"></span> Read this into R on your own, and make a boxplot like this, with the points overlaid on the boxes. 
+***Read this into R on your own, and make a boxplot with the points overlaid on the boxes.*** 
 
-We want to test the scientific hypothesis of a relationship between sex and femoral head diamter.  To do this, we first create a statistical ***null hypothesis***.
+We want to test the hypothesis of a relationship between sex and femoral head diamter. To do this, we first create a statistical ***null hypothesis***.
 
 ***
 

@@ -2,10 +2,11 @@
 
 Hypothesis Testing
 ===================================================================
-
+transition:none
 
 Induction versus Deduction
 ===================================================================
+
 
 ***Induction*** is bottom up approach to reasoning, proceeding from specific observations to general explanations.  
 
@@ -99,6 +100,7 @@ The all powerful p-value
 
 The all powerful p-value
 ===================================================================
+incremental: true
 
 Our T-test would return a very low p value, because it would be highly unlikely to get two sex groups with means as different as our baboons, if the variation was attributable only to chance. 
 
@@ -106,8 +108,9 @@ We know this because we know the distribution of the T statitic when the null hy
 
 If you only remember one thing...
 ===================================================================
-
-***The p-value is an estimate of how likely our data are, assuming the null hypothesis is true.***
+type:alert
+<br>
+The p-value is an estimate of how likely our data are, assuming the null hypothesis is true.
 
 Type I and Type II Errors.
 ===================================================================
@@ -236,7 +239,7 @@ sample(ants$n_Ants)
 ```
 
 ```
- [1] 12  6  9  6  4 10 10  9 12  7
+ [1] 10  6 12 12  4 10  9  6  7  9
 ```
 
 Monte Carlo - Step 2 - Shuffle
@@ -287,7 +290,7 @@ count_extreme_diffs / 1000
 ```
 
 ```
-[1] 0.029
+[1] 0.046
 ```
 
 Monte Carlo 
@@ -316,12 +319,50 @@ Monte Carlo Pros and Cons
 *  you have to "roll-your-own"
 *  you don't get the same answer every time
 
+Parametric
+==================================================================
+Assumes data were sampled from a specified distribution (usually normal distribution). 
+
+Parameters of this distribution used to calculate tail probabilities data given a null hypotheis. 
+
+$$P(data\ |\ hypothesis)$$
+
+***
+
+![normal](http://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Normal_Distribution_PDF.svg/700px-Normal_Distribution_PDF.svg.png)
+
+
 
 Parametric
 ===================================================================
 
+1.  Specify the test statistic
+2.  Specify the null distribution
+3.  Calculate the tail probability
+
+
+
+
 Bayesian
 ===================================================================
+<br>   
+$$P(hypothesis\ |\ data) = \frac{P(hypothesis) * P(data\ |\ hypothesis)}{P(data)}$$
+<br>    
+$$Posterior\ Probability = \frac{Prior\ Probability * Likelihood}{Marginal\ Likelihood}$$
+
+Bayesian
+===================================================================
+1.  Specify the hypothesis
+2.  Specify the parameters as random variables
+3.  Specify the priors
+4.  Calculate the likelihood
+5.  Calculate the posterior
+6.  Interpret
+Bayesian
+===================================================================
+Bayesian
+===================================================================
+
 A key concept in the Bayesian framework is incorporating ***prior*** knowledge into hypothesis testing.  
 
 ***

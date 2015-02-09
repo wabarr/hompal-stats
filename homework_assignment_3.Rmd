@@ -23,7 +23,7 @@ b) Simulate body growth assuming that each individual grows by some percentage e
 
 c) Next, model variable growth rates for each individual. Create a vector of growth rates for the 1000 individuals, with mean 1.15 and standard deviation of 0.2. Reset `body.sizes` to its original values. Again simulate 10 years of growth but with varying growth rates for each individual. ***Note:*** each individual should have the same rate every year, but the individuals should vary in their rates. Save the results to a new variable called `body.sizes.vargrowth`.
 
-d) Finally, simulate stochastic fluctuations in environment reflecting the fact that different years have different environmental conditions. Reset `body.sizes` to its original values. Repeat the variable growth scenario, but each year multiply ALL individuals with a single scaling factor representing the productivity that particular year. Have that scaling factor be drawn from a normal distribution with mean 1 and variance 0.2. Save the results to `body.sizes.environmentalgrowth`.
+d) Finally, simulate stochastic fluctuations in environment reflecting the fact that different years have different environmental conditions. Reset `body.sizes` to its original values. Repeat the variable growth scenario, but each year multiply ALL individuals with a single scaling factor representing the productivity that particular year. Have that scaling factor be drawn from a normal distribution with mean 1 and standard deviation of 0.2. Save the results to `body.sizes.environmentalgrowth`.
 
 e) Test all four distributions for normality. Which ones are normal, which aren’t? Produce Q-Q plots of all four. Verbally describe the deviations from normality.
 

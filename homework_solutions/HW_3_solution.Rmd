@@ -5,6 +5,13 @@ output: html_document
 
 ## Question 1
 
+a.  2pts shapiro test
+b.  1pt pvals
+c.  2pts histogram
+d.  1pt mean and median
+e.  1pt why mean and median differ
+
+
 ### Part A
 
 The clearest way is to write your own function first to deal with a single vector (column of iris), and then apply this function to each column using `lapply()`
@@ -68,6 +75,14 @@ qplot(iris$Sepal.Length^2)
 The distribution has a long right tail,  which heavily influences the mean, pulling it towards the larger values. The median is less affected by extreme values.
 
 ## Question 2
+
+
+a.  1pt body mass vector
+b.  2pts growth loop
+c.  2pts vargrowth
+d.  2pts environmental vargrowth
+e.  2pts normality test
+f.  1pt questions
 
 ### Part A
 

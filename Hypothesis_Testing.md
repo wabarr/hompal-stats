@@ -5,6 +5,8 @@ Hypothesis Testing
 transition:none
 incremental: true
 
+<img src="http://imgs.xkcd.com/comics/null_hypothesis.png" style="width:300px;">
+
 Induction versus Deduction
 ===================================================================
 
@@ -117,8 +119,11 @@ We know this because we know the distribution of the T statistic when the null h
 If you only remember one thing...
 ===================================================================
 type:alert
+incremental:false
 <br>
 The p-value is an estimate of how likely our data are, assuming the null hypothesis is true.
+
+Low p values do not mean the alternative hypothesis has been proven.
 
 Errors in Hypothesis Testing
 ===================================================================
@@ -128,7 +133,10 @@ The Truth | Retain $H_0$ | Reject $H_0$
 $H_0$ True | Correct! | Type I error ($\alpha$)
 $H_0$ False | Type II error ($\beta$)| Correct!
 
-![errors](typeItype2.jpg)
+Errors in Hypothesis Testing
+=================================================================
+
+<img src="typeItype2.jpg" style="height=400px;">
 
 Errors in Hypothesis Testing
 ===================================================================
@@ -255,7 +263,7 @@ sample(ants$n_Ants)
 ```
 
 ```
- [1]  4  9  7  6 12 10  9 12 10  6
+ [1]  4 12 10 10  7  9  6 12  6  9
 ```
 
 Monte Carlo - Step 2 - Shuffle
@@ -311,7 +319,7 @@ count_extreme_diffs / 1000
 ```
 
 ```
-[1] 0.033
+[1] 0.044
 ```
 
 Monte Carlo 
@@ -324,8 +332,12 @@ If there is no relationship between habitat and and nest count, we would expect 
 If you only remember one thing...
 ===================================================================
 type:alert
+incremental:false
+
 <br>
 The p-value is an estimate of how likely our data are, assuming the null hypothesis is true.
+
+Low p values do not mean the alternative hypothesis has been proven 
 
 Monte Carlo Pros and Cons
 ============================================================
@@ -384,7 +396,7 @@ Our F-ratio in the case of the ant nests is
 
 $$ F = 33.75 / 3.84 = 8.78 $$
 
-Parametric - Step 2 - Specifify null dist
+Parametric - Step 2 - Specify null dist
 ===================================================================
 
 The null hypothesis is data were drawn from  single population.
@@ -393,8 +405,9 @@ If true, then our F ratio tends to be about 1. Larger and larger values of F are
 
 The F statistic follows a known ***F distribution***.
 
-Parametric - Step 2 - Specifify null dist
+Parametric - Step 2 - Specify null dist
 ===================================================================
+incremental:false 
 
 
 ```r
@@ -435,23 +448,57 @@ fdist + geom_vline(xintercept = 8.78, col="red")
 Parametric - Step 3 - Compute the p-value
 ===================================================================
 
-***What does this p-value mean?***
+***What does this p-value of 0.018 mean?***
+
+If you only remember one thing...
+===================================================================
+type:alert
+incremental:false
+<br>
+The p-value is an estimate of how likely our data are, assuming the null hypothesis is true.
+
+Low p values do not mean the alternative hypothesis has been proven 
 
 Parametric Assumptions
 ==================================================================
 
 *  data independent
 *  data come from specified distribution
-*  additional tests make additional assumptions
+*  additional tests make additional assumptions - these are sometimes most critical
+
+Parametric Pros and Cons
+==================================================================
+
+# Pros
+*  ubiquitous in standard stats packages, textbooks, articles
+*  extremely well understood (by statisticians)
+
+# Cons
+*  easy to misuse
+    *  p values misinterpreted
+    *  assumptions not always tested
+*  less flexible than Monte Carlo
 
 Bayesian
 ===================================================================
-type: sub-section
+type:sub-section
+
+![bayes](http://upload.wikimedia.org/wikipedia/commons/d/d4/Thomas_Bayes.gif)
+
+***
+
+Bayes' theorem discovered by Rev. Thomas Bayes in the mid-18th century
+
+Based on ***inverse probability***
+
+Bayesian
+===================================================================
 
 <br>   
 $$P(hypothesis\ |\ data) = \frac{P(hypothesis) * P(data\ |\ hypothesis)}{P(data)}$$
 <br>    
 $$Posterior\ Probability = \frac{Prior\ Probability * Likelihood}{Marginal\ Likelihood}$$
+
 
 Bayesian
 ===================================================================
@@ -462,17 +509,74 @@ Bayesian
 5.  Calculate the posterior
 6.  Interpret
 
-
-Bayesian
+Bayesian - Step 1 - Hypothesis
 ===================================================================
-![xkcd](frequentists_vs_bayesians.png)
+Turns the question around compared to parametric. Considering our ants:
+
+Parametric asks: $$P(F_{obs} = 8.78\ |\ F_{theoretical})$$
+
+Bayesian asks: $$P(F\geq5.32\ |\ F_{obs} = 8.78)$$
+
+***Note:*** 5.32 is the critical value from this F distribution, used to mathematically specify alternative hypothesis.
+
+
+Bayesian - Step 2 - Parameters
+===================================================================
+
+Specify parameters as random variables, instead of assuming there is a single fixed (but unknown) value of parameters
+
+So the mean of the ants in the field would be: $$ \mu_{field} \sim N(\lambda_{field}, \sigma^2)$$
+
+
+Bayesian - Step 3 - Priors
+===================================================================
+
+$$Posterior\ Probability = \frac{Prior\ Probability * Likelihood}{Marginal\ Likelihood}$$
+
+What are the expected probability distributions for our parameters ***before*** we do the experiment?
+
+Can either use uninformative ***flat*** priors, or base them off of our previous knowledge about ant colony densities in field and forest. 
+
+Bayesian - Step 3 - Priors
+===================================================================
+
+Incorporating ***prior*** knowledge into hypothesis testing is fundamental distinction
 
 ***
 
-A key concept in the Bayesian framework is incorporating ***prior*** knowledge into hypothesis testing.  
+![xkcd](frequentists_vs_bayesians.png)
 
-This is also a major criticism, because many people view this as potentially subjective. 
 
+Bayesian - Step 4 - Likelihood
+===================================================================
+Next we estimate the likelihood.
+
+$$Posterior\ Probability = \frac{Prior\ Probability * Likelihood}{Marginal\ Likelihood}$$
+
+The standard probability $P(data\ |\ hypothesis)$ is the probability of our data given the null hypothesis. 
+
+Likelihood is proportional to probability, but:
+
+*  based on a single dataset, can be recalculated based on many different parameter values
+*  doesn't sum to 1 (first axiom of probability)
+
+Bayesian - Step 5 - Posterior
+===================================================================
+
+$$Posterior\ Probability = \frac{Prior\ Probability * Likelihood}{Marginal\ Likelihood}$$
+
+Now we just do the math to calculate the posterior distributions for our parameters.  We can then use Monte Carlo to produce an expected distribution of F value with our posterior values. 
+
+![antsposterior](ants_posterior.jpg)
+
+Bayesian - Step 7 - Interpret
+===================================================================
+
+Tail probability of observed F in our simulated F distribution is P = 0.67
+
+Much higher than our parametric or Monte Carlo estimates
+
+Would change if we used different priors
 
 Bayesian
 ===================================================================
@@ -487,7 +591,14 @@ Bayesian
 *  It is really friggin' complicated
 *  Use of different priors results in different information, potentially subjective
 
-[xkcd]: frequentists_vs_bayesians.png
-[errors]: typeItype2.jpg
-[inductive]: inductive.png
-[hypothetico]: hypothetico_deductive.png
+Summary
+======================================================================
+type:section
+
+Most of what you do will be parametric stats: be sure to think about assumptions
+
+Be very careful about $\ p < 0.05$
+
+Bayesian offers a powerful (if complicated) alternative
+
+Monte Carlo is flexible and awesome, and you should do it!

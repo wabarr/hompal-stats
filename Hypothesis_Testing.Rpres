@@ -6,6 +6,7 @@ theme_set(theme_bw(20))
 Hypothesis Testing
 ===================================================================
 transition:none
+incremental: true
 
 Induction versus Deduction
 ===================================================================
@@ -48,12 +49,13 @@ Induction
 
 Testing Hypotheses
 ===================================================================
+incremental: false
 
 Consider a [dataset of femoral head diameters](datasets/baboons.txt) from male and female baboons. 
 
 ***Read this into R on your own, and make a boxplot with the points overlaid on the boxes.*** 
 
-We want to test the hypothesis of a relationship between sex and femoral head diamter. To do this, we first create a statistical ***null hypothesis***.
+We want to test the hypothesis of a relationship between sex and femoral head diameter. To do this, we first create a statistical ***null hypothesis***.
 
 ***
 
@@ -75,11 +77,13 @@ In the case of our baboons,  the null hypothesis is that femoral head diameter i
 Alternatives to the Null
 ===================================================================
 
-Next, we create one or more statistical alternative hypotheses.  In our baboon case, the alternative is that the difference between male and female femoral head diameters is too great to be accounted for by chance alone. 
+Next, we create one or more statistical alternative hypotheses.  
+
+Alternative = difference between male and female femoral head diameters is too great to be accounted for by chance alone. 
 
 Most of the time, we don't explicitly specify the alternative, we just suffice it so say that the alternative is "not $H_0$"
 
-<span class="mega-octicon octicon-alert"></span> The alternative hypothesis is simply focussed on the pattern in the data...not the cause of it. 
+The alternative hypothesis is focused on the pattern in the data...not the cause of it. 
 
 The all powerful p-value
 ===================================================================
@@ -88,15 +92,17 @@ The all powerful p-value
 
 In terms of conditional probability, the p value represents 
 
-$$ P(Data|H_0) $$
+$$ P(Data\ |\ H_0) $$
 
 The all powerful p-value
 ===================================================================
 
 
-In the case of our baboons, we would probably use a T-test to compare group means. Like all parametric statistics, the T-test returns a ***test statistic*** that is in this case called T, and measures how far the group means are from one another. 
+For baboons, use T-test to compare means.
 
-Because we are assuming that the null hypothesis is true for the moment, we can compute a disribution of how likely it is to get various values of T when there are no differences between groups.
+Like all parametric statistics, the T-test returns a ***test statistic***.
+
+Because we are assuming that the null hypothesis is true for the moment, we can compute an expected T distribution.
 
 The all powerful p-value
 ===================================================================
@@ -120,9 +126,11 @@ The all powerful p-value
 ===================================================================
 incremental: true
 
-Our T-test would return a very low p value, because it would be highly unlikely to get two sex groups with means as different as our baboons, if the variation was attributable only to chance. 
+Our T-test would return a very low p value.
 
-We know this because we know the distribution of the T statitic when the null hypothesis if true. 
+Highly unlikely to get two sex groups with means as different as ours, if the variation was attributable only to chance. 
+
+We know this because we know the distribution of the T statistic when the null hypothesis if true. 
 
 If you only remember one thing...
 ===================================================================
@@ -130,7 +138,7 @@ type:alert
 <br>
 The p-value is an estimate of how likely our data are, assuming the null hypothesis is true.
 
-Type I and Type II Errors.
+Errors in Hypothesis Testing
 ===================================================================
 
 The Truth | Retain $H_0$ | Reject $H_0$
@@ -140,7 +148,7 @@ $H_0$ False | Type II error ($\beta$)| Correct!
 
 ![errors](typeItype2.jpg)
 
-Type I and Type II Errors.
+Errors in Hypothesis Testing
 ===================================================================
 
 ***Statistical power*** is related to Type II errors, and is calculated as $1 - \beta$. 
@@ -149,40 +157,45 @@ This tells us how likely we are to detect an effect when one actually exists.
 
 Before starting a study it is worth doing a ***power analysis*** to determine the rate at which an effect of a given size will be detected with a given sample size. 
 
-Type I and Type II Errors.
+Errors in Hypothesis Testing
 ===================================================================
 
-Type I and Type II error rates are necessarily inversely related to one other, so to decrease one is to increase the other. 
+The risk of Type I and Type II error rates are inversely related to one other. 
 
 This relationship is not simple, though. Type II error rates depend on a lot of things, like the sample size and strength of the effect.
 
 Statistical Significance versus Biological Significance
 ===================================================================
 
-Given very large sample sizes, even tiny, virtually meaningless differences can become statistically signficant, because the statistical power increases as sample size increases. 
+Given very large sample sizes, the risk of Type II errors is low, but this also means the risk of Type I errors is high. 
 
-It is therefore important (especially in the days of easy access to lots of data) to be careful how you interpret statistical significance.  
+Tiny, virtually meaningless differences can become statistically significant.
+
+When you find statistical significance, you have to ask (how big is the effect? should I care?)
 
 Statistical Significance versus Biological Significance
 ===================================================================
 
-For example, imagine that you showed with vast sample sizes that two populations differ in height  by an average of 0.6mm, and your p value was 0.00002.  
+Imagine a sample of millions of people that showed two populations differed in height by an average of 0.6mm (p= 0.00002).  
 
-This is a very statistically signficant result, but it is unclear if this diference is large enough to have much biological meaning for the two populations. 
+This is a very statistically significant result.
 
-***The overwhelming take-away message of this statistical test should be that the populations are almost the same.***  
+**Should I care? Is this biologically meaningful?**
+
+The overwhelming take-away message of this test is that the populations are nearly the same. 
 
 ## Don't be a slave to $p<0.05$ !!!!!
 
 
 Three Hypothesis Testing Frameworks
 ===================================================================
+type:section
 
 *  Monte Carlo
 *  Parametric
 *  Bayesian
 
-We will test the same hypothesis using the same data with all three frameworks.
+We will walk through testing the same hypothesis in all three frameworks
 
 Our example data
 ===================================================================
@@ -199,14 +212,17 @@ Lets test the hypothesis that the number of ant nests in forests differs from th
 
 Monte Carlo
 ===================================================================
+type:sub-section
+
+
+![montecarlo](http://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Whole_Monaco.jpg/600px-Whole_Monaco.jpg)
+
+*** 
 
 Monte Carlo refers to a world-famous casino, in a town on the French Riviera (in the Principality of Monaco).
 
 In Monte Carlo analysis, data are randomly reshuffled over and over to specify the null hypothesis, and these reshufflings are compared against the observed data.
 
-***
-
-![montecarlo](http://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Whole_Monaco.jpg/600px-Whole_Monaco.jpg)
 
 Monte Carlo
 ===================================================================
@@ -235,10 +251,10 @@ abs.mean <- function(ant_counts, habitats) {
 abs.mean(ants$n_Ants, ants$Habitat)
 ```
 
-Monte Carlo - Step 2- Shuffle
+Monte Carlo - Step 2 - Shuffle
 ===================================================================
 
-Now, we resuffle the ant nest counts randomly with respect to the habitat category.  We can do this with the `sample()` function. ***Note:*** by default, the function draws a sample of the same size as the original vector, without replacement.
+Now, we reshuffle the ant nest counts with the `sample()` function. ***Note:*** by default, the function draws a sample of the same size as the original vector, without replacement.
 
 ```{r}
 ants$n_Ants
@@ -264,6 +280,8 @@ for(i in 1:1000) {
 
 Monte Carlo - Step 2 - Shuffle
 ================================
+incremental:false
+
 We can look at the results with a histogram
 ***
 ```{r echo=FALSE}
@@ -272,15 +290,18 @@ qplot(results, main="mean differences, shuffled counts") + theme_bw(24)
 
 Monte Carlo - Step 3 - one or two tailed?
 ===================================================================
-When we compute the p value, we will ask how many  differences computed on the ramdomized data are as extreme as our actual mean difference. 
+
+```{r echo=FALSE}
+qplot(results, main="mean differences, shuffled counts") + theme_bw(24)
+```
+***
+
+
+When we compute the p value, we will ask how many  differences computed on the randomized data are as extreme as our actual mean difference. 
 
 Should we look at just one side of the distribution or both?
 
 We are looking at the absolute value, of the difference, ***so we want a 1 tailed test.***
-***
-```{r echo=FALSE}
-qplot(results, main="mean differences, shuffled counts") + theme_bw(24)
-```
 
 
 
@@ -298,17 +319,15 @@ count_extreme_diffs / 1000
 Monte Carlo 
 ============================================================
 
-## ***What does our p value of approx. 0.03 mean?***
-
-
-
-
-Monte Carlo 
-============================================================
-
-## ***What does our p value of approx. 0.03 mean?***
+***What does our p value of approx. 0.03 mean?***
 
 If there is no relationship between habitat and and nest count, we would expect to observe data with a mean difference as extreme as ours about 3% of the time. 
+
+If you only remember one thing...
+===================================================================
+type:alert
+<br>
+The p-value is an estimate of how likely our data are, assuming the null hypothesis is true.
 
 Monte Carlo Pros and Cons
 ============================================================
@@ -323,20 +342,23 @@ Monte Carlo Pros and Cons
 
 Parametric
 ==================================================================
-Assumes data were sampled from a specified distribution (usually normal distribution). 
+type: sub-section
 
-Parameters of this distribution used to calculate tail probabilities data given a null hypotheis. 
-
-$$P(data\ |\ hypothesis)$$
+![normal](http://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Normal_Distribution_PDF.svg/700px-Normal_Distribution_PDF.svg.png)
 
 ***
 
-![normal](http://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Normal_Distribution_PDF.svg/700px-Normal_Distribution_PDF.svg.png)
+Assumes data were sampled from a specified distribution (usually normal distribution). 
+
+Parameters of this distribution used to calculate tail probabilities data given a null hypothesis. 
+
+$$P(data\ |\ hypothesis)$$
 
 
 
 Parametric
 ===================================================================
+
 
 1.  Specify the test statistic
 2.  Specify the null distribution
@@ -344,9 +366,79 @@ Parametric
 
 
 
+Parametric - Step 1 - Test Statistic
+===================================================================
+
+F statistic or F ratio - useful for comparing weather group means differ
+
+Basis for ***ANOVA***
+
+$$ F = \frac{(variance\ between\ groups + variance\ within\ groups)}{variance\ within\ groups}$$
+
+![anova](http://www.soc.napier.ac.uk/~cs181/Modules/CM/images/ANOVA-df.png)
+
+Parametric - Step 1 - Test Statistic
+===================================================================
+
+We will spend a lot of time talking about how to calculate the F ratio
+
+Our F-ratio in the case of the ant nests is 
+
+$$ F = 33.75 / 3.84 = 8.78 $$
+
+Parametric - Step 2 - Specifify null dist
+===================================================================
+
+The null hypothesis is data were drawn from  single population.
+
+If true, then our F ratio tends to be about 1. Larger and larger values of F are less and less likely to be observed under the null hypothesis.  
+
+The F statistic follows a known ***F distribution***.
+
+Parametric - Step 2 - Specifify null dist
+===================================================================
+
+```{r fig.width=18}
+xrange <- seq(1, 14, 0.1)
+yvals <- df(xrange, df1 = 1, df2=8)
+fdist <- qplot(x=xrange, y=yvals, geom="line") + 
+    theme_bw(20) + 
+    labs(x="F statistic", y="probability")
+fdist
+```
+
+
+Parametric - Step 3 - Compute the p-value
+===================================================================
+
+The upper tail probability can be computed easily because we are dealing with a known distribution. 
+
+```{r}
+1 - pf(8.78, df1=1, df2=8)
+```
+
+***
+
+```{r}
+fdist + geom_vline(xintercept = 8.78, col="red")
+```
+
+Parametric - Step 3 - Compute the p-value
+===================================================================
+
+***What does this p-value mean?***
+
+Parametric Assumptions
+==================================================================
+
+*  data independent
+*  data come from specified distribution
+*  additional tests make additional assumptions
 
 Bayesian
 ===================================================================
+type: sub-section
+
 <br>   
 $$P(hypothesis\ |\ data) = \frac{P(hypothesis) * P(data\ |\ hypothesis)}{P(data)}$$
 <br>    
@@ -360,16 +452,31 @@ Bayesian
 4.  Calculate the likelihood
 5.  Calculate the posterior
 6.  Interpret
+
+
 Bayesian
 ===================================================================
-Bayesian
-===================================================================
+![xkcd](frequentists_vs_bayesians.png)
+
+***
 
 A key concept in the Bayesian framework is incorporating ***prior*** knowledge into hypothesis testing.  
 
-***
-![xkcd](frequentists_vs_bayesians.png)
+This is also a major criticism, because many people view this as potentially subjective. 
 
+
+Bayesian
+===================================================================
+
+# Pros
+
+*  Explicitly builds on previous work (which reflects scientific progress, and the way we think)
+*  Intuitive interpretation, less prone to cookbook critical values of p
+
+# Cons
+
+*  It is really friggin' complicated
+*  Use of different priors results in different information, potentially subjective
 
 [xkcd]: frequentists_vs_bayesians.png
 [errors]: typeItype2.jpg

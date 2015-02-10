@@ -6,6 +6,13 @@ title: Getting Help
 
 JFGIS (**J**ust **F***%king **G**oogle **I**t, **S**eriously) is the first principle of using R.  There are over a million active R users out there. Getting a weird error message? Try copying and pasting it into google.  Chances are that hundreds or thousands of other people have had the same error and you will find some help.
 
+## Mini Tutorials
+
+Here are a few tutorials on various topics that have come up this semester (Spring 2015)
+
+*  [using lapply() properly](lapply.html)
+*  [writing your own functions](writing_functions.html)
+
 ## Stackoverflow and the R Mailing List
 
 Can't figure out your problem on the googler? Reach out to the R user community. Getting help from the community is an art.  Remember, these are normal people who are helping you for free.  If you say "omg....why am I getting this error"....you may only hear crickets. If you instead distill the problem down to its simplest form, ideally with a self-contained example, you are likely to have your problem solved within hours. However, it takes some effort to formulate your question clearly, and often you figure out what went wrong in the process.

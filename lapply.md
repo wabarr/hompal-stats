@@ -86,7 +86,7 @@ W = 0.9761, p-value = 0.01018
 
 lapply() in the homework - the offender
 ========================================================
-Next, you used `lapply()` `iris_results` to extract the p-values.  About half (or mor) of you gave me this code.
+Next, you used `lapply()` `iris_results` to extract the p-values.  About half (or more) of you gave me this code.
 
 
 ```r

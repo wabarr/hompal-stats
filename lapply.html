@@ -855,7 +855,7 @@ lapply(fruits, iLike)
 
 <ul>
 <li> <code>fruits</code> is a simple vector with three elements</li>
-<li> <code>iLike</code> is a function that takes a single argument called <code>thingIlike</code>
+<li> <code>iLike</code> is a function with single argument called <code>thingIlike</code>
 
 <ul>
 <li> the <code>paste()</code> function is used to combine the text &ldquo;I like&rdquo; whatever value we assign to the <code>thingIlike</code> argument</li>
@@ -891,7 +891,7 @@ W = 0.9761, p-value = 0.01018
 <section data-transition="linear" data-transition-speed="default">
 <h3>lapply() in the homework - the offender</h3>
 <div class="slideContent" >
-<p>Next, I asked you to use <code>lapply()</code> again on this <code>iris_results</code> vector to extract the p-value.  About half (or more) of you gave me this code.</p>
+<p>Next, you used <code>lapply()</code> <code>iris_results</code> to extract the p-values.  About half (or mor) of you gave me this code.</p>
 
 <pre><code class="r">lapply(iris_results, &#39;[[&#39;, 2)
 </code></pre>
@@ -915,7 +915,7 @@ $Petal.Width
 <section data-transition="linear" data-transition-speed="default">
 <h3>lapply() in the homework - the offender</h3>
 <div class="slideContent" >
-<p>Some also gave this equivalent version</p>
+<p>Some people also gave me this equivalent version</p>
 
 <pre><code class="r">lapply(iris_results, &#39;[[&#39;, &quot;p.value&quot;)
 </code></pre>
@@ -939,7 +939,7 @@ $Petal.Width
 <section data-transition="linear" data-transition-speed="default">
 <h3>lapply() in the homework - a better way</h3>
 <div class="slideContent" >
-<p>Writing a function to pull out the p values is SO MUCH easier to read!</p>
+<p>Writing a function to pull out p values is MUCH easier to read!</p>
 
 <pre><code class="r">get.p &lt;- function(testresults) {
   testresults$p.value

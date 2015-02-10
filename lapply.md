@@ -59,7 +59,7 @@ lapply(fruits, iLike)
 ```
 
 *  `fruits` is a simple vector with three elements
-*  `iLike` is a function that takes a single argument called `thingIlike`
+*  `iLike` is a function with single argument called `thingIlike`
     *  the `paste()` function is used to combine the text "I like" whatever value we assign to the `thingIlike` argument
 *  we use `lapply` to loop over each element of `fruits` and apply the function to each in sequence
 
@@ -86,7 +86,7 @@ W = 0.9761, p-value = 0.01018
 
 lapply() in the homework - the offender
 ========================================================
-Next, I asked you to use `lapply()` again on this `iris_results` vector to extract the p-value.  About half (or more) of you gave me this code.
+Next, you used `lapply()` `iris_results` to extract the p-values.  About half (or mor) of you gave me this code.
 
 
 ```r
@@ -109,7 +109,7 @@ $Petal.Width
 
 lapply() in the homework - the offender
 ========================================================
-Some also gave this equivalent version
+Some people also gave me this equivalent version
 
 
 ```r
@@ -132,7 +132,7 @@ $Petal.Width
 
 lapply() in the homework - a better way
 ========================================================
-Writing a function to pull out the p values is SO MUCH easier to read!
+Writing a function to pull out p values is MUCH easier to read!
 
 
 ```r

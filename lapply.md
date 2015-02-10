@@ -176,3 +176,4 @@ type:section
 <br>
 # Dont over-rely on help from classmates
 ### you are going to have to do this stuff alone on your exam!
+## come talk to me if you need help!

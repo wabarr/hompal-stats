@@ -116,6 +116,17 @@ pets
 
 R will now treat this differently from other vectors.  These come in useful later on, when we want to summarize by different factor levels.  
 
+## Ordered factors
+
+By default, R assumes the order of the levels in your factor is arbitrary, so it displays them in alphabetical order.  
+
+You can change this by replacing the normal factor `pets` with a new ***ordered*** factor
+
+```{r}
+pets <- ordered(pets, levels=c("pony", "dog", "cat"))
+pets
+```
+
 ## Data Frames
 
 Data frames are a convenient way of storing multiple related vectors of data together in a single object.  They are analogous to a spreadsheet where each row corresponds to an individual (e.g., specimen, species) and each row corresponds to some observation about that individual. Usually, you will use the `read.table()` function to read a dataframe directly from a .csv or .txt file that you have saved from MS Excel.

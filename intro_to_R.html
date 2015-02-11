@@ -170,6 +170,15 @@ pets</code></pre>
 ## Levels: cat dog pony</code></pre>
 <p>R will now treat this differently from other vectors. These come in useful later on, when we want to summarize by different factor levels.</p>
 </div>
+<div id="ordered-factors" class="section level2">
+<h2>Ordered factors</h2>
+<p>By default, R assumes the order of the levels in your factor is arbitrary, so it displays them in alphabetical order.</p>
+<p>You can change this by replacing the normal factor <code>pets</code> with a new <strong><em>ordered</em></strong> factor</p>
+<pre class="r"><code>pets &lt;- ordered(pets, levels=c(&quot;pony&quot;, &quot;dog&quot;, &quot;cat&quot;))
+pets</code></pre>
+<pre><code>## [1] cat  cat  dog  pony dog  dog 
+## Levels: pony &lt; dog &lt; cat</code></pre>
+</div>
 <div id="data-frames" class="section level2">
 <h2>Data Frames</h2>
 <p>Data frames are a convenient way of storing multiple related vectors of data together in a single object. They are analogous to a spreadsheet where each row corresponds to an individual (e.g., specimen, species) and each row corresponds to some observation about that individual. Usually, you will use the <code>read.table()</code> function to read a dataframe directly from a .csv or .txt file that you have saved from MS Excel.</p>
@@ -244,7 +253,7 @@ paste(part1, part2)</code></pre>
 <div id="output-of-r-markdown-after-knitting" class="section level3">
 <h3>Output of R Markdown after knitting</h3>
 <p>This sentence is just normal text, made for humans to read. The following bit is a “code chunk”, which is set off by the ``` characters and consists of actual R code that gets run, and the results knitted back into the document. You can also put R code inline like this. What is 2 + 2? The answer is 4.</p>
-<p><img src="intro_to_R_files/figure-html/unnamed-chunk-14-1.png" title="" alt="" width="672" /></p>
+<p><img src="intro_to_R_files/figure-html/unnamed-chunk-15-1.png" title="" alt="" width="672" /></p>
 <p>Here is some more human readable text right after the code chunk.</p>
 </div>
 </div>

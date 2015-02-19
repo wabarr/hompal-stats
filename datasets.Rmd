@@ -23,6 +23,7 @@ Dataset Name | Source of data
 [gotelli_ants.txt](datasets/gotelli_ants.txt) | Gotelli Chapter 5
 [DIK-scap.txt](datasets/DIK-scap.txt) | [Alemseged et al, 2006](http://dx.doi.org/10.1038/nature05047)
 [Reed1997_modern_adaptations](datasets/Reed1997_modern_adaptations.csv) | [Reed, 1997](http://dx.doi.org/10.1006/jhev.1996.0106)
+[Gordon_2008_cranial.csv](datasets/Gordon_2008_cranial.csv) | [Gordon et al., 2008](http://www.pnas.org/content/105/12/4650.abstract)
 
 <!--
 <ul>

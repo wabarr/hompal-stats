@@ -1,0 +1,13 @@
+---
+title: "Homework #5"
+author: "Andrew Barr"
+date: "due March 16th"
+output: html_document
+---
+
+## Problem 1
+
+Use the data set of measurements of antelope astragali from [Barr (2014)](datasets/barr_astrag_2014.txt). 
+
+A.  Read in the data, saving it to a variable called `astrag`.  Hint: be sure to specify the separator character in the data, which is a tab (represented in R as `\t`).
+B.  Make a scatterplot with measurement `B` on the y-axis and `DistRad` on the x-axis.

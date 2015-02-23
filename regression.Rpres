@@ -1,4 +1,4 @@
-Correlation and Regression
+Regression
 ========================================================
 incremental: true
 left:10%

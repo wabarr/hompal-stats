@@ -189,7 +189,9 @@ This leads to calculation of $r^2$, AKA the **coefficient of determination**
 
 $$\frac{SS_{reg}}{SS_Y}=\frac{SS_{reg}}{SS_{reg} + RSS}$$
 
-The square root of this value is known as $r$ or the *product-moment correlation coefficient*. Note: the sign of $r$ comes from the sign of the slope of the line. 
+The square root of this value is known as $r$ or the **product-moment correlation coefficient**. 
+
+Note: the sign of $r$ comes from the sign of the slope of the line. 
 
 Hypothesis Testing
 =====================
@@ -298,7 +300,7 @@ Model II Regression - A different kind of residual
 
 RMA regression assumes there is error in both X and Y
 
-Computes an orthogonal residual (along the major axis)
+Minimizes an orthogonal residual sum of squares (along the major axis)
 
 Show on white board
 

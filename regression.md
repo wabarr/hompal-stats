@@ -23,7 +23,7 @@ Examples?
 
 From geometry: remember straight line formula     
        
-$$Y = slope*X + intercept$$
+$$Y = slope \times X + intercept$$
 
 Simple Linear Model
 ===========================
@@ -291,6 +291,16 @@ plot(lm(response~predictor))
 
 Systematic departures from linearity can show up in the residual plots
 
+
+
+Model II Regression - A different kind of residual
+===========================
+
+RMA regression assumes there is error in both X and Y
+
+Computes an orthogonal residual (along the major axis)
+
+Show on white board
 
 
 Doing Model II Regression in R

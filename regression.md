@@ -21,7 +21,7 @@ TONS of data are suitable for this kind of analysis.
 
 Examples?
 
-From geometry: remember straight line forumula     
+From geometry: remember straight line formula     
        
 $$Y = slope*X + intercept$$
 
@@ -75,7 +75,7 @@ incremental:FALSE
 ![plot of chunk unnamed-chunk-4](regression-figure/unnamed-chunk-4-1.png) 
 
 ***
-A **residual** represents the distance between the predited value from the regression, and the actual value.
+A **residual** represents the distance between the predicted value from the regression, and the actual value.
 
 The **squared residual** is calculated as such: 
 
@@ -174,13 +174,13 @@ Coefficient of Determination
 
 In a linear relationship, the total variance we want to explain is $SS_Y$.
 
-Some variance is attribituable to our error term (measured by $RSS$).  
+Some variance is attributable to our error term (measured by $RSS$).  
 
 The remaining variance is explained by our regression, thus: $$SS_{reg}=SS_Y-RSS$$
 
 Therefore: $$SS_Y=SS_{reg}+RSS$$ 
 
-This is refered to as **partitioning** a sum of squares.
+This is referred to as **partitioning** a sum of squares.
 
 Coefficient of Determination
 =====================

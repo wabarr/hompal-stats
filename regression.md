@@ -1,4 +1,4 @@
-Regression
+Correlation and Regression
 ========================================================
 incremental: true
 left:10%
@@ -6,6 +6,10 @@ left:10%
 ***
 <img src="http://imgs.xkcd.com/comics/sustainable.png"> 
 
+Correlation versus Causation
+===========================
+
+<img src="http://www.venganza.org/images/PiratesVsTemp.png">
 
 Regression implies X causes Y
 ==================================

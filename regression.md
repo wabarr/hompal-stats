@@ -7,6 +7,24 @@ left:10%
 <img src="http://imgs.xkcd.com/comics/sustainable.png"> 
 
 
+Regression implies X causes Y
+==================================
+left:60
+
+![plot of chunk unnamed-chunk-1](regression-figure/unnamed-chunk-1-1.png) 
+
+***
+
+Both variables are continuous
+
+TONS of data are suitable for this kind of analysis.
+
+Examples?
+
+From geometry: remember straight line forumula     
+       
+$$Y = slope*X + intercept$$
+
 Simple Linear Model
 ===========================
 
@@ -17,36 +35,60 @@ $$Y_i = \beta_0 + \beta_1X_i + \epsilon_i$$
 *  $\beta_0$ is the **intercept** (value of y where x= 0)
 *  $\beta_1X_i$ is the **slope** value expressing $\Delta Y / \Delta X$
 *  $\epsilon_i$ is the error term
+    *  normal random variable with mean 0 and variance $\sigma^2$
 
-Simple Linear Model
+This equation should make sense
 ===========================
 incremental:false
+left:60
 
-![plot of chunk unnamed-chunk-1](regression-figure/unnamed-chunk-1-1.png) 
+![plot of chunk unnamed-chunk-2](regression-figure/unnamed-chunk-2-1.png) 
+
+***
+
+$$Y_i = \beta_0 + \beta_1X_i + \epsilon_i$$
+
+Once you decide on a line, then the value of Y equals:
+  *  the value predicted by the line, plus
+  *  a random error from our error term
 
 Finding the best line
 ======================
-![plot of chunk unnamed-chunk-2](regression-figure/unnamed-chunk-2-1.png) 
+left:60
+
+![plot of chunk unnamed-chunk-3](regression-figure/unnamed-chunk-3-1.png) 
 
 ***
 
 Once we decide on linear regression, we have to find best line
 
-There is unexplained variation in Y (why?)
+There is unexplained variation in Y, so points don't fall on straight line (why?)
 
 Many lines pass through $(\bar{X},\bar{Y})$.  How do we pick the best one?
 
+
+Finding the best line - residuals
+======================
+left:60
+incremental:FALSE
+
+![plot of chunk unnamed-chunk-4](regression-figure/unnamed-chunk-4-1.png) 
+
+***
+A **residual** represents the distance between the predited value from the regression, and the actual value.
+
+The **squared residual** is calculated as such: 
+
+$$d_i^2=(Y_i - \hat{Y}_i)^2$$
 
 Finding the best line
 ======================
 
 The best line minimizes the **residual sum of squares**
 
-The **squared residual** represents how far off the predicted value a given point is: $$d_i^2=(Y_i - \hat{Y}_i)^2$$
+$$ RSS=\sum\limits_{i=1}^n(Y_i - \hat{Y}_i)^2$$
 
-Therefore: $$ RSS=\sum\limits_{i=1}^n(Y_i - \hat{Y}_i)^2$$
-
-We could try a bunch of slopes passing through $(\bar{X},\bar{Y})$ and calculate the RSS, then pick the smallest, but math offers a better solution.
+We could do a Monte Carlo approach: try a bunch of slopes passing through $(\bar{X},\bar{Y})$ and calculate the RSS, then pick the smallest, but math offers a simpler solution.
 
 Variances and Covariances
 =======================
@@ -62,7 +104,32 @@ With 2 variables, we can define **sum of cross products** $$\ SS_{XY} = \sum\lim
 
 By analogy to the sample variance, we define **sample covariance** $$\ s_{XY} = \frac{\sum\limits_{i=1}^n(X_i - \bar{X})(Y_i - \bar{Y})}{(n-1)}$$
 
-Sample covariance from $-\infty$ to $\infty$
+
+Sample Covariance - Negative
+====================
+left:60
+incremental: FALSE
+
+![plot of chunk unnamed-chunk-5](regression-figure/unnamed-chunk-5-1.png) 
+
+***
+
+From $-\infty$ to $\infty$
+
+$$\ s_{XY} = \frac{\sum\limits_{i=1}^n(X_i - \bar{X})(Y_i - \bar{Y})}{(n-1)}$$
+
+Sample Covariance - Positive
+====================
+left:60
+incremental: FALSE
+
+![plot of chunk unnamed-chunk-6](regression-figure/unnamed-chunk-6-1.png) 
+
+***
+
+From $-\infty$ to $\infty$
+
+$$\ s_{XY} = \frac{\sum\limits_{i=1}^n(X_i - \bar{X})(Y_i - \bar{Y})}{(n-1)}$$
 
 Calculate Covariance
 =======================
@@ -72,15 +139,6 @@ By hand on whiteboard
 ```r
 x <- c(2 , 4, 3)
 y <- c(1, 5, 6)
-```
-
-
-```r
-cov(x,y)
-```
-
-```
-[1] 2
 ```
 
 Regression Parameters - Slope
@@ -167,14 +225,14 @@ Prediction intervals are related, but slightly wider.
 
 ***
 
-![plot of chunk unnamed-chunk-5](regression-figure/unnamed-chunk-5-1.png) 
+![plot of chunk unnamed-chunk-8](regression-figure/unnamed-chunk-8-1.png) 
 
 Interpolation vs Extrapolation
 =====================
 
-![plot of chunk unnamed-chunk-6](regression-figure/unnamed-chunk-6-1.png) 
+![plot of chunk unnamed-chunk-9](regression-figure/unnamed-chunk-9-1.png) 
 ***
-![plot of chunk unnamed-chunk-7](regression-figure/unnamed-chunk-7-1.png) 
+![plot of chunk unnamed-chunk-10](regression-figure/unnamed-chunk-10-1.png) 
 
 Assumptions of Regression
 ==============
@@ -185,9 +243,22 @@ Assumptions of Regression
 3.  Y values are independent with normally distributed errors
 4.  Variance is constant along the regression line (homoscedasticity)
 
+Doing Regression in R
+====================
+incremental:FALSE
+
+
+```r
+myModel <- lm(response~predictor)
+summary(myModel)
+```
+
+
+<img src="example_lm_output.png">
+
 Checking Assumptions: Residual plot
 ======================
-incremental:False
+incremental:FALSE
 left: 75
 
 
@@ -195,7 +266,7 @@ left: 75
 plot(lm(response~predictor))
 ```
 
-![plot of chunk unnamed-chunk-8](regression-figure/unnamed-chunk-8-1.png) ![plot of chunk unnamed-chunk-8](regression-figure/unnamed-chunk-8-2.png) ![plot of chunk unnamed-chunk-8](regression-figure/unnamed-chunk-8-3.png) ![plot of chunk unnamed-chunk-8](regression-figure/unnamed-chunk-8-4.png) 
+![plot of chunk unnamed-chunk-12](regression-figure/unnamed-chunk-12-1.png) ![plot of chunk unnamed-chunk-12](regression-figure/unnamed-chunk-12-2.png) ![plot of chunk unnamed-chunk-12](regression-figure/unnamed-chunk-12-3.png) ![plot of chunk unnamed-chunk-12](regression-figure/unnamed-chunk-12-4.png) 
 
 ***
 
@@ -210,38 +281,17 @@ left: 75
 
 
 ```r
-response <- predictor^2 + error*20
+response <- predictor^2 + rnorm(1000, sd=50)
 plot(lm(response~predictor))
 ```
 
-![plot of chunk unnamed-chunk-9](regression-figure/unnamed-chunk-9-1.png) ![plot of chunk unnamed-chunk-9](regression-figure/unnamed-chunk-9-2.png) ![plot of chunk unnamed-chunk-9](regression-figure/unnamed-chunk-9-3.png) ![plot of chunk unnamed-chunk-9](regression-figure/unnamed-chunk-9-4.png) 
+![plot of chunk unnamed-chunk-13](regression-figure/unnamed-chunk-13-1.png) ![plot of chunk unnamed-chunk-13](regression-figure/unnamed-chunk-13-2.png) ![plot of chunk unnamed-chunk-13](regression-figure/unnamed-chunk-13-3.png) ![plot of chunk unnamed-chunk-13](regression-figure/unnamed-chunk-13-4.png) 
 
 ***
 
 Systematic departures from linearity can show up in the residual plots
 
-Doing Regression in R
-====================
 
-
-```r
-myModel <- lm(response~predictor)
-summary(myModel)
-```
-
-Doing Regression in R
-====================
-left:90
-incremental:false
-
-
-```r
-plot(myModel)
-```
-
-![plot of chunk unnamed-chunk-11](regression-figure/unnamed-chunk-11-1.png) ![plot of chunk unnamed-chunk-11](regression-figure/unnamed-chunk-11-2.png) ![plot of chunk unnamed-chunk-11](regression-figure/unnamed-chunk-11-3.png) ![plot of chunk unnamed-chunk-11](regression-figure/unnamed-chunk-11-4.png) 
-
-***
 
 Doing Model II Regression in R
 ====================

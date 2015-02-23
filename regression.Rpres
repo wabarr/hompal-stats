@@ -7,6 +7,31 @@ left:10%
 <img src="http://imgs.xkcd.com/comics/sustainable.png"> 
 
 
+Regression implies X causes Y
+==================================
+left:60
+
+```{r echo=FALSE}
+set.seed(1234)
+library(ggplot2)
+predictor <- rnorm(1000, mean=100, sd=10)
+response <- predictor * 0.3 + rnorm(1000, sd=2)
+basicPlot <- qplot(predictor,response, size=I(2.5)) + theme_bw(40)
+basicPlot
+```
+
+***
+
+Both variables are continuous
+
+TONS of data are suitable for this kind of analysis.
+
+Examples?
+
+From geometry: remember straight line forumula     
+       
+$$Y = slope*X + intercept$$
+
 Simple Linear Model
 ===========================
 
@@ -17,45 +42,72 @@ $$Y_i = \beta_0 + \beta_1X_i + \epsilon_i$$
 *  $\beta_0$ is the **intercept** (value of y where x= 0)
 *  $\beta_1X_i$ is the **slope** value expressing $\Delta Y / \Delta X$
 *  $\epsilon_i$ is the error term
+    *  normal random variable with mean 0 and variance $\sigma^2$
 
-Simple Linear Model
+This equation should make sense
 ===========================
 incremental:false
+left:60
 
 ```{r echo=FALSE}
-library(ggplot2)
-predictor <- rnorm(100, mean=100, sd=10)
-error <- rnorm(100, mean=0, sd=3)
-response <- 25 + predictor * 0.3 + error
-qplot(predictor, response) + theme_bw(20)
+basicPlot + stat_smooth(method="lm", fill="transparent", alpha=0.05, color="red")
 ```
+
+***
+
+$$Y_i = \beta_0 + \beta_1X_i + \epsilon_i$$
+
+Once you decide on a line, then the value of Y equals:
+  *  the value predicted by the line, plus
+  *  a random error from our error term
 
 Finding the best line
 ======================
+left:60
+
 ```{r echo=FALSE}
 plotdat <- data.frame(meanresp = mean(response), meanpred=mean(predictor))
-qplot(predictor, response) + theme_bw(20) + geom_point(data=plotdat, aes(x=meanpred, y=meanresp), size=8, color="red")
+basicPlot + geom_point(data=plotdat, aes(x=meanpred, y=meanresp), size=8, color="red")
 ```
 
 ***
 
 Once we decide on linear regression, we have to find best line
 
-There is unexplained variation in Y (why?)
+There is unexplained variation in Y, so points don't fall on straight line (why?)
 
 Many lines pass through $(\bar{X},\bar{Y})$.  How do we pick the best one?
 
+
+Finding the best line - residuals
+======================
+left:60
+incremental:FALSE
+
+```{r echo=FALSE}
+myMod <- lm(response~predictor)
+basicPlot + 
+  scale_y_continuous(limits=c(22,34)) + 
+  scale_x_continuous(limits=c(95, 97)) + 
+  geom_abline(aes(intercept=coef(myMod)[1], slope=coef(myMod)[2]), color="red") + 
+  geom_segment(aes(x=predictor, xend=predictor, y=response,yend=myMod$fitted), linetype="dashed")
+```
+
+***
+A **residual** represents the distance between the predited value from the regression, and the actual value.
+
+The **squared residual** is calculated as such: 
+
+$$d_i^2=(Y_i - \hat{Y}_i)^2$$
 
 Finding the best line
 ======================
 
 The best line minimizes the **residual sum of squares**
 
-The **squared residual** represents how far off the predicted value a given point is: $$d_i^2=(Y_i - \hat{Y}_i)^2$$
+$$ RSS=\sum\limits_{i=1}^n(Y_i - \hat{Y}_i)^2$$
 
-Therefore: $$ RSS=\sum\limits_{i=1}^n(Y_i - \hat{Y}_i)^2$$
-
-We could try a bunch of slopes passing through $(\bar{X},\bar{Y})$ and calculate the RSS, then pick the smallest, but math offers a better solution.
+We could do a Monte Carlo approach: try a bunch of slopes passing through $(\bar{X},\bar{Y})$ and calculate the RSS, then pick the smallest, but math offers a simpler solution.
 
 Variances and Covariances
 =======================
@@ -71,7 +123,36 @@ With 2 variables, we can define **sum of cross products** $$\ SS_{XY} = \sum\lim
 
 By analogy to the sample variance, we define **sample covariance** $$\ s_{XY} = \frac{\sum\limits_{i=1}^n(X_i - \bar{X})(Y_i - \bar{Y})}{(n-1)}$$
 
-Sample covariance from $-\infty$ to $\infty$
+
+Sample Covariance - Negative
+====================
+left:60
+incremental: FALSE
+
+```{r echo=FALSE}
+qplot(predictor, predictor*-0.3 + rnorm(1000, sd=2), size=I(3), xlab="predictor", ylab="response") + theme_bw(30)
+```
+
+***
+
+From $-\infty$ to $\infty$
+
+$$\ s_{XY} = \frac{\sum\limits_{i=1}^n(X_i - \bar{X})(Y_i - \bar{Y})}{(n-1)}$$
+
+Sample Covariance - Positive
+====================
+left:60
+incremental: FALSE
+
+```{r echo=FALSE}
+basicPlot
+```
+
+***
+
+From $-\infty$ to $\infty$
+
+$$\ s_{XY} = \frac{\sum\limits_{i=1}^n(X_i - \bar{X})(Y_i - \bar{Y})}{(n-1)}$$
 
 Calculate Covariance
 =======================
@@ -80,10 +161,6 @@ By hand on whiteboard
 ```{r}
 x <- c(2 , 4, 3)
 y <- c(1, 5, 6)
-```
-
-```{r}
-cov(x,y)
 ```
 
 Regression Parameters - Slope
@@ -200,9 +277,21 @@ Assumptions of Regression
 3.  Y values are independent with normally distributed errors
 4.  Variance is constant along the regression line (homoscedasticity)
 
+Doing Regression in R
+====================
+incremental:FALSE
+
+```{r results="hide"}
+myModel <- lm(response~predictor)
+summary(myModel)
+```
+
+
+<img src="example_lm_output.png">
+
 Checking Assumptions: Residual plot
 ======================
-incremental:False
+incremental:FALSE
 left: 75
 
 ```{r}
@@ -221,7 +310,7 @@ incremental:False
 left: 75
 
 ```{r}
-response <- predictor^2 + error*20
+response <- predictor^2 + rnorm(1000, sd=50)
 plot(lm(response~predictor))
 ```
 
@@ -229,24 +318,7 @@ plot(lm(response~predictor))
 
 Systematic departures from linearity can show up in the residual plots
 
-Doing Regression in R
-====================
 
-```{r results="hide"}
-myModel <- lm(response~predictor)
-summary(myModel)
-```
-
-Doing Regression in R
-====================
-left:90
-incremental:false
-
-```{r}
-plot(myModel)
-```
-
-***
 
 Doing Model II Regression in R
 ====================

@@ -24,6 +24,7 @@ Dataset Name | Source of data
 [DIK-scap.txt](datasets/DIK-scap.txt) | [Alemseged et al, 2006](http://dx.doi.org/10.1038/nature05047)
 [Reed1997_modern_adaptations](datasets/Reed1997_modern_adaptations.csv) | [Reed, 1997](http://dx.doi.org/10.1006/jhev.1996.0106)
 [Gordon_2008_cranial.csv](datasets/Gordon_2008_cranial.csv) | [Gordon et al., 2008](http://www.pnas.org/content/105/12/4650.abstract)
+[Cerling_etal_2013.csv](datasets/Cerling_etal_2013.csv) | [Cerling et al., 2013](http://dx.doi.org/10.1073/pnas.1222571110)
 
 <!--
 <ul>

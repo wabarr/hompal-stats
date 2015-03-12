@@ -8,13 +8,71 @@ Basic Goal of ANOVA
 
 Compare the means of groups that have been sampled randomly, to test whether or not they differ
 
-How do we do this?  It's all about partitioning sums of squares. 
+How do we do this?  It's all about variances.
+
+Inituitive Picture of ANOVA
+=====================
+incremental:false
+
+```{r echo=FALSE, warnings=FALSE}
+set.seed(1234)
+library(ggplot2)
+theme_set(theme_bw(25))
+x <- rnorm(1000, mean=50, sd=2)
+y <- rnorm(1000, mean=44, sd=2)
+dat <- data.frame(x,y)
+library(reshape2)
+meltdat <- melt(dat)
+ggplot() + 
+  geom_histogram(aes(x=value, fill=variable), position="dodge", data=meltdat) + 
+  annotate(geom = "segment", x=mean(meltdat$value) - (var(meltdat$value)/2), xend=mean(meltdat$value) + (var(meltdat$value)/2), y=150, yend=150, size=2) + 
+  annotate(geom = "segment", x=mean(dat$x) - (var(dat$x)/2), xend=mean(dat$x) + (var(dat$x)/2), y=148, yend=148,size=2, color="#f35e5a") + 
+  annotate(geom = "segment", x=mean(dat$y) - (var(dat$y)/2), xend=mean(dat$y) + (var(dat$y)/2), y=148, yend=148,size=2, color="#17b3b7")
+```
+
+Black bars at top represent variances ignoring groups.
+
+***
+```{r echo=FALSE, warnings=FALSE}
+x <- rnorm(1000, mean=50, sd=2)
+y <- rnorm(1000, mean=50, sd=2)
+dat <- data.frame(x,y)
+meltdat <- melt(dat)
+ggplot() + 
+  geom_histogram(aes(x=value, fill=variable), position="dodge", data=meltdat) + 
+  annotate(geom = "segment", x=mean(meltdat$value) - (var(meltdat$value)/2), xend=mean(meltdat$value) + (var(meltdat$value)/2), y=150, yend=150,size=2) + 
+  annotate(geom = "segment", x=mean(dat$x) - (var(dat$x)/2), xend=mean(dat$x) + (var(dat$x)/2), y=148, yend=148, size=2, color="#f35e5a") + 
+  annotate(geom = "segment", x=mean(dat$y) - (var(dat$y)/2), xend=mean(dat$y) + (var(dat$y)/2), y=146, yend=146,size=2, color="#17b3b7")
+```
+
+Colored bars at top represent variances within groups.
+
+The ANOVA linear model
+================
+$$Y_{ij}=\mu + A_i + \epsilon_{ij}$$
+
+* $\mu$ is the population grand mean ($\bar{Y_{ij}}$ an unbiased MLE estimator of $\mu$)
+*  $A_i$ is the deviation around the mean for a given treatment $i$ ($A_i$‘s sum to 0). 
+*  $\epsilon_{ij}$ is the error variance (the variance of individual points around their treatment group means. These are assumed to be distributed $~ N(0,σ2)$).
+
+The steps in a one-way ANOVA
+==============
+1.  Calculate the Total SS
+2.  Calculate the Within-group SS
+3.  Calculate the Between-group SS
+4.  Calculate Mean Squares using appropriate df.
+5.  Calculate the F ratio 
+6.  Calculate the p-value
 
 Assumptions of ANOVA
 =================
 
-1.  Samples are independent and identically distributed
-2.  Variances are the same between groups
-3.  Residuals are normally distributed
-4.  Each replicate is assigned to the correct group
-5.  The main effects are additive
+1.  The samples are independent and identically distributed
+2.  The residuals $\epsilon_i$ are normally distributed
+3.  Within-group variances are similar across all groups (‘homoschedastic”)
+4.  Observations are properly categorized in groups
+
+## Supporting assumptions
+
+1. Main effects are additive (no strong interactions). 
+2. Balanced design (equal number of observations in all groups). If this is violated, it ceases to be true that Total SS = Within + Between, and the calculations of MSE and F and p-values are all incorrect.

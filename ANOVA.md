@@ -6,9 +6,15 @@ incremental:true
 Basic Goal of ANOVA
 ==================
 
-Compare the means of groups that have been sampled randomly, to test whether or not they differ
+Compare the means of groups that have been sampled randomly, to test whether or not they differ.
 
-How do we do this?  It's all about variances.
+The different levels of the categorical variable representing different groups are called **treatments**, which comes from manipulative experiments.
+
+Each observation is called a **replicate** and is assumed to be an indepented observation of the effect of its treatment.
+
+So how do we compare group means?  
+
+Confusingly, it's all about variances (hence ANOVA).
 
 Inituitive Picture of ANOVA
 =====================
@@ -28,7 +34,7 @@ The ANOVA linear model
 $$Y_{ij}=\mu + A_i + \epsilon_{ij}$$
 
 * $\mu$ is the population grand mean ($\bar{Y_{ij}}$ an unbiased MLE estimator of $\mu$)
-*  $A_i$ is the deviation around the mean for a given treatment $i$ ($A_i$‘s sum to 0). 
+*  $A_i$ is the additive linear effect compared to the grand meam for a given treatment $i$ ($A_i$‘s sum to 0). 
 *  $\epsilon_{ij}$ is the error variance (the variance of individual points around their treatment group means. These are assumed to be distributed $~ N(0,σ2)$).
 
 The steps in a one-way ANOVA

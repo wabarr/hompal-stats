@@ -82,3 +82,7 @@ Assumptions of ANOVA
 
 1. Main effects are additive (no strong interactions). 
 2. Balanced design (equal number of observations in all groups). If this is violated, it ceases to be true that Total SS = Within + Between, and the calculations of MSE and F and p-values are all incorrect.
+
+Two-Way ANOVA
+==========
+$$Y_{ij}=\mu + A_i + B_j + AB_{ij} + \epsilon_{ij}$$

@@ -21,7 +21,7 @@ head(diamonds)
 
 ### Univariate plot
 
-The simplest usage of `qplot()` is to provide a variable for the x axis, and a dataframe in which to look for this variable.  `qplot()` will attempt to guess the best `geom` (graphical geometric representation) with which to display the data. Here we plot a histogram of diamond weights. As we would expect....most diamonds are small, so the graph is skewed to the left. 
+The simplest usage of `qplot()` is to provide a variable for the x axis, and a dataframe in which to look for this variable.  `qplot()` will attempt to guess the best `geom` (graphical geometric representation) with which to display the data. Here we plot a histogram of diamond weights. As we would expect....most diamonds are small, so the graph is skewed. 
 
 ```{r}
 library(ggplot2)

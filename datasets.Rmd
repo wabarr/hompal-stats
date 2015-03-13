@@ -26,6 +26,7 @@ Dataset Name | Source of data
 [Gordon_2008_cranial.csv](datasets/Gordon_2008_cranial.csv) | [Gordon et al., 2008](http://www.pnas.org/content/105/12/4650.abstract)
 [Cerling_etal_2013.csv](datasets/Cerling_etal_2013.csv) | [Cerling et al., 2013](http://dx.doi.org/10.1073/pnas.1222571110)
 [Boddy_2012_data.csv](datasets/Boddy_2012_data.csv) | [Boddy et al. 2012](http://dx.doi.org/10.1111/j.1420-9101.2012.02491.x)
+[lemurfeeding.txt](datasets/lemurfeeding.txt) | fake data
 
 <!--
 <ul>

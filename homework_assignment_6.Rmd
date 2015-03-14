@@ -1,0 +1,12 @@
+---
+title: "Homework # 6"
+---
+
+## Problem # 1
+
+Using this fake dataset on [lemur feeding rates](http://hompal-stats.wabarr.com/datasets/lemurfeeding.txt) do a two-factor ANOVA to determine whether feeding rate is influenced by sex and by the group each individual belongs to. 
+
+1.  Make a boxplot of feeding rate by sex
+2.  Make a boxplot of feeding rate by group
+3.  Show the ANOVA table for the two way ANOVA
+4.  Explore the interaction between the two factors by creating a plot analogous to figure 10.3 (p 329) in the Gotelli book. Put the group on the X axis, and the mean feeding rate for each group on the Y axis (make this a line going across all factor levels). Color code the lines by sex. Explain whether or not there is an interaction between the two factors.  

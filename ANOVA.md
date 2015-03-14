@@ -35,7 +35,7 @@ $$Y_{ij}=\mu + A_i + \epsilon_{ij}$$
 
 * $\mu$ is the population grand mean ($\bar{Y_{ij}}$ an unbiased MLE estimator of $\mu$)
 *  $A_i$ is the additive linear effect compared to the grand meam for a given treatment $i$ ($A_i$‘s sum to 0). 
-*  $\epsilon_{ij}$ is the error variance (the variance of individual points around their treatment group means. These are assumed to be distributed $~ N(0,σ2)$).
+*  $\epsilon_{ij}$ is the error variance (the variance of individual points around their treatment group means. These are assumed to be distributed $N(0,σ2)$).
 
 The steps in a one-way ANOVA
 ==============
@@ -45,6 +45,8 @@ The steps in a one-way ANOVA
 4.  Calculate Mean Squares using appropriate df.
 5.  Calculate the F ratio 
 6.  Calculate the p-value
+
+## As you could tell from your reading, calculating the appropriate sum of squares is complicated, and depends on your experimental design.  Be careful (or just use Monte Carlo)!
 
 Assumptions of ANOVA
 =================
@@ -59,6 +61,53 @@ Assumptions of ANOVA
 1. Main effects are additive (no strong interactions). 
 2. Balanced design (equal number of observations in all groups). If you are going to do a lot of ANOVA, you need to read about the [ANOVA controversy in R](http://goanna.cs.rmit.edu.au/~fscholer/anova.php) and other models for calculating SS that are more appropriate for unbalanced designs.
 
+
+ANOVA in R
+==============
+## Do the analysis
+
+```
+myMod <- lm(iris$Petal.Length~iris$Species)
+summary(myMod)
+anova(myMod)
+```
+
+## Try it yourself!
+
+ANOVA in R
+==============
+
+## Checking assumptions
+
+
+```r
+#Homogeneity of variances
+bartlett.test(iris$Petal.Length ~ iris$Species)
+```
+
+```
+
+	Bartlett test of homogeneity of variances
+
+data:  iris$Petal.Length by iris$Species
+Bartlett's K-squared = 55.4225, df = 2, p-value = 9.229e-13
+```
+
+ANOVA in R
+==============
+incremental:false
+
+## Checking assumptions
+
+
+
+```r
+plot(lm(iris$Petal.Length ~ iris$Species))
+```
+
+![plot of chunk unnamed-chunk-4](ANOVA-figure/unnamed-chunk-4-1.png) ![plot of chunk unnamed-chunk-4](ANOVA-figure/unnamed-chunk-4-2.png) ![plot of chunk unnamed-chunk-4](ANOVA-figure/unnamed-chunk-4-3.png) ![plot of chunk unnamed-chunk-4](ANOVA-figure/unnamed-chunk-4-4.png) 
+
+
 Two-Way ANOVA
 ==========
 
@@ -67,6 +116,48 @@ Life gets more complicated when we are considering more than one factor
 $$Y_{ij}=\mu + A_i + B_j + AB_{ij} + \epsilon_{ij}$$
 
 With more than one factor, we have the possibility of non-additive effects of one factor on the other.  These are called **interaction terms**
+
+Two-Way ANOVA in R
+==========
+
+## Simple model (no interaction)
+
+```
+data(warpbreaks)
+anova(lm(warpbreaks$breaks ~ warpbreaks$tension + warpbreaks$wool))
+```
+
+## More complex model (with interaction)
+
+```{}
+anova(lm(warpbreaks$breaks ~ warpbreaks$tension * warpbreaks$wool))
+```
+
+Two-Way ANOVA in R - Order Matters
+==========
+type:alert
+
+## If your ANOVA is unbalanced (different sample sizes in differnt groups), then the order in which you specify the factors matters!
+
+```
+anova(lm(response ~ pred1 * pred2))
+```
+
+## Is not the same as
+
+```
+anova(lm(response ~ pred2 * pred1))
+```
+
+## This is only true is the sample sizes differ. 
+
+### This behavior differs from all other stats packages. You can read more about the [ANOVA controversy in R](http://goanna.cs.rmit.edu.au/~fscholer/anova.php).  You can use the `car` package to compute ANOVA in the same way as SPSS or other packages
+
+Interpreting ANOVA interactions
+==============
+
+![ANOVA](ANOVA_interpretation.jpg)
+
 
 ANCOVA
 ============
@@ -80,11 +171,29 @@ Think of it as doing an ANOVA on the residuals of a regression
 
 $$Y_{ij}=\mu + A_i + \beta_i(X_{ij} - \bar{X_i}) + \epsilon_{ij}$$
 
-Interpreting ANOVA
-==============
+ANCOVA in R
+============
 
-![ANOVA](ANOVA_interpretation.jpg)
+## Just add in the covariate
 
+
+```r
+baboons <- read.table("http://hompal-stats.wabarr.com/datasets/baboons.txt", header=T)
+
+anova(lm(baboons$FHD ~ baboons$SEX + baboons$BM))
+```
+
+```
+Analysis of Variance Table
+
+Response: baboons$FHD
+            Df  Sum Sq Mean Sq  F value    Pr(>F)    
+baboons$SEX  1 106.475 106.475 183.6495 3.719e-12 ***
+baboons$BM   1   2.833   2.833   4.8859   0.03778 *  
+Residuals   22  12.755   0.580                       
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+```
 
 Interpreting ANCOVA
 ===============

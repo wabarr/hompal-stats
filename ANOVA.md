@@ -57,8 +57,35 @@ Assumptions of ANOVA
 ## Supporting assumptions
 
 1. Main effects are additive (no strong interactions). 
-2. Balanced design (equal number of observations in all groups). If this is violated, it ceases to be true that Total SS = Within + Between, and the calculations of MSE and F and p-values are all incorrect.
+2. Balanced design (equal number of observations in all groups). If you are going to do a lot of ANOVA, you need to read about the [ANOVA controversy in R](http://goanna.cs.rmit.edu.au/~fscholer/anova.php) and other models for calculating SS that are more appropriate for unbalanced designs.
 
 Two-Way ANOVA
 ==========
+
+Life gets more complicated when we are considering more than one factor
+
 $$Y_{ij}=\mu + A_i + B_j + AB_{ij} + \epsilon_{ij}$$
+
+With more than one factor, we have the possibility of non-additive effects of one factor on the other.  These are called **interaction terms**
+
+ANCOVA
+============
+incremental: false
+
+ANOVA with a continuous covariate
+
+It's a hybrid of regression and ANOVA
+
+Think of it as doing an ANOVA on the residuals of a regression
+
+$$Y_{ij}=\mu + A_i + \beta_i(X_{ij} - \bar{X_i}) + \epsilon_{ij}$$
+
+Interpreting ANOVA
+==============
+
+![ANOVA](ANOVA_interpretation.jpg)
+
+
+Interpreting ANCOVA
+===============
+![ANCOVA](ANCOVA_interpretation.jpg)

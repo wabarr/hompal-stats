@@ -37,6 +37,44 @@ $$Y_{ij}=\mu + A_i + \epsilon_{ij}$$
 *  $A_i$ is the additive linear effect compared to the grand meam for a given treatment $i$ ($A_i$‘s sum to 0). 
 *  $\epsilon_{ij}$ is the error variance (the variance of individual points around their treatment group means. These are assumed to be distributed $N(0,σ2)$).
 
+ANOVA linear model - Simulation
+============================
+
+$$Y_{ij}=\mu + A_i + \epsilon_{ij}$$
+
+Let's see how changing model parameters affects the y variable.  Lets start with these that we will keep constant. 
+
+
+```r
+grandMean <- 10
+groups <- rep(c("A", "B"), 100)
+myError <- rnorm(200, mean = 0, sd=3)
+```
+
+ANOVA linear model - Simulation
+===================
+incremental:false
+
+
+```r
+y <- grandMean + c(-5, 5) + myError
+qplot(groups, y, geom="boxplot", fill=groups)
+```
+
+![plot of chunk unnamed-chunk-4](ANOVA-figure/unnamed-chunk-4-1.png) 
+
+ANOVA linear model - Simulation
+===================
+incremental:false
+
+
+```r
+y <- grandMean + c(-0.3, 0.3) + myError
+qplot(groups, y, geom="boxplot", fill=groups)
+```
+
+![plot of chunk unnamed-chunk-5](ANOVA-figure/unnamed-chunk-5-1.png) 
+
 The steps in a one-way ANOVA
 ==============
 1.  Calculate the Total SS
@@ -105,7 +143,7 @@ incremental:false
 plot(lm(iris$Petal.Length ~ iris$Species))
 ```
 
-![plot of chunk unnamed-chunk-4](ANOVA-figure/unnamed-chunk-4-1.png) ![plot of chunk unnamed-chunk-4](ANOVA-figure/unnamed-chunk-4-2.png) ![plot of chunk unnamed-chunk-4](ANOVA-figure/unnamed-chunk-4-3.png) ![plot of chunk unnamed-chunk-4](ANOVA-figure/unnamed-chunk-4-4.png) 
+![plot of chunk unnamed-chunk-7](ANOVA-figure/unnamed-chunk-7-1.png) ![plot of chunk unnamed-chunk-7](ANOVA-figure/unnamed-chunk-7-2.png) ![plot of chunk unnamed-chunk-7](ANOVA-figure/unnamed-chunk-7-3.png) ![plot of chunk unnamed-chunk-7](ANOVA-figure/unnamed-chunk-7-4.png) 
 
 
 Two-Way ANOVA
@@ -174,12 +212,31 @@ $$Y_{ij}=\mu + A_i + \beta_i(X_{ij} - \bar{X_i}) + \epsilon_{ij}$$
 ANCOVA in R
 ============
 
-## Just add in the covariate
+Using baboons data
 
 
 ```r
 baboons <- read.table("http://hompal-stats.wabarr.com/datasets/baboons.txt", header=T)
+head(baboons)
+```
 
+```
+     BM SEX  FHD
+1  8.62   F 19.9
+2  9.07   F 17.9
+3  9.98   F 18.9
+4 10.43   F 18.8
+5 10.89   F 20.3
+6 11.34   F 19.5
+```
+
+ANCOVA in R
+============
+
+## Just add in the covariate
+
+
+```r
 anova(lm(baboons$FHD ~ baboons$SEX + baboons$BM))
 ```
 

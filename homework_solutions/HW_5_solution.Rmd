@@ -54,7 +54,7 @@ RMA_model
 
 ### E.  Is the OLS slope greater or less than the the RMA slope?
 
-The OLS slope (0.8187) is less than the RMA slope (0.8594).
+The OLS slope (1.108552) is less than the RMA slope (1.163608).
 
 ## 3 pts
 

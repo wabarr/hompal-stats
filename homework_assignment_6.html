@@ -95,12 +95,46 @@ img {
 <div id="problem-1" class="section level2">
 <h2>Problem # 1</h2>
 <p>Using this fake dataset on <a href="http://hompal-stats.wabarr.com/datasets/lemurfeeding.txt">lemur feeding rates</a> do a two-factor ANOVA to determine whether feeding rate is influenced by sex and by the group each individual belongs to.</p>
-<ol style="list-style-type: decimal">
+<ol style="list-style-type: upper-alpha">
 <li>Make a boxplot of feeding rate by sex</li>
 <li>Make a boxplot of feeding rate by group</li>
 <li>Show the ANOVA table for the two way ANOVA</li>
-<li>Explore the interaction between the two factors by creating a plot analogous to figure 10.3 (p 329) in the Gotelli book. Put the group on the X axis, and the mean feeding rate for each group on the Y axis (make this a line going across all factor levels). Color code the lines by sex. Explain whether or not there is an interaction between the two factors.</li>
+<li>Explore the interaction between the two factors by creating a plot analogous to figure 10.3 (p 329) in the Gotelli book. Put the group on the X axis, and the mean feeding rate for each group on the Y axis (make this a line going across all factor levels). Color code the lines by sex. E. Explain whether or not there is an interaction between the two factors.</li>
 </ol>
+</div>
+<div id="problem-2" class="section level2">
+<h2>Problem # 2</h2>
+<p>Write a function to simulate ANOVA type data, with two groups and some difference in means between the groups. You can simulate the data using the equation you saw in the ANOVA slide show.</p>
+<p><span class="math">\[Y_{ij}=\mu + A_i + \epsilon_{ij}\]</span></p>
+<p>Assume that the design is balanced (groups have same sample size).</p>
+<p>Your function should take the following arguments and default values:</p>
+<ul>
+<li><code>sampleSize</code> default 20. The total sample size of both groups combined</li>
+<li><code>grandMean</code> default 50. The grand mean of the data (ignoring group)</li>
+<li><code>errorSD</code> default 5. The standard deviation of the error term</li>
+<li><code>meanDiff</code> default 3. The difference between the means of the two treatment groups</li>
+</ul>
+<p>Your function should do the following:</p>
+<ul>
+<li>create the error term</li>
+<li>create the grouping vector</li>
+<li>simulate the y variable using the supplied parameters</li>
+<li>make a boxplot with the groups on the x axis and the value of y on the y axis (you may have to explicitly <code>print</code> your plot if you use ggplot2 from within your function)</li>
+<li>do the ANOVA</li>
+<li>return the p value from the anova (hint: if you save the results of <code>lm()</code> in an object called <code>myMod</code>, you can calculate the p value using this code <code>pf(summary(myMod)$fstatistic[1],summary(myMod)$fstatistic[2],summary(myMod)$fstatistic[3], lower.tail = FALSE)</code>)</li>
+</ul>
+<div id="play-around-with-your-function-and-systematically-change-the-parameters-to-get-a-feel-for-how-the-parameters-change-the-p-value." class="section level3">
+<h3>Play around with your function, and systematically change the parameters to get a feel for how the parameters change the p-value.</h3>
+</div>
+<div id="end-by-answering-the-following-questions" class="section level3">
+<h3>End by answering the following questions:</h3>
+<ol style="list-style-type: upper-alpha">
+<li>what effect (if any) does increasing the sample size have on the p value for a given set of parameters?</li>
+<li>what about increasing the grand mean?</li>
+<li>what about increasing the standard deviation of the error term</li>
+</ol>
+<p>*<strong>make sure to show me a run of your function to prove that it works!</strong></p>
+</div>
 </div>
 
 

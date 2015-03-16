@@ -2,28 +2,29 @@ ANOVA
 ========================================================
 incremental:true
 
+![ANOVA](http://www.phdcomics.com/comics/archive/phd082707s.gif)
 
 Basic Goal of ANOVA
 ==================
 
 Compare the means of groups that have been sampled randomly, to test whether or not they differ.
 
-The different levels of the categorical variable representing different groups are called **treatments**, which comes from manipulative experiments.
+The different levels of the categorical variable representing different groups are called **treatments**.
 
-Each observation is called a **replicate** and is assumed to be an indepented observation of the effect of its treatment.
+Each observation is called a **replicate** and is assumed to be independent from all other replicates.
 
 So how do we compare group means?  
 
-Confusingly, it's all about variances (hence ANOVA).
+**Confusingly, it's all about variances (hence ANOVA).**
 
-Inituitive Picture of ANOVA
+Intuitive Picture of ANOVA
 =====================
 incremental:false
 
 ```{r echo=FALSE, warnings=FALSE}
 set.seed(1234)
 library(ggplot2)
-theme_set(theme_bw(25))
+theme_set(theme_bw(30))
 x <- rnorm(1000, mean=50, sd=2)
 y <- rnorm(1000, mean=44, sd=2)
 dat <- data.frame(x,y)
@@ -57,16 +58,16 @@ The ANOVA linear model
 ================
 $$Y_{ij}=\mu + A_i + \epsilon_{ij}$$
 
-* $\mu$ is the population grand mean ($\bar{Y_{ij}}$ an unbiased MLE estimator of $\mu$)
-*  $A_i$ is the additive linear effect compared to the grand meam for a given treatment $i$ ($A_i$‘s sum to 0). 
-*  $\epsilon_{ij}$ is the error variance (the variance of individual points around their treatment group means. These are assumed to be distributed $N(0,σ2)$).
+* $\mu$ is the population grand mean ($\bar{Y_{ij}}$ an unbiased estimator of $\mu$)
+*  $A_i$ is the additive linear effect compared to the grand mean for a given treatment $i$ ($A_i$‘s sum to 0). 
+*  $\epsilon_{ij}$ is the error variance (the variance of individual points around their treatment group means. These are assumed to be distributed as $N(0,\sigma^2)$).
 
 ANOVA linear model - Simulation
 ============================
 
 $$Y_{ij}=\mu + A_i + \epsilon_{ij}$$
 
-Let's see how changing model parameters affects the y variable.  Lets start with these that we will keep constant. 
+Let's see how changing model parameters affects the y variable.  We will start a few variables that will be kept constant. 
 
 ```{r}
 grandMean <- 10
@@ -103,12 +104,34 @@ The steps in a one-way ANOVA
 
 ## As you could tell from your reading, calculating the appropriate sum of squares is complicated, and depends on your experimental design.  Be careful (or just use Monte Carlo)!
 
+Walking through the ANOVA
+===========
+
+## Example data from Gotelli Table 10.1
+
+```{r echo=FALSE}
+flowers <- data.frame(unmanipulated = c(10,12,12,13), control=c(9,11,11,12), treatment=c(12,13,15,16))
+flowers
+```
+
+## Who can do this on the board??
+
+Walking through the ANOVA
+===========
+
+
+Source | degrees freedom | SS | Mean Square (MS) | Expected Mean Square | F-ratio
+----|----|----|----|----|----|----
+Among groups|a-1|$\sum\limits_{i=1}^a\sum\limits_{j=1}^n(\bar{Y}_i - \bar{Y})^2$|$\frac{SS_{among_groups}}{(a-1)}$|$\sigma^2 + n\sigma^2_A$|$\frac{MS_{among}}{MS_{within}}$
+within groups (residual) |a(n-1)|$\sum\limits_{i=1}^a\sum\limits_{j=1}^n(Y_{ij} - \bar{Y}_i)^2$|$\frac{SS_{within}}{a(n-1)}$|$\sigma^2$
+Total|an-1|$\sum\limits_{i=1}^a\sum\limits_{j=1}^n(Y_{ij} - \bar{Y})^2$|$\frac{SS_{total}}{(an-1)}$|$\sigma^2_Y$
+
 Assumptions of ANOVA
 =================
 
 1.  The samples are independent and identically distributed
 2.  The residuals $\epsilon_i$ are normally distributed
-3.  Within-group variances are similar across all groups (‘homoschedastic”)
+3.  Within-group variances are similar across all groups (‘homoscedastic”)
 4.  Observations are properly categorized in groups
 
 ## Supporting assumptions

@@ -1,0 +1,88 @@
+---
+title: 'Homework #5 - Solution'
+output: html_document
+---
+
+## 17 points total for the homework
+
+### Problem 1
+
+
+## 1 pt
+
+### A.  Read in the data, saving it to a variable called `astrag`.  Hint: be sure to specify the separator character in the data, which is a tab (represented in R as `\t`).
+
+```{r}
+astrag <- read.table("http://hompal-stats.wabarr.com/datasets/barr_astrag_2014.txt", sep="\t", header=TRUE)
+```
+
+
+## 2 pts
+
+### B.  Make a scatterplot with the natural logarithm of measurement `B` on the x-axis and the natural logarithm of measurement `DistRad` on the y-axis.
+
+```{r}
+library(ggplot2)
+scatter <- ggplot() + 
+              geom_point(aes(x=log(B), y=log(DistRad)), data=astrag) +
+              labs(title="log(DistRad)~log(B)") + 
+              theme_bw(25)
+scatter
+```
+
+
+## 2 pts
+
+### C.  Calculate the ordinary least-squares (OLS) regression for the log of DistRad as a function of the log of B, and print a `summary()` of this data.
+
+```{r}
+OLS_model <- lm(log(DistRad)~log(B), data=astrag) 
+summary(OLS_model)
+```
+
+## 3 pts
+
+### D.  Calculate the reduced major axis regression (RMA) for the same variables. **Note** the `lmodel2` package uses "RMA"" to refer to "Ranged Major Axis", which is different.  You want what `lmodel2` calls Standardized Major Axis (SMA), which is equivalent to what we call reduced major axis (RMA) in our literature. 
+
+```{r}
+library(lmodel2)
+RMA_model <- lmodel2(log(DistRad)~log(B), data=astrag)
+RMA_model
+```
+
+## 1 pts
+
+### E.  Is the OLS slope greater or less than the the RMA slope?
+
+The OLS slope (0.8187) is less than the RMA slope (0.8594).
+
+## 3 pts
+
+### F.  Add both the OLS and the RMA regression lines to the plot created in 1B.  Make sure the two lines have different colors and/or line types, and that they are labeled so I know which is which.
+
+```{r}
+reg_lines <- data.frame(slopes = c(RMA_model$regression.results[3,3],coef(OLS_model)[2]), 
+                        intercepts = c(RMA_model$regression.results[3,2], coef(OLS_model)[1]), method=c("RMA","OLS")
+                        )
+scatter + 
+  geom_abline(aes(slope=slopes, intercept=intercepts, linetype=method, color=method), data=reg_lines) + 
+  annotate(geom = "text", x = 3.5, y=c(2,1.8), label=c("RMA line", "OLS line"), color=c("green", "red"))
+```
+
+## 3 pts
+
+### G.  use the `plot()` function to plot regression diagnostic plots for the OLS regression. Do the assumptions of linear regression appear to be met? Explain your answer.
+
+```{r}
+plot(OLS_model)
+```
+ 
+There is evidence that the residuals are not normally distributed. 
+
+## 2 pts
+
+### H.  Extract the residuals from the OLS regression, and make a histogram of them, with the appropriate labels and title for the plot.  
+
+```{r}
+qplot(resid(OLS_model), main="Histogram of residuals from OLS") + theme_bw(25)
+```

@@ -1,0 +1,31 @@
+========================================================
+incremental: true
+
+![categories](categorical-data.jpg)
+
+Categorical Data
+===============
+
+Data that falls into a discrete number of categories. 
+
+The different possible values of a categorical variable are called **levels**
+
+```{r}
+bird_sightings <- 
+  factor(c("pigeon", "pigeon", "goshawk", 
+           "eagle", "goshawk"))
+levels(bird_sightings)
+```
+
+Contingency Tables
+================
+
+Site | *A. afarensis* | *Ar. ramidus* |  *Aepyceros melampus*
+---|----|-----|-------
+Hadar | 121 | 0 | 1245
+Aramis | 0 | 99 | 214
+
+Made up of counts or **frequencies** of observations in each category.
+
+Analyzing contingency tables requires the raw counts: not percentages, proportions, etc.
+

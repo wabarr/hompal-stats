@@ -17,8 +17,32 @@ bird_sightings <-
 levels(bird_sightings)
 ```
 
+Example - Species Occurrences
+================
+
+```{r}
+myData <- data.frame(
+  site = sample(c("site1","site2"), 1000, replace=T),
+  species = sample(c("species1","species2", "species3"),1000, replace=T)
+  )
+head(myData)
+```
+
+Example - Species Occurrences
+==============
+
+R has useful tools for counting occurrences
+
+```{r}
+table(myData$site,myData$species)
+```
+
+This is called a **contingency table**. Analysis of categorical data always operates on contingency tables.
+
 Contingency Tables
 ================
+
+A more real (but still fake) example.
 
 Site | *A. afarensis* | *Ar. ramidus* |  *Aepyceros melampus*
 ---|----|-----|-------
@@ -50,16 +74,33 @@ To reject the null hypothesis, we need to ask, what are the **expected values** 
 
 Hypothesis Testing - Expected Values
 ================
+
+Intuitively, what would you expect the value of each cell to be assuming the row and column variable are unrelated???
+
 Site | *A. afarensis* | *Ar. ramidus* |  *Aepyceros melampus* 
 ---|----|-----|-------
 Hadar | 120 | 0 | 600
 Aramis | 0 | 90 | 220 
 
-The expected value for each cell is computed as:
+Going back to probability, the probability of being an *A. afarensis* at Hadar is a **shared event** made up of two **simple events**:
+
+*  being *A. afarensis*
+*  being at Hadar
+
+We simply multiply these probabilities.
+
+Hypothesis Testing - Expected Values
+================
+Site | *A. afarensis* | *Ar. ramidus* |  *Aepyceros melampus* 
+---|----|-----|-------
+Hadar | 120 | 0 | 600
+Aramis | 0 | 90 | 220 
+
+Shortcut for computing expected cell frequencies:
 
 $$\hat{Y}_{i,j} = \frac{{row\ total}\times{column\ total}}{sample\ size} = \frac{\sum\limits_{j=1}^mY_{i,j}\times\sum\limits_{i=1}^nY_{i,j}}{N}$$
 
-**Challenge:** calculate by hand on board
+**Volutter:** calculate by hand on board!
 
 Hypothesis Testing - Chi-Square
 ===========

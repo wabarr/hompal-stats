@@ -17,7 +17,7 @@ Feb 23 | [Correlation and Regression](regression.html) | [HW #4](homework_assign
 Mar 2 | **Exam I** | - | - | - 
 Mar 9 | **Spring Break, No Class** | - | - | - 
 Mar 16 | [Tidy Data](tidyR.html) & [ANOVA and ANCOVA](ANOVA.html) | [HW #5](homework_assignment_5.html) - [Solution](homework_solutions/HW_5_solution.html)   | Gotelli: Ch 10, [Cerling et al. 2013](readings_pdf/Cerling_etal_2013.pdf), [Boddy et al., 2012](readings_pdf/Boddy_etal_2012.pdf) | [Eve Boyle](studentdemos/Boyle_Cerling_ANOVA.html) & [Lawrence Fatica](studentdemos/Fatica_ANCOVA_Presentation.html)
-Mar 23 | [Categorical Data] | [HW #6](homework_assignment_6.html)   | Gotelli: Ch 11, [Cuozo et al, 2013](readings_pdf/Cuozo_etal_2013.pdf), [Scorrano, 2014](readings_pdf/Scorrano_2014_palaeodiet.pdf)| [Megan Vakiener](studentdemos/Vakiener.html) & [Emily Brennan](studentdemos/Brennan.html)
+Mar 23 | [Categorical Data] | [HW #6](homework_assignment_6.html) - [Submission Link](https://blackboard.gwu.edu/webapps/assignment/uploadAssignment?content_id=_6463820_1&course_id=_250829_1&assign_group_id=&mode=cpview)  | Gotelli: Ch 11, [Cuozo et al, 2013](readings_pdf/Cuozo_etal_2013.pdf), [Scorrano, 2014](readings_pdf/Scorrano_2014_palaeodiet.pdf)| [Megan Vakiener](studentdemos/Vakiener.html) & [Emily Brennan](studentdemos/Brennan.html)
 Mar 30 | [Multivariate Stats: I] |  [HW #7]() | Manly Ch. 1 - 5 | Robert Kaplan & Jon Reeves
 Apr 6	| [Multivariate Stats: II] |   [HW #8]() | Manly Ch. 6 - 12 | Kelly Ostrofsky & Enque Negash
 Apr 13 | [Accounting for Phylogenetic Signal (PGLS)] |  [HW #9]() | - | Brian Schilder

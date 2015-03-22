@@ -36,11 +36,11 @@ head(myData)
 
 ```
    site  species
-1 site1 species2
+1 site2 species2
 2 site2 species1
-3 site2 species3
-4 site1 species1
-5 site2 species1
+3 site1 species1
+4 site2 species3
+5 site1 species3
 6 site2 species2
 ```
 
@@ -57,8 +57,8 @@ table(myData$site,myData$species)
 ```
        
         species1 species2 species3
-  site1      161      192      157
-  site2      159      171      160
+  site1      156      169      161
+  site2      156      173      185
 ```
 
 This is called a **contingency table**. Analysis of categorical data always operates on contingency tables.
@@ -124,9 +124,60 @@ Shortcut for computing expected cell frequencies:
 
 $$\hat{Y}_{i,j} = \frac{{row\ total}\times{column\ total}}{sample\ size} = \frac{\sum\limits_{j=1}^mY_{i,j}\times\sum\limits_{i=1}^nY_{i,j}}{N}$$
 
-**Volutter:** calculate by hand on board!
+**Volunteer:** calculate by hand on board!
 
 Hypothesis Testing - Chi-Square
 ===========
 
 $$X^2_{Pearson} = \sum\limits_{all\ cells}\frac{(Observed-Expected)^2}{Expected}$$
+
+Hypothesis Testing - Chi-Square
+=============
+left:65
+
+![plot of chunk unnamed-chunk-4](categorical_data-figure/unnamed-chunk-4-1.png) 
+
+***
+
+Chi-square has a known distribution
+
+Can be used to calculate p-values
+
+Chi-square in R
+=========
+
+
+```r
+myTable <- table(myData$site,myData$species)
+chisq.test(myTable)
+```
+
+```
+
+	Pearson's Chi-squared test
+
+data:  myTable
+X-squared = 0.9283, df = 2, p-value = 0.6287
+```
+
+
+Fisher's Exact Test
+=============
+
+More appropriate when sample sizes are low.
+
+General rule is to use Fischer's if expected value for any cell is < 5.
+
+
+```r
+fisher.test(myTable)
+```
+
+```
+
+	Fisher's Exact Test for Count Data
+
+data:  myTable
+p-value = 0.6312
+alternative hypothesis: two.sided
+```

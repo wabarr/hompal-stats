@@ -100,9 +100,47 @@ Shortcut for computing expected cell frequencies:
 
 $$\hat{Y}_{i,j} = \frac{{row\ total}\times{column\ total}}{sample\ size} = \frac{\sum\limits_{j=1}^mY_{i,j}\times\sum\limits_{i=1}^nY_{i,j}}{N}$$
 
-**Volutter:** calculate by hand on board!
+**Volunteer:** calculate by hand on board!
 
 Hypothesis Testing - Chi-Square
 ===========
 
 $$X^2_{Pearson} = \sum\limits_{all\ cells}\frac{(Observed-Expected)^2}{Expected}$$
+
+Hypothesis Testing - Chi-Square
+=============
+left:65
+
+```{r echo=FALSE}
+library(ggplot2)
+df <- data.frame(y=dchisq(seq(1,25,by=0.1), df = 5), x=rep(1,241))
+qplot(x=1:241, y=y, data=df, geom="line") + 
+  theme_bw(30) + 
+  labs(x="", y="density", title="Chi-square with 5 df")
+```
+
+***
+
+Chi-square has a known distribution
+
+Can be used to calculate p-values
+
+Chi-square in R
+=========
+
+```{r}
+myTable <- table(myData$site,myData$species)
+chisq.test(myTable)
+```
+
+
+Fisher's Exact Test
+=============
+
+More appropriate when sample sizes are low.
+
+General rule is to use Fischer's if expected value for any cell is < 5.
+
+```{r}
+fisher.test(myTable)
+```

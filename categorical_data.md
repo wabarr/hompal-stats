@@ -36,12 +36,12 @@ head(myData)
 
 ```
    site  species
-1 site2 species2
-2 site2 species1
-3 site1 species1
-4 site2 species3
-5 site1 species3
-6 site2 species2
+1 site2 species1
+2 site1 species1
+3 site2 species1
+4 site1 species1
+5 site1 species1
+6 site1 species1
 ```
 
 Example - Species Occurrences
@@ -57,8 +57,8 @@ table(myData$site,myData$species)
 ```
        
         species1 species2 species3
-  site1      156      169      161
-  site2      156      173      185
+  site1      163      159      158
+  site2      184      168      168
 ```
 
 This is called a **contingency table**. Analysis of categorical data always operates on contingency tables.
@@ -129,7 +129,11 @@ $$\hat{Y}_{i,j} = \frac{{row\ total}\times{column\ total}}{sample\ size} = \frac
 Hypothesis Testing - Chi-Square
 ===========
 
+Karl Pearson came up with a test statistic to quantify how much the counts differ from the expected values:
+
 $$X^2_{Pearson} = \sum\limits_{all\ cells}\frac{(Observed-Expected)^2}{Expected}$$
+
+This is analogous to the residual sum of squares in linear modeling.
 
 Hypothesis Testing - Chi-Square
 =============
@@ -157,7 +161,7 @@ chisq.test(myTable)
 	Pearson's Chi-squared test
 
 data:  myTable
-X-squared = 0.9283, df = 2, p-value = 0.6287
+X-squared = 0.2257, df = 2, p-value = 0.8933
 ```
 
 
@@ -166,7 +170,7 @@ Fisher's Exact Test
 
 More appropriate when sample sizes are low.
 
-General rule is to use Fischer's if expected value for any cell is < 5.
+General rule is to use Fisher's if expected value for any cell is < 5.
 
 
 ```r
@@ -178,6 +182,115 @@ fisher.test(myTable)
 	Fisher's Exact Test for Count Data
 
 data:  myTable
-p-value = 0.6312
+p-value = 0.8966
 alternative hypothesis: two.sided
+```
+
+Goodness of Fit Tests
+===============
+
+These test how closely observed data fit some underlying distribution (e.g., binomial, uniform, normal)
+
+For discrete cases, chi-square can be used as a goodness of fit statistic.  
+
+Chi-square goodness of fit
+============
+
+For instance:  say we counted the frequency of a *A. afarensis* in 4 different geological strata through time. 
+
+
+```r
+afarensis <- c(24, 32, 19, 36)
+```
+
+
+Chi-square goodness of fit
+============
+
+We can use chi-square to test how well this fits a uniform distribution:
+
+
+```r
+chisq.test(afarensis)
+```
+
+```
+
+	Chi-squared test for given probabilities
+
+data:  afarensis
+X-squared = 6.3694, df = 3, p-value = 0.09496
+```
+
+Chi-square goodness of fit
+============
+
+We could specify some other distribution by passing a vector of probabilities.
+
+
+```r
+chisq.test(afarensis, p=c(.4, .1, .1, .4))
+```
+
+```
+
+	Chi-squared test for given probabilities
+
+data:  afarensis
+X-squared = 55.9369, df = 3, p-value = 4.333e-12
+```
+
+Continuous Goodness of Fit - KS
+============
+
+The **Kolmogorov-Smirnov** is a commonly used goodness of fit test for continuous data.
+
+The KS test compares the cumulative distribution function (CDF) of a set of observed data to a theoretical distribution.
+
+KS-Test
+========
+incremental:false
+
+![plot of chunk unnamed-chunk-10](categorical_data-figure/unnamed-chunk-10-1.png) 
+
+*** 
+
+![plot of chunk unnamed-chunk-11](categorical_data-figure/unnamed-chunk-11-1.png) 
+
+KS-Test
+=========
+The single largest deviation of the empirical from the theoretical is the KS statistic. This is used to compute a p-value.
+
+Can be used for any distribution, not just the normal distribution.
+
+KS-Test in R
+=========
+
+```r
+ks.test(rnorm(100), "pnorm")
+```
+
+```
+
+	One-sample Kolmogorov-Smirnov test
+
+data:  rnorm(100)
+D = 0.1643, p-value = 0.009071
+alternative hypothesis: two-sided
+```
+
+KS-Test in R
+=========
+
+```r
+ks.test(rnorm(100)^2, "pnorm")
+```
+
+```
+
+	One-sample Kolmogorov-Smirnov test
+
+data:  rnorm(100)^2
+D = 0.5002, p-value < 2.2e-16
+alternative hypothesis: two-sided
 ```

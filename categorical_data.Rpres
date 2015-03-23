@@ -105,7 +105,11 @@ $$\hat{Y}_{i,j} = \frac{{row\ total}\times{column\ total}}{sample\ size} = \frac
 Hypothesis Testing - Chi-Square
 ===========
 
+Karl Pearson came up with a test statistic to quantify how much the counts differ from the expected values:
+
 $$X^2_{Pearson} = \sum\limits_{all\ cells}\frac{(Observed-Expected)^2}{Expected}$$
+
+This is analogous to the residual sum of squares in linear modeling.
 
 Hypothesis Testing - Chi-Square
 =============
@@ -139,8 +143,92 @@ Fisher's Exact Test
 
 More appropriate when sample sizes are low.
 
-General rule is to use Fischer's if expected value for any cell is < 5.
+General rule is to use Fisher's if expected value for any cell is < 5.
 
 ```{r}
 fisher.test(myTable)
+```
+
+Goodness of Fit Tests
+===============
+
+These test how closely observed data fit some underlying distribution (e.g., binomial, uniform, normal)
+
+For discrete cases, chi-square can be used as a goodness of fit statistic.  
+
+Chi-square goodness of fit
+============
+
+For instance:  say we counted the frequency of a *A. afarensis* in 4 different geological strata through time. 
+
+```{r}
+afarensis <- c(24, 32, 19, 36)
+```
+
+
+Chi-square goodness of fit
+============
+
+We can use chi-square to test how well this fits a uniform distribution:
+
+```{r}
+chisq.test(afarensis)
+```
+
+Chi-square goodness of fit
+============
+
+We could specify some other distribution by passing a vector of probabilities.
+
+```{r}
+chisq.test(afarensis, p=c(.4, .1, .1, .4))
+```
+
+Continuous Goodness of Fit - KS
+============
+
+The **Kolmogorov-Smirnov** is a commonly used goodness of fit test for continuous data.
+
+The KS test compares the cumulative distribution function (CDF) of a set of observed data to a theoretical distribution.
+
+KS-Test
+========
+incremental:false
+
+```{r echo=FALSE}
+x <- rnorm(1000)
+y <- x * 0.3 + rnorm(1000, sd=0.1)
+resids <- resid(lm(y^2~x))
+plot(ecdf(resids), main="Empirical CDF")
+
+#trying to figure out how to get it on the same plot
+#xrange <- seq(from = min(resids), to=max(resids), length.out = 100)
+#densities <- pnorm(q = xrange , sd = sd(resids))
+#points(x=xrange, y=densities)
+```
+
+*** 
+
+```{r echo=FALSE}
+plot(ecdf(rnorm(1000, sd=sd(resids))), main="Theoretical EDF")
+```
+
+KS-Test
+=========
+The single largest deviation of the empirical from the theoretical is the KS statistic. This is used to compute a p-value.
+
+Can be used for any distribution, not just the normal distribution.
+
+KS-Test in R
+=========
+```{r}
+ks.test(rnorm(100), "pnorm")
+
+```
+
+KS-Test in R
+=========
+```{r}
+ks.test(rnorm(100)^2, "pnorm")
+
 ```

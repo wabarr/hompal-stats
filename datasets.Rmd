@@ -29,6 +29,8 @@ Dataset Name | Source of data
 [lemurfeeding.txt](datasets/lemurfeeding.txt) | fake data
 [Cuozo_etal_2013.csv](datasets/Cuozo_etal_2013.csv) | [Cuozo et al., 2013](http://dx.doi.org/10.1016/j.jhevol.2012.08.007)
 [Scorrano_2014.csv](datasets/Scorrano_2014.csv) | [Scorrano 2014](http://dx.doi.org/10.1002/ajpa.22517)
+[bovid_occurrences.txt](datasets/bovid_occurrences.txt) |  Fake data
+
 
 <!--
 <ul>

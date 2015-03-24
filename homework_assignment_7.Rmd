@@ -27,8 +27,12 @@ Using this [fake data of bovid occurrences](datasets/bovid_occurrences.txt), do 
 
 ## Problem 1
 
-
+Reshape the data into a 4 X 8 contingency table with 4 rows representing taxa and 8 colums representing sites (not counting row or column headers).
 
 ## Problem 2
 
+Make a beautiful faceted barplot showing bovid communities across the different sites.
+
 ## Problem 3
+
+Perform the appropriate statistical analysis to test the hypothesis of a relationship between site and taxon.  In other words....are the taxon abundances different among the different sites? Explain your choice of analysis and your interpretation.

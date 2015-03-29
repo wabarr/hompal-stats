@@ -1,0 +1,186 @@
+Multivariate Statistics
+========================================================
+incremental:true
+
+![fuckgrapefruit](http://imgs.xkcd.com/comics/fuck_grapefruit.png)
+
+Multivariate Data
+===================
+
+Often we collect many different variables
+
+We want to answer questions like:
+
+*  how are the variables related?
+*  are their differences in the means and variances of the variables?
+*  can we look at a composite of some of these variables to simplify our data?
+
+### This is the domain of multivariate statistics
+
+Matrix Algebra
+================
+
+## The nuts and bolts of multivariate statistics
+
+## You need to know the basics (at least the terminology) in order to understand multivariate stats.
+
+A matrix
+================
+
+$$A = \left[\begin{array}{cccc}
+a_{11} & a_{12} & .. & a_{1n} \\
+a_{21} & a_{22} & .. & a_{2n} \\
+.. & .. & .. & ..\\
+a_{m1} & a_{m2} & .. & a_{mn} \end{array}\right]
+$$ 
+
+*  Consists of $m$ rows and $n$ columns
+*  if $m=n$ then it is a **square matrix**
+*  each row is a **row vector**
+*  each column is a **column vector**
+*  a single number is called a **scalar**
+*  matrices are represented by capital letters
+
+Matrix Transposition
+==========
+
+Matrices can be transposed by swapping the rows and columns
+
+$$A = \left[\begin{array}{cc}
+a & b\\
+c & d  \\
+e & f \end{array}\right]
+$$ 
+
+becomes
+
+$$A' = \left[\begin{array}{ccc}
+a & c & e\\
+b & d & f  \end{array}\right]
+$$ 
+
+Types of Matrices
+============
+
+**Zero matrix** $$0 = \left[\begin{array}{ccc}
+0 & 0 & 0\\
+0 & 0 & 0 \\
+0 & 0 & 0\end{array}\right]
+$$
+
+**Diagonal matrix** $$D = \left[\begin{array}{ccc}
+d_1 & 0 & 0\\
+0 & d_2 & 0 \\
+0 & 0 & d_3\end{array}\right]
+$$
+
+A **Symmetrical matrix** is a square matrix whose transpose is identical to the original.
+
+Types of Matrices
+============
+
+**Diagonal matrix** $$D = \left[\begin{array}{ccc}
+d_1 & 0 & 0\\
+0 & d_2 & 0 \\
+0 & 0 & d_3\end{array}\right]
+$$
+
+**Identity matrix** $$I = \left[\begin{array}{ccc}
+1 & 0 & 0\\
+0 & 1 & 0 \\
+0 & 0 & 1\end{array}\right]
+$$
+
+Operations on Matrices
+===========
+
+**Equality** - Two matrices are equal only if they have same size, and all elements are equal. 
+
+**Trace** - The sum of the diagonal terms.
+
+Addition, subtraction, multiplication and division all have their matrix counterparts. 
+
+Eigenvalues and Eigenvectors
+=============
+
+Consider a system of linear equations, where $\lambda$ is a scalar:
+
+$$a_{11}x_1 + a_{12}x_2 + ... + a_{1n}x_n = \lambda x_1 \\
+a_{21}x_1 + a_{22}x_2 + ... + a_{2n}x_n = \lambda x_2\\
+... \\
+a_{n1}x_1 + a_{n2}x_2 + ... + a_{nn}x_n = \lambda x_n$$
+
+We can write this in matrix form. 
+
+$$Ax = \lambda x$$ or $$ (A - \lambda I)x = 0$$
+
+Eigenvalues and Eigenvectors
+=============
+
+These equations only hold true for some values of $\lambda$, which are called the **eigenvalues**.  
+
+There are up to $n$ eigenvalues. 
+
+These equations can be solved for a given eigenvalue (e.g., the $ith$), and the resulting set of values is called the $ith$ **eigenvector**.
+
+The sum of the eigenvalues of matrix $A$ is equal to the trace of matrix $A$.
+
+Covariance Matrices
+================
+Recall the **sample covariance** for two variables, calculated from the sum of cross-products 
+
+$$\ s_{XY} = \frac{\sum\limits_{i=1}^n(X_i - \bar{X})(Y_i - \bar{Y})}{(n-1)}$$
+
+Covariance Matrices
+================
+
+With a multivariate sample comprising $p$ variables, we can define a sample **covariance matrix**:
+
+$$ S = \left[\begin{array}{ccc}
+s_{11} & s_{12} & .. & s_{1p}\\
+s_{21}& s_{22} & .. & s_{2p} \\
+.. & .. & .. & .. \\
+s_{p1} & s_{p2} & .. &  s_{pp} \end{array}\right]$$
+
+## What do the diagonal elements represent?
+
+Correlation Matrices
+==========
+
+Recall the **correlation coeffiecient** for two variables, which is a scaled version of the  covariance.
+
+$$ correlation\ coeffiecient = \frac{cov\ XY}{(sd\ X \times sd\ Y)}$$
+
+or more formally:
+
+$$ r = \frac{s_{xy}}{(s_{X} \times s_{Y})}$$
+
+Correlation Matrices
+==========
+
+We can then compute the correlation matrix for a multivariate sample of $p$ variables.
+
+$$ R = \left[\begin{array}{cccc}
+1 & r_{12} & .. &  r_{1p}\\
+r_{21}& 1 & .. & r_{2p} \\
+.. & .. &  .. & .. \\
+r_{p1} & r_{p2} &  .. & 1 \end{array}\right]$$
+
+## Why are the diagonal elements all 1?
+
+Ordination as a graphic tool
+============
+
+Tests of Significance with Multivariate data
+==============
+
+Multivariate Distance Metrics
+=============
+
+
+
+Cluster Analysis
+==================
+
+Discriminant Function Analysis
+=================

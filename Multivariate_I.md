@@ -166,10 +166,10 @@ var(myMatrix)
 ```
 
 ```
-            x           y           z
-x  1.06717726  0.29050876 -0.06614024
-y  0.29050876  0.25493894 -0.01162489
-z -0.06614024 -0.01162489  0.86577860
+            x          y           z
+x  0.91883550 0.23107817 -0.02029688
+y  0.23107817 0.21204664  0.01742538
+z -0.02029688 0.01742538  1.03259728
 ```
 
 Correlation Matrices
@@ -204,11 +204,11 @@ head(myMatrix, 4)
 ```
 
 ```
-             x          y          z
-[1,] 0.2948835 -1.1639772 -0.4329756
-[2,] 2.0671144  0.6227120  1.5265065
-[3,] 0.5747772 -0.1518517  1.4657478
-[4,] 1.1552313  0.4586410  0.4710098
+              x           y           z
+[1,] -1.6173164 -0.37822542  0.17914781
+[2,] -0.2232322 -0.43842937  0.07507588
+[3,]  1.3795823  0.57271109  0.89508170
+[4,]  0.5658605 -0.08172113 -1.25210329
 ```
 
 ```r
@@ -216,10 +216,10 @@ cor(myMatrix)
 ```
 
 ```
-            x           y           z
-x  1.00000000  0.55695854 -0.06880881
-y  0.55695854  1.00000000 -0.02474386
-z -0.06880881 -0.02474386  1.00000000
+            x          y           z
+x  1.00000000 0.52350922 -0.02083746
+y  0.52350922 1.00000000  0.03723926
+z -0.02083746 0.03723926  1.00000000
 ```
 
 Multivariate Distance Metrics
@@ -342,6 +342,31 @@ dist(myMatrix)
 5 3.3253874 2.3607936 0.9649143 1.4136512
 ```
 
+Mantel Tests
+================
+
+Tests for correlation between two distance matrices
+
+$$M = \left[\begin{array}{ccc}
+  m_{11} & m_{12} & m_{13}\\
+  m_{21} & m_{22} & m_{33}\\
+  m_{31} & m_{22} & m_{33}\end{array}
+\right]$$
+
+$$E = \left[\begin{array}{ccc}
+  e_{11} & e_{12} & e_{13}\\
+  e_{21} & e_{22} & e_{33}\\
+  e_{31} & e_{22} & e_{33}\end{array}
+\right]$$
+
+Line up all the matching elements of the two matrices into vectors, and calculate the correlation coefficient for the two vectors. 
+
+Mantel Tests
+================
+
+Next, randomize the elements of one of the matrices, and again calculate the correlation coefficient. 
+
+Do this many times, and compare the observed correlation coefficient with the discribution of coefficients under the null hypothesis.
 
 
 Cluster Analysis

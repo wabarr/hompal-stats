@@ -304,6 +304,31 @@ Distance Matrices
 dist(myMatrix)
 ```
 
+Mantel Tests
+================
+
+Tests for correlation between two distance matrices
+
+$$M = \left[\begin{array}{ccc}
+  m_{11} & m_{12} & m_{13}\\
+  m_{21} & m_{22} & m_{33}\\
+  m_{31} & m_{22} & m_{33}\end{array}
+\right]$$
+
+$$E = \left[\begin{array}{ccc}
+  e_{11} & e_{12} & e_{13}\\
+  e_{21} & e_{22} & e_{33}\\
+  e_{31} & e_{22} & e_{33}\end{array}
+\right]$$
+
+Line up all the matching elements of the two matrices into vectors, and calculate the correlation coefficient for the two vectors. 
+
+Mantel Tests
+================
+
+Next, randomize the elements of one of the matrices, and again calculate the correlation coefficient. 
+
+Do this many times, and compare the observed correlation coefficient with the discribution of coefficients under the null hypothesis.
 
 
 Cluster Analysis
@@ -354,9 +379,9 @@ If so, we can use this reduced set of variables to visualize the $p$ dimensional
 
 ***
 ```{r, echo=FALSE}
-x <- rnorm(50, mean=25, sd=5)
-y <- rnorm(50, mean=20, sd=6)
+x <- rnorm(50, mean=25, sd=8)
+y <- rnorm(50, mean=24, sd=8)
 x <- x * c(-1, 1)
-y <- y * c(-1,1)
-qplot(x=x,y=y, color=rep(c("A", "B"), 25))
+y <- y * c(-1, 1)
+qplot(x=x,y=y, color=rep(c("A", "B"), 25), size=I(5)) + theme_bw(30) + labs(x="LD1", y="LD2") + guides(color="none")
 ```

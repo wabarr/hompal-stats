@@ -144,6 +144,24 @@ s_{p1} & s_{p2} & .. &  s_{pp} \end{array}\right]$$
 
 ## What do the diagonal elements represent?
 
+Covariance Matrices
+================
+
+```r
+x <- rnorm(100)
+y <- x * 0.3 + rnorm(100, sd=0.4)
+z <- rnorm(100)
+myMatrix <- cbind(x,y,z)
+var(myMatrix)
+```
+
+```
+           x          y           z
+x  0.8991261 0.32066583 -0.11048828
+y  0.3206658 0.26901996  0.01558829
+z -0.1104883 0.01558829  1.03292792
+```
+
 Correlation Matrices
 ==========
 
@@ -168,14 +186,151 @@ r_{p1} & r_{p2} &  .. & 1 \end{array}\right]$$
 
 ## Why are the diagonal elements all 1?
 
-Ordination as a graphic tool
-============
+Correlation Matrices
+==========
 
-Tests of Significance with Multivariate data
-==============
+```r
+head(myMatrix, 4)
+```
+
+```
+             x          y          z
+[1,] -1.674880 -1.4611746 -0.2141604
+[2,]  0.291600  0.7792458  1.1623441
+[3,] -1.529140 -0.5778999 -1.1890373
+[4,]  1.120506  0.8515696  0.8094828
+```
+
+```r
+cor(myMatrix)
+```
+
+```
+           x          y           z
+x  1.0000000 0.65200380 -0.11464916
+y  0.6520038 1.00000000  0.02957135
+z -0.1146492 0.02957135  1.00000000
+```
 
 Multivariate Distance Metrics
 =============
+
+With a single variable (e.g. femur length) it is easy to conceptualize how far apart two observations are.
+
+*  Femur A = 25cm
+*  Femur B = 30cm
+*  How far apart are these individuals in terms of femoral length?
+
+As we add more measurements, it becomes less obvious to tell how "far apart" two specimens are.
+
+We need a multivariate distance metric.
+
+Euclidian Distance
+=============
+incremental:false
+left:70
+
+![pythag](pythagoras.jpg)
+
+*** 
+$$z = \sqrt{a^2 + b^2 }$$
+
+Euclidian Distance
+=============
+incremental:false
+
+![distance](distance.jpg)
+
+*** 
+
+Assuming 2 variables, we can compute the distance as the hypotenuse of a triangle:
+
+$$d_{ij} =\sqrt{(x_{i1} - x_{j1})^2 + (x_{i2} - x_{j2})^2}$$
+
+Euclidian Distance
+=============
+We can compute a Euclidian distance for any number of variables:
+
+$$d_{ij} = \sum\limits_{k=1}^p \sqrt{ (x_{ik})^2 - (x_{jk})^2 }$$
+
+Euclidian Distance
+=============
+
+Euclidian distances can easily be swamped by large scale measurements.
+
+To avoid this, you can calculate a **z score** by subtracting the mean of the measurement and dividing by the standard deviation.
+
+The `dist()` function in R calculates Euclidian distances by default.
+
+Mahalanobis Distance
+=============
+
+Calculates the distance of an observation from its multivariate sample, taking into account the covariance of the variables.  
+
+$$D^2_{ij} = \sum\limits_{r=1}^p \sum\limits_{s=1}^p (x_{r} - \mu_{r})\ v^{rs} (x_{s} - \mu_{s})$$
+
+where $v^{rs}$ is the covariance between variables $r$ and $s$
+
+Mahalanobis Distance
+=============
+
+![plot of chunk unnamed-chunk-3](Multivariate_I-figure/unnamed-chunk-3-1.png) 
+
+
+
+
+Mahalanobis Distance
+===================
+
+```r
+means <- c(mean(x1), mean(x2))
+myMatrix <- cbind(x1, x2)
+VCV <- var(myMatrix)
+```
+
+
+```r
+mhdists <- mahalanobis(myMatrix, means, VCV)
+mhdists[1:4]
+```
+
+```
+[1] 2.1335285 0.1871506 2.1965283 5.6212356
+```
+
+Distance Matrices
+==================
+
+
+```r
+var1 <- rnorm(5); var2 <- rnorm(5)
+myMatrix <- cbind(var1,var2); head(myMatrix, 3)
+```
+
+```
+           var1       var2
+[1,] -1.8168975 -0.4935965
+[2,]  0.6271668 -2.1222441
+[3,]  0.5180921 -0.1335666
+```
+
+Distance Matrices
+==================
+
+## Euclidian Distance Matrix
+
+
+```r
+dist(myMatrix)
+```
+
+```
+          1         2         3         4
+2 2.9369957                              
+3 2.3625829 1.9916665                    
+4 1.9589314 1.7630234 0.4782398          
+5 3.3253874 2.3607936 0.9649143 1.4136512
+```
 
 
 

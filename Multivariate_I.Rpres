@@ -4,6 +4,16 @@ incremental:true
 
 ![fuckgrapefruit](http://imgs.xkcd.com/comics/fuck_grapefruit.png)
 
+Most important AAPA lesson
+=====================
+
+![marmoset](pygmy_marmoset.jpg)
+
+***
+
+
+## Every time someone says "I know you can't read the axis labels", a pygmy marmoset is murdered.
+
 Multivariate Data
 ===================
 
@@ -343,4 +353,10 @@ Often, the first couple of canonical discriminant functions  captures the majori
 If so, we can use this reduced set of variables to visualize the $p$ dimensional dataset in 2 dimensions.
 
 ***
-
+```{r, echo=FALSE}
+x <- rnorm(50, mean=25, sd=5)
+y <- rnorm(50, mean=20, sd=6)
+x <- x * c(-1, 1)
+y <- y * c(-1,1)
+qplot(x=x,y=y, color=rep(c("A", "B"), 25))
+```

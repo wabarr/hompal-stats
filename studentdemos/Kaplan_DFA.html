@@ -69,14 +69,14 @@ img {
 
 
 <div id="the-analysis-of-sea-turtle-and-bovid-keratin-artefacts-using-drift-spectroscopy-and-discriminant-analysis" class="section level3">
-<h3>The Analysis of Sea Turtle and Bovid Keratin Artefacts Using Drift spectroscopy and discriminant Analysis</h3>
-<div id="e.o.-espinoza-and-b.w.-baker" class="section level4">
-<h4>E.O. Espinoza and B.W. Baker</h4>
+<h3>The Analysis of Sea Turtle and Bovid Keratin Artefacts Using DRIFT spectroscopy and discriminant Analysis</h3>
+<div id="e.o.-espinoza-and-b.w.-baker-2007" class="section level4">
+<h4>E.O. Espinoza and B.W. Baker, 2007</h4>
 </div>
 </div>
 <div id="paper-summary" class="section level2">
 <h2>Paper Summary:</h2>
-<p>This paper uses a DFA to identify and seperate artifacts made of turtle shells and bovid horn into distinct groups. these two materials contain keratin, a broad class of fibrous protein. Given that the keratin of these two taxa may closely resemble each other in appearance, proper identification of the raw material origin of such artefacts is of interest to archaeologists and museum curators, and law enfocement officials who monitor the illegal trade in wildlife products.</p>
+<p>The goal of this paper is to find a way to properly identify proteins stored in Keratin so that archaeologists can have a new method of consistantly identifying materials, and so that curators and law enforcement officials can identify if species on endangered lists are currently being harvested for manufacture of ‘fakes’. This paper uses a DFA to identify and seperate artifacts made of turtle shells and bovid horn into distinct groups. these two materials contain keratin, a broad class of fibrous protein. Given that the keratin of these two taxa may closely resemble each other in appearance, proper identification of the raw material origin of such artefacts is of interest to archaeologists and museum curators, and law enfocement officials who monitor the illegal trade in wildlife products.</p>
 </div>
 <div id="their-analysis-in-r" class="section level2">
 <h2>Their Analysis in R:</h2>
@@ -85,7 +85,7 @@ img {
 <p>Each keratin standsard is validated by determining the Mahalanobis distance of the sample from the average spectrum.</p>
 <div id="read-in-data" class="section level3">
 <h3>Read in data:</h3>
-<pre class="r"><code>Keratin &lt;- read.csv(&quot;/Users/robertkaplan/Desktop/Espinoza etal 2007Data.csv&quot;)
+<pre class="r"><code>Keratin &lt;- read.csv(&quot;http://hompal-stats.wabarr.com/datasets/Espinoza_etal_2007.csv&quot;, header = TRUE)
 head(Keratin)</code></pre>
 <pre><code>##   Family             Species Common.Name.and.Material Specimen.. Amide.1
 ## 1 Bovide Addax nasomaculatus        Addax horn sheath  MAM #1210    1680
@@ -106,8 +106,8 @@ head(Keratin)</code></pre>
 
 Keratin.lda &lt;- lda(Family ~ Amide.1 + Amide.2.Alpha. + Amide.2..Beta. + Amide.3, data=Keratin)</code></pre>
 <pre><code>## Warning in lda.default(x, grouping, ...): variables are collinear</code></pre>
-<pre class="r"><code>Keratin.lda.P &lt;- predict(Keratin.lda, newdata=Keratin[ ,5:8])$class
-Keratin.lda</code></pre>
+<p>For this function to work, the dependent variable needs to be a categoty (in this example: Family)</p>
+<pre class="r"><code>Keratin.lda</code></pre>
 <pre><code>## Call:
 ## lda(Family ~ Amide.1 + Amide.2.Alpha. + Amide.2..Beta. + Amide.3, 
 ##     data = Keratin)
@@ -173,7 +173,10 @@ Keratin.lda</code></pre>
 ## Amide.2..Beta.1715  1.75139100
 ## Amide.2..Beta.N/A  -1.39141177
 ## Amide.3            -0.13308049</code></pre>
-<pre class="r"><code>Keratin.lda.P</code></pre>
+<p>Prior Probabilities: what proportion of the data seem to be in these groups prior to running the analysis.</p>
+<p>Coefficients of linear discriminats are the data that are used to help seperate the groups being tested.</p>
+<pre class="r"><code>Keratin.lda.P &lt;- predict(Keratin.lda, newdata=Keratin[ ,5:8])$class
+Keratin.lda.P</code></pre>
 <pre><code>##  [1] Bovide      Bovide      Bovide      Bovide      Bovide     
 ##  [6] Bovide      Bovide      Bovide      Bovide      Bovide     
 ## [11] Cheloniidae Bovide      Bovide      Bovide      Bovide     
@@ -192,12 +195,132 @@ Keratin.lda</code></pre>
 ## Keratin.lda.P Bovide Cheloniidae
 ##   Bovide          34           0
 ##   Cheloniidae      1          24</code></pre>
+<p>By using the predict() function, we can see how well our data fits into the “Family” classification of our data</p>
 <p>This lda has correctly predicted all of the bovid samples and identified them as so. However, it has incorrectly predicted one of the turtle samples as a bovid.</p>
-</div>
-<div id="making-the-plot" class="section level3">
-<h3>Making the Plot:</h3>
-<pre class="r"><code>library(ggplot2)</code></pre>
-<p>qplot(x=ld1, y=ld2, data=Keratin, geom=“point”, color=Family)</p>
+<p>Leave One Out Cross Validation:</p>
+<pre class="r"><code>Keratin.lda.2 &lt;- lda(Family ~ Amide.1 + Amide.2.Alpha. + Amide.2..Beta. + Amide.3, data=Keratin, CV=TRUE)</code></pre>
+<pre><code>## Warning in lda.default(x, grouping, ...): variables are collinear</code></pre>
+<pre class="r"><code>Keratin.lda.2</code></pre>
+<pre><code>## $class
+##  [1] Bovide      Cheloniidae Bovide      Bovide      Bovide     
+##  [6] Cheloniidae Cheloniidae Bovide      Cheloniidae Bovide     
+## [11] Bovide      Cheloniidae Cheloniidae Bovide      Cheloniidae
+## [16] Cheloniidae Bovide      Bovide      Bovide      Bovide     
+## [21] Cheloniidae Bovide      Bovide      Cheloniidae Bovide     
+## [26] Bovide      Bovide      Bovide      Bovide      Cheloniidae
+## [31] Cheloniidae Cheloniidae Cheloniidae Bovide      Cheloniidae
+## [36] Cheloniidae Bovide      Cheloniidae Cheloniidae Cheloniidae
+## [41] Cheloniidae Bovide      Bovide      Bovide      Cheloniidae
+## [46] Cheloniidae Bovide      Bovide      Cheloniidae Bovide     
+## [51] Bovide      Cheloniidae Cheloniidae Bovide      Cheloniidae
+## [56] Cheloniidae Bovide      Cheloniidae Bovide     
+## Levels: Bovide Cheloniidae
+## 
+## $posterior
+##    Bovide   Cheloniidae
+## 1     NaN           NaN
+## 2     NaN           NaN
+## 3     NaN           NaN
+## 4     NaN           NaN
+## 5     NaN           NaN
+## 6     NaN           NaN
+## 7     NaN           NaN
+## 8     NaN           NaN
+## 9     NaN           NaN
+## 10    NaN           NaN
+## 11    NaN           NaN
+## 12    NaN           NaN
+## 13    NaN           NaN
+## 14    NaN           NaN
+## 15    NaN           NaN
+## 16    NaN           NaN
+## 17    NaN           NaN
+## 18    NaN           NaN
+## 19    NaN           NaN
+## 20      1 1.512275e-160
+## 21    NaN           NaN
+## 22    NaN           NaN
+## 23    NaN           NaN
+## 24    NaN           NaN
+## 25    NaN           NaN
+## 26    NaN           NaN
+## 27    NaN           NaN
+## 28      1 6.616261e-112
+## 29    NaN           NaN
+## 30    NaN           NaN
+## 31    NaN           NaN
+## 32    NaN           NaN
+## 33    NaN           NaN
+## 34    NaN           NaN
+## 35    NaN           NaN
+## 36    NaN           NaN
+## 37    NaN           NaN
+## 38    NaN           NaN
+## 39    NaN           NaN
+## 40    NaN           NaN
+## 41    NaN           NaN
+## 42    NaN           NaN
+## 43    NaN           NaN
+## 44    NaN           NaN
+## 45    NaN           NaN
+## 46    NaN           NaN
+## 47    NaN           NaN
+## 48    NaN           NaN
+## 49    NaN           NaN
+## 50    NaN           NaN
+## 51    NaN           NaN
+## 52    NaN           NaN
+## 53    NaN           NaN
+## 54    NaN           NaN
+## 55    NaN           NaN
+## 56    NaN           NaN
+## 57    NaN           NaN
+## 58    NaN           NaN
+## 59    NaN           NaN
+## 
+## $terms
+## Family ~ Amide.1 + Amide.2.Alpha. + Amide.2..Beta. + Amide.3
+## attr(,&quot;variables&quot;)
+## list(Family, Amide.1, Amide.2.Alpha., Amide.2..Beta., Amide.3)
+## attr(,&quot;factors&quot;)
+##                Amide.1 Amide.2.Alpha. Amide.2..Beta. Amide.3
+## Family               0              0              0       0
+## Amide.1              1              0              0       0
+## Amide.2.Alpha.       0              1              0       0
+## Amide.2..Beta.       0              0              1       0
+## Amide.3              0              0              0       1
+## attr(,&quot;term.labels&quot;)
+## [1] &quot;Amide.1&quot;        &quot;Amide.2.Alpha.&quot; &quot;Amide.2..Beta.&quot; &quot;Amide.3&quot;       
+## attr(,&quot;order&quot;)
+## [1] 1 1 1 1
+## attr(,&quot;intercept&quot;)
+## [1] 1
+## attr(,&quot;response&quot;)
+## [1] 1
+## attr(,&quot;.Environment&quot;)
+## &lt;environment: R_GlobalEnv&gt;
+## attr(,&quot;predvars&quot;)
+## list(Family, Amide.1, Amide.2.Alpha., Amide.2..Beta., Amide.3)
+## attr(,&quot;dataClasses&quot;)
+##         Family        Amide.1 Amide.2.Alpha. Amide.2..Beta.        Amide.3 
+##       &quot;factor&quot;      &quot;numeric&quot;       &quot;factor&quot;       &quot;factor&quot;      &quot;numeric&quot; 
+## 
+## $call
+## lda(formula = Family ~ Amide.1 + Amide.2.Alpha. + Amide.2..Beta. + 
+##     Amide.3, data = Keratin, CV = TRUE)
+## 
+## $xlevels
+## $xlevels$Amide.2.Alpha.
+##  [1] &quot;1535&quot; &quot;1536&quot; &quot;1537&quot; &quot;1538&quot; &quot;1539&quot; &quot;1540&quot; &quot;1541&quot; &quot;1542&quot; &quot;1543&quot; &quot;1544&quot;
+## [11] &quot;1545&quot; &quot;1546&quot; &quot;1547&quot; &quot;1548&quot; &quot;1549&quot; &quot;1550&quot; &quot;1555&quot; &quot;N/A&quot; 
+## 
+## $xlevels$Amide.2..Beta.
+## [1] &quot;1513&quot; &quot;1515&quot; &quot;1516&quot; &quot;1517&quot; &quot;1518&quot; &quot;1519&quot; &quot;1715&quot; &quot;N/A&quot;</code></pre>
+<pre class="r"><code>table(Keratin.lda.2$class, Keratin[ ,1])</code></pre>
+<pre><code>##              
+##               Bovide Cheloniidae
+##   Bovide          20          11
+##   Cheloniidae     15          13</code></pre>
 </div>
 </div>
 

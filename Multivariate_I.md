@@ -4,6 +4,16 @@ incremental:true
 
 ![fuckgrapefruit](http://imgs.xkcd.com/comics/fuck_grapefruit.png)
 
+Most important AAPA lesson
+=====================
+
+![marmoset](pygmy_marmoset.jpg)
+
+***
+
+
+## Every time someone says "I know you can't read the axis labels", a pygmy marmoset is murdered.
+
 Multivariate Data
 ===================
 
@@ -157,9 +167,9 @@ var(myMatrix)
 
 ```
             x           y           z
-x  1.04047745  0.29100320 -0.04841465
-y  0.29100320  0.22549444 -0.03929983
-z -0.04841465 -0.03929983  0.84450977
+x  1.06717726  0.29050876 -0.06614024
+y  0.29050876  0.25493894 -0.01162489
+z -0.06614024 -0.01162489  0.86577860
 ```
 
 Correlation Matrices
@@ -194,11 +204,11 @@ head(myMatrix, 4)
 ```
 
 ```
-              x          y          z
-[1,]  0.9016482  0.2519737  1.2863171
-[2,]  0.8739464  0.5715886 -0.9805391
-[3,] -2.2804799 -0.3997122 -0.5175222
-[4,]  0.6387971  0.1001966 -0.7122828
+             x          y          z
+[1,] 0.2948835 -1.1639772 -0.4329756
+[2,] 2.0671144  0.6227120  1.5265065
+[3,] 0.5747772 -0.1518517  1.4657478
+[4,] 1.1552313  0.4586410  0.4710098
 ```
 
 ```r
@@ -207,9 +217,9 @@ cor(myMatrix)
 
 ```
             x           y           z
-x  1.00000000  0.60077731 -0.05164855
-y  0.60077731  1.00000000 -0.09005761
-z -0.05164855 -0.09005761  1.00000000
+x  1.00000000  0.55695854 -0.06880881
+y  0.55695854  1.00000000 -0.02474386
+z -0.06880881 -0.02474386  1.00000000
 ```
 
 Multivariate Distance Metrics
@@ -381,4 +391,4 @@ Often, the first couple of canonical discriminant functions  captures the majori
 If so, we can use this reduced set of variables to visualize the $p$ dimensional dataset in 2 dimensions.
 
 ***
-
+![plot of chunk unnamed-chunk-8](Multivariate_I-figure/unnamed-chunk-8-1.png) 

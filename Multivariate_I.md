@@ -156,10 +156,10 @@ var(myMatrix)
 ```
 
 ```
-           x          y           z
-x  0.8991261 0.32066583 -0.11048828
-y  0.3206658 0.26901996  0.01558829
-z -0.1104883 0.01558829  1.03292792
+            x           y           z
+x  1.04047745  0.29100320 -0.04841465
+y  0.29100320  0.22549444 -0.03929983
+z -0.04841465 -0.03929983  0.84450977
 ```
 
 Correlation Matrices
@@ -194,11 +194,11 @@ head(myMatrix, 4)
 ```
 
 ```
-             x          y          z
-[1,] -1.674880 -1.4611746 -0.2141604
-[2,]  0.291600  0.7792458  1.1623441
-[3,] -1.529140 -0.5778999 -1.1890373
-[4,]  1.120506  0.8515696  0.8094828
+              x          y          z
+[1,]  0.9016482  0.2519737  1.2863171
+[2,]  0.8739464  0.5715886 -0.9805391
+[3,] -2.2804799 -0.3997122 -0.5175222
+[4,]  0.6387971  0.1001966 -0.7122828
 ```
 
 ```r
@@ -206,10 +206,10 @@ cor(myMatrix)
 ```
 
 ```
-           x          y           z
-x  1.0000000 0.65200380 -0.11464916
-y  0.6520038 1.00000000  0.02957135
-z -0.1146492 0.02957135  1.00000000
+            x           y           z
+x  1.00000000  0.60077731 -0.05164855
+y  0.60077731  1.00000000 -0.09005761
+z -0.05164855 -0.09005761  1.00000000
 ```
 
 Multivariate Distance Metrics
@@ -337,5 +337,48 @@ dist(myMatrix)
 Cluster Analysis
 ==================
 
+start with a distance matrix
+
+assume each individual is in a group of 1
+
+join individuals within a given distance into a group
+
+continue joining groups until there is a single group
+
+visualize with a tree (dendrogram)
+
 Discriminant Function Analysis
 =================
+
+start with $p$ variables measured for $m$ groups.  
+
+DFA finds a linear combination of the $p$ variables that maximizes the distance between groups
+
+$$Z = a_1X_1 + a_2X_2 + ... + a_pX_p$$
+
+DFA tries to maximise the F ratio of between group to within group variation ($M_B/M_W$)
+
+This is an eigenvalue problem
+
+Discriminant Function Analysis
+=================
+
+Assuming you have more measurements than groups, there will be $m - 1$ **canonical discriminant functions** that maximize the ratio $M_B/M_W$. 
+
+These are indicated by $Z_1$, $Z_2$, $...$, $Z_{m-1}$.
+
+$Z_1$ captures as much distance between groups as possible. 
+
+$Z_2$ captures as much variation as possible, subject to the condition that the variation captured is uncorrelated (**orthogonal**) to $Z_1$, and so on with the remaining canonical discriminant functions. 
+
+Discriminant Function Analysis
+=================
+incremental: false
+left:40
+
+Often, the first couple of canonical discriminant functions  captures the majority of group differences.  
+
+If so, we can use this reduced set of variables to visualize the $p$ dimensional dataset in 2 dimensions.
+
+***
+

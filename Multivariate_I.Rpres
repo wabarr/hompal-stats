@@ -299,5 +299,48 @@ dist(myMatrix)
 Cluster Analysis
 ==================
 
+start with a distance matrix
+
+assume each individual is in a group of 1
+
+join individuals within a given distance into a group
+
+continue joining groups until there is a single group
+
+visualize with a tree (dendrogram)
+
 Discriminant Function Analysis
 =================
+
+start with $p$ variables measured for $m$ groups.  
+
+DFA finds a linear combination of the $p$ variables that maximizes the distance between groups
+
+$$Z = a_1X_1 + a_2X_2 + ... + a_pX_p$$
+
+DFA tries to maximise the F ratio of between group to within group variation ($M_B/M_W$)
+
+This is an eigenvalue problem
+
+Discriminant Function Analysis
+=================
+
+Assuming you have more measurements than groups, there will be $m - 1$ **canonical discriminant functions** that maximize the ratio $M_B/M_W$. 
+
+These are indicated by $Z_1$, $Z_2$, $...$, $Z_{m-1}$.
+
+$Z_1$ captures as much distance between groups as possible. 
+
+$Z_2$ captures as much variation as possible, subject to the condition that the variation captured is uncorrelated (**orthogonal**) to $Z_1$, and so on with the remaining canonical discriminant functions. 
+
+Discriminant Function Analysis
+=================
+incremental: false
+left:40
+
+Often, the first couple of canonical discriminant functions  captures the majority of group differences.  
+
+If so, we can use this reduced set of variables to visualize the $p$ dimensional dataset in 2 dimensions.
+
+***
+

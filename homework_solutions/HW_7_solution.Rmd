@@ -19,7 +19,7 @@ spread_bovids <- spread(bovids, key=site, value=count)
 #that we later use for the analysis
 row.names(spread_bovids) <- spread_bovids$taxon
 spread_bovids<-spread_bovids[,2:9]
-
+spread_bovids
 ```
 ## Problem 2 - 2pts
 

@@ -84,7 +84,13 @@ spread_bovids &lt;- spread(bovids, key=site, value=count)
 #convert the taxon column to row.names instead, as these will be preserved in the matrix
 #that we later use for the analysis
 row.names(spread_bovids) &lt;- spread_bovids$taxon
-spread_bovids&lt;-spread_bovids[,2:9]</code></pre>
+spread_bovids&lt;-spread_bovids[,2:9]
+spread_bovids</code></pre>
+<pre><code>##              site1 site2 site3 site4 site5 site6 site7 site8
+## Aepyceros      155   219   214   183   295   330   185   369
+## Connochaetes   185   281   297   276   136   159    86   172
+## Gazella        184   291   313   295    95    98    61   114
+## Tragelaphus     91   145   145   155   229   260   137   295</code></pre>
 </div>
 <div id="problem-2---2pts" class="section level2">
 <h2>Problem 2 - 2pts</h2>

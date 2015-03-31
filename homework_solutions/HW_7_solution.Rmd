@@ -55,4 +55,4 @@ myTest$expected
 myTest
 ```
 
-### There is strong evidence that site and taxon are associated, as the p value from the chi square analysis is vanishingly small. 
+### There is strong evidence that site and taxon are associated.  The null hypothesis is that there is no association between site and taxon.  Our p value from the chi square analysis is vanishingly small, which means that data as extreme as ours are extremely unlikely assuming the null hypothesis. 

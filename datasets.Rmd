@@ -33,7 +33,7 @@ Dataset Name | Source of data
 [Zaatari_hunter_gatherer.csv](datasets/Zaatari_hunter_gatherer.csv) | [Zaatari et al, 2011](http://dx.doi.org/10.1016/j.jhevol.2011.05.004)
 [Zaatari_neanderthal.csv](datasets/Zaatari_neanderthal.csv) | [Zaatari et al, 2011](http://dx.doi.org/10.1016/j.jhevol.2011.05.004)
 [Espinoza_etal_2007.csv](datasets/Espinoza_etal_2007.csv) | [Espinoza et al 2007](dx.doi.org/10.1111/j.1475-4754.2007.00328.x)
-[Su_2011_bovid_data.csv](Su_2011_bovid_data.csv) | [Su et al., 2011](readings_pdf/Su_etal_2011.pdf)
+[Su_2011_bovid_data.csv](datasets/Su_2011_bovid_data.csv) | [Su et al., 2011](readings_pdf/Su_etal_2011.pdf)
 
 <!--
 <ul>

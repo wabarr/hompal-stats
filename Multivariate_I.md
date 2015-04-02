@@ -166,10 +166,10 @@ var(myMatrix)
 ```
 
 ```
-            x          y           z
-x  0.91883550 0.23107817 -0.02029688
-y  0.23107817 0.21204664  0.01742538
-z -0.02029688 0.01742538  1.03259728
+           x           y           z
+x 0.74247805  0.23063583  0.07017125
+y 0.23063583  0.21051128 -0.01654857
+z 0.07017125 -0.01654857  1.20214093
 ```
 
 Correlation Matrices
@@ -204,11 +204,11 @@ head(myMatrix, 4)
 ```
 
 ```
-              x           y           z
-[1,] -1.6173164 -0.37822542  0.17914781
-[2,] -0.2232322 -0.43842937  0.07507588
-[3,]  1.3795823  0.57271109  0.89508170
-[4,]  0.5658605 -0.08172113 -1.25210329
+              x          y           z
+[1,]  0.1943270  0.3307515 -2.80900658
+[2,] -0.2501274 -0.1933706 -0.01489164
+[3,] -1.5159420 -0.1360073 -1.68827026
+[4,]  1.3321628  0.2979018 -0.88277834
 ```
 
 ```r
@@ -216,10 +216,10 @@ cor(myMatrix)
 ```
 
 ```
-            x          y           z
-x  1.00000000 0.52350922 -0.02083746
-y  0.52350922 1.00000000  0.03723926
-z -0.02083746 0.03723926  1.00000000
+           x           y           z
+x 1.00000000  0.58337428  0.07427449
+y 0.58337428  1.00000000 -0.03289615
+z 0.07427449 -0.03289615  1.00000000
 ```
 
 Multivariate Distance Metrics
@@ -284,136 +284,18 @@ where $v^{rs}$ is the covariance between variables $r$ and $s$
 Mahalanobis Distance
 =============
 
-![plot of chunk unnamed-chunk-3](Multivariate_I-figure/unnamed-chunk-3-1.png) 
 
 
 
 
-Mahalanobis Distance
-===================
-
-```r
-means <- c(mean(x1), mean(x2))
-myMatrix <- cbind(x1, x2)
-VCV <- var(myMatrix)
-```
 
 
-```r
-mhdists <- mahalanobis(myMatrix, means, VCV)
-mhdists[1:4]
-```
+
+
+
+
+
 
 ```
-[1] 2.1335285 0.1871506 2.1965283 5.6212356
+Error in library(ggplot2) : there is no package called 'ggplot2'
 ```
-
-Distance Matrices
-==================
-
-
-```r
-var1 <- rnorm(5); var2 <- rnorm(5)
-myMatrix <- cbind(var1,var2); head(myMatrix, 3)
-```
-
-```
-           var1       var2
-[1,] -1.8168975 -0.4935965
-[2,]  0.6271668 -2.1222441
-[3,]  0.5180921 -0.1335666
-```
-
-Distance Matrices
-==================
-
-## Euclidian Distance Matrix
-
-
-```r
-dist(myMatrix)
-```
-
-```
-          1         2         3         4
-2 2.9369957                              
-3 2.3625829 1.9916665                    
-4 1.9589314 1.7630234 0.4782398          
-5 3.3253874 2.3607936 0.9649143 1.4136512
-```
-
-Mantel Tests
-================
-
-Tests for correlation between two distance matrices
-
-$$M = \left[\begin{array}{ccc}
-  m_{11} & m_{12} & m_{13}\\
-  m_{21} & m_{22} & m_{33}\\
-  m_{31} & m_{22} & m_{33}\end{array}
-\right]$$
-
-$$E = \left[\begin{array}{ccc}
-  e_{11} & e_{12} & e_{13}\\
-  e_{21} & e_{22} & e_{33}\\
-  e_{31} & e_{22} & e_{33}\end{array}
-\right]$$
-
-Line up all the matching elements of the two matrices into vectors, and calculate the correlation coefficient for the two vectors. 
-
-Mantel Tests
-================
-
-Next, randomize the elements of one of the matrices, and again calculate the correlation coefficient. 
-
-Do this many times, and compare the observed correlation coefficient with the discribution of coefficients under the null hypothesis.
-
-
-Cluster Analysis
-==================
-
-start with a distance matrix
-
-assume each individual is in a group of 1
-
-join individuals within a given distance into a group
-
-continue joining groups until there is a single group
-
-visualize with a tree (dendrogram)
-
-Discriminant Function Analysis
-=================
-
-start with $p$ variables measured for $m$ groups.  
-
-DFA finds a linear combination of the $p$ variables that maximizes the distance between groups
-
-$$Z = a_1X_1 + a_2X_2 + ... + a_pX_p$$
-
-DFA tries to maximise the F ratio of between group to within group variation ($M_B/M_W$)
-
-This is an eigenvalue problem
-
-Discriminant Function Analysis
-=================
-
-Assuming you have more measurements than groups, there will be $m - 1$ **canonical discriminant functions** that maximize the ratio $M_B/M_W$. 
-
-These are indicated by $Z_1$, $Z_2$, $...$, $Z_{m-1}$.
-
-$Z_1$ captures as much distance between groups as possible. 
-
-$Z_2$ captures as much variation as possible, subject to the condition that the variation captured is uncorrelated (**orthogonal**) to $Z_1$, and so on with the remaining canonical discriminant functions. 
-
-Discriminant Function Analysis
-=================
-incremental: false
-left:40
-
-Often, the first couple of canonical discriminant functions  captures the majority of group differences.  
-
-If so, we can use this reduced set of variables to visualize the $p$ dimensional dataset in 2 dimensions.
-
-***
-![plot of chunk unnamed-chunk-8](Multivariate_I-figure/unnamed-chunk-8-1.png) 

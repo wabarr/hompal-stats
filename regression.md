@@ -318,59 +318,8 @@ Model II (aka RMA) regression requires a separate package `lmodel2`
 The function is different, but the call is still simple.  
 
 
-```r
-library(lmodel2)
-lmodel2(response~predictor)
+
+
 ```
-
-
-Regression In Context
-==========================
-type:section
-
-Regression is just one (the simplest) of many types of linear models that can describe linear relationships.  
-
-The bigger group comprises the
-
-## General Linear Model
-
-
-General Linear Model
-=======================
-
-Family of statistical models of the form:
-
-$$Y_i = \beta_0 + \beta_1X_i + \beta_2X_i +\ ... +\ \beta_nX_i  + \epsilon_i$$
-
-where: 
-
-* $\beta_0$ is the y-intercept (value of y where x= 0)
-*  $\beta_1X_i$ is the slope value for the 1st x variable
-*  $\epsilon_i$ is the error term
-
-
-General Linear Model
-=======================
-
-Includes many common statistical methods:
-
-*  Regression
-*  Multiple Regression
-*  ANOVA
-*  ANCOVA
-
-**All of these use the same function in R, called `lm()`**
-
-Choosing a General Linear Model
-=======================
-
-First decide which are explanatory and response variables. 
-
-*  All explanatory variables continuous
-    *  ***Regression***
-*  All explanatory variables categorical
-    *  ***ANOVA (Analysis of Variance)***
-*  Explanatory variables both continuous and categorical
-    *  ***ANCOVA (Analysis of Covariance)***
-
-￼
+Error in library(lmodel2) : there is no package called 'lmodel2'
+```

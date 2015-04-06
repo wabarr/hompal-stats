@@ -1057,13 +1057,8 @@ paste(&quot;My name is&quot;, names)
 <section data-transition="linear" data-transition-speed="default">
 <h3>Setting the Working Directory</h3>
 <div class="slideContent" >
-<pre class="fragment"><code class="r">getwd()
-</code></pre>
-
-<pre class="fragment"><code>[1] &quot;/Users/andrewbarr/Dropbox/ANTH 6413 - Stats/HomPal-Stats-Website&quot;
-</code></pre>
-
-<pre class="fragment"><code class="r">dir.create(&quot;~/Desktop/exampledir/&quot;)
+<pre class="fragment"><code>getwd()
+dir.create(&quot;~/Desktop/exampledir/&quot;)
 setwd(&quot;~/Desktop/exampledir/&quot;)
 </code></pre>
 
@@ -1073,12 +1068,19 @@ setwd(&quot;~/Desktop/exampledir/&quot;)
 <section data-transition="linear" data-transition-speed="default">
 <h3>Create Files</h3>
 <div class="slideContent" >
-<pre class="fragment"><code class="r">filez &lt;- paste0(&quot;test&quot;,1:20,&quot;.txt&quot;)
+<pre class="fragment"><code>filez &lt;- paste0(&quot;test&quot;,1:20,&quot;.txt&quot;)
 file.create(filez)
 </code></pre>
 
-<pre class="fragment"><code> [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
-[15] TRUE TRUE TRUE TRUE TRUE TRUE
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>List Files</h3>
+<div class="slideContent" >
+<pre class="fragment"><code>list.files(path = &quot;~/Desktop/exampledir/&quot;)
+
+&quot;test1.txt&quot;  &quot;test10.txt&quot; &quot;test11.txt&quot; &quot;test12.txt&quot; &quot;test13.txt&quot; &quot;test14.txt&quot; &quot;test15.txt&quot; &quot;test16.txt&quot; &quot;test17.txt&quot; &quot;test18.txt&quot; &quot;test19.txt&quot; &quot;test2.txt&quot;  &quot;test20.txt&quot; &quot;test3.txt&quot;  &quot;test4.txt&quot;  &quot;test5.txt&quot; &quot;test6.txt&quot;  &quot;test7.txt&quot;  &quot;test8.txt&quot;  &quot;test9.txt&quot; 
 </code></pre>
 
 </div>
@@ -1087,22 +1089,9 @@ file.create(filez)
 <section data-transition="linear" data-transition-speed="default">
 <h3>List Files</h3>
 <div class="slideContent" >
-<pre class="fragment"><code class="r">list.files(path = &quot;~/Desktop/exampledir/&quot;)
-</code></pre>
+<pre class="fragment"><code>list.files(path = &quot;~/Desktop/exampledir/&quot;, full.names = TRUE)
 
-<pre class="fragment"><code>character(0)
-</code></pre>
-
-</div>
-
-</section>
-<section data-transition="linear" data-transition-speed="default">
-<h3>List Files</h3>
-<div class="slideContent" >
-<pre class="fragment"><code class="r">list.files(path = &quot;~/Desktop/exampledir/&quot;, full.names = TRUE)
-</code></pre>
-
-<pre class="fragment"><code>character(0)
+&quot;/Users/andrewbarr/Desktop/exampledir//test1.txt&quot;  &quot;/Users/andrewbarr/Desktop/exampledir//test10.txt&quot; &quot;/Users/andrewbarr/Desktop/exampledir//test11.txt&quot; &quot;/Users/andrewbarr/Desktop/exampledir//test12.txt&quot; &quot;/Users/andrewbarr/Desktop/exampledir//test13.txt&quot; &quot;/Users/andrewbarr/Desktop/exampledir//test14.txt&quot; &quot;/Users/andrewbarr/Desktop/exampledir//test15.txt&quot; &quot;/Users/andrewbarr/Desktop/exampledir//test16.txt&quot; &quot;/Users/andrewbarr/Desktop/exampledir//test17.txt&quot; &quot;/Users/andrewbarr/Desktop/exampledir//test18.txt&quot; &quot;/Users/andrewbarr/Desktop/exampledir//test19.txt&quot; &quot;/Users/andrewbarr/Desktop/exampledir//test2.txt&quot; &quot;/Users/andrewbarr/Desktop/exampledir//test20.txt&quot; &quot;/Users/andrewbarr/Desktop/exampledir//test3.txt&quot; &quot;/Users/andrewbarr/Desktop/exampledir//test4.txt&quot;  &quot;/Users/andrewbarr/Desktop/exampledir//test5.txt&quot; &quot;/Users/andrewbarr/Desktop/exampledir//test6.txt&quot;  &quot;/Users/andrewbarr/Desktop/exampledir//test7.txt&quot; &quot;/Users/andrewbarr/Desktop/exampledir//test8.txt&quot;  &quot;/Users/andrewbarr/Desktop/exampledir//test9.txt&quot; 
 </code></pre>
 
 </div>
@@ -1128,7 +1117,7 @@ file.create(filez)
 <div class="slideContent" >
 <h2 class="fragment">Be very careful doing this!  You don&#39;t want to delete files that you need!</h2>
 
-<pre class="fragment"><code class="r">unlink(&quot;~/Desktop/exampledir/&quot;, recursive = TRUE)
+<pre class="fragment"><code>unlink(&quot;~/Desktop/exampledir/&quot;, recursive = TRUE)
 </code></pre>
 
 </div>

@@ -91,6 +91,14 @@ These are our principal components axes....
 
 ![pca6](PCA_schematics/6.jpg)
 
+PCA - operationally
+==========
+
+*  Starting with the covariance matrix
+*  The eigenvalues of this matrix are the variances explained by each PC
+*  The eigenvectors of this matrix are the contributions of each original variable to the PC
+*  The eigenvectors can be thought of as "transformation equations" to convert a datapoint from the original space to the PC space
+
 PCA - more details
 ===================
 
@@ -113,12 +121,12 @@ Principal Components Analysis in R
 
 ### There are 2 functions in R
 
-*  `prcomp()`
+*  `prcomp()` 
 *  `princomp()`
 
 ### These differ in their implementation, but provide similar results. 
 
-### However, according to the help files `prcomp()` is preferred for numerical accuracy
+### However, `prcomp()` is preferred for numerical accuracy
 
 PCA - Learn by Example
 ==============
@@ -158,9 +166,15 @@ incremental:false
 Correspondence Analysis
 ==============
 
-## A method for visualizing a 2-way contingency table
+*  A method for visualizing a 2-way contingency table
 
-## The goal is to have rows (often taxa) and colums (often sites) appear in same ordination plot
+*  The goal is to have rows (often taxa) and colums (often sites) appear in same ordination plot
+
+*  Often called ***reciprocal averaging***
+
+*  Site scores are weighted averages of species values, and species scores are a weighted average of site values
+
+*  useful for count data and presence/absence
 
 Correspondence Analysis
 ============
@@ -182,6 +196,8 @@ Tragelaphus     91   145   145   155   229
 
 Correspondence Analysis
 ============
+incremental:false
+left:30
 
 *  Row points (red) appear close to rows with similar column values
 *  Column points (blue) appear close to columns with similar row values

@@ -1,0 +1,84 @@
+---
+title: "Homework 8 Solution"
+author: "Andrew Barr"
+date: "March 30, 2015"
+output: html_document
+---
+
+## Problem 1
+
+## A
+
+```{r cache=TRUE}
+howell <- read.table("http://hompal-stats.wabarr.com/datasets/Howell_craniometry.csv", header=TRUE, sep=",")
+library(dplyr)
+howell <- howell %>% dplyr::select(ID, Sex, Population, BNL, MDH, EKB, ZOR, BAA, NBA)
+head(howell)
+```
+
+### B
+```{r fig.width=12, fig.height=12}
+pairs(howell[,4:9])
+```
+
+### C
+```{r}
+cov(howell[,4:9])
+#gives the same results
+var(howell[,4:9])
+```
+
+## Problem 2
+
+### A
+
+```{r cache=TRUE}
+distMat <- dist(x = howell[,4:9], method = "euclid")
+```
+
+### B
+```{r cache=TRUE}
+HowellClust <- hclust(d = distMat, method = "average")
+```
+
+### C
+```{r fig.width=12, fig.height=12, cache=TRUE}
+plot(HowellClust)
+```
+
+## Problem 3
+
+### A
+```{r cache=TRUE}
+detach("package:dplyr", unload=TRUE)
+library(MASS)
+howellDFA <- lda(Population ~ BNL + MDH + EKB + ZOR + BAA + NBA, data=howell)
+howellDFA
+```
+
+### B
+```{r cache=TRUE}
+predictions <- predict(howellDFA, newdata = howell[,4:9])
+sum(predictions$class == howell$Population) / nrow(howell)
+```
+
+### C
+
+```{r fig.height=12, fig.width=12}
+library(ggplot2)
+qplot(x=LD1, y=LD2, color = howell$Population, data=as.data.frame(predictions$x), size=I(5)) + theme_bw(30)
+```
+
+### D
+
+```{r}
+sum(predictions$class == howell$Population) / length(predictions$class)
+```
+
+
+### E
+
+It depends on how you look at it.  It the ~30% correct classification rate isn't great, but we would only expect about 1/30 = `r (1/30)*100`% by chance, so it isn't as bad as it seems. 
+
+
+

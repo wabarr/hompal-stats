@@ -270,16 +270,8 @@ type:section
 
 Setting the Working Directory
 ==================
-
-```r
+```
 getwd()
-```
-
-```
-[1] "/Users/andrewbarr/Dropbox/ANTH 6413 - Stats/HomPal-Stats-Website"
-```
-
-```r
 dir.create("~/Desktop/exampledir/")
 setwd("~/Desktop/exampledir/")
 ```
@@ -287,39 +279,27 @@ setwd("~/Desktop/exampledir/")
 Create Files
 ===============
 
-
-```r
+```
 filez <- paste0("test",1:20,".txt")
 file.create(filez)
 ```
 
-```
- [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
-[15] TRUE TRUE TRUE TRUE TRUE TRUE
-```
-
 List Files
 =================
 
-
-```r
+```
 list.files(path = "~/Desktop/exampledir/")
-```
 
-```
-character(0)
+"test1.txt"  "test10.txt" "test11.txt" "test12.txt" "test13.txt" "test14.txt" "test15.txt" "test16.txt" "test17.txt" "test18.txt" "test19.txt" "test2.txt"  "test20.txt" "test3.txt"  "test4.txt"  "test5.txt" "test6.txt"  "test7.txt"  "test8.txt"  "test9.txt" 
 ```
 
 List Files
 =================
 
-
-```r
+```
 list.files(path = "~/Desktop/exampledir/", full.names = TRUE)
-```
 
-```
-character(0)
+"/Users/andrewbarr/Desktop/exampledir//test1.txt"  "/Users/andrewbarr/Desktop/exampledir//test10.txt" "/Users/andrewbarr/Desktop/exampledir//test11.txt" "/Users/andrewbarr/Desktop/exampledir//test12.txt" "/Users/andrewbarr/Desktop/exampledir//test13.txt" "/Users/andrewbarr/Desktop/exampledir//test14.txt" "/Users/andrewbarr/Desktop/exampledir//test15.txt" "/Users/andrewbarr/Desktop/exampledir//test16.txt" "/Users/andrewbarr/Desktop/exampledir//test17.txt" "/Users/andrewbarr/Desktop/exampledir//test18.txt" "/Users/andrewbarr/Desktop/exampledir//test19.txt" "/Users/andrewbarr/Desktop/exampledir//test2.txt" "/Users/andrewbarr/Desktop/exampledir//test20.txt" "/Users/andrewbarr/Desktop/exampledir//test3.txt" "/Users/andrewbarr/Desktop/exampledir//test4.txt"  "/Users/andrewbarr/Desktop/exampledir//test5.txt" "/Users/andrewbarr/Desktop/exampledir//test6.txt"  "/Users/andrewbarr/Desktop/exampledir//test7.txt" "/Users/andrewbarr/Desktop/exampledir//test8.txt"  "/Users/andrewbarr/Desktop/exampledir//test9.txt" 
 ```
 
 Do something to a bunch of files
@@ -341,8 +321,7 @@ Delete files
 
 ## Be very careful doing this!  You don't want to delete files that you need!
 
-
-```r
+```
 unlink("~/Desktop/exampledir/", recursive = TRUE)
 ```
 

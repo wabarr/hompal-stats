@@ -27,3 +27,83 @@ Non-Metric Multidimensional Scaling
 *  compute a goodness of fit between $\delta_{ij}$ and $\hat{\delta}_{ij}$.  This is the current **stress** of the configuration $$ Stress = \sqrt{\frac{\sum\limits_{i=1}^m\sum\limits_{j=1}^n(\delta_{ij}-\hat{\delta}_{ij})^2}{\sum\limits_{i=1}^m\sum\limits_{j=1}^n\hat{\delta}_{ij}}}$$
 *  note that stress looks an awful lot like the chi-square statistic
 *  change the position of the observations a little to reduce the stress, and rinse and repeat until the stress cannot be reduced any more
+
+The vegan package
+===============
+
+## Widely used for community ecology
+
+## has some useful ordination functions,  distance metrics, and diversity indices
+
+```{r}
+#install.packages('vegan')
+library("vegan")
+vignette(package="vegan")
+```
+
+
+vegan - distance
+=========
+
+*  more options for distance matrices including:  bray, jaccard, gower, raup, mahalanobis, etc
+
+```{r }
+data(BCI)
+vegdist(BCI, method="jaccard")
+```
+
+vegan - diversity
+===============
+
+*  `diversity()` calculates common diversity metrics including: shannon-weaver, fischer, simpson, etc
+
+```{r}
+diversity(BCI, index = "shannon")
+```
+
+vegan - rarefaction
+===============
+
+*  species richness increases with sample size, so it is common practice to use ***rarefaction*** to resample larger assemblages to a smaller size
+
+```{r}
+rarefy(BCI, min(rowSums(BCI)))[1:5]
+```
+
+vegan - rarefaction
+===============
+incremental:false
+
+```{r}
+rarecurve(BCI[1,], step = 4)
+```
+
+vegan - ordination
+===========
+incremental:false
+
+*  Detrended correspondence analysis
+
+```{r}
+plot(decorana(BCI))
+```
+
+vegan - ordination
+===========
+incremental:false
+
+*  Non-metric multidimensional scaling
+
+```{r}
+result <- plot(metaMDS(BCI, k=3))
+```
+
+vegan - ordination
+===========
+incremental:false
+
+*  Non-metric multidimensional scaling
+
+```{r}
+ordiplot(result)
+```

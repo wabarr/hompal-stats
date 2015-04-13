@@ -2,6 +2,97 @@ Multivariate Stats III
 ========================================================
 incremental:true
 
+Geometric Morphometrics (GM)
+=================
+incremental:false 
+
+![monkeyskull](GM_monkey_skull.jpg)
+
+***
+
+## involves the analysis of Cartesian geometric coordinates rather than length, area, volume measurements
+
+Steps in a GM analysis
+================
+
+## use `geomorph` package in R
+
+1.  Get coordinate data (e.g., digitize outline from a photo, use a microscribe, get 3D coordinates from laser scanned specimen, etc)
+2.  Perform a Generalized Procrustes Analysis (GPA)
+3.  Analyze and visualze the results from the GPA
+
+GM - Step 1 - Coordinates
+================
+left:65
+
+![talus](landmarks_talus.png)
+
+***
+
+*  involves capturing homologous ***landmarks*** or ***semi-landmarks***
+*  can be 2D or 3D
+*  each specimen will have a unique ***configuration*** of landmarks in its own coordinate system
+
+GM - Step 1 - Coordinates
+================
+
+## We will use 2D coordinate data of salamander head shape
+
+## note that the landmark is in a $p \times k \times n$ array
+
+```{r}
+library(geomorph)
+data(plethodon)
+str(plethodon$land)
+```
+
+GM - Step 2 - Procrustes
+=================
+![procrustes](procrustes.jpg)
+
+GM - Step 2 - Procrustes
+=================
+
+## Translates all configurations to the origin
+## scales them to centroid size
+## rotates them until the ***Procrustes distance*** between configurations is minimized
+
+***
+
+## ![procrustes_steps](procrustes_steps.png)
+
+
+GM - Step 2 - Procrustes
+=================
+incremental:false
+
+
+```{r}
+GPA_pleth <- gpagen(plethodon$land)
+```
+
+***
+
+```{r}
+GPA_pleth
+```
+
+GM - Step 3 - Analyze and Visualize
+===============
+incremental: false
+
+```{r}
+gp <- as.factor(paste(plethodon$species, plethodon$site)) 
+PCA <- plotTangentSpace(GPA_pleth$coords, groups = gp)
+```
+
+GM - Step 3 - Analyze and Visualize
+===============
+
+## you can do TONS of analyses using the functions in the `geomorph` package
+
+## Questions?
+
 Non-Metric Multidimensional Scaling
 ==============
 
@@ -94,7 +185,7 @@ incremental:false
 
 *  Non-metric multidimensional scaling
 
-```{r}
+```{r cache=TRUE}
 result <- plot(metaMDS(BCI, k=3))
 ```
 

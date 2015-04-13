@@ -1,0 +1,12 @@
+---
+title: 'Homework # 10'
+output: html_document
+---
+
+## No formal homework assignment
+
+Experiment with the `pander` package for creating pretty tables
+
+You can also play around with including references in RMarkdown documents, if you think that is something you may do in the future. 
+
+## Enjoy the extra time to work on end-of-the-semester projects

@@ -10,7 +10,7 @@ B.  Calculate the natural log of all the numeric variables
 C.  Perform a principal components analysis on the data, using the `scale=TRUE` argument. 
 D.  Summarize the PCA, indicating what proportion of the variance is explained by each PC.
 E.  Make a beautiful plot (using ggplot) of PC1 versus PC2 and another of PC2 versus PC3.  Make sure the points for each extant taxon are surrounded with a polygon to ease visualization.
-D.  How do you interpret the first principal component? Justify your interpretation based on the variable loadings.
+F.  How do you interpret the first principal component? Justify your interpretation based on the variable loadings.
 
 ## Problem 2
 

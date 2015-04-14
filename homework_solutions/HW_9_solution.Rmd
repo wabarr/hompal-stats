@@ -1,0 +1,127 @@
+---
+title: "Homework #9 - Solution"
+output: html_document
+---
+
+## 11 pts total
+
+## Problem 1
+
+```{r include=FALSE}
+library(ggplot2)
+theme_set(theme_bw(30))
+```
+
+### A - 1pt
+
+load [this dataset](datasets/DIK-scap.txt) on scapula morphology in Pan, Homo and Gorilla, and the Dikika fossil child.  Details on this data can be found in [Alemseged et al, 2006](http://www.nature.com/nature/journal/v443/n7109/full/nature05047.html)
+
+```{r}
+scap <- read.table("../datasets/DIK-scap.txt", header=TRUE)
+```
+
+### B - 1pt
+
+Calculate the natural log of all the numeric variables
+
+```{r}
+# log all the measurements, excluding the first row
+scap[,-1] <- log(scap[,-1])
+```
+
+### C  - 1pt
+
+Perform a principal components analysis on the data, using the `scale=TRUE` argument.
+
+```{r}
+PCA <- prcomp(scap[,-1], scale=TRUE)
+```
+
+### D - 1pt
+
+Summarize the PCA, indicating what proportion of the variance is explained by each PC.
+
+```{r}
+library(pander)
+pander(summary(PCA))
+```
+
+### E - 2pts
+
+Make a beautiful plot (using ggplot) of PC1 versus PC2 and another of PC2 versus PC3.  Make sure the points for each extant taxon are surrounded with a polygon to ease visualization.
+
+```{r fig.height=10, fig.width=15}
+## make taxon variable nicer to look at
+taxon <- scap$Taxon
+levels(taxon) <- c("Dikika", "Gorilla", "Human", "Pan")
+
+## make a dataframe with just the PC coordinates and taxon
+DFforPlot <- data.frame(PC1=PCA$x[,1], PC2=PCA$x[,2], PC3=PCA$x[,3], taxon=taxon)
+gorilla <- subset(DFforPlot, taxon=="Gorilla")
+pan <- subset(DFforPlot, taxon=="Pan")
+human <- subset(DFforPlot, taxon=="Human")
+
+
+ggplot(aes(x=PC1, y=PC2, color=taxon, fill=taxon), data=DFforPlot) + 
+  theme_bw(30) +
+  geom_polygon(aes(x=PC1, y=PC2), alpha=.3, data=gorilla[chull(gorilla$PC1, gorilla$PC2),]) + 
+  geom_polygon(aes(x=PC1, y=PC2), alpha=.3, data=pan[chull(pan$PC1, pan$PC2),]) + 
+  geom_polygon(aes(x=PC1, y=PC2), alpha=.3, data=human[chull(human$PC1, human$PC2),]) + 
+  geom_point(size=5)
+
+ggplot(aes(x=PC2, y=PC3, color=taxon, fill=taxon), data=DFforPlot) + 
+  theme_bw(30) +
+  geom_polygon(aes(x=PC2, y=PC3), alpha=.3, data=gorilla[chull(gorilla$PC2, gorilla$PC3),]) + 
+  geom_polygon(aes(x=PC2, y=PC3), alpha=.3, data=pan[chull(pan$PC2, pan$PC3),]) + 
+  geom_polygon(aes(x=PC2, y=PC3), alpha=.3, data=human[chull(human$PC2, human$PC3),]) + 
+  geom_point(size=5)
+```
+
+### F - 1pt
+
+How do you interpret the first principal component? Justify your interpretation based on the variable loadings.
+
+All of the variables load similarly and positively on the first PC.  This is a common situation and reflects the size of the individual.  This makes sense, as the most dramatic way that individuals vary from one another is in their size. 
+
+## Problem 2
+
+### A - 1pt
+
+load the [dataset from Reed 1997](http://hompal-stats.wabarr.com/datasets/Reed1997_modern_adaptations.csv) with proportions of large mammal adaptations from modern game parks
+
+
+```{r}
+reed <- read.table("../datasets/Reed1997_modern_adaptations.csv", header=T, sep=",")
+```
+
+### B - 1pt
+
+Perform a correspondence analysis on this data
+
+
+```{r}
+library(ca)
+myCA <- ca(reed[,6:12])
+```
+
+### C - 1pt
+
+Print the results of the CA
+
+
+```{r}
+myCA
+```
+
+### D - 1pt
+
+Make a beautiful ggplot of the results (Dimension 1 plotted against Dimension 2).  Hint: You will have to extract the `rowcoords` and `colcoords` from the CA result.  Use text labels instead of points.  Use the simplified habitat as the label for the localities, rather than the long site name.  Color code the labels for each site by the mean annual precipitation values, so you can see the impact of precipitation. 
+
+
+```{r fig.height=10, fig.width=15}
+localityScoreDF <- data.frame(Dimension1 = myCA$rowcoord[,1], Dimension2=myCA$rowcoord[,2], rainfall=reed$Rainfall, hab=reed$Simplified.Habitat)
+adaptationScoreDF <- data.frame(Dimension1 = myCA$colcoord[,1], Dimension2=myCA$colcoord[,2], names = myCA$colnames)
+ggplot() + 
+  geom_text(aes(x=Dimension1, y=Dimension2, label=names), data=adaptationScoreDF, color="red") + 
+  geom_text(aes(x=Dimension1, y=Dimension2, label=hab, color=rainfall), data=localityScoreDF)
+```

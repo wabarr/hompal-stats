@@ -86,7 +86,7 @@ Phylogenetic Generalized Linear Model
 
 *** 
 
-### baboon is about 6 times as far from the chimp as the gorilla and chimp are from one another
+### baboon is about 5 times as far from the chimp as the gorilla and chimp are from one another
 
 ### We can represent all these distances by making a phylogenetic ***variance/covariance matrix***
 
@@ -94,3 +94,37 @@ Phylogenetic Generalized Linear Model
 
 ### Often called PGLS, but pGLM is more general term
 
+Quantifying Phylogenetic Signal
+==============
+
+### Residual autocorrelation in proportion to the VCV is a reasonable starting assumption, but we don't want to always assume this
+
+### Better to estimate how much phylogenetic signal exists
+
+### $\lambda$ does this
+
+### varies between 0 and 1, and scales the branch lengths of the tree (and thus the VCV matrix)
+
+lambda - branch length transformations
+===============
+incremental:false
+
+![plot of chunk unnamed-chunk-6](phylogenetic_signal-figure/unnamed-chunk-6-1.png) 
+***
+![plot of chunk unnamed-chunk-7](phylogenetic_signal-figure/unnamed-chunk-7-1.png) 
+
+Estimating lambda
+=============
+
+### when doing PGLS, you can estimate the most appropriate value of lambda for your data
+
+### if $\lambda = 0$ then PGLS is equivalent to general linear model
+
+### if $\lambda = 1$ then PGLS is equivalent to phylogenetically independent contrasts
+
+### we also have to assume a model of evolution.  Usually Brownian motion.
+
+PGLS in R
+=============
+
+### `caper` package is most user friendly

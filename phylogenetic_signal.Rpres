@@ -111,7 +111,7 @@ plot(threeTaxa, edge.width=4, cex=3)
 
 *** 
 
-### baboon is about 6 times as far from the chimp as the gorilla and chimp are from one another
+### baboon is about 5 times as far from the chimp as the gorilla and chimp are from one another
 
 ### We can represent all these distances by making a phylogenetic ***variance/covariance matrix***
 
@@ -119,3 +119,45 @@ plot(threeTaxa, edge.width=4, cex=3)
 
 ### Often called PGLS, but pGLM is more general term
 
+Quantifying Phylogenetic Signal
+==============
+
+### Residual autocorrelation in proportion to the VCV is a reasonable starting assumption, but we don't want to always assume this
+
+### Better to estimate how much phylogenetic signal exists
+
+### $\lambda$ does this
+
+### varies between 0 and 1, and scales the branch lengths of the tree (and thus the VCV matrix)
+
+lambda - branch length transformations
+===============
+incremental:false
+
+```{r echo=FALSE}
+par(mfrow=c(1,2), cex.main=3)
+plot(tree, show.tip.label = FALSE, main="lambda=1", edge.width=3)
+plot(geiger::lambdaTree(tree, 0.8), show.tip.label = FALSE, main="lambda=0.8", edge.width=3)
+```
+***
+```{r echo=FALSE}
+par(mfrow=c(1,2), cex.main=3)
+plot(geiger::lambdaTree(tree, 0.4), show.tip.label = FALSE, main="lambda=0.4", edge.width=3)
+plot(geiger::lambdaTree(tree, 0.0), show.tip.label = FALSE, main="lambda=0", edge.width=3)
+```
+
+Estimating lambda
+=============
+
+### when doing PGLS, you can estimate the most appropriate value of lambda for your data
+
+### if $\lambda = 0$ then PGLS is equivalent to general linear model
+
+### if $\lambda = 1$ then PGLS is equivalent to phylogenetically independent contrasts
+
+### we also have to assume a model of evolution.  Usually Brownian motion.
+
+PGLS in R
+=============
+
+### `caper` package is most user friendly

@@ -110,7 +110,7 @@ lambda - branch length transformations
 incremental:false
 
 ![plot of chunk unnamed-chunk-6](phylogenetic_signal-figure/unnamed-chunk-6-1.png) 
-***
+*** 
 ![plot of chunk unnamed-chunk-7](phylogenetic_signal-figure/unnamed-chunk-7-1.png) 
 
 Estimating lambda

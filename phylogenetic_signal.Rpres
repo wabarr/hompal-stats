@@ -139,7 +139,7 @@ par(mfrow=c(1,2), cex.main=3)
 plot(tree, show.tip.label = FALSE, main="lambda=1", edge.width=3)
 plot(geiger::lambdaTree(tree, 0.8), show.tip.label = FALSE, main="lambda=0.8", edge.width=3)
 ```
-***
+*** 
 ```{r echo=FALSE}
 par(mfrow=c(1,2), cex.main=3)
 plot(geiger::lambdaTree(tree, 0.4), show.tip.label = FALSE, main="lambda=0.4", edge.width=3)

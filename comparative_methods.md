@@ -7,14 +7,7 @@ incremental:true
 Anatomy of a phylogenetic tree
 ================
 
-```{r, echo=FALSE}
-set.seed(121)
-library(phytools)
-tree <- phytools::pbtree(b=1, d=0.3, n = 20, extant.only=TRUE)
-plot(tree, show.tip.label = F, edge.width = 4)
-nodelabels(pch = 16, col="royalblue", cex=4)
-tiplabels(pch=15, col="sienna", cex=3)
-```
+![plot of chunk unnamed-chunk-1](comparative_methods-figure/unnamed-chunk-1-1.png) 
 
 ***
 
@@ -31,12 +24,7 @@ trees are ***hierarchical***, the pattern of branching is the ***topology***, an
 Same topology, different representation
 =====================
 
-```{r echo=FALSE}
-tree$tip.label <- LETTERS[1:length(tree$tip.label)]
-par(mfrow=c(1,2))
-plot(tree, edge.width = 2, label.offset = 0.1, cex=1.7)
-plot(ladderize(tree), edge.width = 2, label.offset = 0.1, cex=1.7)
-```
+![plot of chunk unnamed-chunk-2](comparative_methods-figure/unnamed-chunk-2-1.png) 
 
 ***
 
@@ -50,15 +38,11 @@ Same topology, different representation
 ========================
 incremental:false
 
-```{r echo=FALSE}
-plot(tree, edge.width = 2, label.offset = 0.1, type="fan", cex=2)
-```
+![plot of chunk unnamed-chunk-3](comparative_methods-figure/unnamed-chunk-3-1.png) 
 
 ***
 
-```{r echo=FALSE}
-plot(tree, edge.width = 2, label.offset = 0.1, type="unrooted", cex=2)
-```
+![plot of chunk unnamed-chunk-4](comparative_methods-figure/unnamed-chunk-4-1.png) 
 
 ========================
 
@@ -76,17 +60,13 @@ incremental:false
 
 ### statistics assumes
 
-```{r, echo=FALSE}
-plot(geiger::lambdaTree(tree, 0), type="fan", show.tip.label = F, edge.width=2)
-```
+![plot of chunk unnamed-chunk-5](comparative_methods-figure/unnamed-chunk-5-1.png) 
 
 ***
 
 ### evolution provides
 
-```{r echo=FALSE}
-plot(tree, type="fan", show.tip.label = F, edge.width=2)
-```
+![plot of chunk unnamed-chunk-6](comparative_methods-figure/unnamed-chunk-6-1.png) 
 
 
 
@@ -94,19 +74,7 @@ The Problem - Graphically
 ==========
 left:60
 
-```{r echo=FALSE}
-x <- rnorm(50, sd=0.69)
-y <- x * 4 + rnorm(50, sd=0.66) + c(-1, 3)
-species <- rep(c("A", "B"), 25)
-library(ggplot2)
-mylm <- lm(y~x)
-gradeshift <- qplot(x, y, size=I(4), color=species) + 
-  theme_bw(30) + 
-  scale_x_continuous(limits=c(-1,1)) +
-  geom_abline(slope=coef(mylm)[2], intercept=coef(mylm)[1], linetype=2) + 
-  geom_segment(aes(x=x, xend=x, y=y,yend=mylm$fitted), linetype="dashed")
-gradeshift
-```
+![plot of chunk unnamed-chunk-7](comparative_methods-figure/unnamed-chunk-7-1.png) 
 
 ***
 
@@ -120,9 +88,7 @@ The Problem is Insidious
 ===================
 left:40
 
-```{r echo=FALSE}
-gradeshift
-```
+![plot of chunk unnamed-chunk-8](comparative_methods-figure/unnamed-chunk-8-1.png) 
 
 ***
 
@@ -158,12 +124,7 @@ Generalized Linear Model
 Phylogenetic Generalized Linear Model
 ============
 
-```{r echo=FALSE}
-threeTaxa <- extract.clade(tree, 37)
-threeTaxa$tip.label <- c("Gorilla", "Chimp", "Homo")
-threeTaxa$edge.length <- threeTaxa$edge.length + c(0.3, 0.3, 0, 0)
-plot(threeTaxa, edge.width=3, cex=2)
-```
+![plot of chunk unnamed-chunk-9](comparative_methods-figure/unnamed-chunk-9-1.png) 
 
 *** 
 
@@ -190,17 +151,9 @@ lambda - branch length transformations
 ===============
 incremental:false
 
-```{r echo=FALSE}
-par(mfrow=c(1,2), cex.main=3)
-plot(tree, show.tip.label = FALSE, main="lambda=1", edge.width=3)
-plot(geiger::lambdaTree(tree, 0.8), show.tip.label = FALSE, main="lambda=0.8", edge.width=3)
-```
+![plot of chunk unnamed-chunk-10](comparative_methods-figure/unnamed-chunk-10-1.png) 
 *** 
-```{r echo=FALSE}
-par(mfrow=c(1,2), cex.main=3)
-plot(geiger::lambdaTree(tree, 0.4), show.tip.label = FALSE, main="lambda=0.4", edge.width=3)
-plot(geiger::lambdaTree(tree, 0.0), show.tip.label = FALSE, main="lambda=0", edge.width=3)
-```
+![plot of chunk unnamed-chunk-11](comparative_methods-figure/unnamed-chunk-11-1.png) 
 
 Estimating lambda
 =============

@@ -2,6 +2,8 @@ Multivariate Stats III
 ========================================================
 incremental:true
 
+![codeinsecurity](http://imgs.xkcd.com/comics/code_quality.png)
+
 Geometric Morphometrics (GM)
 =================
 incremental:false 

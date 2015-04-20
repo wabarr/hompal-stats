@@ -92,13 +92,17 @@ img {
 </div>
 
 
-<div id="no-formal-homework-assignment" class="section level2">
-<h2>No formal homework assignment</h2>
-<p>Experiment with the <code>pander</code> package for creating pretty tables</p>
-<p>You can also play around with including references in RMarkdown documents, if you think that is something you may do in the future.</p>
-</div>
-<div id="enjoy-the-extra-time-to-work-on-end-of-the-semester-projects" class="section level2">
-<h2>Enjoy the extra time to work on end-of-the-semester projects</h2>
+<div id="problem-1" class="section level2">
+<h2>Problem #1</h2>
+<ol style="list-style-type: upper-alpha">
+<li><p>Read in the <a href="http://hompal-stats.wabarr.com/datasets/barr_astrag_2014.txt">morphometric data from Barr, 2014</a> on bovid astragali.</p></li>
+<li><p>Select the following colums from the data: <code>Taxon</code>, <code>B</code>, <code>DistRad</code>, and <code>Habitat</code>. Create a new dataframe with the <code>Taxon</code>, the <code>Habitat</code> and species means for <code>B</code> and <code>DistRad</code>.</p></li>
+<li><p>Read in <a href="http://hompal-stats.wabarr.com/datasets/ruminants.phy">the ruminant phylogeny from Hernández Fernández &amp; Vrba, 2007</a>.</p></li>
+<li><p>Combine the data and the tree using <code>comparative.data()</code> to ready the tree for pgls. <strong><em>Note: if you used <code>dplyr</code> in the steps above, you need to change the class of the resulting dataframe, because there is a bug in <code>caper</code> and it won’t deal with a <code>dplyr</code> <code>tbl_df</code> object. You can use this line of code to fix it <code>class(dataframeFromDplyr) &lt;- &quot;data.frame&quot;</code></em></strong></p></li>
+<li><p>Plot the trimmed tree that includes just the taxa of interest in the astragalus dataset. Make it as beautiful as you can.</p></li>
+<li><p>Perform PGLS to test the hypothesis that <code>log(B)</code> is a function of <code>log(DistRad)</code>, while controling for phylogenetic signal.</p></li>
+<li><p>Plot <code>log(B)</code> as a function of <code>log(DistRad)</code>, and color code the points by habitat type.</p></li>
+</ol>
 </div>
 
 

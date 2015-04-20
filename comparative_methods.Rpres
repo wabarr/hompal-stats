@@ -1,11 +1,11 @@
 Comparative Methods
 ========================================================
-incremental:true
+incremental:true 
 
 ![darwin_tree.jpg](darwin_tree.jpg)
 
 Anatomy of a phylogenetic tree
-================
+================ 
 
 ```{r, echo=FALSE}
 set.seed(121)
@@ -60,12 +60,79 @@ plot(tree, edge.width = 2, label.offset = 0.1, type="fan", cex=2)
 plot(tree, edge.width = 2, label.offset = 0.1, type="unrooted", cex=2)
 ```
 
+Phylogenetic Trees in R
 ========================
+
+The `ape` package provides functions for interacting with phylogenetic trees.
+
+The most common file format for phylogenetic trees is the Newick format (which is incorporated in the Nexus format).
+
+```{r}
+textTree <- "(Gibbon:1.6, (Gorilla:1, (Chimp:0.2, Human:0.2):0.8):0.6);"
+```
+
+Phylogenetic Trees in R
+===============
+incremental:false
+left:70
+
+```{r echo=FALSE}
+
+```
+
+```{r}
+myTree <- read.tree(text=textTree)
+plot(myTree, edge.width=3, cex=3)
+```
+
+*** 
+
+Trees in Newick format can be read with `read.tree()`
+
+Trees in Nexus format (e.g. from the program Mesquite) can be read with `read.nexus()` 
+
+
+
+Phylogenetic Trees in R
+========================
+
+Like most everything, a phylogenetic tree in R is just a special type of list (of class `phylo`)
+
+```{r}
+str(myTree)
+```
+
+Phylogenetic Trees in R
+========================
+incremental:false
+
+`drop.tip()` - drops named tips from a tree
+
+```{r}
+myTree
+drop.tip(myTree, c("Chimp", "Human"))
+```
+
+Phylogenetic Trees in R
+========================
+incremental:false
+
+`drop.tip()` - drops named tips from a tree
+
+```{r}
+drop.tip(myTree, c("Chimp", "Human"))
+```
+
+
+
+=============
 
 # Question
 
+
 ## What is the #1 assumption we have made in parametric stats throughout the semester?
-   
+
+
 # Answer
 
 ## Each observation is independent, and therefore residuals are independent and (hopefully) normally distributed
@@ -110,11 +177,11 @@ gradeshift
 
 ***
 
-### Regression assumes that residuals are independent
+Regression assumes that residuals are independent
 
-### However, sometimes we can predict the sign ($\pm$) by knowing the phylogeny
+However, sometimes we can predict the sign ($\pm$) by knowing the phylogeny
 
-### This is called ***phylogenetic autocorrelation*** and causes problems
+This is called ***phylogenetic autocorrelation*** and causes problems
 
 The Problem is Insidious
 ===================
@@ -126,11 +193,11 @@ gradeshift
 
 ***
 
-### This example is extreme...some people call this a  ***grade shift***
+This example is extreme...some people call this a  ***grade shift***
 
-### Folks have long been wary of grade shifts, and done seperate regressions for different groups
+Folks have long been wary of grade shifts, and done seperate regressions for different groups
 
-### But in absence of obvious grade shifts, phylogenetic autocorrelation of residuals still causes 2 problems:
+But in absence of obvious grade shifts, phylogenetic autocorrelation of residuals still causes 2 problems:
 
 *  increases variance of parameter estimates (e.g. slopes and intercepts)
 *  increases Type I (false positive) error rate
@@ -140,20 +207,20 @@ Recall the General Linear Model
 
 $$Y_i = \beta_0 + \beta_1X_i + \beta_2X_i +\ ... +\ \beta_nX_i  + \epsilon_i$$
 
-### where: 
+where: 
 
 * $\beta_0$ is the y-intercept (value of y where x= 0)
 *  $\beta_1X_i$ is the slope value for the 1st x variable
 *  $\epsilon_i$ is the error term, distributed as a normal random variable
 
-### The solution to the problem of phylogenetic autocorrelation comes when we relax our assumptions about the error term
+The solution to the problem of phylogenetic autocorrelation comes when we relax our assumptions about the error term
 
 Generalized Linear Model
 =================
 
-### Similar in structure to general linear models, but allows specification of the assumed residual error structure
+Similar in structure to general linear models, but allows specification of the assumed residual error structure
 
-### With biological data, a reasonable assumption is that residuals will be correlated with phylogenetic distance (sum of branch lengths along the phylogenetic tree)
+With biological data, a reasonable assumption is that residuals will be correlated with phylogenetic distance (sum of branch lengths along the phylogenetic tree)
 
 Phylogenetic Generalized Linear Model
 ============
@@ -178,13 +245,13 @@ Often called PGLS, but pGLM is more general term
 Quantifying Phylogenetic Signal
 ==============
 
-### Residual autocorrelation in proportion to the VCV is a reasonable starting assumption, but we don't want to always assume this
+Residual autocorrelation in proportion to the VCV is a reasonable starting assumption, but we don't want to always assume this
 
-### Better to estimate how much phylogenetic signal exists
+Better to estimate how much phylogenetic signal exists
 
-### $\lambda$ does this
+$\lambda$ does this
 
-### varies between 0 and 1, and scales the branch lengths of the tree (and thus the VCV matrix)
+varies between 0 and 1, and scales the branch lengths of the tree (and thus the VCV matrix)
 
 lambda - branch length transformations
 ===============
@@ -195,7 +262,9 @@ par(mfrow=c(1,2), cex.main=3)
 plot(tree, show.tip.label = FALSE, main="lambda=1", edge.width=3)
 plot(geiger::lambdaTree(tree, 0.8), show.tip.label = FALSE, main="lambda=0.8", edge.width=3)
 ```
+
 *** 
+
 ```{r echo=FALSE}
 par(mfrow=c(1,2), cex.main=3)
 plot(geiger::lambdaTree(tree, 0.4), show.tip.label = FALSE, main="lambda=0.4", edge.width=3)
@@ -205,15 +274,15 @@ plot(geiger::lambdaTree(tree, 0.0), show.tip.label = FALSE, main="lambda=0", edg
 Estimating lambda
 =============
 
-### when doing PGLS, you can estimate the most appropriate value of lambda for your data
+when doing PGLS, you can estimate the most appropriate value of lambda for your data
 
-### if $\lambda = 0$ then PGLS is equivalent to general linear model
+if $\lambda = 0$ then PGLS is equivalent to general linear model
 
-### if $\lambda = 1$ then PGLS is equivalent to phylogenetically independent contrasts
+if $\lambda = 1$ then PGLS is equivalent to phylogenetically independent contrasts
 
-### we also have to assume a model of evolution.  Usually Brownian motion.
+we also have to assume a model of evolution.  Usually Brownian motion.
 
-PGLS in R
+PGLS in R - 2 ways
 =============
 
-### `caper` package is most user friendly
+`caper` package is most user friendly

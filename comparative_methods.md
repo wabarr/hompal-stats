@@ -59,23 +59,21 @@ textTree <- "(Gibbon:1.6, (Gorilla:1, (Chimp:0.2, Human:0.2):0.8):0.6);"
 Phylogenetic Trees in R
 ===============
 incremental:false
-left:70
+left:55
 
-
-
-
-```r
-myTree <- read.tree(text=textTree)
-plot(myTree, edge.width=3, cex=3)
-```
-
-![plot of chunk unnamed-chunk-7](comparative_methods-figure/unnamed-chunk-7-1.png) 
+![plot of chunk unnamed-chunk-6](comparative_methods-figure/unnamed-chunk-6-1.png) 
 
 *** 
 
 Trees in Newick format can be read with `read.tree()`
 
+
+```r
+plot(read.tree(     text=textTree))
+```
+
 Trees in Nexus format (e.g. from the program Mesquite) can be read with `read.nexus()` 
+
 
 
 
@@ -120,20 +118,6 @@ Tip labels:
 Rooted; includes branch lengths.
 ```
 
-```r
-drop.tip(myTree, c("Chimp", "Human"))
-```
-
-```
-
-Phylogenetic tree with 2 tips and 1 internal nodes.
-
-Tip labels:
-[1] "Gibbon"  "Gorilla"
-
-Rooted; includes branch lengths.
-```
-
 Phylogenetic Trees in R
 ========================
 incremental:false
@@ -155,7 +139,37 @@ Tip labels:
 Rooted; includes branch lengths.
 ```
 
+Challenge
+==============
 
+Read in [this ruminant phylogeny](http://hompal-stats.wabarr.com/datasets/ruminants.phy) (Hernández Fernández & Vrba, 2007) using the `ape::read.tree()` function.
+
+Drop all tips except the following: `"Alcelaphus_buselaphus", "Sigmoceros_lichtensteinii", "Connochaetes_gnou", "Connochaetes_taurinus", "Beatragus_hunteri", "Damaliscus_lunatus", "Damaliscus_pygargus"`
+
+Hint you can use `drop.tip()` or `extract.clade()` - ***Brian: don't spoil the fun!***
+
+
+
+
+Challenge
+==============
+incremental:false
+
+![plot of chunk unnamed-chunk-12](comparative_methods-figure/unnamed-chunk-12-1.png) 
+
+***
+
+Plot the extracted clade of Alcelaphins
+
+Experiment with:
+
+*  `tip.labels()`
+*  `node.labels()`
+*  graphical parameters
+  *  `tip.color`
+  *  `edge.color`
+  *  `cex` - label size
+  *  see `?plot.phylo` for all possible graphics options
 
 =============
 
@@ -175,13 +189,13 @@ incremental:false
 
 ### statistics assumes
 
-![plot of chunk unnamed-chunk-11](comparative_methods-figure/unnamed-chunk-11-1.png) 
+![plot of chunk unnamed-chunk-13](comparative_methods-figure/unnamed-chunk-13-1.png) 
 
 ***
 
 ### evolution provides
 
-![plot of chunk unnamed-chunk-12](comparative_methods-figure/unnamed-chunk-12-1.png) 
+![plot of chunk unnamed-chunk-14](comparative_methods-figure/unnamed-chunk-14-1.png) 
 
 
 
@@ -189,7 +203,7 @@ The Problem - Graphically
 ==========
 left:60
 
-![plot of chunk unnamed-chunk-13](comparative_methods-figure/unnamed-chunk-13-1.png) 
+![plot of chunk unnamed-chunk-15](comparative_methods-figure/unnamed-chunk-15-1.png) 
 
 ***
 
@@ -203,15 +217,15 @@ The Problem is Insidious
 ===================
 left:40
 
-![plot of chunk unnamed-chunk-14](comparative_methods-figure/unnamed-chunk-14-1.png) 
+![plot of chunk unnamed-chunk-16](comparative_methods-figure/unnamed-chunk-16-1.png) 
 
 ***
 
 This example is extreme...some people call this a  ***grade shift***
 
-Folks have long been wary of grade shifts, and done seperate regressions for different groups
+Folks have long been wary of grade shifts (separate analyses for groups)
 
-But in absence of obvious grade shifts, phylogenetic autocorrelation of residuals still causes 2 problems:
+Even without obvious grade shifts, phylogenetic autocorrelation of residuals causes 2 problems:
 
 *  increases variance of parameter estimates (e.g. slopes and intercepts)
 *  increases Type I (false positive) error rate
@@ -227,38 +241,60 @@ where:
 *  $\beta_1X_i$ is the slope value for the 1st x variable
 *  $\epsilon_i$ is the error term, distributed as a normal random variable
 
-The solution to the problem of phylogenetic autocorrelation comes when we relax our assumptions about the error term
+The solution to the problem of phylogenetic autocorrelation is to relax assumptions about the error term.
 
 Generalized Linear Model
 =================
 
 Similar in structure to general linear models, but allows specification of the assumed residual error structure
 
-With biological data, a reasonable assumption is that residuals will be correlated with phylogenetic distance (sum of branch lengths along the phylogenetic tree)
+This error structure is represented as an expected variance/covariance matrix 
 
+Requires branch lengths and a particular model of evolution
+
+The most common assumed model of evolution is ***Brownian motion***
+
+Brownian Motion
+==================
+left:60
+
+![plot of chunk unnamed-chunk-17](comparative_methods-figure/unnamed-chunk-17-1.png) 
+ 
+***
+ 
+Traits evolve in a random direction at each time step, independent of previous changes
+
+***Assumes no natural selection***
+
+***Assumes constant rate of change***
+
+Brownian motion is assumed in 95%+ of studies you will read
+
+ 
 Phylogenetic Generalized Linear Model
 ============
 
-![plot of chunk unnamed-chunk-15](comparative_methods-figure/unnamed-chunk-15-1.png) 
+![plot of chunk unnamed-chunk-18](comparative_methods-figure/unnamed-chunk-18-1.png) 
 
 *** 
 
 Homo and chimp have much shorter branches connecting them than chimp and gorilla
 
-We can represent all these distances by making a phylogenetic ***variance/covariance matrix***
+Represented as ***variance/covariance matrix*** using functions in `ape`
 
-We use this phyloVCV matrix in pGLM, instead of a normal error term
+We use this phyloVCV in pGLM, instead of a normal error term
 
-Often called PGLS, but pGLM is more general term
+(Often called PGLS, but pGLM is more general term)
+
 
 Quantifying Phylogenetic Signal
 ==============
 
-Residual autocorrelation in proportion to the VCV is a reasonable starting assumption, but we don't want to always assume this
+Residual autocorrelation in proportion to the Brownian VCV is a reasonable starting assumption, but we don't want to always assume this
 
 Better to estimate how much phylogenetic signal exists
 
-$\lambda$ does this
+***$\lambda$ provides this estimate***
 
 varies between 0 and 1, and scales the branch lengths of the tree (and thus the VCV matrix)
 
@@ -266,24 +302,34 @@ lambda - branch length transformations
 ===============
 incremental:false
 
-![plot of chunk unnamed-chunk-16](comparative_methods-figure/unnamed-chunk-16-1.png) 
+![plot of chunk unnamed-chunk-19](comparative_methods-figure/unnamed-chunk-19-1.png) 
 
 *** 
 
-![plot of chunk unnamed-chunk-17](comparative_methods-figure/unnamed-chunk-17-1.png) 
+![plot of chunk unnamed-chunk-20](comparative_methods-figure/unnamed-chunk-20-1.png) 
 
 Estimating lambda
 =============
 
 when doing PGLS, you can estimate the most appropriate value of lambda for your data
 
-if $\lambda = 0$ then PGLS is equivalent to general linear model
+if $\lambda = 0$ then PGLS is equivalent to general linear model (non-phylogenetic)
 
-if $\lambda = 1$ then PGLS is equivalent to phylogenetically independent contrasts
+if $\lambda = 1$ then PGLS is equivalent to phylogenetically independent contrasts (an older way of "correcting" for phylogeny)
 
-we also have to assume a model of evolution.  Usually Brownian motion.
-
-PGLS in R - 2 ways
+PGLS in R
 =============
 
 `caper` package is most user friendly
+
+Three steps:
+
+0.  Read in your data and your tree
+1.  Use the `comparative.data()` function to match up your tree with your dataframe
+2.  Use the `pgls()` function, specifying that lambda should be estimated by maximum likelihood
+
+Example: 
+
+```{}
+pgls(response ~ predictor1 + predictor2, data=myCompData, lambda="ML")
+```

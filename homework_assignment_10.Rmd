@@ -17,6 +17,6 @@ D.  Combine the data and the tree using `comparative.data()` to ready the tree f
 E. Plot the trimmed tree that includes just the taxa of interest in the astragalus dataset. Make it as beautiful as you can. 
 
 
-F.  Perform PGLS to test the hypothesis that `log(B)` is a function of `log(DistRad)`, while controling for phylogenetic signal.
+F.  Perform PGLS to test the hypothesis that `log(B)` is a function of `log(DistRad)`, while controling for phylogenetic signal. Is this hypothesis supported?
 
 G. Plot `log(B)` as a function of  `log(DistRad)`, and color code the points by habitat type.

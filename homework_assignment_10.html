@@ -100,7 +100,7 @@ img {
 <li><p>Read in <a href="http://hompal-stats.wabarr.com/datasets/ruminants.phy">the ruminant phylogeny from Hernández Fernández &amp; Vrba, 2007</a>.</p></li>
 <li><p>Combine the data and the tree using <code>comparative.data()</code> to ready the tree for pgls. <strong><em>Note: if you used <code>dplyr</code> in the steps above, you need to change the class of the resulting dataframe, because there is a bug in <code>caper</code> and it won’t deal with a <code>dplyr</code> <code>tbl_df</code> object. You can use this line of code to fix it <code>class(dataframeFromDplyr) &lt;- &quot;data.frame&quot;</code></em></strong></p></li>
 <li><p>Plot the trimmed tree that includes just the taxa of interest in the astragalus dataset. Make it as beautiful as you can.</p></li>
-<li><p>Perform PGLS to test the hypothesis that <code>log(B)</code> is a function of <code>log(DistRad)</code>, while controling for phylogenetic signal.</p></li>
+<li><p>Perform PGLS to test the hypothesis that <code>log(B)</code> is a function of <code>log(DistRad)</code>, while controling for phylogenetic signal. Is this hypothesis supported?</p></li>
 <li><p>Plot <code>log(B)</code> as a function of <code>log(DistRad)</code>, and color code the points by habitat type.</p></li>
 </ol>
 </div>

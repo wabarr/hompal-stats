@@ -1,0 +1,64 @@
+Non Parametric Stats
+========================================================
+incremental:true
+
+## when your data don't meet the assumptions
+
+```{r echo=FALSE}
+qqnorm(rnorm(1000)^3, main="(ab)normal Q-Q plot")
+```
+
+WARNING - LOW POWER ZONE
+=================
+type: alert
+
+If your data meet (or approximate) assumptions of parametrics, they are generally more powerful
+
+Monte-Carlo techniques are also often more powerful than non-parametrics
+
+However, non-parametrics simpler to use than MC
+
+Rank-Order Statistics
+============
+
+Many common non-parametric statistics are known as rank-order tests, because they work by ranking observations and analyzing these ranks, rather than the data themselves
+
+We will talk about non-parametrics in relation to their parametric equivalents. 
+
+Non-Parametric Regression
+===========
+
+Non-parametric regression techniques exist but are not commonly used.
+
+There are, however, several non-parametric correlation techniques that are widely used.
+
+Non-Parametric Correlation
+===========
+
+*  Kendals Tau
+*  Spearman's Rho
+
+Non-Parametric t-test
+===========
+
+*  Mann-Whitney U 
+
+Non-Parametric ANOVA
+===========
+
+*  Kruskal-Wallis
+
+Goodness of Fit Test
+============
+
+* Kolmogorov-Smirnov Test
+
+
+
+
+
+*  Wilcoxon-Rank Sum
+
+
+
+

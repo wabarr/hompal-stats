@@ -23,4 +23,4 @@ Apr 6	| [String Formatting and Filesystem](String_Formatting_Filesystem.html) & 
 Apr 13 | [Workflow](workflow.html) & [Multivariate Stats: III](Multivariate_III.html) |  [HW #9](homework_assignment_9.html) - [Solution](homework_solutions/HW_9_solution.html) | |  [Laurence Dumouchel](studentdemos/NMDS-Dumouchel.html)
 Apr 20 | [Comparative Methods](comparative_methods.html) |  | [Shultz & Dunbar, 2006](readings_pdf/Shultz_Dunbar_2006.pdf) | [Brian Schilder](studentdemos/Schilder_Ungulate.html)
 Apr 27 | [Mixed-Models] |  [HW #10](homework_assignment_10.html) - [Submission Link](https://blackboard.gwu.edu/webapps/assignment/uploadAssignment?content_id=_6463836_1&course_id=_250829_1&assign_group_id=&mode=cpview) | [Crawley Ch. 10](readings_pdf/Crawley_Ch10_MixedEffects.pdf) | Sean Lee
-Apr 29 |  **Exam II** (Note: this is designated Wednesday) | - | - | - 
+Apr 29 |  **Exam II** (Note: this is a Wednesday - but is designated Monday) | - | - | - 

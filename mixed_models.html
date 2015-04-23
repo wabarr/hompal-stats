@@ -771,6 +771,16 @@ hljs.initHighlightingOnLoad();
 </script>
 
    
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    showProcessingMessages: false,
+    messageStyle: "none"
+  });
+</script>
+
+<script type="text/javascript" src="mixed_models_files/mathjax-23/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
   
 
 
@@ -810,22 +820,229 @@ hljs.initHighlightingOnLoad();
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Two main circumstances where LMM is first choice</h3>
+<h3>Telling them apart</h3>
 <div class="slideContent" >
+<p><strong>Fixed Effects</strong>:</p>
+
 <ul>
-<li class="fragment"> none of your effects are fixed (less common)</li>
-<li class="fragment"> you have fixed effects, but have <strong><em>pseudoreplication</em></strong></li>
+<li class="fragment"> have meaningful factor labels (e.g., male)</li>
+<li class="fragment"> we care about the mean differences between levels</li>
+<li class="fragment"> levels chosen from a small group of possibilities</li>
+</ul>
+
+<p class="fragment"><strong>Random Effects</strong>:</p>
+
+<ul>
+<li class="fragment"> often have uninformative factor labels (e.g., site A)</li>
+<li class="fragment"> we don&#39;t care about mean differences between levels, but we do want to control for these differences</li>
+<li class="fragment"> chosen from a potentially very large group of possibilities</li>
 </ul>
 
 </div>
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Model Simplification</h3>
+<h3>Telling them apart - Example</h3>
 <div class="slideContent" >
-<blockquote class="fragment">
-<p>Everything should be kept as simple as possible, but no simpler</p>
-</blockquote>
+<p><strong>Question: do dyadic aggression rates differ by sex?</strong></p>
+
+<p>You follow a group of habituated monkeys for 2 months. Each day you watch each monkey for an hour, and record the number of agonistic encounters, and the time of day the observation was made.  In the end you have 600 observations (10 monkeys \( \times \) 60 days).</p>
+
+<table><thead>
+<tr>
+<th>MonkeyID</th>
+<th>Sex</th>
+<th>AggEncounters</th>
+<th>ObservationTime</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Bob</td>
+<td>male</td>
+<td>4</td>
+<td>morning</td>
+</tr>
+<tr>
+<td>Cindy</td>
+<td>female</td>
+<td>3</td>
+<td>morning</td>
+</tr>
+<tr>
+<td>Bob</td>
+<td>male</td>
+<td>7</td>
+<td>evening</td>
+</tr>
+<tr>
+<td>Cindy</td>
+<td>female</td>
+<td>2</td>
+<td>evening</td>
+</tr>
+<tr>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+</tr>
+</tbody></table>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Telling them apart - Example</h3>
+<div class="slideContent" >
+<table><thead>
+<tr>
+<th>MonkeyID</th>
+<th>Sex</th>
+<th>AggEncounters</th>
+<th>ObservationTime</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Bob</td>
+<td>male</td>
+<td>4</td>
+<td>morning</td>
+</tr>
+<tr>
+<td>Cindy</td>
+<td>female</td>
+<td>3</td>
+<td>morning</td>
+</tr>
+<tr>
+<td>Bob</td>
+<td>male</td>
+<td>7</td>
+<td>evening</td>
+</tr>
+<tr>
+<td>Cindy</td>
+<td>female</td>
+<td>2</td>
+<td>evening</td>
+</tr>
+<tr>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+</tr>
+</tbody></table>
+
+<p>You have a single response variable: <strong>AggEncounters</strong></p>
+
+<p class="fragment">Three predictor variables: <strong>Sex</strong>, <strong>MonkeyID</strong>, <strong>ObservationTime</strong></p>
+
+<p class="fragment"><strong>Question: do dyadic aggression rates differ by sex?</strong></p>
+
+<p class="fragment">Which are fixed and which are random effects?</p>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Two main circumstances where LMM is first choice</h3>
+<div class="slideContent" >
+<ul>
+<li class="fragment"> none of your effects are fixed (less common)</li>
+<li class="fragment"> you have one or more fixed effects, but also have <strong><em>pseudo-replication</em></strong></li>
+</ul>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Pseudo-replication</h3>
+<div class="slideContent" >
+<p>Recall from our discussion of ANOVA that independent observations in a treatment group are called <strong><em>replicates</em></strong></p>
+
+<p class="fragment">Example: in a study of tooth crown dimensions in hunter-gatherers versus industrialized populations, each measured tooth is a replicate of the population treatment. </p>
+
+<p class="fragment"><strong><em>Pseudoreplication</em></strong> occurs when what appear to be a replicate of the treatment group actually isn&#39;t independent.  </p>
+
+<p class="fragment">This situation is common, and is easy to pick out with a bit of practice. </p>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Pseudo-replication</h3>
+<div class="slideContent" >
+<table><thead>
+<tr>
+<th>MonkeyID</th>
+<th>Sex</th>
+<th>AggEncounters</th>
+<th>ObservationTime</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Bob</td>
+<td>male</td>
+<td>4</td>
+<td>morning</td>
+</tr>
+<tr>
+<td>Cindy</td>
+<td>female</td>
+<td>3</td>
+<td>morning</td>
+</tr>
+<tr>
+<td>Bob</td>
+<td>male</td>
+<td>7</td>
+<td>evening</td>
+</tr>
+<tr>
+<td>Cindy</td>
+<td>female</td>
+<td>2</td>
+<td>evening</td>
+</tr>
+<tr>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+</tr>
+</tbody></table>
+
+<p>Recall our dataset of 600 observations of sex and aggressive encounter rate, measured daily for 2 months (60 days) for 10 individuals.  </p>
+
+<p class="fragment"><strong>This dataset is massively pseudo-replicated&hellip;..why?</strong></p>
+
+</div>
+
+</section>
+<section data-state="section" data-transition="linear" data-transition-speed="default">
+<h2>Model Simplification</h2>
+<div class="slideContent" >
+<h2>&ldquo;Everything should be kept as simple as possible, but no simpler.&rdquo;</h2>
+
+<h3>- Albert Einstein (maybe&hellip;)</h3>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Generalized Linear Mixed Models</h3>
+<div class="slideContent" >
+<p>Like any other linear models, a basic assumption of general linear mixed-models is a normal error term</p>
+
+<p class="fragment">However, the structure of data may make this assumption invalid (e.g. binary data or count data)</p>
+
+<p class="fragment">Two very common types of non-normal error structures are:</p>
+
+<ul>
+<li class="fragment"> poisson - for count data</li>
+<li class="fragment"> binomial - for binary (e.g. presence absence data) or proportion data</li>
+</ul>
 
 </div>
 

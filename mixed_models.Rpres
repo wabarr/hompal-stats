@@ -10,27 +10,113 @@ Categorical Explanatory Variables
 So far in [ANOVA](anova.html) we have treated all categorical vars as the same
 
 There are actually two types of categorical variables
-
+ 
 *  ***fixed effects***
 *  ***random effects***
 
 ## It can be tricky to tell them apart
 
-Fixed Effects
+Telling them apart
 =============
 
-Random Effects
+**Fixed Effects**:
+
+*  have meaningful factor labels (e.g., male)
+*  we care about the mean differences between levels
+*  levels chosen from a small group of possibilities
+
+**Random Effects**:
+
+*  often have uninformative factor labels (e.g., site A)
+*  we don't care about mean differences between levels, but we do want to control for these differences
+*  chosen from a potentially very large group of possibilities
+
+Telling them apart - Example
+=============
+incremental: false
+
+**Question: do dyadic aggression rates differ by sex?**
+
+You follow a group of habituated monkeys for 2 months. Each day you watch each monkey for an hour, and record the number of agonistic encounters, and the time of day the observation was made.  In the end you have `r 10 * 60` observations (10 monkeys $\times$ 60 days).
+
+
+MonkeyID | Sex | AggEncounters | ObservationTime
+---|----|----|----
+Bob | male | 4 | morning
+Cindy | female | 3 | morning
+Bob | male | 7 | evening
+Cindy | female | 2 | evening
+... | ... | ... | ...
+
+Telling them apart - Example
 =============
 
+MonkeyID | Sex | AggEncounters | ObservationTime
+---|----|----|----
+Bob | male | 4 | morning
+Cindy | female | 3 | morning
+Bob | male | 7 | evening
+Cindy | female | 2 | evening
+... | ... | ... | ...
+
+You have a single response variable: **AggEncounters**
+
+Three predictor variables: **Sex**, **MonkeyID**, **ObservationTime**
+
+**Question: do dyadic aggression rates differ by sex?**
+
+Which are fixed and which are random effects?
 
 Two main circumstances where LMM is first choice
 ================
 
 *  none of your effects are fixed (less common)
-*  you have fixed effects, but have ***pseudoreplication***
+*  you have one or more fixed effects, but also have ***pseudo-replication***
+
+Pseudo-replication
+==================
+
+Recall from our discussion of ANOVA that independent observations in a treatment group are called ***replicates***
+
+Example: in a study of tooth crown dimensions in hunter-gatherers versus industrialized populations, each measured tooth is a replicate of the population treatment. 
+
+***Pseudoreplication*** occurs when what appear to be a replicate of the treatment group actually isn't independent.  
+
+This situation is common, and is easy to pick out with a bit of practice. 
+
+Pseudo-replication
+==================
+
+MonkeyID | Sex | AggEncounters | ObservationTime
+---|----|----|----
+Bob | male | 4 | morning
+Cindy | female | 3 | morning
+Bob | male | 7 | evening
+Cindy | female | 2 | evening
+... | ... | ... | ...
+
+Recall our dataset of 600 observations of sex and aggressive encounter rate, measured daily for 2 months (60 days) for 10 individuals.  
+
+**This dataset is massively pseudo-replicated.....why?**
 
 Model Simplification
-=========
+===================
 type: section
 
-## "Everything should be kept as simple as possible, but no simpler" - Albert Einstein (maybe...)
+## "Everything should be kept as simple as possible, but no simpler."
+
+### - Albert Einstein (maybe...)
+
+Generalized Linear Mixed Models
+==================
+
+Like any other linear models, a basic assumption of general linear mixed-models is a normal error term
+
+However, the structure of data may make this assumption invalid (e.g. binary data or count data)
+
+Two very common types of non-normal error structures are:
+
+*  poisson - for count data
+*  binomial - for binary (e.g. presence absence data) or proportion data
+
+

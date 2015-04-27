@@ -14,18 +14,20 @@ There are actually two types of categorical variables
 *  ***fixed effects***
 *  ***random effects***
 
-## It can be tricky at first to tell them apart
+## We need to deal with random effects differently
 
+## It can be tricky at first to tell them apart
+ 
 Telling them apart
 ==================
 
 ANOVA model: $$Y_{ij}=\mu + A_i + \epsilon_{ij}$$
 
-**Fixed effects** ($A_i$) affect the mean of groups in a meaningful way
+**Fixed effects**: ($A_i$) affect the mean of groups in a meaningful way
 
 Mixed Model: $$Y_{ij}=\mu + A_i + U_i + \epsilon_{ij}$$
 
-**Random effects** ($U_i$) further break down the error term, structuring variance, but not in an additive way like fixed effects
+**Random effects**: ($U_i$) structure variance, but not in an additive way like fixed effects. Think of these as additional, structured error terms
 
 
 Telling them apart
@@ -47,7 +49,7 @@ Telling them apart - Example
 =============
 incremental: false
 
-**Question: do dyadic aggression rates differ by sex?**
+**Question: do aggression rates differ by sex?**
 
 You follow a group of habituated monkeys for 2 months. Each day you watch each monkey for an hour, and record the number of agonistic encounters, and the time of day the observation was made.  In the end you have `r 10 * 60` observations (10 monkeys $\times$ 60 days).
 
@@ -75,7 +77,7 @@ You have a single response variable: **AggEncounters**
 
 Three predictor variables: **Sex**, **MonkeyID**, **ObservationTime**
 
-**Question: do dyadic aggression rates differ by sex?**
+**Question: do aggression rates differ by sex?**
 
 Which are fixed and which are random effects?
 
@@ -90,11 +92,20 @@ Pseudo-replication
 
 Recall from our discussion of ANOVA that independent observations in a treatment group are called ***replicates***
 
-Example: in a study of tooth crown dimensions in hunter-gatherers versus industrialized populations, each measured tooth is a replicate of the population treatment. 
-
-***Pseudoreplication*** occurs when what appear to be a replicate of the treatment group actually isn't independent.  
+***Pseudoreplication*** occurs when something masquerading as a replicate of the treatment actually isn't independent  
 
 This situation is common, and is easy to identify with a bit of practice. 
+
+Pseudo-replication
+==================
+
+There are two major kinds of pseudo-replication:
+
+*  temporal pseudoreplication - typically involves ***repeated*** measures on same individual
+*  spatial pseudoreplication - typically involves observations that may be similar due to spatial association
+
+
+***Challenge:*** give me some examples of pseudoreplicated data from biological anthropology.
 
 Pseudo-replication
 ==================
@@ -111,6 +122,13 @@ Recall our dataset of 600 observations of sex and aggressive encounter rate, mea
 
 **This dataset is massively pseudo-replicated.....why?**
 
+Steps in Linear Mixed Modelling (LMM)
+===================
+
+*  decide on the structure of your model (which are fixed and which are random effects)
+*  identify any nesting structure 
+*  specify the formula correctly, 
+
 LMM in R
 ====================
 
@@ -124,7 +142,67 @@ Models are specified much like normal linear models
 
 Random effects are specified as: `(1|randomEffect)`
 
-The 1 stands in for the intercept: effectively, you are saying: "allow each level of `randomEffect` to have its own independent intercept"
+The 1 stands in for the intercept.
+
+Effectively, you are saying: "allow each level of `randomEffect` to have its own independent intercept"
+
+LMM in R
+====================
+incremental: false
+left: 60
+
+```{r}
+library(lme4)
+head(sleepstudy)
+```
+
+***
+
+```{r echo=FALSE}
+library(ggplot2)
+qplot(x=Days, y=Reaction, color=Subject, geom="line", data=sleepstudy) + 
+  geom_point() + 
+  theme_bw(30)
+```
+
+
+LMM in R
+=================
+
+One option is to fit a model with a random effect term to allow each subject to have its own intercept:
+
+```{r}
+randIntercept <- lmer(Reaction ~ Days + (1 | Subject), sleepstudy)
+summary(randIntercept)
+```
+
+LMM in R
+=================
+
+Another option is to fit a model allowing both the slope and the intercept to vary for each subject:
+
+```{r}
+randSlopeInt <- lmer(Reaction ~ Days + (Days | Subject), sleepstudy)
+summary(randIntercept)
+```
+
+LMM in R - Is my model any good?
+===========
+
+One tool is the Akaike Information Criterion (AIC)
+
+Quantifies goodness of fit, while penalizing for model complexity
+
+```{r}
+AIC(randIntercept)
+AIC(randSlopeInt)
+```
+
+***
+
+![golf](golf.jpg)
+
+## The lower the AIC the better
 
 Model Simplification
 ===================
@@ -133,6 +211,40 @@ type: section
 ## "Everything should be kept as simple as possible, but no simpler."
 
 ### - Albert Einstein (probably never said this...)
+
+
+![einstein](einstein.jpg)
+
+Example - Isler et al. (2008)
+===========
+
+```{r}
+brains <- read.table("http://hompal-stats.wabarr.com/datasets/Isler_et_al_brains.txt", header=TRUE, sep="\t")
+library(dplyr)
+brains <- brains %>% 
+  select(Species, ECV..cc., Body.mass..g., Wild.captive) %>%
+  filter(Wild.captive %in% c("Wild", "Captive"))
+
+head(brains)
+```
+
+Example - Isler et al. (2008)
+===========
+
+Simplest model just uses body mass
+
+```{r}
+mod1 <- lm(log(ECV..cc.) ~ log(Body.mass..g.), data=brains)
+```
+
+Slightly more complicated model includes wild versus captive
+
+```{r}
+mod2 <- lm(log(ECV..cc.) ~ log(Body.mass..g.) + Wild.captive, data=brains)
+```
+
+***Which model is better?*** In this simple case, we can look at significance of individual terms, and $R^2$, but in LMM we don't have this option.
+
 
 anova() function - new use for old friend 
 =======================
@@ -156,7 +268,12 @@ anova(simpler, morecomplex)
 
 ***Note:*** more complex models *ALWAYS* fit the data better, but likelihood ratio test asks if this difference is significant
 
+Example - Isler et al. (2008)
+===========
 
+```{r}
+anova(mod1, mod2)
+```
 
 Generalized Linear Mixed Models
 ==================

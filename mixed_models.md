@@ -35,13 +35,17 @@ Telling them apart
 
 **Fixed Effects**:
 
-*  meaningful factor labels (e.g., male); small possible set
+*  meaningful factor labels (e.g., male)
+*  small possible range of values....you have data for all of them
 *  affect only mean of $y$ variable
 *  effect predictable in different studies (e.g., sex in monkey morphometrics)
 
+*** 
+
 **Random Effects**:
 
-*  uninformative factor labels (e.g., site A); very large possible set
+*  uninformative factor labels (e.g., site A)
+*  very large range of possible values...you have data for a random sample of them
 *  affect only the variance of $y$ variable
 *  effect unpredictable or meaningless across studies
 

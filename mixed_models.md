@@ -2,7 +2,7 @@ Linear Mixed Models
 ========================================================
 incremental: true
 
-## LMMs
+![mixed](mixed-model.jpg)
 
 Categorical Explanatory Variables
 =====================
@@ -14,22 +14,34 @@ There are actually two types of categorical variables
 *  ***fixed effects***
 *  ***random effects***
 
-## It can be tricky to tell them apart
+## It can be tricky at first to tell them apart
+
+Telling them apart
+==================
+
+ANOVA model: $$Y_{ij}=\mu + A_i + \epsilon_{ij}$$
+
+**Fixed effects** ($A_i$) affect the mean of groups in a meaningful way
+
+Mixed Model: $$Y_{ij}=\mu + A_i + U_i + \epsilon_{ij}$$
+
+**Random effects** ($U_i$) further break down the error term, structuring variance, but not in an additive way like fixed effects
+
 
 Telling them apart
 =============
 
 **Fixed Effects**:
 
-*  have meaningful factor labels (e.g., male)
-*  we care about the mean differences between levels
-*  levels chosen from a small group of possibilities
+*  meaningful factor labels (e.g., male); small possible set
+*  affect only mean of $y$ variable
+*  effect predictable in different studies (e.g., sex in monkey morphometrics)
 
 **Random Effects**:
 
-*  often have uninformative factor labels (e.g., site A)
-*  we don't care about mean differences between levels, but we do want to control for these differences
-*  chosen from a potentially very large group of possibilities
+*  uninformative factor labels (e.g., site A); very large possible set
+*  affect only the variance of $y$ variable
+*  effect unpredictable or meaningless across studies
 
 Telling them apart - Example
 =============
@@ -71,7 +83,7 @@ Two main circumstances where LMM is first choice
 ================
 
 *  none of your effects are fixed (less common)
-*  you have one or more fixed effects, but also have ***pseudo-replication***
+*  you have one or more fixed effects, but also have ***pseudo-replication*** (more common)
 
 Pseudo-replication
 ==================
@@ -82,7 +94,7 @@ Example: in a study of tooth crown dimensions in hunter-gatherers versus industr
 
 ***Pseudoreplication*** occurs when what appear to be a replicate of the treatment group actually isn't independent.  
 
-This situation is common, and is easy to pick out with a bit of practice. 
+This situation is common, and is easy to identify with a bit of practice. 
 
 Pseudo-replication
 ==================
@@ -99,24 +111,14 @@ Recall our dataset of 600 observations of sex and aggressive encounter rate, mea
 
 **This dataset is massively pseudo-replicated.....why?**
 
-Model Simplification
-===================
-type: section
+LMM in R
+====================
 
-## "Everything should be kept as simple as possible, but no simpler."
-
-### - Albert Einstein (maybe...)
-
-Generalized Linear Mixed Models
-==================
-
-Like any other linear models, a basic assumption of general linear mixed-models is a normal error term
-
-However, the structure of data may make this assumption invalid (e.g. binary data or count data)
-
-Two very common types of non-normal error structures are:
-
-*  poisson - for count data
-*  binomial - for binary (e.g. presence absence data) or proportion data
+`lme4` package
 
 
+
+
+```
+Error in library(lme4) : there is no package called 'lme4'
+```

@@ -2,7 +2,7 @@ Linear Mixed Models
 ========================================================
 incremental: true
 
-## LMMs
+![mixed](mixed-model.jpg)
 
 Categorical Explanatory Variables
 =====================
@@ -14,22 +14,34 @@ There are actually two types of categorical variables
 *  ***fixed effects***
 *  ***random effects***
 
-## It can be tricky to tell them apart
+## It can be tricky at first to tell them apart
+
+Telling them apart
+==================
+
+ANOVA model: $$Y_{ij}=\mu + A_i + \epsilon_{ij}$$
+
+**Fixed effects** ($A_i$) affect the mean of groups in a meaningful way
+
+Mixed Model: $$Y_{ij}=\mu + A_i + U_i + \epsilon_{ij}$$
+
+**Random effects** ($U_i$) further break down the error term, structuring variance, but not in an additive way like fixed effects
+
 
 Telling them apart
 =============
 
 **Fixed Effects**:
 
-*  have meaningful factor labels (e.g., male)
-*  we care about the mean differences between levels
-*  levels chosen from a small group of possibilities
+*  meaningful factor labels (e.g., male); small possible set
+*  affect only mean of $y$ variable
+*  effect predictable in different studies (e.g., sex in monkey morphometrics)
 
 **Random Effects**:
 
-*  often have uninformative factor labels (e.g., site A)
-*  we don't care about mean differences between levels, but we do want to control for these differences
-*  chosen from a potentially very large group of possibilities
+*  uninformative factor labels (e.g., site A); very large possible set
+*  affect only the variance of $y$ variable
+*  effect unpredictable or meaningless across studies
 
 Telling them apart - Example
 =============
@@ -71,7 +83,7 @@ Two main circumstances where LMM is first choice
 ================
 
 *  none of your effects are fixed (less common)
-*  you have one or more fixed effects, but also have ***pseudo-replication***
+*  you have one or more fixed effects, but also have ***pseudo-replication*** (more common)
 
 Pseudo-replication
 ==================
@@ -82,7 +94,7 @@ Example: in a study of tooth crown dimensions in hunter-gatherers versus industr
 
 ***Pseudoreplication*** occurs when what appear to be a replicate of the treatment group actually isn't independent.  
 
-This situation is common, and is easy to pick out with a bit of practice. 
+This situation is common, and is easy to identify with a bit of practice. 
 
 Pseudo-replication
 ==================
@@ -99,13 +111,52 @@ Recall our dataset of 600 observations of sex and aggressive encounter rate, mea
 
 **This dataset is massively pseudo-replicated.....why?**
 
+LMM in R
+====================
+
+`lme4` package
+
+```{r}
+library(lme4)
+```
+
+Models are specified much like normal linear models
+
+Random effects are specified as: `(1|randomEffect)`
+
+The 1 stands in for the intercept: effectively, you are saying: "allow each level of `randomEffect` to have its own independent intercept"
+
 Model Simplification
 ===================
 type: section
 
 ## "Everything should be kept as simple as possible, but no simpler."
 
-### - Albert Einstein (maybe...)
+### - Albert Einstein (probably never said this...)
+
+anova() function - new use for old friend 
+=======================
+
+Recall that `anova()` doesn't do analysis of variance, it creates an ANOVA table from a model
+
+You can also compare two models with `anova()` to test the hypothesis that they are significantly different
+
+The models are compared with a ***likelihood-ratio test***
+
+likelihood ratio test
+===================
+
+Only valid for models that are ***nested***: *i.e., one is a subset of the other*
+
+```{}
+simpler  <-    lm(resp ~ fac1 + fac2)
+morecomplex <- lm(resp ~ fac1 + fac2 + fac3)
+anova(simpler, morecomplex)
+```
+
+***Note:*** more complex models *ALWAYS* fit the data better, but likelihood ratio test asks if this difference is significant
+
+
 
 Generalized Linear Mixed Models
 ==================
@@ -119,4 +170,9 @@ Two very common types of non-normal error structures are:
 *  poisson - for count data
 *  binomial - for binary (e.g. presence absence data) or proportion data
 
+GLMM in R
+==================
 
+```{}
+lmer(response ~ fixedEffect + (1|randomEffect), family="poisson")
+```

@@ -6,7 +6,7 @@ title: "Homework # 4 - Solution"
 
 ## Problem 1  - 3 pts 
 
-The p value represents the probability of the statistical null hypothesis given the observed data. 
+The p value represents the probability of the observed data (or more extreme data), assuming the null hypothesis is true.  
 
 ## Problem 2
 

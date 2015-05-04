@@ -39,6 +39,12 @@ Dataset Name | Source of data
 [ungs.csv](datasets/ungs.csv) | [Shultz and Dunbar, 2006](http://dx.doi.org/10.1098/rspb.2005.3283)
 [Bininda_Emonds_correctedDates_FULLPHYLOG.txt](datasets/Bininda_Emonds_correctedDates_FULLPHYLOG.txt) | [Bininda Emonds et al., 2007](http://dx.doi.org/10.1038/nature05634)
 [winter_korean.txt](datasets/winter_korean.txt) | [Winter & Grawunder, 2012](http://dx.doi.org/10.1016/j.wocn.2012.08.006)
+[test_data_chimp.txt](datasets/test_data_chimp.txt) | fake data
+[test_regression_data.txt](datasets/test_regression_data.txt) | fake data
+[presidents.txt](datasets/presidents.txt) | built in dataset R
+[plant_measurements.txt](datasets/plant_measurements.txt) | from Crawley R book
+[bodysize_sex_rank.txt](datasets/bodysize_sex_rank.txt) | fake data
+[hair_eye.txt](datasets/hair_eye.txt) | built in dataset R
 
 <!--
 <ul>

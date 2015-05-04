@@ -40,15 +40,15 @@ X and Y values are ranked separately, and the Pearson's product-moment coefficie
 
 
 ```r
-x <- c(0.9, 6.8, 3.2  , 2.4, 1.2)
-y <- c(0.1, 4.5, 5.4, 1.5, 1.9)
-rank_x <- order(x)
-rank_y <- order(y)
+x <- c(0.9, 6.8, 3.2  , 2.4, 1.2, 1.1)
+y <- c(0.1, 4.5, 5.4, 1.5, 1.9, 4.1)
+rank_x <- rank(x)
+rank_y <- rank(y)
 rank_x
 ```
 
 ```
-[1] 1 5 4 3 2
+[1] 1 6 5 4 3 2
 ```
 
 ```r
@@ -56,7 +56,7 @@ rank_y
 ```
 
 ```
-[1] 1 4 5 2 3
+[1] 1 5 6 2 3 4
 ```
 
 Spearman's Rho
@@ -72,7 +72,7 @@ cor(x, y, method = "pearson")
 ```
 
 ```
-[1] 0.7190313
+[1] 0.5590485
 ```
 
 ```r
@@ -80,7 +80,7 @@ cor(x, y, method = "spearman")
 ```
 
 ```
-[1] 0.8
+[1] 0.7142857
 ```
 
 ```r
@@ -88,7 +88,7 @@ cor(rank_x, rank_y, method = "pearson")
 ```
 
 ```
-[1] 0.8
+[1] 0.7142857
 ```
 
 Kendall's Tau
@@ -117,7 +117,7 @@ cor(x, y, method="kendall")
 ```
 
 ```
-[1] 0.7777778
+[1] 0.8222222
 ```
 
 Non-Parametric t-test
@@ -150,7 +150,7 @@ wilcox.test(x,y)
 	Wilcoxon rank sum test
 
 data:  x and y
-W = 12, p-value = 0.002879
+W = 7, p-value = 0.0004871
 alternative hypothesis: true location shift is not equal to 0
 ```
 
@@ -190,7 +190,7 @@ kruskal.test(var~group)
 	Kruskal-Wallis rank sum test
 
 data:  var by group
-Kruskal-Wallis chi-squared = 10.0163, df = 1, p-value = 0.001552
+Kruskal-Wallis chi-squared = 19.2029, df = 1, p-value = 1.175e-05
 ```
 
 Goodness of Fit Test
@@ -229,7 +229,7 @@ ks.test(rnorm(100), "punif")
 	One-sample Kolmogorov-Smirnov test
 
 data:  rnorm(100)
-D = 0.52, p-value < 2.2e-16
+D = 0.51, p-value < 2.2e-16
 alternative hypothesis: two-sided
 ```
 
@@ -245,7 +245,7 @@ ks.test(rnorm(100)^2, "pnorm")
 	One-sample Kolmogorov-Smirnov test
 
 data:  rnorm(100)^2
-D = 0.5002, p-value < 2.2e-16
+D = 0.5001, p-value < 2.2e-16
 alternative hypothesis: two-sided
 ```
 
@@ -264,7 +264,7 @@ ks.test(runif(100), rnorm(100))
 	Two-sample Kolmogorov-Smirnov test
 
 data:  runif(100) and rnorm(100)
-D = 0.57, p-value = 1.554e-14
+D = 0.49, p-value = 7.475e-11
 alternative hypothesis: two-sided
 ```
 

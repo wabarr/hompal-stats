@@ -41,10 +41,10 @@ Spearman's Rho
 X and Y values are ranked separately, and the Pearson's product-moment coefficient ($r$) is computed on these ranks
 
 ```{r}
-x <- c(0.9, 6.8, 3.2  , 2.4, 1.2)
-y <- c(0.1, 4.5, 5.4, 1.5, 1.9)
-rank_x <- order(x)
-rank_y <- order(y)
+x <- c(0.9, 6.8, 3.2  , 2.4, 1.2, 1.1)
+y <- c(0.1, 4.5, 5.4, 1.5, 1.9, 4.1)
+rank_x <- rank(x)
+rank_y <- rank(y)
 rank_x
 rank_y
 

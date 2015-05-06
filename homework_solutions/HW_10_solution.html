@@ -87,18 +87,8 @@ head(astrag)</code></pre>
 </div>
 <div id="b.-1-pt---select-the-following-colums-from-the-data-taxon-b-distrad-and-habitat.-create-a-new-dataframe-with-the-taxon-the-habitat-and-species-means-for-b-and-distrad." class="section level3">
 <h3>B. 1 pt - Select the following colums from the data: <code>Taxon</code>, <code>B</code>, <code>DistRad</code>, and <code>Habitat</code>. Create a new dataframe with the <code>Taxon</code>, the <code>Habitat</code> and species means for <code>B</code> and <code>DistRad</code>.</h3>
-<pre class="r"><code>library(dplyr)</code></pre>
-<pre><code>## 
-## Attaching package: 'dplyr'
-## 
-## The following object is masked from 'package:stats':
-## 
-##     filter
-## 
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union</code></pre>
-<pre class="r"><code>selectedAstrag &lt;- 
+<pre class="r"><code>library(dplyr)
+selectedAstrag &lt;- 
   astrag %&gt;% 
   select(Taxon, B, DistRad, Habitat) %&gt;%
   group_by(Taxon) %&gt;%

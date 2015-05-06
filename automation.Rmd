@@ -255,11 +255,12 @@ library(magrittr)
 library(ggplot2)
 
 #chained syntax
-rnorm(1000, mean=20, sd=1.4) %>% log %>% qplot
+rnorm(1000, mean=20, sd=1.4) %>% log %>% hist
+
 
 #compare with nested function calls 
 
-qplot(log(rnorm(1000, mean=20, sd=1.4)))
+hist(log(rnorm(1000, mean=20, sd=1.4)))
 ```
 
 ### <span class="mega-octicon octicon-puzzle"></span> Challenge 

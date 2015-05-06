@@ -6,7 +6,6 @@
 
 <meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="Content-Style-Type" content="text/css" />
 <meta name="generator" content="pandoc" />
 
 
@@ -14,10 +13,11 @@
 <title>Distributions</title>
 
 <script src="libs/jquery-1.11.0/jquery.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link href="libs/bootstrap-2.3.2/css/united.min.css" rel="stylesheet" />
-<link href="libs/bootstrap-2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet" />
-<script src="libs/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.1/css/united.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.1/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.1/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.1/shim/respond.min.js"></script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -63,6 +63,14 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
   margin-left: auto;
   margin-right: auto;
 }
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img { 
+  max-width:100%; 
+  height: auto; 
+}
 </style>
 <div class="container-fluid main-container">
 
@@ -72,7 +80,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
       <li><a href="index.html"><span class="mega-octicon octicon-home"></a></li>
       <li><a href="datasets.html">Data</a></li>
       <li><a href="homework.html">Demos, Readings, & Homework</a></li>
-      <li><a href="https://www.dropbox.com/s/5i83xqgfm6ud9td/ANTH6413_syllabus.docx?dl=0">Syllabus</a></li>
+      <li><a href="ANTH6413_syllabus.docx">Syllabus</a></li>
       <li><a href="gettinghelp.html">Getting Help</a></li>
       
     </ul>
@@ -112,13 +120,13 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <p>Binomial random variables can be simulated in R using the <code>rbinom()</code> function.</p>
 <pre class="r"><code># 10 observations, 1 trial
 rbinom(n = 10, size=1, prob = 0.5)</code></pre>
-<pre><code>##  [1] 1 0 0 1 1 1 1 0 1 0</code></pre>
+<pre><code>##  [1] 0 0 1 1 1 0 1 1 0 0</code></pre>
 <pre class="r"><code># 1 observation, 10 trials
 rbinom(n = 1, size=10, prob = 0.5)</code></pre>
-<pre><code>## [1] 4</code></pre>
+<pre><code>## [1] 2</code></pre>
 <pre class="r"><code># 10 observations, 10 trials
 rbinom(n = 10, size=10, prob = 0.5)</code></pre>
-<pre><code>##  [1] 4 6 5 7 4 4 4 3 8 4</code></pre>
+<pre><code>##  [1] 2 5 4 2 4 6 5 3 6 6</code></pre>
 <p>We can use the <code>dbinom()</code> function to get a sense of the shape of the binomial distribution.</p>
 <pre class="r"><code>library(ggplot2)
 qplot(x=1:25, y=dbinom(1:25, 25, prob = 0.5), geom=&quot;line&quot;, main=&quot;binomial density prob=0.5&quot;)</code></pre>
@@ -140,7 +148,7 @@ qplot(x=1:25, y=dbinom(1:25, 25, prob = 0.5), geom=&quot;line&quot;, main=&quot;
 <h3>Poisson Distribution</h3>
 <p>Is similar to the binomial distribution, but describes rare events, when the number of trials <span class="math">\(n\)</span> is unknown. Requires a single rate parameter <span class="math">\(\lambda\)</span>. It is commonly pops up when examining the number of events occuring through time (e.g., the number of pieces of mail recieved per day, or the number of speciation events occuring per millenium). The expected value and variance for the Poisson distribution are both equal to lambda</p>
 <pre class="r"><code>rpois(10, lambda = 0.2)</code></pre>
-<pre><code>##  [1] 0 0 1 0 0 0 0 0 0 0</code></pre>
+<pre><code>##  [1] 0 2 0 1 1 0 1 0 0 0</code></pre>
 <pre class="r"><code>qplot(x=0:5, y=dpois(0:5, lambda = 0.2), main=&quot;Poisson distribution with lambda = 0.2&quot;, geom=&quot;line&quot;)</code></pre>
 <p><img src="distributions_files/figure-html/unnamed-chunk-5-1.png" title="" alt="" width="672" /></p>
 </div>
@@ -156,8 +164,8 @@ qplot(x=1:25, y=dbinom(1:25, 25, prob = 0.5), geom=&quot;line&quot;, main=&quot;
 <h3>Uniform Distribution</h3>
 <p>The uniform distribution represents a function in which the probability density is equal for each sub-interval across the a given range. This results in a flat frequency distribution. The expected value over the range <span class="math">\(a\)</span> to <span class="math">\(b\)</span> is <span class="math">\((a + b)/2\)</span>. An example might be the distribution of trees on a savannah landscape, which are competing with one another for nutrients and light.</p>
 <pre class="r"><code>runif(10, min = 1, max = 10)</code></pre>
-<pre><code>##  [1] 8.538701 1.825057 5.488556 3.004363 5.897198 1.069302 5.707738
-##  [8] 5.901340 7.402426 5.548333</code></pre>
+<pre><code>##  [1] 4.534789 6.044339 8.682121 5.459370 5.991888 6.624970 6.536601
+##  [8] 9.131194 9.123029 6.700767</code></pre>
 <pre class="r"><code>qplot(runif(10000), min=1, max=10, main=&quot;uniform distribution from 1 to 10&quot;)</code></pre>
 <pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.</code></pre>
 <p><img src="distributions_files/figure-html/unnamed-chunk-7-1.png" title="" alt="" width="672" /></p>
@@ -166,8 +174,8 @@ qplot(x=1:25, y=dbinom(1:25, 25, prob = 0.5), geom=&quot;line&quot;, main=&quot;
 <h3>Normal Distribution</h3>
 <p>The normal distribution (also known as the Gaussian distribution) is the familiar bell-curve shaped distribution that is symmetrical around the mean, with diminishing tails as you move away from the mean. Many phenomena in nature are distributed as a normal distribution, especially continuous measurement values. The normal distribution has two parameters, the mean (<span class="math">\(\mu\)</span>) and the standard deviation (<span class="math">\(\sigma\)</span>).</p>
 <pre class="r"><code>rnorm(10, mean=0, sd=1)</code></pre>
-<pre><code>##  [1] -0.1159139  0.3860222  0.9168858  0.9528258  1.5846728  1.1301650
-##  [7] -1.6276837 -0.4605027  1.2598976  0.1775399</code></pre>
+<pre><code>##  [1]  1.07380533 -0.80876949  0.04223363  0.19413731  0.56832683
+##  [6] -1.05413673  1.29415833 -0.24584865  0.56208715 -0.38659431</code></pre>
 <pre class="r"><code>qplot(rnorm(10000), mean=0, sd=1, main=&quot;Standard normal distribution &quot;)</code></pre>
 <pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.</code></pre>
 <p><img src="distributions_files/figure-html/unnamed-chunk-8-1.png" title="" alt="" width="672" /></p>
@@ -176,8 +184,8 @@ qplot(x=1:25, y=dbinom(1:25, 25, prob = 0.5), geom=&quot;line&quot;, main=&quot;
 <h3>Log-normal Distribution</h3>
 <p>The log-normal distribution resembles a normal distribution when it is logged.</p>
 <pre class="r"><code>rlnorm(10, meanlog = 0, sdlog = 1)</code></pre>
-<pre><code>##  [1] 0.8417387 1.3934369 0.1290053 0.7014645 0.6063832 2.0314921 0.3341261
-##  [8] 0.8776764 0.9203796 2.3709497</code></pre>
+<pre><code>##  [1] 1.2843636 0.7968596 4.4519489 4.1788336 1.7054733 1.0256739 0.7452309
+##  [8] 0.6425638 3.0331026 0.2706177</code></pre>
 <pre class="r"><code>lnorm &lt;- rlnorm(1000, meanlog = 0, sdlog = 1)
 
 qplot(lnorm, main=&quot;lognormal distribution&quot;)</code></pre>
@@ -191,8 +199,8 @@ qplot(lnorm, main=&quot;lognormal distribution&quot;)</code></pre>
 <h3>Exponential Distribution</h3>
 <p>The exponential distribution is the continuous version of the Poisson distribution. It is goverend by a single rate parameter.</p>
 <pre class="r"><code>rexp(10, rate=2)</code></pre>
-<pre><code>##  [1] 7.018656e-01 3.556151e-01 2.520052e-01 1.142171e-01 1.386257e-02
-##  [6] 2.384128e-02 1.302615e-01 7.129303e-06 3.161889e-01 7.636838e-01</code></pre>
+<pre><code>##  [1] 0.188932511 0.448628372 0.380828798 0.009292117 0.047564496
+##  [6] 0.614757543 0.113406790 0.669341278 0.321130701 0.932205395</code></pre>
 <pre class="r"><code>exponential &lt;- rexp(1000, rate=2)
 qplot(exponential, main=&quot;Shape of Exponential distribution using random simulated data&quot;)</code></pre>
 <pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.</code></pre>
@@ -282,12 +290,12 @@ $(document).ready(function () {
 
 </script>
 
-<!-- dynamically load mathjax for compatibility with --self-contained -->
+<!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

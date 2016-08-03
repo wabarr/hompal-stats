@@ -1,0 +1,24 @@
+## Problem 1
+
+In 25 words or less, what does a p-value mean? ***Be careful!!!!***
+
+
+## Problem 2
+
+Write your own Monte Carlo statistical analysis to test the hypothesis that foot size is correlated with stature (height). Use this [fake data set](datasets/american_women_feet.txt) on foot size in american women.
+
+A. Use ggplot2 to create a scatter plot with height on the x-axis and foot length on the y-axis.  Make sure your plot has an informative title and make sure it looks good!
+
+B. Do the analysis:
+
+*   Your test statistic is the absolute value of the correlation coefficient (we will discuss this in more detail next week). To calculate the correlation coefficient of two vectors `x` and `y`, you would use the `cor()` function like this `cor(x,y)`. You can calculate the absolute value of this number with `abs()`.
+*   For each iteration, shuffle the foot length values randomly, and calculate the test statistic for the shuffled foot lengths and the original height variable. 
+*   Repeat this 10,000 times, storing the test statistic each time in a vector called `cors`.
+  
+C. Make a histogram of `cors` to get a visual sense of the values. Make sure you have meaningful axis labels, a title, and that the plot looks good!
+
+D. Calculate the value of the test statistic for the original (unshuffled) data, and save to a variable called `original.cor`
+
+E. Calculate the proportion of the elements in `cors` that are greater than or equal to `original.cor`
+
+F. Write a couple of sentences interpreting these results in terms of the relationship between the two variables and in terms of the null hypothesis. ***Be specific!***

@@ -1,0 +1,77 @@
+## 14 pts total
+
+## Problem # 1
+
+Using this fake data set on [lemur feeding rates](http://hompal-stats.wabarr.com/datasets/lemurfeeding.txt) do a two-factor ANOVA to determine whether feeding rate is influenced by sex and by the group each individual belongs to. 
+
+### 1 pt
+
+## A.  Make a boxplot of feeding rate by sex
+
+```{r}
+library(ggplot2)
+theme_set(theme_bw(30))
+lemurs <- read.table("http://hompal-stats.wabarr.com/datasets/lemurfeeding.txt", header=TRUE)
+qplot(x=sex, y=feedingrate, data=lemurs, geom="boxplot", fill=sex)
+```
+
+### 1 pt
+
+## B.  Make a boxplot of feeding rate by group
+
+```{r}
+qplot(x=group, y=feedingrate, data=lemurs, geom="boxplot", fill=group)
+```
+
+### 1 pt
+
+## C.  Show the ANOVA table for the two way ANOVA with the interaction term.
+
+```{r}
+anova(lm(feedingrate ~ group * sex, data=lemurs))
+```
+
+### 2 pts
+
+## D.  Explore the interaction between the two factors by creating a plot analogous to figure 10.3 (p 329) in the Gotelli book. Put the group on the X axis, and the mean feeding rate for each group on the Y axis (make this a line going across all factor levels). Color code the lines by sex. 
+
+```{r}
+library(dplyr)
+groupedLemurs <- lemurs %>% group_by(group, sex) %>% summarize(mean=mean(feedingrate))
+qplot(x=group, y=mean, data=groupedLemurs, group=sex, geom="line", color=sex)
+```
+
+
+### 1 pt
+
+## E. Explain whether or not there is an interaction between the two factors.  
+
+Heck yeah there is.  These lines are not parallel, so there is a non-additive interaction between sex and group.
+
+## Problem # 2
+
+### 5 pts
+
+# Write a function to simulate ANOVA type data......
+
+```{r}
+
+doANOVA <- function(sampleSize=20, grandMean=50, errorSD=5, meanDiff=3) {
+  library(ggplot2)
+  myError <- rnorm(sampleSize, mean = 0, sd = errorSD)
+  groups <- rep(c("groupX", "groupY"), sampleSize/2)
+  y <- grandMean + c((meanDiff/2)*-1, (meanDiff/2)) + myError
+  print(qplot(x=groups, y=y, geom="boxplot"))
+  myModel <- lm(y~groups)
+  return(pf(summary(myModel)$fstatistic[1],summary(myModel)$fstatistic[2],summary(myModel)$fstatistic[3], lower.tail = FALSE))
+}
+
+```
+
+### 3 pts
+
+# what effect do these parameters have on the p value?
+
+A.  sample size - increasing n decreases the p value
+B.  grand mean - no effect
+C.  standard deviation of the error term - increasing error variance (sd) increases the p value

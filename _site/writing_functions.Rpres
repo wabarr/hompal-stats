@@ -1,0 +1,135 @@
+Writing Functions
+========================================================
+ 
+## It has come to my attention that writing functions in R is confusing for people. 
+
+## This makes me sad, because:
+
+# You need to know how to write functions!!!!
+
+Anatomy of a Function
+========================================================
+
+# A function has:
+
+*  a ***name***
+*  1 or more ***arguments***
+*  the ***body*** of the function (i.e., code that does something with the arguments)
+*  a ***return value***
+
+Anatomy of a Function
+========================================================
+```{r}
+isMeanBigger <- function(myVector){
+  vecMean <- mean(myVector)
+  vecMedian <- median(myVector)
+  test <- vecMean > vecMedian
+  return(test)
+}
+```
+
+*  `isMeanBigger` = the name of the function
+*  `myVector` = the only argument for this function
+*   all the code between the curly brackets `{}` is the body of the function
+*  we use `return()` to specify what gets returned when we call the function (in this case it will be `TRUE` or `FALSE`, because we are returning the result of a logical test)
+
+Anatomy of a Function
+========================================================
+type:alert
+
+```{r}
+isMeanBigger <- function(myVector){
+  vecMean <- mean(myVector)
+  vecMedian <- median(myVector)
+  test <- vecMean > vecMedian
+  return(test)
+}
+```
+## Critical Points
+
+1.  the names `myVector`, `vecMean`, `vecMedian`, and `test` do not exist outside the function (i.e. after running the above code, you will get the following error if you type `myVector` into the R interpreter)
+
+```
+Error in eval(expr, envir, enclos) : object 'myVector' not found
+```
+
+
+Anatomy of a Function
+========================================================
+type:alert
+
+```{r}
+isMeanBigger <- function(myVector){
+  vecMean <- mean(myVector)
+  vecMedian <- median(myVector)
+  test <- vecMean > vecMedian
+  return(test)
+}
+```
+## Critical Points
+
+1.  the names `myVector`, `vecMean`, `vecMedian`, and `test` do not exist outside the function (i.e. after running the above code, you will get an error if you type `myVector` into the R interpreter)
+
+2.  Nothing happens when we create the function.  Stuff happens later when we ***call*** the function with specific arguments. 
+
+Asking a function to run
+========================================================
+
+
+```{r}
+isMeanBigger <- function(myVector){
+  vecMean <- mean(myVector)
+  vecMedian <- median(myVector)
+  test <- vecMean > vecMedian
+  return(test)
+}
+```
+
+
+I assume you ran the code above in R (i.e. you defined our function)
+
+Now we can call the function with a specified vector as an argument. 
+
+```{r}
+isMeanBigger(myVector = rlnorm(1000))
+```
+
+Asking a function to run
+===============================================================
+type:alert
+
+```{r}
+isMeanBigger(myVector = rlnorm(1000))
+```
+
+## Critical Points
+
+When we ask `isMeanBigger()` to run, it needs an argument called `myVector`. ***But remember, this value this doesn't exist outside the function.***
+
+We solved this problem by providing `rlnorm(1000)` as the value of `myVector`.  This vector contains 1000 draws from a lognormal distribution. 
+
+
+
+Asking a function to run
+===============================================================
+type:alert
+
+```{r}
+isMeanBigger(myVector = rlnorm(1000))
+```
+
+## Critical Points
+
+Our function computed mean and median, did the logical test, and returned the result.  In this case, the result was `TRUE` because the mean is much bigger than the median. 
+
+Summary
+===============================================================
+type:section
+
+## A function has arguments, that can only be referenced within the function itself. 
+
+## When you ask a function to run, you must provide values for these arguments
+
+## Code within the body of the function gets run
+
+## A single value is returned

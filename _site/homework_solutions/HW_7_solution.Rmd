@@ -1,0 +1,53 @@
+## 6 pts total
+
+```{r}
+bovids <- read.table("http://hompal-stats.wabarr.com/datasets/bovid_occurrences.txt", header=TRUE, sep="\t")
+head(bovids)
+```
+
+## Problem 1 - 2 pts
+```{r}
+library(tidyr)
+spread_bovids <- spread(bovids, key=site, value=count)
+
+#convert the taxon column to row.names instead, as these will be preserved in the matrix
+#that we later use for the analysis
+row.names(spread_bovids) <- spread_bovids$taxon
+spread_bovids<-spread_bovids[,2:9]
+spread_bovids
+```
+## Problem 2 - 2pts
+
+```{r fig.width=12, fig.height=12}
+library(ggplot2)
+ggplot(aes(x=taxon, y=count, fill=taxon), data=bovids) + 
+  geom_bar(stat = "identity") + 
+  facet_wrap(~site) + 
+  theme_bw(30) + 
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+## Problem 3 - 2pts
+
+### Chi square is a good choice here as all the expected cell frequencies are well above 5.  Thus, it can be used to test the hypothesis that row and column variables are associated. 
+
+
+```{r}
+myTest <- chisq.test(spread_bovids)
+```
+
+
+### Just to make sure, lets check that our expected values are high enough.
+
+```{r}
+myTest$expected
+```
+
+
+### Now, we look at the results of the test
+
+```{r}
+myTest
+```
+
+### There is strong evidence that site and taxon are associated.  The null hypothesis is that there is no association between site and taxon.  Our p value from the chi square analysis is vanishingly small, which means that data as extreme as ours are extremely unlikely assuming the null hypothesis. 

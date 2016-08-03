@@ -1,0 +1,15 @@
+## Problem 1
+
+A.  load [this dataset](datasets/DIK-scap.txt) on scapula morphology in Pan, Homo and Gorilla, and the Dikika fossil child.  Details on this data can be found in [Alemseged et al, 2006](http://www.nature.com/nature/journal/v443/n7109/full/nature05047.html)
+B.  Calculate the natural log of all the numeric variables
+C.  Perform a principal components analysis on the data, using the `scale=TRUE` argument. 
+D.  Summarize the PCA, indicating what proportion of the variance is explained by each PC.
+E.  Make a beautiful plot (using ggplot) of PC1 versus PC2 and another of PC2 versus PC3.  Make sure the points for each extant taxon are surrounded with a polygon to ease visualization.
+F.  How do you interpret the first principal component? Justify your interpretation based on the variable loadings.
+
+## Problem 2
+
+A.  load the [dataset from Reed 1997](http://hompal-stats.wabarr.com/datasets/Reed1997_modern_adaptations.csv) with proportions of large mammal adaptations from modern game parks
+B.  Perform a correspondence analysis on this data
+C.  Print the results of the CA
+D.  Make a beautiful ggplot of the results (Dimension 1 plotted against Dimension 2).  Hint: You will have to extract the `rowcoords` and `colcoords` from the CA result.  Use text labels instead of points.  Use the simplified habitat as the label for the localities, rather than the long site name.  Color code the labels for each site by the mean annual precipitation values, so you can see the impact of precipitation. 

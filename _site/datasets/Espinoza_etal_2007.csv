@@ -1,0 +1,60 @@
+Family,Species,Common Name and Material,Specimen #,Amide 1,Amide 2(Alpha),Amide 2 (Beta),Amide 3
+Bovide,Addax nasomaculatus,Addax horn sheath,MAM #1210,1680,1545,N/A,1254
+Bovide,Bos Frontalis,Gaur horn sheath,NFWFL#1287,1664,1537,N/A,1249
+Bovide,Bos Frontalis,Gaur horn sheath,NFWFL#1285,1675,1543,N/A,1246
+Bovide,Bos Frontalis,Gaur horn sheath,NFWFL#1216,1668,1537,N/A,1255
+Bovide,Bos Frontalis,Gaur horn sheath,NFWFL#1286,1669,1537,N/A,1246
+Bovide,Bos javanicus,Banteng horn sheath,MAM#774,1673,1539,N/A,1245
+Bovide,Bos taurus,Cow hoof unguis,MAM#1293,1673,1545,N/A,1254
+Bovide,Bos taurus,Cow hoof unguis,MAM#1272,1667,1537,N/A,1256
+Bovide,Bos taurus,Cow hoof unguis,MAM#1293,1673,1546,N/A,1255
+Bovide,Bos taurus,Cow hoof unguis,NFWFL#1330,1677,1546,N/A,1244
+Bovide,Babalus mindorensis,Tamaraw horn sheath,NFWFL#1217,1650,N/A,1516,1255
+Bovide,Capra caucasica,Tur horn sheath,MAM#668,1658,1545,N/A,1255
+Bovide,Capra caucasica,Tur horn sheath,NFWFL#1560,1661,N/A,1513,1250
+Bovide,Capra caucasica,Tur horn sheath,MAM#668,1668,1549,N/A,1254
+Bovide,Capra falconeri,Markhor horn sheath,NFWFL#187,1656,N/A,1517,1258
+Bovide,Connochaetes gnou,Black wildebeest horn sheath,MAM#995,1667,1543,N/A,1255
+Bovide,Damaliscus pygargus,Bontebok horn sheath,NFWFL#1561,1680,1544,N/A,1250
+Bovide,Hippotragus niger,Sable antelope horn sheath,NFWFL#1280,1651,N/A,1517,1259
+Bovide,Oryx dammah,Scimitar-horned oryx horn sheath,MAM#957,1657,N/A,1517,1258
+Bovide,Oryx gazella,gemsbok horn sheath,MAM#961,1666,1538,N/A,1256
+Bovide,Ovibos moschatus,Muskox horn sheath,MAM#1398,1669,1535,N/A,1250
+Bovide,Ovis aries,Sheep horn sheath,NFWFL#290,1674,1541,N/A,1244
+Bovide,Ovis aries,Sheep horn sheath,Wildlife Safari,1661,1545,N/A,1250
+Bovide,Ovis canadensis ,Bighorn sheep horn sheath,NFWFL#208,1679,1555,N/A,1252
+Bovide,Ovis dalli,Dall's sheep horn sheath,MAM#740,1679,1544,N/A,1247
+Bovide,Ovis dalli,Dall's sheep horn sheath,NFWFL#677,1680,1550,N/A,1249
+Bovide,Ovis nivicola,Snow sheep horn sheath,NFWFL#230,1673,N/A,1517,1257
+Bovide,Ovis vignei,Urial horn sheath,NFWFL#83,1673,1547,N/A,1256
+Bovide,Pantholops hodgsonii,Tibetan antelope horn sheath,MAM#1100,1677,1546,N/A,1247
+Bovide,Pantholops hodgsonii,Tibetan antelope horn sheath,MAM#418,1666,1537,N/A,1244
+Bovide,Saiga tatarica,Saiga horn sheath,NFWFL#1329,1680,1548,N/A,1253
+Bovide,Syncerus caffer,African buffalo horn sheath,NFWFL#1364,1663,1539,N/A,1256
+Bovide,Taurotragus oryx,Eland horn sheath,MAM#882,1672,1543,N/A,1248
+Bovide,Tragelaphus eurycerus,Bongo horn sheath,MAM#872,1670,1543,N/A,1255
+Bovide,Tragelaphus strepsiceros,Greater kudu horn sheath,MAM#884,1660,1543,N/A,1251
+Cheloniidae,Caretta caretta,Loggerhead sea turtle beak,NFWFL#224,1660,N/A,1518,1255
+Cheloniidae,Caretta caretta,Loggerhead sea turtle beak,NFWFL#225,1664,N/A,1516,1254
+Cheloniidae,Chelonia mydas,Green sea turtle scute,AB826,1663,N/A,1516,1256
+Cheloniidae,Chelonia mydas,Green sea turtle scute,AB809,1684,1540,1516,1240
+Cheloniidae,Chelonia mydas,Green sea turtle scute,AB810,1670,1537,1517,1240
+Cheloniidae,Chelonia mydas,Green sea turtle scute,AB856,1666,1540,1519,1241
+Cheloniidae,Chelonia mydas,Green sea turtle scute,AE285,1666,1536,1715,1241
+Cheloniidae,Chelonia mydas,Green sea turtle scute,AG638,1664,1539,1516,1241
+Cheloniidae,Chelonia mydas,Green sea turtle scute,AG642,1679,1542,1519,1239
+Cheloniidae,Chelonia mydas,Green sea turtle scute,AJ261,1667,1539,1517,1239
+Cheloniidae,Chelonia mydas,Green sea turtle scute,AX727,1659,1539,1517,1239
+Cheloniidae,Chelonia mydas,Green sea turtle scute,LE1062,1666,1544,1516,1256
+Cheloniidae,Eretmochelys imbricata,Hawksbill sea turtle scute,357174,1671,1541,1518,1240
+Cheloniidae,Eretmochelys imbricata,Hawksbill sea turtle scute,1070,1649,N/A,1515,1255
+Cheloniidae,Eretmochelys imbricata,Hawksbill sea turtle scute,AA321,1649,N/A,1515,1263
+Cheloniidae,Eretmochelys imbricata,Hawksbill sea turtle scute,NFWFL#317,1666,N/A,1517,1239
+Cheloniidae,Eretmochelys imbricata,Hawksbill sea turtle scute,BA101,1659,N/A,1518,1259
+Cheloniidae,Eretmochelys imbricata,Hawksbill sea turtle scute,BA605,1673,1539,1517,1237
+Cheloniidae,Eretmochelys imbricata,Hawksbill sea turtle scute,NFWFL#187,1650,N/A,1516,1253
+Cheloniidae,Eretmochelys imbricata,Hawksbill sea turtle scute,NFWFL#308,1647,N/A,1515,1255
+Cheloniidae,Eretmochelys imbricata,Hawksbill sea turtle scute,ST653497#36,1656,N/A,1516,1266
+Cheloniidae,Eretmochelys imbricata,Hawksbill sea turtle scute,AT560,1663,N/A,1517,1236
+Cheloniidae,Lepidochelys olivacea,Olive Ridley sea turtle scute,NFWFL#408,1660,1544,1517,1241
+Cheloniidae,Lepidochelys olivacea,Olive Ridley sea turtle scute,NFWFL#411,1654,1542,1519,1239

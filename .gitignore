@@ -3,5 +3,5 @@
 .RData
 homework_solutions/UNRELEASED*
 UNRELEASED*
-*site/*
+_site/
 .gitignore

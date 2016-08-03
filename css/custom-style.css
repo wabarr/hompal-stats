@@ -54,7 +54,7 @@ strong {
   color: blue;
 }
 
-.tocify-item.active {
+.list-group-item.active {
   background-color:19668E;
   border-color:19668E;
 }

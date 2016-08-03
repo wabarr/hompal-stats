@@ -1,6 +1,12 @@
 ---
-title: "Basic Introduction to R"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+
 ---
+
+# Basic Intro to R
 
 ## The Interactive Interpreter
 

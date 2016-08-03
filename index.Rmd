@@ -8,7 +8,7 @@ output: html_document
 Instructor | W. Andrew Barr
 ----- | --------
 Course Number | ANTH 6413
-Meeting Time | Mondays 11:00AM - 1:30PM 
-Location | HAH 201 (Anthro Seminar Room)
-Office Location | SEH
-Office Hours | Monday 2 – 3:30 PM or by appt
+Meeting Time | Mondays 3:00PM - 5:30 PM
+Location | SEH 6845 (Purple Meeting Room) 
+Office Location | SEH 6685
+Office Hours | Tues 12-2 or by appt

@@ -53,3 +53,8 @@ strong {
   font-size:110%;
   color: blue;
 }
+
+.tocify-item.active {
+  background-color:19668E;
+  border-color:19668E;
+}

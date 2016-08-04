@@ -54,8 +54,12 @@ strong {
   color: blue;
 }
 
-.list-group-item.active, .list-group-item.active:hover {
+.list-group-item.active {
   background-color:#19668E;
   border-color:#19668E;
 }
 
+.list-group-item.active:hover {
+  background-color:#19668E;
+  border-color:#19668E;
+}

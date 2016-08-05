@@ -10,14 +10,15 @@
 
 
 
+
 <title>Probability</title>
 
-<script src="libs/jquery-1.11.0/jquery.min.js"></script>
+<script src="libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="libs/bootstrap-3.3.1/css/united.min.css" rel="stylesheet" />
-<script src="libs/bootstrap-3.3.1/js/bootstrap.min.js"></script>
-<script src="libs/bootstrap-3.3.1/shim/html5shiv.min.js"></script>
-<script src="libs/bootstrap-3.3.1/shim/respond.min.js"></script>
+<link href="libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -50,6 +51,34 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </script>
 
 
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
 <link rel="stylesheet" href="octicons/octicons.css" type="text/css" />
 <link rel="stylesheet" href="css/custom-style.css" type="text/css" />
 
@@ -67,19 +96,42 @@ code {
   color: inherit;
   background-color: rgba(0, 0, 0, 0.04);
 }
-img { 
-  max-width:100%; 
-  height: auto; 
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
 }
 </style>
+
+
+
 <div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script src="libs/navigation-1.1/tabsets.js"></script>
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
 
 <div id="navbar">
   <div id="navbar-container">
     <ul id="navbar-ul">
-      <li><a href="index.html"><span class="mega-octicon octicon-home"></a></li>
+      <li><a href="index.html"><span class="mega-octicon octicon-home"></span></a></li>
       <li><a href="datasets.html">Data</a></li>
-      <li><a href="homework.html">Demos, Readings, & Homework</a></li>
+      <li><a href="homework.html">Schedule</a></li>
       <li><a href="ANTH6413_syllabus.docx">Syllabus</a></li>
       <li><a href="gettinghelp.html">Getting Help</a></li>
       
@@ -87,14 +139,18 @@ img {
   </div>
 </div>
 
-<div id="header">
-<h1 class="title">Probability</h1>
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Probability</h1>
+
 </div>
 
 
 <div id="basic-probability" class="section level2">
 <h2>Basic Probability</h2>
-<p>Probability represents how likely an event is to occur. The probability of an outcome can be measured as <span class="math">\[ P = \frac{\#\ Outcomes}{\#\ Trials}\]</span></p>
+<p>Probability represents how likely an event is to occur. The probability of an outcome can be measured as <span class="math display">\[ P = \frac{\#\ Outcomes}{\#\ Trials}\]</span></p>
 <p>To get a real measure of this, we have to observe an infinite number of <strong><em>trials</em></strong>, which is impossible. Instead, we are stuck merely observing a <strong><em>sample</em></strong> of possible trials. We try to make this sample as representative as we can, but sometimes logistics and chance conspire to make a sample of trials unrepresentative. If the sample of trials is unrepresentative, then our estimate of probability may be badly wrong.</p>
 </div>
 <div id="sampling-in-r" class="section level2">
@@ -119,7 +175,7 @@ sample(individuals, 10)</code></pre>
 <h3>Complex events = composites of simple events (Logical OR)</h3>
 <ul>
 <li>sum the probabilities of simple events</li>
-<li>e.g. probability of drawing a King from a deck of cards is the sum of the probability of drawing each of the 4 distinct kings <span class="math">\[1/52 + 1/52 + 1/52 + 1/52 = 4/52 = 1/13 \]</span></li>
+<li>e.g. probability of drawing a King from a deck of cards is the sum of the probability of drawing each of the 4 distinct kings <span class="math display">\[1/52 + 1/52 + 1/52 + 1/52 = 4/52 = 1/13 \]</span></li>
 </ul>
 </div>
 <div id="shared-events-multiple-simultaneous-occurrences-of-simple-events-logical-and" class="section level3">
@@ -128,7 +184,7 @@ sample(individuals, 10)</code></pre>
 <li>multiply the probabilities of simple events</li>
 <li>assume that events are <strong><em>independent</em></strong> of one another
 <ul>
-<li>e.g. probability of drawing the Ace of spades and the 2 of clubs is the product of the probability of drawing each one separately <span class="math">\[1/52 * 1/52 = 1/2704\]</span></li>
+<li>e.g. probability of drawing the Ace of spades and the 2 of clubs is the product of the probability of drawing each one separately <span class="math display">\[1/52 * 1/52 = 1/2704\]</span></li>
 </ul></li>
 </ul>
 </div>
@@ -136,11 +192,11 @@ sample(individuals, 10)</code></pre>
 <div id="set-operations" class="section level2">
 <h2>Set operations</h2>
 <p>The sample space can be described as a <strong><em>set</em></strong> of all possible outcomes. For example, if we flip a coin exactly 3 times and observe the results, then the set of possible outcomes is:</p>
-<p><span class="math">\[ Tosses = \{(H, H, H), (H, H, T), (H, T, H), (H, T, T), (T, H, H), (T, H, T), (T, T, H), (T, T, T)\}\]</span></p>
+<p><span class="math display">\[ Tosses = \{(H, H, H), (H, H, T), (H, T, H), (H, T, T), (T, H, H), (T, H, T), (T, T, H), (T, T, T)\}\]</span></p>
 <div id="intersection" class="section level3">
 <h3>intersection</h3>
 <p>The intersection of two sets A and B represents the elements in common to both sets. The probability of the intersection of A and B represents the probability of the shared event A AND B. Assuming A and B are independent:</p>
-<p><span class="math">\[ P(A \cap B) = P(A) * P(B) \]</span></p>
+<p><span class="math display">\[ P(A \cap B) = P(A) * P(B) \]</span></p>
 <p><span class="mega-octicon octicon-puzzle"></span> What is the probability of getting the sequence (H, T) on the first two flips? What about the sequence (H, T, T)?</p>
 <p>There is a function in R to calculate the intersection of 2 sets.</p>
 <pre class="r"><code>x &lt;- c(1,2,3)
@@ -151,7 +207,7 @@ intersect(x, y)</code></pre>
 <div id="union" class="section level3">
 <h3>union</h3>
 <p>The union of two sets A and B consists of all the shared elements of A and B. The probability of the union of two sets represents the probability of the complex event A OR B. To compute it we add the probabilities of A and B, and subtract the probability of the intersection between A and B, so as not to double count.</p>
-<p><span class="math">\[ P(A \cup B) = P(A) + P(B) - P(A \cap B)\]</span></p>
+<p><span class="math display">\[ P(A \cup B) = P(A) + P(B) - P(A \cap B)\]</span></p>
 <p><span class="mega-octicon octicon-puzzle"></span> What is the probability of getting the same three outcomes for each of three coin flips?</p>
 <p>There is a function in R to calculate the union.</p>
 <pre class="r"><code>union(x, y)</code></pre>
@@ -167,18 +223,20 @@ intersect(x, y)</code></pre>
 </div>
 <div id="complement" class="section level3">
 <h3>complement</h3>
-<p>The complement of a set is all the elements that are not in a set. The set <span class="math">\(heads\)</span> is all the elements that start with heads in the <span class="math">\(tosses\)</span> set. The complement of this set <span class="math">\(heads^c\)</span> represents all the other elements that don’t start with heads.</p>
+<p>The complement of a set is all the elements that are not in a set. The set <span class="math inline">\(heads\)</span> is all the elements that start with heads in the <span class="math inline">\(tosses\)</span> set. The complement of this set <span class="math inline">\(heads^c\)</span> represents all the other elements that don’t start with heads.</p>
 </div>
 </div>
 <div id="conditional-probability" class="section level2">
 <h2>Conditional Probability</h2>
 <p>Sometimes probabilities in a complex event depend on previous outcomes. To calculate the probability of A given B, we use the following formula.</p>
-<p><span class="math">\[P(A|B) = \frac{P(A\cap B)}{P(B)}\]</span></p>
+<p><span class="math display">\[P(A|B) = \frac{P(A\cap B)}{P(B)}\]</span></p>
 </div>
 <div id="conditional-probabilty-is-fundamental" class="section level2">
 <h2>Conditional Probabilty is fundamental</h2>
 <p>It forms the basis of frequentist statistics, as well as Bayesian statistcs, which we will talk about much more next week.</p>
 </div>
+
+
 
 
 </div>
@@ -189,6 +247,7 @@ intersect(x, y)</code></pre>
 $(document).ready(function () {
   $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
 });
+
 
 </script>
 

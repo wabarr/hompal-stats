@@ -10,14 +10,15 @@
 
 
 
+
 <title>Visualizing Data</title>
 
-<script src="libs/jquery-1.11.0/jquery.min.js"></script>
+<script src="libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="libs/bootstrap-3.3.1/css/united.min.css" rel="stylesheet" />
-<script src="libs/bootstrap-3.3.1/js/bootstrap.min.js"></script>
-<script src="libs/bootstrap-3.3.1/shim/html5shiv.min.js"></script>
-<script src="libs/bootstrap-3.3.1/shim/respond.min.js"></script>
+<link href="libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -50,6 +51,34 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </script>
 
 
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
 <link rel="stylesheet" href="octicons/octicons.css" type="text/css" />
 <link rel="stylesheet" href="css/custom-style.css" type="text/css" />
 
@@ -67,19 +96,42 @@ code {
   color: inherit;
   background-color: rgba(0, 0, 0, 0.04);
 }
-img { 
-  max-width:100%; 
-  height: auto; 
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
 }
 </style>
+
+
+
 <div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script src="libs/navigation-1.1/tabsets.js"></script>
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
 
 <div id="navbar">
   <div id="navbar-container">
     <ul id="navbar-ul">
-      <li><a href="index.html"><span class="mega-octicon octicon-home"></a></li>
+      <li><a href="index.html"><span class="mega-octicon octicon-home"></span></a></li>
       <li><a href="datasets.html">Data</a></li>
-      <li><a href="homework.html">Demos, Readings, & Homework</a></li>
+      <li><a href="homework.html">Schedule</a></li>
       <li><a href="ANTH6413_syllabus.docx">Syllabus</a></li>
       <li><a href="gettinghelp.html">Getting Help</a></li>
       
@@ -87,8 +139,12 @@ img {
   </div>
 </div>
 
-<div id="header">
-<h1 class="title">Visualizing Data</h1>
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Visualizing Data</h1>
+
 </div>
 
 
@@ -102,20 +158,23 @@ img {
 <p>We will use a built in dataset called <code>diamonds</code>. Lets take a look at the head (i.e. first few rows) of this dataset.</p>
 <pre class="r"><code>library(ggplot2)
 head(diamonds)</code></pre>
-<pre><code>##   carat       cut color clarity depth table price    x    y    z
-## 1  0.23     Ideal     E     SI2  61.5    55   326 3.95 3.98 2.43
-## 2  0.21   Premium     E     SI1  59.8    61   326 3.89 3.84 2.31
-## 3  0.23      Good     E     VS1  56.9    65   327 4.05 4.07 2.31
-## 4  0.29   Premium     I     VS2  62.4    58   334 4.20 4.23 2.63
-## 5  0.31      Good     J     SI2  63.3    58   335 4.34 4.35 2.75
-## 6  0.24 Very Good     J    VVS2  62.8    57   336 3.94 3.96 2.48</code></pre>
+<pre><code>## Source: local data frame [6 x 10]
+## 
+##   carat       cut  color clarity depth table price     x     y     z
+##   (dbl)    (fctr) (fctr)  (fctr) (dbl) (dbl) (int) (dbl) (dbl) (dbl)
+## 1  0.23     Ideal      E     SI2  61.5    55   326  3.95  3.98  2.43
+## 2  0.21   Premium      E     SI1  59.8    61   326  3.89  3.84  2.31
+## 3  0.23      Good      E     VS1  56.9    65   327  4.05  4.07  2.31
+## 4  0.29   Premium      I     VS2  62.4    58   334  4.20  4.23  2.63
+## 5  0.31      Good      J     SI2  63.3    58   335  4.34  4.35  2.75
+## 6  0.24 Very Good      J    VVS2  62.8    57   336  3.94  3.96  2.48</code></pre>
 <div id="univariate-plot" class="section level3">
 <h3>Univariate plot</h3>
 <p>The simplest usage of <code>qplot()</code> is to provide a variable for the x axis, and a dataframe in which to look for this variable. <code>qplot()</code> will attempt to guess the best <code>geom</code> (graphical geometric representation) with which to display the data. Here we plot a histogram of diamond weights. As we would expect….most diamonds are small, so the graph is skewed.</p>
 <pre class="r"><code>library(ggplot2)
 qplot(x=carat, data=diamonds)</code></pre>
-<pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.</code></pre>
-<p><img src="visualization_files/figure-html/unnamed-chunk-2-1.png" title="" alt="" width="672" /></p>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="visualization_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 </div>
 <div id="bivariate-plot" class="section level3">
 <h3>Bivariate Plot</h3>
@@ -151,9 +210,9 @@ weight_by_price + stat_smooth(method=&quot;lm&quot;)</code></pre>
 <h2>Color, Size, Shape, Fill</h2>
 <p>Sometimes we want to see the impact of other variables variables by color coding points, or changing the shape or size of points in relation to another variable. <code>qplot()</code> makes this very easy, and even automatically creates legends for us.</p>
 <pre class="r"><code>qplot(x=carat, y=price, data=diamonds, main=&quot;Diamond Weight by Price&quot;, color=clarity)</code></pre>
-<p><img src="visualization_files/figure-html/unnamed-chunk-8-1.png" title="" alt="" width="672" /></p>
+<p><img src="visualization_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <pre class="r"><code>qplot(x=carat, y=price, data=diamonds, main=&quot;Diamond Weight by Price&quot;, shape=cut)</code></pre>
-<p><img src="visualization_files/figure-html/unnamed-chunk-8-2.png" title="" alt="" width="672" /></p>
+<p><img src="visualization_files/figure-html/unnamed-chunk-8-2.png" width="672" /></p>
 </div>
 <div id="facets" class="section level2">
 <h2>Facets</h2>
@@ -239,7 +298,8 @@ qplot(price, data=diamonds)</code></pre>
 <li><code>labs(x=&quot;The X axis label&quot;, title=&quot;my nice little graph&quot;)</code></li>
 <li><code>guides()</code> to tweak legend</li>
 <li><code>scale_x_continuous(limits=c(0,10))</code> to customize x scale</li>
-<li><code>scale_fill_xxx()</code> and <code>scale_color_xxx()</code> for customizing color choices<br /></li>
+<li><code>scale_fill_xxx()</code> and <code>scale_color_xxx()</code> for customizing color choices<br />
+</li>
 </ul></li>
 <li>Export the plot in a useful format using <code>ggsave()</code></li>
 <li>Submit for publication.</li>
@@ -264,6 +324,8 @@ with_boxplot</code></pre>
 </div>
 
 
+
+
 </div>
 
 <script>
@@ -272,6 +334,7 @@ with_boxplot</code></pre>
 $(document).ready(function () {
   $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
 });
+
 
 </script>
 

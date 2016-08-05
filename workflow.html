@@ -10,14 +10,15 @@
 
 
 
+
 <title>publishing papers with R</title>
 
-<script src="libs/jquery-1.11.0/jquery.min.js"></script>
+<script src="libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="libs/bootstrap-3.3.1/css/united.min.css" rel="stylesheet" />
-<script src="libs/bootstrap-3.3.1/js/bootstrap.min.js"></script>
-<script src="libs/bootstrap-3.3.1/shim/html5shiv.min.js"></script>
-<script src="libs/bootstrap-3.3.1/shim/respond.min.js"></script>
+<link href="libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -50,6 +51,34 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </script>
 
 
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
 <link rel="stylesheet" href="octicons/octicons.css" type="text/css" />
 <link rel="stylesheet" href="css/custom-style.css" type="text/css" />
 
@@ -67,19 +96,42 @@ code {
   color: inherit;
   background-color: rgba(0, 0, 0, 0.04);
 }
-img { 
-  max-width:100%; 
-  height: auto; 
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
 }
 </style>
+
+
+
 <div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script src="libs/navigation-1.1/tabsets.js"></script>
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
 
 <div id="navbar">
   <div id="navbar-container">
     <ul id="navbar-ul">
-      <li><a href="index.html"><span class="mega-octicon octicon-home"></a></li>
+      <li><a href="index.html"><span class="mega-octicon octicon-home"></span></a></li>
       <li><a href="datasets.html">Data</a></li>
-      <li><a href="homework.html">Demos, Readings, & Homework</a></li>
+      <li><a href="homework.html">Schedule</a></li>
       <li><a href="ANTH6413_syllabus.docx">Syllabus</a></li>
       <li><a href="gettinghelp.html">Getting Help</a></li>
       
@@ -87,8 +139,12 @@ img {
   </div>
 </div>
 
-<div id="header">
-<h1 class="title">publishing papers with R</h1>
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">publishing papers with R</h1>
+
 </div>
 
 
@@ -119,8 +175,11 @@ img {
 <h2>Figure captions</h2>
 <p>When you create figures in RMarkdown, you can give them captions. This is good practice:</p>
 <p>```{r, fig.cap=“Histogram of normal distribution, n=1000”}<br> library(ggplot2)</br> qplot(rnorm(1000))</br> ```</p>
-<pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.</code></pre>
-<p><img src="workflow_files/figure-html/unnamed-chunk-1-1.png" alt="Histogram of normal distribution, n=1000" /></p>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<div class="figure">
+<img src="workflow_files/figure-html/unnamed-chunk-1-1.png" alt="Histogram of normal distribution, n=1000" />
+<p class="caption">Histogram of normal distribution, n=1000</p>
+</div>
 <p>These captions aren’t visible in the HTML output, but they are in there, and will be included when you covert the document to other formats</p>
 </div>
 <div id="pander---a-useful-tool-for-formatting-tabular-data-in-r-markdown" class="section level2">
@@ -137,7 +196,7 @@ img {
 <p>Pander turns the dataframe into something much nicer!</p>
 <pre class="r"><code>library(pander)
 pander(mtcars, split.tables = 200)</code></pre>
-<table>
+<table style="width:100%;">
 <colgroup>
 <col width="27%" />
 <col width="6%" />
@@ -624,7 +683,7 @@ pander(mtcars, split.tables = 200)</code></pre>
 <div id="lm" class="section level4">
 <h4>lm</h4>
 <pre class="r"><code>pander(lm(mpg~wt, data=mtcars))</code></pre>
-<table>
+<table style="width:86%;">
 <caption>Fitting linear model: mpg ~ wt</caption>
 <colgroup>
 <col width="25%" />
@@ -664,7 +723,7 @@ pander(mtcars, split.tables = 200)</code></pre>
 <div id="chisq.test" class="section level3">
 <h3>chisq.test</h3>
 <pre class="r"><code>pander(chisq.test(mtcars$cyl))</code></pre>
-<table>
+<table style="width:43%;">
 <caption>Chi-squared test for given probabilities: <code>mtcars$cyl</code></caption>
 <colgroup>
 <col width="23%" />
@@ -682,7 +741,7 @@ pander(mtcars, split.tables = 200)</code></pre>
 <tr class="odd">
 <td align="center">15.98</td>
 <td align="center">31</td>
-<td align="center"><em>0.9881</em></td>
+<td align="center">0.9881</td>
 </tr>
 </tbody>
 </table>
@@ -690,7 +749,7 @@ pander(mtcars, split.tables = 200)</code></pre>
 <div id="anova" class="section level3">
 <h3>anova</h3>
 <pre class="r"><code>pander(anova(lm(mpg~cyl, data=mtcars)))</code></pre>
-<table>
+<table style="width:83%;">
 <caption>Analysis of Variance Table</caption>
 <colgroup>
 <col width="22%" />
@@ -736,12 +795,14 @@ pander(mtcars, split.tables = 200)</code></pre>
 <table>
 <caption>Principal Components Analysis (continued below)</caption>
 <colgroup>
-<col width="15%" />
-<col width="13%" />
-<col width="13%" />
+<col width="14%" />
 <col width="12%" />
-<col width="13%" />
-<col width="13%" />
+<col width="12%" />
+<col width="11%" />
+<col width="12%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -751,6 +812,8 @@ pander(mtcars, split.tables = 200)</code></pre>
 <th align="center">PC3</th>
 <th align="center">PC4</th>
 <th align="center">PC5</th>
+<th align="center">PC6</th>
+<th align="center">PC7</th>
 </tr>
 </thead>
 <tbody>
@@ -761,6 +824,8 @@ pander(mtcars, split.tables = 200)</code></pre>
 <td align="center">0.9821</td>
 <td align="center">0.04763</td>
 <td align="center">-0.08833</td>
+<td align="center">-0.1438</td>
+<td align="center">-0.03924</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>cyl</strong></td>
@@ -769,6 +834,8 @@ pander(mtcars, split.tables = 200)</code></pre>
 <td align="center">-0.06348</td>
 <td align="center">-0.228</td>
 <td align="center">0.2387</td>
+<td align="center">-0.7938</td>
+<td align="center">0.425</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>disp</strong></td>
@@ -777,6 +844,8 @@ pander(mtcars, split.tables = 200)</code></pre>
 <td align="center">0.03144</td>
 <td align="center">-0.005087</td>
 <td align="center">-0.01074</td>
+<td align="center">0.007424</td>
+<td align="center">0.0005824</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>hp</strong></td>
@@ -785,6 +854,8 @@ pander(mtcars, split.tables = 200)</code></pre>
 <td align="center">0.02509</td>
 <td align="center">0.03572</td>
 <td align="center">0.01655</td>
+<td align="center">0.001654</td>
+<td align="center">-0.002213</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>drat</strong></td>
@@ -793,6 +864,8 @@ pander(mtcars, split.tables = 200)</code></pre>
 <td align="center">0.03972</td>
 <td align="center">-0.05713</td>
 <td align="center">-0.1333</td>
+<td align="center">0.2272</td>
+<td align="center">0.03485</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>wt</strong></td>
@@ -801,6 +874,8 @@ pander(mtcars, split.tables = 200)</code></pre>
 <td align="center">-0.08491</td>
 <td align="center">0.128</td>
 <td align="center">-0.2435</td>
+<td align="center">-0.1271</td>
+<td align="center">-0.1866</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>qsec</strong></td>
@@ -809,6 +884,8 @@ pander(mtcars, split.tables = 200)</code></pre>
 <td align="center">-0.07167</td>
 <td align="center">0.8865</td>
 <td align="center">-0.2142</td>
+<td align="center">-0.1896</td>
+<td align="center">0.2548</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>vs</strong></td>
@@ -817,6 +894,8 @@ pander(mtcars, split.tables = 200)</code></pre>
 <td align="center">0.004203</td>
 <td align="center">0.1771</td>
 <td align="center">-0.01689</td>
+<td align="center">0.1026</td>
+<td align="center">-0.08079</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>am</strong></td>
@@ -825,6 +904,8 @@ pander(mtcars, split.tables = 200)</code></pre>
 <td align="center">0.05481</td>
 <td align="center">-0.1357</td>
 <td align="center">-0.0627</td>
+<td align="center">0.2052</td>
+<td align="center">0.2009</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>gear</strong></td>
@@ -833,6 +914,8 @@ pander(mtcars, split.tables = 200)</code></pre>
 <td align="center">0.04852</td>
 <td align="center">-0.1299</td>
 <td align="center">-0.2762</td>
+<td align="center">0.335</td>
+<td align="center">0.8016</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>carb</strong></td>
@@ -841,174 +924,104 @@ pander(mtcars, split.tables = 200)</code></pre>
 <td align="center">-0.1029</td>
 <td align="center">-0.2689</td>
 <td align="center">-0.8552</td>
+<td align="center">-0.2838</td>
+<td align="center">-0.1655</td>
 </tr>
 </tbody>
 </table>
-<table>
-<caption>Table continues below</caption>
+<table style="width:72%;">
 <colgroup>
 <col width="15%" />
-<col width="12%" />
-<col width="13%" />
 <col width="15%" />
+<col width="13%" />
 <col width="13%" />
 <col width="13%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th align="center"> </th>
-<th align="center">PC6</th>
-<th align="center">PC7</th>
 <th align="center">PC8</th>
 <th align="center">PC9</th>
 <th align="center">PC10</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center"><strong>mpg</strong></td>
-<td align="center">-0.1438</td>
-<td align="center">-0.03924</td>
-<td align="center">0.02271</td>
-<td align="center">-0.00279</td>
-<td align="center">0.03063</td>
-</tr>
-<tr class="even">
-<td align="center"><strong>cyl</strong></td>
-<td align="center">-0.7938</td>
-<td align="center">0.425</td>
-<td align="center">-0.189</td>
-<td align="center">0.04268</td>
-<td align="center">0.1317</td>
-</tr>
-<tr class="odd">
-<td align="center"><strong>disp</strong></td>
-<td align="center">0.007424</td>
-<td align="center">0.0005824</td>
-<td align="center">-0.0005841</td>
-<td align="center">0.003533</td>
-<td align="center">-0.005399</td>
-</tr>
-<tr class="even">
-<td align="center"><strong>hp</strong></td>
-<td align="center">0.001654</td>
-<td align="center">-0.002213</td>
-<td align="center">4.748e-06</td>
-<td align="center">-0.003734</td>
-<td align="center">0.001863</td>
-</tr>
-<tr class="odd">
-<td align="center"><strong>drat</strong></td>
-<td align="center">0.2272</td>
-<td align="center">0.03485</td>
-<td align="center">-0.9386</td>
-<td align="center">-0.01413</td>
-<td align="center">0.1841</td>
-</tr>
-<tr class="even">
-<td align="center"><strong>wt</strong></td>
-<td align="center">-0.1271</td>
-<td align="center">-0.1866</td>
-<td align="center">0.1562</td>
-<td align="center">-0.3906</td>
-<td align="center">0.8299</td>
-</tr>
-<tr class="odd">
-<td align="center"><strong>qsec</strong></td>
-<td align="center">-0.1896</td>
-<td align="center">0.2548</td>
-<td align="center">-0.1029</td>
-<td align="center">-0.09591</td>
-<td align="center">-0.2042</td>
-</tr>
-<tr class="even">
-<td align="center"><strong>vs</strong></td>
-<td align="center">0.1026</td>
-<td align="center">-0.08079</td>
-<td align="center">-0.002133</td>
-<td align="center">0.684</td>
-<td align="center">0.3031</td>
-</tr>
-<tr class="odd">
-<td align="center"><strong>am</strong></td>
-<td align="center">0.2052</td>
-<td align="center">0.2009</td>
-<td align="center">-0.02273</td>
-<td align="center">-0.5724</td>
-<td align="center">-0.1628</td>
-</tr>
-<tr class="even">
-<td align="center"><strong>gear</strong></td>
-<td align="center">0.335</td>
-<td align="center">0.8016</td>
-<td align="center">0.2175</td>
-<td align="center">0.1561</td>
-<td align="center">0.2035</td>
-</tr>
-<tr class="odd">
-<td align="center"><strong>carb</strong></td>
-<td align="center">-0.2838</td>
-<td align="center">-0.1655</td>
-<td align="center">0.003972</td>
-<td align="center">0.1276</td>
-<td align="center">-0.24</td>
-</tr>
-</tbody>
-</table>
-<table>
-<colgroup>
-<col width="15%" />
-<col width="15%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="center"> </th>
 <th align="center">PC11</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td align="center"><strong>mpg</strong></td>
+<td align="center">0.02271</td>
+<td align="center">-0.00279</td>
+<td align="center">0.03063</td>
 <td align="center">-0.01586</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>cyl</strong></td>
+<td align="center">-0.189</td>
+<td align="center">0.04268</td>
+<td align="center">0.1317</td>
 <td align="center">0.1454</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>disp</strong></td>
+<td align="center">-0.0005841</td>
+<td align="center">0.003533</td>
+<td align="center">-0.005399</td>
 <td align="center">0.000942</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>hp</strong></td>
+<td align="center">4.748e-06</td>
+<td align="center">-0.003734</td>
+<td align="center">0.001863</td>
 <td align="center">-0.002153</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>drat</strong></td>
+<td align="center">-0.9386</td>
+<td align="center">-0.01413</td>
+<td align="center">0.1841</td>
 <td align="center">-0.09738</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>wt</strong></td>
+<td align="center">0.1562</td>
+<td align="center">-0.3906</td>
+<td align="center">0.8299</td>
 <td align="center">-0.01986</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>qsec</strong></td>
+<td align="center">-0.1029</td>
+<td align="center">-0.09591</td>
+<td align="center">-0.2042</td>
 <td align="center">0.01107</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>vs</strong></td>
+<td align="center">-0.002133</td>
+<td align="center">0.684</td>
+<td align="center">0.3031</td>
 <td align="center">0.6257</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>am</strong></td>
+<td align="center">-0.02273</td>
+<td align="center">-0.5724</td>
+<td align="center">-0.1628</td>
 <td align="center">0.7332</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>gear</strong></td>
+<td align="center">0.2175</td>
+<td align="center">0.1561</td>
+<td align="center">0.2035</td>
 <td align="center">-0.1909</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>carb</strong></td>
+<td align="center">0.003972</td>
+<td align="center">0.1276</td>
+<td align="center">-0.24</td>
 <td align="center">0.0558</td>
 </tr>
 </tbody>
@@ -1016,11 +1029,14 @@ pander(mtcars, split.tables = 200)</code></pre>
 <table>
 <caption>Table continues below</caption>
 <colgroup>
-<col width="40%" />
+<col width="36%" />
+<col width="7%" />
+<col width="10%" />
+<col width="10%" />
 <col width="8%" />
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1029,6 +1045,9 @@ pander(mtcars, split.tables = 200)</code></pre>
 <th align="center">PC2</th>
 <th align="center">PC3</th>
 <th align="center">PC4</th>
+<th align="center">PC5</th>
+<th align="center">PC6</th>
+<th align="center">PC7</th>
 </tr>
 </thead>
 <tbody>
@@ -1038,6 +1057,9 @@ pander(mtcars, split.tables = 200)</code></pre>
 <td align="center">38.15</td>
 <td align="center">3.071</td>
 <td align="center">1.307</td>
+<td align="center">0.9065</td>
+<td align="center">0.6635</td>
+<td align="center">0.3086</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>Proportion of Variance</strong></td>
@@ -1045,6 +1067,9 @@ pander(mtcars, split.tables = 200)</code></pre>
 <td align="center">0.07237</td>
 <td align="center">0.00047</td>
 <td align="center">8e-05</td>
+<td align="center">4e-05</td>
+<td align="center">2e-05</td>
+<td align="center">0</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>Cumulative Proportion</strong></td>
@@ -1052,14 +1077,16 @@ pander(mtcars, split.tables = 200)</code></pre>
 <td align="center">0.9994</td>
 <td align="center">0.9998</td>
 <td align="center">0.9999</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
 </tr>
 </tbody>
 </table>
-<table>
-<caption>Table continues below</caption>
+<table style="width:78%;">
 <colgroup>
 <col width="40%" />
-<col width="9%" />
+<col width="8%" />
 <col width="9%" />
 <col width="9%" />
 <col width="9%" />
@@ -1067,46 +1094,7 @@ pander(mtcars, split.tables = 200)</code></pre>
 <thead>
 <tr class="header">
 <th align="center"> </th>
-<th align="center">PC5</th>
-<th align="center">PC6</th>
-<th align="center">PC7</th>
 <th align="center">PC8</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center"><strong>Standard deviation</strong></td>
-<td align="center">0.9065</td>
-<td align="center">0.6635</td>
-<td align="center">0.3086</td>
-<td align="center">0.286</td>
-</tr>
-<tr class="even">
-<td align="center"><strong>Proportion of Variance</strong></td>
-<td align="center">4e-05</td>
-<td align="center">2e-05</td>
-<td align="center">0</td>
-<td align="center">0</td>
-</tr>
-<tr class="odd">
-<td align="center"><strong>Cumulative Proportion</strong></td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-</tr>
-</tbody>
-</table>
-<table>
-<colgroup>
-<col width="40%" />
-<col width="9%" />
-<col width="9%" />
-<col width="9%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="center"> </th>
 <th align="center">PC9</th>
 <th align="center">PC10</th>
 <th align="center">PC11</th>
@@ -1115,6 +1103,7 @@ pander(mtcars, split.tables = 200)</code></pre>
 <tbody>
 <tr class="odd">
 <td align="center"><strong>Standard deviation</strong></td>
+<td align="center">0.286</td>
 <td align="center">0.2507</td>
 <td align="center">0.2107</td>
 <td align="center">0.1984</td>
@@ -1124,9 +1113,11 @@ pander(mtcars, split.tables = 200)</code></pre>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
+<td align="center">0</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>Cumulative Proportion</strong></td>
+<td align="center">1</td>
 <td align="center">1</td>
 <td align="center">1</td>
 <td align="center">1</td>
@@ -1170,16 +1161,28 @@ csl: elsevier-harvard.csl
 <div id="this-is-what-the-output-looks-like." class="section level4">
 <h4>This is what the output looks like.</h4>
 <p>Here is a nice paper about savannas <span class="citation">(Skarpe, 1992)</span>. There are a couple more articles also <span class="citation">(Eltahir, 2004; Foley et al., 1996)</span>. Finally, Belsky <span class="citation">(1990)</span> published an article about savannas, as well.</p>
-<div class="references">
-<h2 id="references" class="unnumbered">References</h2>
+</div>
+</div>
+</div>
+<div id="references" class="section level2 unnumbered">
+<h2>References</h2>
+<div id="refs" class="references">
+<div id="ref-belsky_tree/grass_1990">
 <p>Belsky, A.J., 1990. Tree/Grass Ratios in East African Savannas: A Comparison of Existing Models. Journal of Biogeography 17, 483–489.</p>
-<p>Eltahir, Y.K. <span>and</span> E.A.B., 2004. Role of topography in facilitating coexistence of trees and grasses within savannas. Water Resources Research 40, W07505. doi:<a href="http://dx.doi.org/10.1029/2003WR002578">10.1029/2003WR002578</a></p>
-<p>Foley, J.A., Prentice, I.C., Ramankutty, N., Levis, S., Pollard, D., Sitch, S., Haxeltine, A., 1996. An integrated biosphere model of land surface processes, terrestrial carbon balance, and vegetation dynamics. Global Biogeochemical Cycles 10, PP. 603–628. doi:<a href="http://dx.doi.org/199610.1029/96GB02692">199610.1029/96GB02692</a></p>
+</div>
+<div id="ref-eltahir_role_2004">
+<p>Eltahir, Y.K. and E.A.B., 2004. Role of topography in facilitating coexistence of trees and grasses within savannas. Water Resources Research 40, W07505. doi:<a href="https://doi.org/10.1029/2003WR002578">10.1029/2003WR002578</a></p>
+</div>
+<div id="ref-foley_integrated_1996">
+<p>Foley, J.A., Prentice, I.C., Ramankutty, N., Levis, S., Pollard, D., Sitch, S., Haxeltine, A., 1996. An integrated biosphere model of land surface processes, terrestrial carbon balance, and vegetation dynamics. Global Biogeochemical Cycles 10, PP. 603–628. doi:<a href="https://doi.org/199610.1029/96GB02692">199610.1029/96GB02692</a></p>
+</div>
+<div id="ref-skarpe_dynamics_1992">
 <p>Skarpe, C., 1992. Dynamics of savanna ecosystems. Journal of Vegetation Science 3, 293–300.</p>
 </div>
 </div>
 </div>
-</div>
+
+
 
 
 </div>
@@ -1190,6 +1193,7 @@ csl: elsevier-harvard.csl
 $(document).ready(function () {
   $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
 });
+
 
 </script>
 

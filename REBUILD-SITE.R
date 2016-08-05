@@ -3,7 +3,7 @@
 tryRender <- function(x){
   tryCatch(
   rmarkdown::render(x)
-  , error = function(e) print("Error rendering markdown")
+  , error = function(e) print(paste0("Error with ", x))
   )
 }
 lapply(list.files(pattern = "*.Rmd",recursive = TRUE), tryRender)

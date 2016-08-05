@@ -104,7 +104,7 @@ The normal distribution (also known as the Gaussian distribution) is the familia
 ```{r}
 rnorm(10, mean=0, sd=1)
 
-qplot(rnorm(10000), mean=0, sd=1, main="Standard normal distribution ")
+qplot(rnorm(10000, mean=0, sd=1), main="Standard normal distribution ")
 ```
 
 ### Log-normal Distribution

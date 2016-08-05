@@ -1,7 +1,11 @@
 ---
-title: "Distributions"
-output: html_document
+output:
+  html_document:
+    toc: true
+    toc_float: true
 ---
+
+# Distributions
 
 ## Random Variables
 
@@ -78,7 +82,7 @@ qplot(x=0:5, y=dpois(0:5, lambda = 0.2), main="Poisson distribution with lambda 
 ```
 
 
-### At large values of lambda, the Poisson distribution looks very much like a normal distribution with mean $\lambda$.
+**At large values of lambda, the Poisson distribution looks very much like a normal distribution with mean $\lambda$.**
 
 ```{r}
 qplot(x=1:60, y=dpois(1:60, lambda = 30), main="Poisson distribution with lambda = 30", geom="line")
@@ -151,7 +155,7 @@ pnorm(q = 5, mean = 10, sd = 1.5)
 
 This tells us that `r pnorm(q = 5, mean = 10, sd = 1.5)` is the proportion of values that are less than or equal to 5 in this probability distribution. If we were dealing with real data, we would be forced to say that an observation of 5 is very uncommon in this distribution, and the cumulative probability gives us an estimate of just how unlikely
 
-## This is fundamental, as this is exactly what a p value represents, but more on that next week.
+**This is fundamental, as this is exactly what a p value represents, but more on that next week.**
 
 <span class="mega-octicon octicon-puzzle"></span> Challenge: What is the cumulative probability at a value of 10 in the same normal distribution?
 

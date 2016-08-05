@@ -11,9 +11,12 @@
 
 
 
-<title>Distributions</title>
+<title></title>
 
 <script src="libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="libs/tocify-1.9.1/jquery.tocify.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
 <script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -125,6 +128,100 @@ $(document).ready(function () {
 
 
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.9em;
+  padding-left: 5px;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
 
 <div id="navbar">
   <div id="navbar-container">
@@ -143,11 +240,12 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Distributions</h1>
 
 </div>
 
 
+<div id="distributions" class="section level1">
+<h1>Distributions</h1>
 <div id="random-variables" class="section level2">
 <h2>Random Variables</h2>
 <p>A <strong><em>random variable</em></strong> –in statistical terms– is a variable whose value depends on random chance. Each random variable has one or more parameters governing the probability of different outcomes. There are two types of random variables: <strong><em>discrete random variables</em></strong> which have a limited number of possible discrete outcomes and <strong><em>continuous random variables</em></strong> which have a (theoretically) unlimited number of possible outcomes.</p>
@@ -176,13 +274,13 @@ $(document).ready(function () {
 <p>Binomial random variables can be simulated in R using the <code>rbinom()</code> function.</p>
 <pre class="r"><code># 10 observations, 1 trial
 rbinom(n = 10, size=1, prob = 0.5)</code></pre>
-<pre><code>##  [1] 0 0 1 1 1 0 1 0 1 0</code></pre>
+<pre><code>##  [1] 0 1 1 1 0 0 0 1 0 0</code></pre>
 <pre class="r"><code># 1 observation, 10 trials
 rbinom(n = 1, size=10, prob = 0.5)</code></pre>
-<pre><code>## [1] 6</code></pre>
+<pre><code>## [1] 4</code></pre>
 <pre class="r"><code># 10 observations, 10 trials
 rbinom(n = 10, size=10, prob = 0.5)</code></pre>
-<pre><code>##  [1] 3 5 6 6 5 4 6 6 3 3</code></pre>
+<pre><code>##  [1] 6 6 7 5 5 6 2 4 6 4</code></pre>
 <p>We can use the <code>dbinom()</code> function to get a sense of the shape of the binomial distribution.</p>
 <pre class="r"><code>library(ggplot2)</code></pre>
 <pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.2.4</code></pre>
@@ -205,12 +303,10 @@ rbinom(n = 10, size=10, prob = 0.5)</code></pre>
 <h3>Poisson Distribution</h3>
 <p>Is similar to the binomial distribution, but describes rare events, when the number of trials <span class="math inline">\(n\)</span> is unknown. Requires a single rate parameter <span class="math inline">\(\lambda\)</span>. It is commonly pops up when examining the number of events occuring through time (e.g., the number of pieces of mail recieved per day, or the number of speciation events occuring per millenium). The expected value and variance for the Poisson distribution are both equal to lambda</p>
 <pre class="r"><code>rpois(10, lambda = 0.2)</code></pre>
-<pre><code>##  [1] 0 0 0 0 0 2 0 0 2 0</code></pre>
+<pre><code>##  [1] 0 0 0 0 0 0 0 0 1 0</code></pre>
 <pre class="r"><code>qplot(x=0:5, y=dpois(0:5, lambda = 0.2), main=&quot;Poisson distribution with lambda = 0.2&quot;, geom=&quot;line&quot;)</code></pre>
 <p><img src="distributions_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
-</div>
-<div id="at-large-values-of-lambda-the-poisson-distribution-looks-very-much-like-a-normal-distribution-with-mean-lambda." class="section level3">
-<h3>At large values of lambda, the Poisson distribution looks very much like a normal distribution with mean <span class="math inline">\(\lambda\)</span>.</h3>
+<p><strong>At large values of lambda, the Poisson distribution looks very much like a normal distribution with mean <span class="math inline">\(\lambda\)</span>.</strong></p>
 <pre class="r"><code>qplot(x=1:60, y=dpois(1:60, lambda = 30), main=&quot;Poisson distribution with lambda = 30&quot;, geom=&quot;line&quot;)</code></pre>
 <p><img src="distributions_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 </div>
@@ -221,8 +317,8 @@ rbinom(n = 10, size=10, prob = 0.5)</code></pre>
 <h3>Uniform Distribution</h3>
 <p>The uniform distribution represents a function in which the probability density is equal for each sub-interval across the a given range. This results in a flat frequency distribution. The expected value over the range <span class="math inline">\(a\)</span> to <span class="math inline">\(b\)</span> is <span class="math inline">\((a + b)/2\)</span>. An example might be the distribution of trees on a savannah landscape, which are competing with one another for nutrients and light.</p>
 <pre class="r"><code>runif(10, min = 1, max = 10)</code></pre>
-<pre><code>##  [1] 5.289429 9.117085 5.073259 9.995890 1.247671 4.940234 4.105193
-##  [8] 4.349054 3.512728 2.116981</code></pre>
+<pre><code>##  [1] 6.128071 9.430460 5.356212 6.431991 9.445357 6.622907 1.126342
+##  [8] 3.473394 1.824469 3.889685</code></pre>
 <pre class="r"><code>qplot(runif(10000), min=1, max=10, main=&quot;uniform distribution from 1 to 10&quot;)</code></pre>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="distributions_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
@@ -231,8 +327,8 @@ rbinom(n = 10, size=10, prob = 0.5)</code></pre>
 <h3>Normal Distribution</h3>
 <p>The normal distribution (also known as the Gaussian distribution) is the familiar bell-curve shaped distribution that is symmetrical around the mean, with diminishing tails as you move away from the mean. Many phenomena in nature are distributed as a normal distribution, especially continuous measurement values. The normal distribution has two parameters, the mean (<span class="math inline">\(\mu\)</span>) and the standard deviation (<span class="math inline">\(\sigma\)</span>).</p>
 <pre class="r"><code>rnorm(10, mean=0, sd=1)</code></pre>
-<pre><code>##  [1]  0.72947146  0.79978824  1.52258217 -1.00129338 -0.28024154
-##  [6]  0.15679222 -0.02064608  1.18843402 -0.53266952 -0.83707277</code></pre>
+<pre><code>##  [1] -0.45770509  1.13181421 -0.39619317  0.05115338 -1.31357810
+##  [6]  0.75424174 -1.23607395  0.29431743 -0.56801184  0.97067031</code></pre>
 <pre class="r"><code>qplot(rnorm(10000, mean=0, sd=1), main=&quot;Standard normal distribution &quot;)</code></pre>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="distributions_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
@@ -241,8 +337,8 @@ rbinom(n = 10, size=10, prob = 0.5)</code></pre>
 <h3>Log-normal Distribution</h3>
 <p>The log-normal distribution resembles a normal distribution when it is logged.</p>
 <pre class="r"><code>rlnorm(10, meanlog = 0, sdlog = 1)</code></pre>
-<pre><code>##  [1] 0.4128577 0.5537419 1.1014774 4.7136574 0.4022082 0.3074149 1.6088471
-##  [8] 6.5677243 0.8096851 0.9722167</code></pre>
+<pre><code>##  [1] 0.7497072 2.0484517 0.2823160 0.3313978 0.2990017 0.2294364 1.7314610
+##  [8] 4.6586802 2.2029337 0.4735273</code></pre>
 <pre class="r"><code>lnorm &lt;- rlnorm(1000, meanlog = 0, sdlog = 1)
 
 qplot(lnorm, main=&quot;lognormal distribution&quot;)</code></pre>
@@ -256,8 +352,8 @@ qplot(lnorm, main=&quot;lognormal distribution&quot;)</code></pre>
 <h3>Exponential Distribution</h3>
 <p>The exponential distribution is the continuous version of the Poisson distribution. It is goverend by a single rate parameter.</p>
 <pre class="r"><code>rexp(10, rate=2)</code></pre>
-<pre><code>##  [1] 0.5990859 0.3356729 0.1544598 0.4999667 0.1413080 0.1826986 1.7854547
-##  [8] 0.2734098 1.2596345 0.8326396</code></pre>
+<pre><code>##  [1] 1.31228965 0.15047033 0.43511164 0.59946492 0.04510280 0.18006391
+##  [7] 0.06343638 2.27495101 0.41337028 0.07372203</code></pre>
 <pre class="r"><code>exponential &lt;- rexp(1000, rate=2)
 qplot(exponential, main=&quot;Shape of Exponential distribution using random simulated data&quot;)</code></pre>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
@@ -273,11 +369,9 @@ qplot(exponential, main=&quot;Shape of Exponential distribution using random sim
 <pre class="r"><code>pnorm(q = 5, mean = 10, sd = 1.5)</code></pre>
 <pre><code>## [1] 0.0004290603</code></pre>
 <p>This tells us that 4.290603310^{-4} is the proportion of values that are less than or equal to 5 in this probability distribution. If we were dealing with real data, we would be forced to say that an observation of 5 is very uncommon in this distribution, and the cumulative probability gives us an estimate of just how unlikely</p>
-</div>
-</div>
-<div id="this-is-fundamental-as-this-is-exactly-what-a-p-value-represents-but-more-on-that-next-week." class="section level2">
-<h2>This is fundamental, as this is exactly what a p value represents, but more on that next week.</h2>
+<p><strong>This is fundamental, as this is exactly what a p value represents, but more on that next week.</strong></p>
 <p><span class="mega-octicon octicon-puzzle"></span> Challenge: What is the cumulative probability at a value of 10 in the same normal distribution?</p>
+</div>
 <div id="quantiles" class="section level3">
 <h3>Quantiles</h3>
 <p>Quantiles are like cumulative probability turned on its head. Cumulative probabilty asks “how much probability density occurs at less than or equal to a value <span class="math inline">\(x\)</span>”. A quantile is the opposite: “what is the value of <span class="math inline">\(x\)</span> at which a given proportion of the probability density occurs?”</p>
@@ -334,9 +428,12 @@ qplot(grades, main=&quot;grades distribution with 90th percentile indicated&quot
 ## W = 0.70506, p-value &lt; 2.2e-16</code></pre>
 </div>
 </div>
+</div>
 
 
 
+</div>
+</div>
 
 </div>
 

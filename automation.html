@@ -10,14 +10,15 @@
 
 
 
+
 <title></title>
 
-<script src="libs/jquery-1.11.0/jquery.min.js"></script>
+<script src="libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="libs/bootstrap-3.3.1/css/united.min.css" rel="stylesheet" />
-<script src="libs/bootstrap-3.3.1/js/bootstrap.min.js"></script>
-<script src="libs/bootstrap-3.3.1/shim/html5shiv.min.js"></script>
-<script src="libs/bootstrap-3.3.1/shim/respond.min.js"></script>
+<link href="libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -50,6 +51,34 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </script>
 
 
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
 <link rel="stylesheet" href="octicons/octicons.css" type="text/css" />
 <link rel="stylesheet" href="css/custom-style.css" type="text/css" />
 
@@ -67,19 +96,42 @@ code {
   color: inherit;
   background-color: rgba(0, 0, 0, 0.04);
 }
-img { 
-  max-width:100%; 
-  height: auto; 
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
 }
 </style>
+
+
+
 <div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script src="libs/navigation-1.1/tabsets.js"></script>
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
 
 <div id="navbar">
   <div id="navbar-container">
     <ul id="navbar-ul">
-      <li><a href="index.html"><span class="mega-octicon octicon-home"></a></li>
+      <li><a href="index.html"><span class="mega-octicon octicon-home"></span></a></li>
       <li><a href="datasets.html">Data</a></li>
-      <li><a href="homework.html">Demos, Readings, & Homework</a></li>
+      <li><a href="homework.html">Schedule</a></li>
       <li><a href="ANTH6413_syllabus.docx">Syllabus</a></li>
       <li><a href="gettinghelp.html">Getting Help</a></li>
       
@@ -87,6 +139,12 @@ img {
   </div>
 </div>
 
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
 
 
 <div id="automation" class="section level1">
@@ -127,15 +185,15 @@ for(counter in myVector){
 <p>Often, we want to do some calculations, and save the results outside of the <code>for</code> loop. To do this, we can create a results vector in advance that is the same length as the vector we are looping over, then we can save the results each time in the appropriate slot.</p>
 <pre class="r"><code>myVector &lt;- runif(100, min = 1, max=10)
 myVector</code></pre>
-<pre><code>##   [1] 6.605381 8.630498 6.334916 3.468247 8.112440 1.597415 1.897249 6.088947 1.483526 5.544202 7.415848 6.514066
-##  [13] 2.054517 9.892744 1.125228 9.846720 3.405749 5.985778 3.896340 4.515708 4.384248 1.059003 8.146545 1.579004
-##  [25] 2.014195 5.742416 9.088165 4.809594 7.730404 4.636412 6.523915 2.338293 8.268841 2.909591 5.022327 7.617188
-##  [37] 9.483204 7.262852 3.555609 2.121211 5.204253 8.923239 7.154336 9.882027 5.864009 3.099985 8.314857 1.080394
-##  [49] 9.628037 8.540075 4.015287 2.638797 1.757157 4.708485 7.649044 2.514391 5.914525 1.323251 6.141193 3.215095
-##  [61] 4.002995 9.624716 2.319206 7.547054 7.452872 6.697895 8.599015 2.248842 2.475761 5.796546 5.162737 4.310697
-##  [73] 5.400618 4.660042 2.916589 1.514991 5.024511 8.184857 3.939048 7.415012 2.611614 8.300984 3.912494 9.293122
-##  [85] 4.265229 2.633194 7.667741 4.797413 4.022981 9.808694 3.701154 3.670268 8.825092 7.203007 8.014167 4.266312
-##  [97] 3.598613 5.390122 5.371983 3.802713</code></pre>
+<pre><code>##   [1] 8.164530 4.292991 7.767283 5.510939 6.787066 2.935808 3.666108 8.522598 8.226421 1.433995 6.185475 1.249176
+##  [13] 5.198612 7.083076 6.150561 6.321079 9.688498 8.171890 9.598774 3.361966 9.838705 2.048033 6.129392 5.816709
+##  [25] 7.893425 8.485310 3.822777 3.883304 9.853175 9.394911 7.791518 9.446695 8.960920 8.897096 5.533352 3.763752
+##  [37] 2.449958 8.697262 3.414950 3.037652 3.826337 7.903648 6.408269 9.291496 7.954132 8.306795 6.679866 9.781186
+##  [49] 2.880360 4.290111 5.806155 7.502402 4.828911 7.457925 9.583706 1.288317 8.044938 6.935887 4.353708 4.531477
+##  [61] 7.574809 9.942516 1.544157 5.398682 9.223884 4.792785 1.235514 4.509947 2.006206 1.825591 9.351663 4.846841
+##  [73] 8.352370 1.830553 4.995870 2.934565 7.800216 7.525567 5.833611 3.511941 1.695705 5.999476 7.163330 3.196399
+##  [85] 5.423780 2.153786 9.886676 6.849127 3.584307 9.274676 5.022231 9.372621 7.409664 2.807825 6.855635 6.938238
+##  [97] 6.933677 3.374287 5.530120 8.153937</code></pre>
 <pre class="r"><code>results &lt;- numeric(100)
 for(each in 1:length(myVector)){
   results[each] &lt;- paste(myVector[each], &quot;^ 2 = &quot;, myVector[each]^2)
@@ -143,9 +201,9 @@ for(each in 1:length(myVector)){
 
 ##now get some of the stored results
 results[50]</code></pre>
-<pre><code>## [1] &quot;8.54007469979115 ^ 2 =  72.9328758780129&quot;</code></pre>
+<pre><code>## [1] &quot;4.29011061391793 ^ 2 =  18.4050490796513&quot;</code></pre>
 <pre class="r"><code>results[73]</code></pre>
-<pre><code>## [1] &quot;5.40061824047007 ^ 2 =  29.166677379298&quot;</code></pre>
+<pre><code>## [1] &quot;8.35236958484165 ^ 2 =  69.7620776817879&quot;</code></pre>
 </div>
 <div id="if-statements" class="section level3">
 <h3><code>if</code> statements</h3>
@@ -215,12 +273,14 @@ myList</code></pre>
 ## [1] &quot;too&quot;
 ## 
 ## $lastOne
-##  [1]  0.7988128 -1.1991814  0.1140989  0.6500622 -2.0857011  0.2121221  1.2900300  0.9024746  0.6089078 -0.5659751</code></pre>
+##  [1] -0.38561835 -0.45381476 -0.39471432  0.68536205 -0.09167569  2.21319887 -0.03393318 -1.08500162  0.56114429
+## [10]  1.80064804</code></pre>
 </div>
 <div id="you-use-double-brackets-to-index-a-list" class="section level4">
 <h4>you use double brackets <code>[[]]</code> to index a list</h4>
 <pre class="r"><code>myList[[3]]</code></pre>
-<pre><code>##  [1]  0.7988128 -1.1991814  0.1140989  0.6500622 -2.0857011  0.2121221  1.2900300  0.9024746  0.6089078 -0.5659751</code></pre>
+<pre><code>##  [1] -0.38561835 -0.45381476 -0.39471432  0.68536205 -0.09167569  2.21319887 -0.03393318 -1.08500162  0.56114429
+## [10]  1.80064804</code></pre>
 </div>
 <div id="lists-can-optionally-have-named-elements-that-can-be-accessed-using-the-operator" class="section level4">
 <h4>lists can (optionally) have named elements, that can be accessed using the <code>$</code> operator</h4>
@@ -246,16 +306,16 @@ sampleSizes &lt;- 100:200
 myResults &lt;- lapply(sampleSizes, FUN=summarizeRandom)
 myResults[1:3]</code></pre>
 <pre><code>## [[1]]
-##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-## -1.8830 -0.4035  0.2810  0.3085  0.9048  3.2930 
+##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+## -2.687000 -0.683700  0.001612 -0.016070  0.680700  2.216000 
 ## 
 ## [[2]]
-##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-## -2.85400 -0.67430  0.11390  0.07411  0.76700  2.76000 
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+## -2.6540 -0.8148 -0.1579 -0.1762  0.4983  2.6580 
 ## 
 ## [[3]]
-##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-## -2.9270 -0.5919  0.2939  0.0609  0.7300  2.6210</code></pre>
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+## -2.46900 -0.84090  0.02973 -0.03258  0.59300  2.30800</code></pre>
 </div>
 </div>
 <div id="the-dplyr-package" class="section level2">
@@ -279,8 +339,9 @@ loans &lt;- tbl_df(loans)</code></pre>
 <pre class="r"><code>filter(loans, School==&quot;GEORGE WASHINGTON UNIVERSITY&quot;)</code></pre>
 <pre><code>## Source: local data frame [1 x 5]
 ## 
-##                         School State      School_Type SubsidizedDL UNSubsidizedDL
-## 1 GEORGE WASHINGTON UNIVERSITY    DC PrivateNonprofit      7463145        5913027</code></pre>
+##                         School  State      School_Type SubsidizedDL UNSubsidizedDL
+##                         (fctr) (fctr)           (fctr)        (int)          (int)
+## 1 GEORGE WASHINGTON UNIVERSITY     DC PrivateNonprofit      7463145        5913027</code></pre>
 </div>
 <div id="arrange" class="section level3">
 <h3><code>arrange()</code></h3>
@@ -288,33 +349,35 @@ loans &lt;- tbl_df(loans)</code></pre>
 <pre class="r"><code>arrange(loans, State, SubsidizedDL)</code></pre>
 <pre><code>## Source: local data frame [210 x 5]
 ## 
-##                                    School State      School_Type SubsidizedDL UNSubsidizedDL
-## 1  NATIONAL CONSERVATORY OF DRAMATIC ARTS    DC PrivateNonprofit        40812          21963
-## 2              TECHNICAL LEARNING CENTERS    DC      Proprietary        84000         128000
-## 3                BENNETT CAREER INSTITUTE    DC      Proprietary       107642          88632
-## 4                         RADIANS COLLEGE    DC      Proprietary       340038         514081
-## 5      CORCORAN COLLEGE OF ART AND DESIGN    DC PrivateNonprofit       356355         360715
-## 6              CAREER TECHNICAL INSTITUTE    DC      Proprietary       416911         685909
-## 7                    GALLAUDET UNIVERSITY    DC PrivateNonprofit       679602         561785
-## 8                         TRINITY COLLEGE    DC PrivateNonprofit      2522961        2850888
-## 9          CATHOLIC UNIVERSITY OF AMERICA    DC PrivateNonprofit      3619502        3520966
-## 10                  GEORGETOWN UNIVERSITY    DC PrivateNonprofit      3824260        1318290
-## ..                                    ...   ...              ...          ...            ...</code></pre>
+##                                    School  State      School_Type SubsidizedDL UNSubsidizedDL
+##                                    (fctr) (fctr)           (fctr)        (int)          (int)
+## 1  NATIONAL CONSERVATORY OF DRAMATIC ARTS     DC PrivateNonprofit        40812          21963
+## 2              TECHNICAL LEARNING CENTERS     DC      Proprietary        84000         128000
+## 3                BENNETT CAREER INSTITUTE     DC      Proprietary       107642          88632
+## 4                         RADIANS COLLEGE     DC      Proprietary       340038         514081
+## 5      CORCORAN COLLEGE OF ART AND DESIGN     DC PrivateNonprofit       356355         360715
+## 6              CAREER TECHNICAL INSTITUTE     DC      Proprietary       416911         685909
+## 7                    GALLAUDET UNIVERSITY     DC PrivateNonprofit       679602         561785
+## 8                         TRINITY COLLEGE     DC PrivateNonprofit      2522961        2850888
+## 9          CATHOLIC UNIVERSITY OF AMERICA     DC PrivateNonprofit      3619502        3520966
+## 10                  GEORGETOWN UNIVERSITY     DC PrivateNonprofit      3824260        1318290
+## ..                                    ...    ...              ...          ...            ...</code></pre>
 <pre class="r"><code>arrange(loans, State, desc(SubsidizedDL))</code></pre>
 <pre><code>## Source: local data frame [210 x 5]
 ## 
-##                                    School State      School_Type SubsidizedDL UNSubsidizedDL
-## 1                      STRAYER UNIVERSITY    DC      Proprietary     22490396       34840102
-## 2                       HOWARD UNIVERSITY    DC PrivateNonprofit      9414766        9021712
-## 3            GEORGE WASHINGTON UNIVERSITY    DC PrivateNonprofit      7463145        5913027
-## 4                     AMERICAN UNIVERSITY    DC PrivateNonprofit      6213538        4517728
-## 5  UNIVERSITY OF THE DISTRICT OF COLUMBIA    DC           Public      3850272        4248284
-## 6                   GEORGETOWN UNIVERSITY    DC PrivateNonprofit      3824260        1318290
-## 7          CATHOLIC UNIVERSITY OF AMERICA    DC PrivateNonprofit      3619502        3520966
-## 8                         TRINITY COLLEGE    DC PrivateNonprofit      2522961        2850888
-## 9                    GALLAUDET UNIVERSITY    DC PrivateNonprofit       679602         561785
-## 10             CAREER TECHNICAL INSTITUTE    DC      Proprietary       416911         685909
-## ..                                    ...   ...              ...          ...            ...</code></pre>
+##                                    School  State      School_Type SubsidizedDL UNSubsidizedDL
+##                                    (fctr) (fctr)           (fctr)        (int)          (int)
+## 1                      STRAYER UNIVERSITY     DC      Proprietary     22490396       34840102
+## 2                       HOWARD UNIVERSITY     DC PrivateNonprofit      9414766        9021712
+## 3            GEORGE WASHINGTON UNIVERSITY     DC PrivateNonprofit      7463145        5913027
+## 4                     AMERICAN UNIVERSITY     DC PrivateNonprofit      6213538        4517728
+## 5  UNIVERSITY OF THE DISTRICT OF COLUMBIA     DC           Public      3850272        4248284
+## 6                   GEORGETOWN UNIVERSITY     DC PrivateNonprofit      3824260        1318290
+## 7          CATHOLIC UNIVERSITY OF AMERICA     DC PrivateNonprofit      3619502        3520966
+## 8                         TRINITY COLLEGE     DC PrivateNonprofit      2522961        2850888
+## 9                    GALLAUDET UNIVERSITY     DC PrivateNonprofit       679602         561785
+## 10             CAREER TECHNICAL INSTITUTE     DC      Proprietary       416911         685909
+## ..                                    ...    ...              ...          ...            ...</code></pre>
 </div>
 <div id="select" class="section level3">
 <h3><code>select()</code></h3>
@@ -322,22 +385,24 @@ loans &lt;- tbl_df(loans)</code></pre>
 <pre class="r"><code>select(loans, State, SubsidizedDL)</code></pre>
 <pre><code>## Source: local data frame [210 x 2]
 ## 
-##    State SubsidizedDL
-## 1     DC      6213538
-## 2     DC      3619502
-## 3     DC      3850272
-## 4     DC       679602
-## 5     DC      7463145
-## 6     DC      3824260
-## 7     DC      9414766
-## 8     DC     22490396
-## 9     DC      2522961
-## 10    DC           NA
-## ..   ...          ...</code></pre>
+##     State SubsidizedDL
+##    (fctr)        (int)
+## 1      DC      6213538
+## 2      DC      3619502
+## 3      DC      3850272
+## 4      DC       679602
+## 5      DC      7463145
+## 6      DC      3824260
+## 7      DC      9414766
+## 8      DC     22490396
+## 9      DC      2522961
+## 10     DC           NA
+## ..    ...          ...</code></pre>
 <pre class="r"><code>select(loans, -State, -SubsidizedDL)</code></pre>
 <pre><code>## Source: local data frame [210 x 3]
 ## 
 ##                                    School      School_Type UNSubsidizedDL
+##                                    (fctr)           (fctr)          (int)
 ## 1                     AMERICAN UNIVERSITY PrivateNonprofit        4517728
 ## 2          CATHOLIC UNIVERSITY OF AMERICA PrivateNonprofit        3520966
 ## 3  UNIVERSITY OF THE DISTRICT OF COLUMBIA           Public        4248284
@@ -352,18 +417,19 @@ loans &lt;- tbl_df(loans)</code></pre>
 <pre class="r"><code>select(loans, State:SubsidizedDL)</code></pre>
 <pre><code>## Source: local data frame [210 x 3]
 ## 
-##    State      School_Type SubsidizedDL
-## 1     DC PrivateNonprofit      6213538
-## 2     DC PrivateNonprofit      3619502
-## 3     DC           Public      3850272
-## 4     DC PrivateNonprofit       679602
-## 5     DC PrivateNonprofit      7463145
-## 6     DC PrivateNonprofit      3824260
-## 7     DC PrivateNonprofit      9414766
-## 8     DC      Proprietary     22490396
-## 9     DC PrivateNonprofit      2522961
-## 10    DC PrivateNonprofit           NA
-## ..   ...              ...          ...</code></pre>
+##     State      School_Type SubsidizedDL
+##    (fctr)           (fctr)        (int)
+## 1      DC PrivateNonprofit      6213538
+## 2      DC PrivateNonprofit      3619502
+## 3      DC           Public      3850272
+## 4      DC PrivateNonprofit       679602
+## 5      DC PrivateNonprofit      7463145
+## 6      DC PrivateNonprofit      3824260
+## 7      DC PrivateNonprofit      9414766
+## 8      DC      Proprietary     22490396
+## 9      DC PrivateNonprofit      2522961
+## 10     DC PrivateNonprofit           NA
+## ..    ...              ...          ...</code></pre>
 </div>
 <div id="distinct" class="section level3">
 <h3><code>distinct()</code></h3>
@@ -371,31 +437,33 @@ loans &lt;- tbl_df(loans)</code></pre>
 <pre class="r"><code>distinct(loans)</code></pre>
 <pre><code>## Source: local data frame [210 x 5]
 ## 
-##                                    School State      School_Type SubsidizedDL UNSubsidizedDL
-## 1                     AMERICAN UNIVERSITY    DC PrivateNonprofit      6213538        4517728
-## 2          CATHOLIC UNIVERSITY OF AMERICA    DC PrivateNonprofit      3619502        3520966
-## 3  UNIVERSITY OF THE DISTRICT OF COLUMBIA    DC           Public      3850272        4248284
-## 4                    GALLAUDET UNIVERSITY    DC PrivateNonprofit       679602         561785
-## 5            GEORGE WASHINGTON UNIVERSITY    DC PrivateNonprofit      7463145        5913027
-## 6                   GEORGETOWN UNIVERSITY    DC PrivateNonprofit      3824260        1318290
-## 7                       HOWARD UNIVERSITY    DC PrivateNonprofit      9414766        9021712
-## 8                      STRAYER UNIVERSITY    DC      Proprietary     22490396       34840102
-## 9                         TRINITY COLLEGE    DC PrivateNonprofit      2522961        2850888
-## 10            WESLEY THEOLOGICAL SEMINARY    DC PrivateNonprofit           NA          22250
-## ..                                    ...   ...              ...          ...            ...</code></pre>
+##                                    School  State      School_Type SubsidizedDL UNSubsidizedDL
+##                                    (fctr) (fctr)           (fctr)        (int)          (int)
+## 1                     AMERICAN UNIVERSITY     DC PrivateNonprofit      6213538        4517728
+## 2          CATHOLIC UNIVERSITY OF AMERICA     DC PrivateNonprofit      3619502        3520966
+## 3  UNIVERSITY OF THE DISTRICT OF COLUMBIA     DC           Public      3850272        4248284
+## 4                    GALLAUDET UNIVERSITY     DC PrivateNonprofit       679602         561785
+## 5            GEORGE WASHINGTON UNIVERSITY     DC PrivateNonprofit      7463145        5913027
+## 6                   GEORGETOWN UNIVERSITY     DC PrivateNonprofit      3824260        1318290
+## 7                       HOWARD UNIVERSITY     DC PrivateNonprofit      9414766        9021712
+## 8                      STRAYER UNIVERSITY     DC      Proprietary     22490396       34840102
+## 9                         TRINITY COLLEGE     DC PrivateNonprofit      2522961        2850888
+## 10            WESLEY THEOLOGICAL SEMINARY     DC PrivateNonprofit           NA          22250
+## ..                                    ...    ...              ...          ...            ...</code></pre>
 <pre class="r"><code>distinct(select(loans, State, School_Type))</code></pre>
 <pre><code>## Source: local data frame [9 x 2]
 ## 
-##   State      School_Type
-## 1    DC PrivateNonprofit
-## 2    DC           Public
-## 3    DC      Proprietary
-## 4    MD PrivateNonprofit
-## 5    MD           Public
-## 6    MD      Proprietary
-## 7    VA PrivateNonprofit
-## 8    VA           Public
-## 9    VA      Proprietary</code></pre>
+##    State      School_Type
+##   (fctr)           (fctr)
+## 1     DC PrivateNonprofit
+## 2     DC           Public
+## 3     DC      Proprietary
+## 4     MD PrivateNonprofit
+## 5     MD           Public
+## 6     MD      Proprietary
+## 7     VA PrivateNonprofit
+## 8     VA           Public
+## 9     VA      Proprietary</code></pre>
 </div>
 <div id="mutate" class="section level3">
 <h3><code>mutate()</code></h3>
@@ -403,18 +471,19 @@ loans &lt;- tbl_df(loans)</code></pre>
 <pre class="r"><code>mutate(loans, Total_Loans = SubsidizedDL + UNSubsidizedDL)</code></pre>
 <pre><code>## Source: local data frame [210 x 6]
 ## 
-##                                    School State      School_Type SubsidizedDL UNSubsidizedDL Total_Loans
-## 1                     AMERICAN UNIVERSITY    DC PrivateNonprofit      6213538        4517728    10731266
-## 2          CATHOLIC UNIVERSITY OF AMERICA    DC PrivateNonprofit      3619502        3520966     7140468
-## 3  UNIVERSITY OF THE DISTRICT OF COLUMBIA    DC           Public      3850272        4248284     8098556
-## 4                    GALLAUDET UNIVERSITY    DC PrivateNonprofit       679602         561785     1241387
-## 5            GEORGE WASHINGTON UNIVERSITY    DC PrivateNonprofit      7463145        5913027    13376172
-## 6                   GEORGETOWN UNIVERSITY    DC PrivateNonprofit      3824260        1318290     5142550
-## 7                       HOWARD UNIVERSITY    DC PrivateNonprofit      9414766        9021712    18436478
-## 8                      STRAYER UNIVERSITY    DC      Proprietary     22490396       34840102    57330498
-## 9                         TRINITY COLLEGE    DC PrivateNonprofit      2522961        2850888     5373849
-## 10            WESLEY THEOLOGICAL SEMINARY    DC PrivateNonprofit           NA          22250          NA
-## ..                                    ...   ...              ...          ...            ...         ...</code></pre>
+##                                    School  State      School_Type SubsidizedDL UNSubsidizedDL Total_Loans
+##                                    (fctr) (fctr)           (fctr)        (int)          (int)       (int)
+## 1                     AMERICAN UNIVERSITY     DC PrivateNonprofit      6213538        4517728    10731266
+## 2          CATHOLIC UNIVERSITY OF AMERICA     DC PrivateNonprofit      3619502        3520966     7140468
+## 3  UNIVERSITY OF THE DISTRICT OF COLUMBIA     DC           Public      3850272        4248284     8098556
+## 4                    GALLAUDET UNIVERSITY     DC PrivateNonprofit       679602         561785     1241387
+## 5            GEORGE WASHINGTON UNIVERSITY     DC PrivateNonprofit      7463145        5913027    13376172
+## 6                   GEORGETOWN UNIVERSITY     DC PrivateNonprofit      3824260        1318290     5142550
+## 7                       HOWARD UNIVERSITY     DC PrivateNonprofit      9414766        9021712    18436478
+## 8                      STRAYER UNIVERSITY     DC      Proprietary     22490396       34840102    57330498
+## 9                         TRINITY COLLEGE     DC PrivateNonprofit      2522961        2850888     5373849
+## 10            WESLEY THEOLOGICAL SEMINARY     DC PrivateNonprofit           NA          22250          NA
+## ..                                    ...    ...              ...          ...            ...         ...</code></pre>
 </div>
 <div id="summarise" class="section level3">
 <h3><code>summarise()</code></h3>
@@ -423,6 +492,7 @@ loans &lt;- tbl_df(loans)</code></pre>
 <pre><code>## Source: local data frame [1 x 1]
 ## 
 ##   meanSubDL
+##       (dbl)
 ## 1   2607474</code></pre>
 </div>
 <div id="grouping-data" class="section level3">
@@ -434,27 +504,29 @@ loans &lt;- tbl_df(loans)</code></pre>
 <pre class="r"><code>groupedLoans &lt;- group_by(loans, State)
 groupedLoans</code></pre>
 <pre><code>## Source: local data frame [210 x 5]
-## Groups: State
+## Groups: State [3]
 ## 
-##                                    School State      School_Type SubsidizedDL UNSubsidizedDL
-## 1                     AMERICAN UNIVERSITY    DC PrivateNonprofit      6213538        4517728
-## 2          CATHOLIC UNIVERSITY OF AMERICA    DC PrivateNonprofit      3619502        3520966
-## 3  UNIVERSITY OF THE DISTRICT OF COLUMBIA    DC           Public      3850272        4248284
-## 4                    GALLAUDET UNIVERSITY    DC PrivateNonprofit       679602         561785
-## 5            GEORGE WASHINGTON UNIVERSITY    DC PrivateNonprofit      7463145        5913027
-## 6                   GEORGETOWN UNIVERSITY    DC PrivateNonprofit      3824260        1318290
-## 7                       HOWARD UNIVERSITY    DC PrivateNonprofit      9414766        9021712
-## 8                      STRAYER UNIVERSITY    DC      Proprietary     22490396       34840102
-## 9                         TRINITY COLLEGE    DC PrivateNonprofit      2522961        2850888
-## 10            WESLEY THEOLOGICAL SEMINARY    DC PrivateNonprofit           NA          22250
-## ..                                    ...   ...              ...          ...            ...</code></pre>
+##                                    School  State      School_Type SubsidizedDL UNSubsidizedDL
+##                                    (fctr) (fctr)           (fctr)        (int)          (int)
+## 1                     AMERICAN UNIVERSITY     DC PrivateNonprofit      6213538        4517728
+## 2          CATHOLIC UNIVERSITY OF AMERICA     DC PrivateNonprofit      3619502        3520966
+## 3  UNIVERSITY OF THE DISTRICT OF COLUMBIA     DC           Public      3850272        4248284
+## 4                    GALLAUDET UNIVERSITY     DC PrivateNonprofit       679602         561785
+## 5            GEORGE WASHINGTON UNIVERSITY     DC PrivateNonprofit      7463145        5913027
+## 6                   GEORGETOWN UNIVERSITY     DC PrivateNonprofit      3824260        1318290
+## 7                       HOWARD UNIVERSITY     DC PrivateNonprofit      9414766        9021712
+## 8                      STRAYER UNIVERSITY     DC      Proprietary     22490396       34840102
+## 9                         TRINITY COLLEGE     DC PrivateNonprofit      2522961        2850888
+## 10            WESLEY THEOLOGICAL SEMINARY     DC PrivateNonprofit           NA          22250
+## ..                                    ...    ...              ...          ...            ...</code></pre>
 <pre class="r"><code>summarise(groupedLoans, meanSubDL = mean(SubsidizedDL, na.rm=TRUE))</code></pre>
 <pre><code>## Source: local data frame [3 x 2]
 ## 
-##   State meanSubDL
-## 1    DC   4094947
-## 2    MD   2132025
-## 3    VA   2730055</code></pre>
+##    State meanSubDL
+##   (fctr)     (dbl)
+## 1     DC   4094947
+## 2     MD   2132025
+## 3     VA   2730055</code></pre>
 </div>
 <div id="chaining-operations" class="section level3">
 <h3>Chaining operations</h3>
@@ -466,6 +538,7 @@ groupedLoans</code></pre>
 <pre><code>## Source: local data frame [3 x 2]
 ## 
 ##        School_Type mean_total_loans
+##             (fctr)            (dbl)
 ## 1 PrivateNonprofit          5115076
 ## 2      Proprietary          1796278
 ## 3           Public         10315783</code></pre>
@@ -475,11 +548,11 @@ library(ggplot2)
 
 #chained syntax
 rnorm(1000, mean=20, sd=1.4) %&gt;% log %&gt;% hist</code></pre>
-<p><img src="automation_files/figure-html/unnamed-chunk-22-1.png" title="" alt="" width="672" /></p>
+<p><img src="automation_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
 <pre class="r"><code>#compare with nested function calls 
 
 hist(log(rnorm(1000, mean=20, sd=1.4)))</code></pre>
-<p><img src="automation_files/figure-html/unnamed-chunk-22-2.png" title="" alt="" width="672" /></p>
+<p><img src="automation_files/figure-html/unnamed-chunk-22-2.png" width="672" /></p>
 </div>
 <div id="challenge-2" class="section level3">
 <h3><span class="mega-octicon octicon-puzzle"></span> Challenge</h3>
@@ -499,6 +572,8 @@ hist(log(rnorm(1000, mean=20, sd=1.4)))</code></pre>
 </div>
 
 
+
+
 </div>
 
 <script>
@@ -507,6 +582,7 @@ hist(log(rnorm(1000, mean=20, sd=1.4)))</code></pre>
 $(document).ready(function () {
   $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
 });
+
 
 </script>
 

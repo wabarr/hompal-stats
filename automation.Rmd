@@ -159,7 +159,7 @@ We will use a dataset on student loans in public and private universities.  Read
 **Note** before getting started, lets convert our `loans` object to a tbl_df object, which is just like a normal dataframe, but doesn't print all its rows to the screen. This function is part of `dplyr`, so we need to load it first. 
 
 ```{r echo = FALSE}
-loans <- read.table("http://hompal-stats.wabarr.com/datasets/DMV_2014_Q3_Undergrad_DirectLoans.csv", sep=",", header=TRUE)
+loans <- read.table("http://wabarr.github.io/hompal-stats/datasets/DMV_2014_Q3_Undergrad_DirectLoans.csv", sep=",", header=TRUE)
 ```
 
 ```{r warning=FALSE, message=FALSE}

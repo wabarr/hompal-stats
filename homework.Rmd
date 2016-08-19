@@ -7,7 +7,7 @@ title: "Schedule, Readings, & Homework"
 
 | Date  | Demo | Homework  | Reading |
 | --------- | -------------------------  | ------------------ | ------------------ |
-| August 29 | [Intro to R](intro_to_R.html) | [Try R Tutorial](http://tryr.codeschool.com) | - |
+| August 29 | [Intro to Course](intro_to_course.html) [Intro to R](intro_to_R.html) | [Try R Tutorial](http://tryr.codeschool.com) | - |
 | September 5 | **Labor Day, No Class** | - | - |
 | September 12 | [Visualizing Data](visualization.html) & [Automation](automation.html) |  - | [dplyr vignette](http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html) | - |
 | September 19|  [Probability](probability.html) - [Distributions](distributions.html) - [Summary Stats](summary_stats.html) |  - | Gotelli: Ch 1 - 3 | - |

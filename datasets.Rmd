@@ -3,17 +3,18 @@ title: "Datasets"
 
 ---
 
+**Note: files have .txt extension so that they render in the broswer, but may use tab characters (\\t) or commas as column separators.**
 
 Dataset Name | Source of data
------------  | ----------------
+----------------------------------------  | ---------------------------------------
 [Isler_et_al_brains.txt](datasets/Isler_et_al_brains.txt) | [Isler et al, 2008](http://dx.doi.org/10.1016/j.jhevol.2008.08.004)
 [Living_Primates_Diet_Gomez_Verdu_2012.txt](datasets/Living_Primates_Diet_Gomez_Verdu_2012.txt) | [Gomez & Verdu, 2012](http://dx.doi.org/10.1093/sysbio/syr127)
-[Howell_craniometry.csv](datasets/Howell_craniometry.csv) | [website](http://web.utk.edu/~auerbach/HOWL.htm)
+[Howell_craniometry.txt](datasets/Howell_craniometry.txt) | [website](http://web.utk.edu/~auerbach/HOWL.htm)
 [femur_lengths.txt](datasets/femur_lengths.txt) | fake demonstration data
-[DMV_2014_Q3_Undergrad_DirectLoans.csv](datasets/DMV_2014_Q3_Undergrad_DirectLoans.csv) | from [data.gov](http://data.gov)
+[DMV_2014_Q3_Undergrad_DirectLoans.txt](datasets/DMV_2014_Q3_Undergrad_DirectLoans.txt) | from [data.gov](http://data.gov)
 [anage_longevity_data.txt](datasets/anage_longevity_data.txt) | [online database](http://genomics.senescence.info/species/)
-[Ossenberg-cranial-nonmetric-trait-dbase.csv](datasets/Ossenberg-cranial-nonmetric-trait-dbase.csv) | [article and website](http://dx.doi.org/10.1002/ajpa.22377)
-[Pearce_etal_2012_homerange.csv](datasets/Pearce_etal_2012_homerange.csv) | [Pearce et al, 2012](http://dx.doi.org/10.1098/rspb.2012.2122)
+[Ossenberg-cranial-nonmetric-trait-dbase.txt](datasets/Ossenberg-cranial-nonmetric-trait-dbase.txt) | [article and website](http://dx.doi.org/10.1002/ajpa.22377)
+[Pearce_etal_2012_homerange.txt](datasets/Pearce_etal_2012_homerange.txt) | [Pearce et al, 2012](http://dx.doi.org/10.1098/rspb.2012.2122)
 [gorilla_sizes.txt](datasets/gorilla_sizes.txt) | example data
 [baboons.txt](datasets/baboons.txt) | example data
 [barr_astrag_2014.txt](datasets/barr_astrag_2014.txt) | [Barr, 2014](http://dx.doi.org/10.1002/jmor.20279)
@@ -22,21 +23,21 @@ Dataset Name | Source of data
 [american_women_feet.txt](datasets/american_women_feet.txt) | fake data
 [gotelli_ants.txt](datasets/gotelli_ants.txt) | Gotelli Chapter 5
 [DIK-scap.txt](datasets/DIK-scap.txt) | [Alemseged et al, 2006](http://dx.doi.org/10.1038/nature05047)
-[Reed1997_modern_adaptations](datasets/Reed1997_modern_adaptations.csv) | [Reed, 1997](http://dx.doi.org/10.1006/jhev.1996.0106)
-[Gordon_2008_cranial.csv](datasets/Gordon_2008_cranial.csv) | [Gordon et al., 2008](http://www.pnas.org/content/105/12/4650.abstract)
-[Cerling_etal_2013.csv](datasets/Cerling_etal_2013.csv) | [Cerling et al., 2013](http://dx.doi.org/10.1073/pnas.1222571110)
-[Boddy_2012_data.csv](datasets/Boddy_2012_data.csv) | [Boddy et al. 2012](http://dx.doi.org/10.1111/j.1420-9101.2012.02491.x)
+[Reed1997_modern_adaptations](datasets/Reed1997_modern_adaptations.txt) | [Reed, 1997](http://dx.doi.org/10.1006/jhev.1996.0106)
+[Gordon_2008_cranial.txt](datasets/Gordon_2008_cranial.txt) | [Gordon et al., 2008](http://www.pnas.org/content/105/12/4650.abstract)
+[Cerling_etal_2013.txt](datasets/Cerling_etal_2013.txt) | [Cerling et al., 2013](http://dx.doi.org/10.1073/pnas.1222571110)
+[Boddy_2012_data.txt](datasets/Boddy_2012_data.txt) | [Boddy et al. 2012](http://dx.doi.org/10.1111/j.1420-9101.2012.02491.x)
 [lemurfeeding.txt](datasets/lemurfeeding.txt) | fake data
-[Cuozo_etal_2013.csv](datasets/Cuozo_etal_2013.csv) | [Cuozo et al., 2013](http://dx.doi.org/10.1016/j.jhevol.2012.08.007)
-[Scorrano_2014.csv](datasets/Scorrano_2014.csv) | [Scorrano 2014](http://dx.doi.org/10.1002/ajpa.22517)
+[Cuozo_etal_2013.txt](datasets/Cuozo_etal_2013.txt) | [Cuozo et al., 2013](http://dx.doi.org/10.1016/j.jhevol.2012.08.007)
+[Scorrano_2014.txt](datasets/Scorrano_2014.txt) | [Scorrano 2014](http://dx.doi.org/10.1002/ajpa.22517)
 [bovid_occurrences.txt](datasets/bovid_occurrences.txt) |  Fake data
-[Zaatari_hunter_gatherer.csv](datasets/Zaatari_hunter_gatherer.csv) | [Zaatari et al, 2011](http://dx.doi.org/10.1016/j.jhevol.2011.05.004)
-[Zaatari_neanderthal.csv](datasets/Zaatari_neanderthal.csv) | [Zaatari et al, 2011](http://dx.doi.org/10.1016/j.jhevol.2011.05.004)
-[Espinoza_etal_2007.csv](datasets/Espinoza_etal_2007.csv) | [Espinoza et al 2007](dx.doi.org/10.1111/j.1475-4754.2007.00328.x)
-[Su_2011_bovid_data.csv](datasets/Su_2011_bovid_data.csv) | [Su et al., 2011](readings_pdf/Su_etal_2011.pdf)
-[granatoskydata.csv](datasets/granatoskydata.csv) | [Granatosky et al., 2014](http://dx.doi.org/10.1016/j.jhevol.2014.06.011)
-[Anderson_etal_2011_fish.csv](datasets/Anderson_etal_2011_fish.csv) | [Anderson et al., 2011](http://dx.doi.org/10.1038/nature10207)  
-[ungs.csv](datasets/ungs.csv) | [Shultz and Dunbar, 2006](http://dx.doi.org/10.1098/rspb.2005.3283)
+[Zaatari_hunter_gatherer.txt](datasets/Zaatari_hunter_gatherer.txt) | [Zaatari et al, 2011](http://dx.doi.org/10.1016/j.jhevol.2011.05.004)
+[Zaatari_neanderthal.txt](datasets/Zaatari_neanderthal.txt) | [Zaatari et al, 2011](http://dx.doi.org/10.1016/j.jhevol.2011.05.004)
+[Espinoza_etal_2007.txt](datasets/Espinoza_etal_2007.txt) | [Espinoza et al 2007](dx.doi.org/10.1111/j.1475-4754.2007.00328.x)
+[Su_2011_bovid_data.txt](datasets/Su_2011_bovid_data.txt) | [Su et al., 2011](readings_pdf/Su_etal_2011.pdf)
+[granatoskydata.txt](datasets/granatoskydata.txt) | [Granatosky et al., 2014](http://dx.doi.org/10.1016/j.jhevol.2014.06.011)
+[Anderson_etal_2011_fish.txt](datasets/Anderson_etal_2011_fish.txt) | [Anderson et al., 2011](http://dx.doi.org/10.1038/nature10207)  
+[ungs.txt](datasets/ungs.txt) | [Shultz and Dunbar, 2006](http://dx.doi.org/10.1098/rspb.2005.3283)
 [Bininda_Emonds_correctedDates_FULLPHYLOG.txt](datasets/Bininda_Emonds_correctedDates_FULLPHYLOG.txt) | [Bininda Emonds et al., 2007](http://dx.doi.org/10.1038/nature05634)
 [winter_korean.txt](datasets/winter_korean.txt) | [Winter & Grawunder, 2012](http://dx.doi.org/10.1016/j.wocn.2012.08.006)
 [test_data_chimp.txt](datasets/test_data_chimp.txt) | fake data

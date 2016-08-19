@@ -3,7 +3,7 @@ title: "Datasets"
 
 ---
 
-**Note: files have .txt extension so that they render in the broswer, but may use tab characters (\\t) or commas as column separators.**
+**Note: files have .txt extension so that they render in the broswer, but may use tab characters ('\\t') or commas as column separators.**
 
 Dataset Name | Source of data
 ----------------------------------------  | ---------------------------------------

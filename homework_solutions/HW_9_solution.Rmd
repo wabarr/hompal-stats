@@ -14,7 +14,7 @@ theme_set(theme_bw(30))
 
 ### A - 1pt
 
-load [this dataset](datasets/DIK-scap.txt) on scapula morphology in Pan, Homo and Gorilla, and the Dikika fossil child.  Details on this data can be found in [Alemseged et al, 2006](http://www.nature.com/nature/journal/v443/n7109/full/nature05047.html)
+load [this dataset](http://hompal-stats.wabarr.com/datasets/DIK-scap.txt) on scapula morphology in Pan, Homo and Gorilla, and the Dikika fossil child.  Details on this data can be found in [Alemseged et al, 2006](http://www.nature.com/nature/journal/v443/n7109/full/nature05047.html)
 
 ```{r}
 scap <- read.table("http://hompal-stats.wabarr.com/datasets/DIK-scap.txt", header=TRUE)
@@ -87,7 +87,7 @@ All of the variables load similarly and positively on the first PC.  This is a c
 
 ### A - 1pt
 
-load the [dataset from Reed 1997](http://hompal-stats.wabarr.com/datasets/Reed1997_modern_adaptations.csv) with proportions of large mammal adaptations from modern game parks
+load the [dataset from Reed 1997](http://hompal-stats.wabarr.com/datasets/Reed1997_modern_adaptations.txt) with proportions of large mammal adaptations from modern game parks
 
 
 ```{r}

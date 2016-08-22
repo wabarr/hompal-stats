@@ -9,7 +9,7 @@ Note from Spring 2015:  Students reported spending >20 hours on this assignment.
 
 ## Problem 1
 
-a.  Load the [Howell's craniometric dataset](datasets/Howell_craniometry.csv) into R. This dataset includes 82 measurements on 2524 human crania from 28 populations [(measurement abbreviations detailed in this pdf)](datasets/Howell_Measurement_definitions.pdf). Note that a 0 indicates missing data in this dataset, so make sure to specify this when you read in the data.
+a.  Load the [Howell's craniometric dataset](datasets/Howell_craniometry.txt) into R. This dataset includes 82 measurements on 2524 human crania from 28 populations [(measurement abbreviations detailed in this pdf)](datasets/Howell_Measurement_definitions.pdf). Note that a 0 indicates missing data in this dataset, so make sure to specify this when you read in the data.
 b.  Evaluate the structure of the dataframe using the `str()` function to make sure that it got read in correctly.  It should have 2524 observations of 86 variables.
 c.  Write a new function called `geomean()` that accepts a vector (of any length) as an argument and returns the geometric mean of that vector. 
     *  **Note:** Your function must deal properly with missing values (NA) as arguments.
@@ -37,7 +37,7 @@ c. Recreate the below figure exactly (including the theme) using the full crania
 
 ```{r cache=TRUE, echo=FALSE,  fig.width=16, fig.height=9}
 library(ggplot2)
-crania <- read.table("http://hompal-stats.wabarr.com/datasets/Howell_craniometry.csv",sep=",", header=TRUE, na=0)
+crania <- read.table("http://hompal-stats.wabarr.com/datasets/Howell_craniometry.txt",sep=",", header=TRUE, na=0)
 qplot(GOL, BBH, data=crania) + facet_wrap(~Population) + theme_bw(20)
 ```
 

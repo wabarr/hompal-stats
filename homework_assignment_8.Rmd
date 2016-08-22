@@ -7,7 +7,7 @@ output: html_document
 
 ## Problem 1
 
-A.  Load the [Howell's craniometric dataset](http://hompal-stats.wabarr.com/datasets/Howell_craniometry.csv) and get rid of all the columns except for the following: ID, Sex, Population, BNL, MDH, EKB, ZOR, BAA, NBA.
+A.  Load [Howell's craniometric dataset](http://hompal-stats.wabarr.com/datasets/Howell_craniometry.txt) and get rid of all the columns except for the following: ID, Sex, Population, BNL, MDH, EKB, ZOR, BAA, NBA.
 B.  Use the `pairs()` function on just the 6 numeric variables (exclude the ID variable) in order to get a feel for the covariance among the variables. 
 C.  Calculate the variance / covariance matrix for the 6 numeric variables.
 

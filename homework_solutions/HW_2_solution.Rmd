@@ -15,7 +15,7 @@ e.  0.33pt - add results vector to dataframe
 ### part a
 
 ```{r cache=TRUE}
-crania <-read.table("http://hompal-stats.wabarr.com/datasets/Howell_craniometry.csv", sep=",", header=TRUE, na.strings = 0)
+crania <-read.table("http://hompal-stats.wabarr.com/datasets/Howell_craniometry.txt", sep=",", header=TRUE, na.strings = 0)
 head(crania)
 ```
 

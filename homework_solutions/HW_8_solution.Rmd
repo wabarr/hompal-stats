@@ -11,7 +11,7 @@ output: html_document
 ### 1pt
 
 ```{r cache=TRUE}
-howell <- read.table("http://hompal-stats.wabarr.com/datasets/Howell_craniometry.csv", header=TRUE, sep=",")
+howell <- read.table("http://hompal-stats.wabarr.com/datasets/Howell_craniometry.txt", header=TRUE, sep=",")
 library(dplyr)
 howell <- howell %>% dplyr::select(ID, Sex, Population, BNL, MDH, EKB, ZOR, BAA, NBA)
 head(howell)

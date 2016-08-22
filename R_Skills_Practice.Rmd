@@ -12,7 +12,7 @@ output: html_document
 
 We will use a dataset of 31 modern localities in Africa.  The columns represent precipitation, vegetation type, number of large mammal species, as well as the percentages of those species belonging to different ecological categories (Arboreal, Aquatic, etc.). This is from a paper by Kaye Reed (1997, JHE).
 
-*  Read the dataset into R. http://hompal-stats.wabarr.com/datasets/Reed1997_modern_adaptations.csv
+*  Read the dataset into R. http://hompal-stats.wabarr.com/datasets/Reed1997_modern_adaptations.txt
 *  calculate the mean rainfall values for sites classified as different habitats (Bushland, Woodland, etc...all the different levels of the `Simplified.Habitat` variable). You can do this in a single line of code. 
 *  make a boxplot with the percentage of arboreal species (`Arboreality`) on the y-axis and the `Simplified.Habitat` variable on the x-axis.  The boxes should be color coded so the different habitats look distinct. 
 *  make a scatter plot of the percentage of arboreal mammals versus the percentage of frugivorous species (`Frugivory`) for each site. Color code the points based on the `Rainfall` values for each site. 

@@ -1,6 +1,7 @@
 Multivariate Stats III
 ========================================================
 incremental:true
+css: custom-style.css
 
 ![codeinsecurity](http://imgs.xkcd.com/comics/code_quality.png)
 
@@ -37,6 +38,7 @@ left:65
 
 GM - Step 1 - Coordinates
 ================
+class: small-code
 
 ## We will use 2D coordinate data of salamander head shape
 
@@ -67,13 +69,14 @@ GM - Step 2 - Procrustes
 GM - Step 2 - Procrustes
 =================
 incremental:false
+class: small-code
 
 
-```{r}
+
+```{r results='hide'}
 GPA_pleth <- gpagen(plethodon$land)
 ```
 
-***
 
 ```{r}
 GPA_pleth
@@ -82,6 +85,7 @@ GPA_pleth
 GM - Step 3 - Analyze and Visualize
 ===============
 incremental: false
+class:small-code
 
 ```{r}
 gp <- as.factor(paste(plethodon$species, plethodon$site)) 

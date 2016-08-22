@@ -1,9 +1,0 @@
-base
-ggplot2
-dplyr
-magrittr
-tidyr
-ape
-MASS
-mvtnorm
-caper

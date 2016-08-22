@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="wabarr" />
+
+
+<title>REBUILD-SITE.R</title>
+
+<script src="libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-57395681-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+
+<style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet"
+      href="libs/highlight/textmate.css"
+      type="text/css" />
+<script src="libs/highlight/highlight.js"></script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="octicons/octicons.css" type="text/css" />
+<link rel="stylesheet" href="css/custom-style.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script src="libs/navigation-1.1/tabsets.js"></script>
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+<div id="navbar">
+  <div id="navbar-container">
+    <ul id="navbar-ul">
+      <li><a href="index.html"><span class="mega-octicon octicon-home"></span></a></li>
+      <li><a href="datasets.html">Data</a></li>
+      <li><a href="schedule.html">Schedule</a></li>
+      <li><a href="ANTH6413_syllabus.docx">Syllabus</a></li>
+      <li><a href="gettinghelp.html">Getting Help</a></li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">REBUILD-SITE.R</h1>
+<h4 class="author"><em>wabarr</em></h4>
+<h4 class="date"><em>Fri Aug 19 15:24:27 2016</em></h4>
+
+</div>
+
+
+<pre class="r"><code>#Be sure to run from the base directory of the project
+
+tryRender &lt;- function(x){
+  tryCatch(
+  rmarkdown::render(x)
+  , error = function(e) print(paste0(&quot;Error with &quot;, x))
+  )
+}
+lapply(list.files(pattern = &quot;*.Rmd&quot;,recursive = TRUE), tryRender)</code></pre>
+<pre><code>## 
+## 
+## processing file: automation.Rmd</code></pre>
+<pre><code>## 
+  |                                                                       
+  |                                                                 |   0%
+  |                                                                       
+  |.                                                                |   2%
+## label: unnamed-chunk-2 (with options) 
+## List of 2
+##  $ include: logi FALSE
+##  $ echo   : logi FALSE
+## 
+## 
+  |                                                                       
+  |...                                                              |   5%
+##   ordinary text without R code
+## 
+## 
+  |                                                                       
+  |....                                                             |   7%
+## label: unnamed-chunk-3 (with options) 
+## List of 1
+##  $ results: chr &quot;hide&quot;
+## 
+## 
+  |                                                                       
+  |......                                                           |   9%
+##   ordinary text without R code
+## 
+## 
+  |                                                                       
+  |.......                                                          |  11%
+## label: unnamed-chunk-4
+## 
+  |                                                                       
+  |.........                                                        |  14%
+##   ordinary text without R code
+## 
+## 
+  |                                                                       
+  |..........                                                       |  16%
+## label: unnamed-chunk-5
+## 
+  |                                                                       
+  |............                                                     |  18%
+##   ordinary text without R code
+## 
+## 
+  |                                                                       
+  |.............                                                    |  20%
+## label: unnamed-chunk-6
+## 
+  |                                                                       
+  |...............                                                  |  23%
+##   ordinary text without R code
+## 
+## 
+  |                                                                       
+  |................                                                 |  25%
+## label: unnamed-chunk-7 (with options) 
+## List of 2
+##  $ include: logi FALSE
+##  $ results: chr &quot;hide&quot;</code></pre>
+<pre><code>## 
+  |                                                                       
+  |..................                                               |  27%
+##   ordinary text without R code
+## 
+## 
+  |                                                                       
+  |...................                                              |  30%
+## label: unnamed-chunk-8
+## 
+  |                                                                       
+  |.....................                                            |  32%
+##   ordinary text without R code
+## 
+## 
+  |                                                                       
+  |......................                                           |  34%
+## label: unnamed-chunk-9
+## 
+  |                                                                       
+  |........................                                         |  36%
+##   ordinary text without R code
+## 
+## 
+  |                                                                       
+  |.........................                                        |  39%
+## label: unnamed-chunk-10
+## 
+  |                                                                       
+  |...........................                                      |  41%
+##   ordinary text without R code
+## 
+## 
+  |                                                                       
+  |............................                                     |  43%
+## label: unnamed-chunk-11
+## 
+  |                                                                       
+  |..............................                                   |  45%
+##   ordinary text without R code
+## 
+## 
+  |                                                                       
+  |...............................                                  |  48%
+## label: unnamed-chunk-12
+## 
+  |                                                                       
+  |................................                                 |  50%
+##   ordinary text without R code
+## 
+## 
+  |                                                                       
+  |..................................                               |  52%
+## label: unnamed-chunk-13 (with options) 
+## List of 1
+##  $ echo: logi FALSE</code></pre>
+<pre><code>## Quitting from lines 162-163 (automation.Rmd)</code></pre>
+<pre><code>## 
+## [1] &quot;Error with automation.Rmd&quot;</code></pre>
+<pre><code>## 
+## 
+## processing file: datasets.Rmd</code></pre>
+<pre><code>## 
+  |                                                                       
+  |                                                                 |   0%
+  |                                                                       
+  |.................................................................| 100%
+##    inline R code fragments</code></pre>
+<pre><code>## output file: datasets.knit.md</code></pre>
+<pre><code>## /Applications/RStudio.app/Contents/MacOS/pandoc/pandoc +RTS -K512m -RTS datasets.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output datasets.html --smart --email-obfuscation none --standalone --section-divs --template /Library/Frameworks/R.framework/Versions/3.3/Resources/library/rmarkdown/rmd/h/default.html --css octicons/octicons.css --css css/custom-style.css --variable &#39;theme:united&#39; --include-in-header /var/folders/n_/mkjrv6s16xx6d90hb2m3y6br0000gn/T//RtmpHPiX2r/rmarkdown-str24b44c911922.html --mathjax --variable &#39;mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#39; --no-highlight --variable highlightjs=libs/highlight --variable highlightjs-theme=textmate --variable navigationjs=libs/navigation-1.1 --include-in-header include/googleanalytics.html --include-in-header include/favicon.html --include-before-body include/navbar.html</code></pre>
+<pre><code>## 
+## Output created: datasets.html</code></pre>
+<pre><code>## 
+## 
+## processing file: distributions.Rmd</code></pre>
+<pre><code>## [1] &quot;Error with distributions.Rmd&quot;</code></pre>
+<pre><code>## 
+## 
+## processing file: gettinghelp.Rmd</code></pre>
+<pre><code>## 
+  |                                                                       
+  |                                                                 |   0%
+  |                                                                       
+  |.................................................................| 100%
+##   ordinary text without R code</code></pre>
+<pre><code>## output file: gettinghelp.knit.md</code></pre>
+<pre><code>## /Applications/RStudio.app/Contents/MacOS/pandoc/pandoc +RTS -K512m -RTS gettinghelp.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output gettinghelp.html --smart --email-obfuscation none --standalone --section-divs --template /Library/Frameworks/R.framework/Versions/3.3/Resources/library/rmarkdown/rmd/h/default.html --css octicons/octicons.css --css css/custom-style.css --variable &#39;theme:united&#39; --include-in-header /var/folders/n_/mkjrv6s16xx6d90hb2m3y6br0000gn/T//RtmpHPiX2r/rmarkdown-str24b44a092e73.html --mathjax --variable &#39;mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#39; --no-highlight --variable highlightjs=libs/highlight --variable highlightjs-theme=textmate --variable navigationjs=libs/navigation-1.1 --include-in-header include/googleanalytics.html --include-in-header include/favicon.html --include-before-body include/navbar.html</code></pre>
+<pre><code>## 
+## Output created: gettinghelp.html</code></pre>
+<pre><code>## 
+## 
+## processing file: homework_assignment_1.Rmd</code></pre>
+<pre><code>## 
+  |                                                                       
+  |                                                                 |   0%
+  |                                                                       
+  |.................................................................| 100%
+##   ordinary text without R code</code></pre>
+<pre><code>## output file: homework_assignment_1.knit.md</code></pre>
+<pre><code>## /Applications/RStudio.app/Contents/MacOS/pandoc/pandoc +RTS -K512m -RTS homework_assignment_1.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output homework_assignment_1.html --smart --email-obfuscation none --standalone --section-divs --template /Library/Frameworks/R.framework/Versions/3.3/Resources/library/rmarkdown/rmd/h/default.html --css octicons/octicons.css --css css/custom-style.css --variable &#39;theme:united&#39; --include-in-header /var/folders/n_/mkjrv6s16xx6d90hb2m3y6br0000gn/T//RtmpHPiX2r/rmarkdown-str24b420c8a5fe.html --mathjax --variable &#39;mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#39; --no-highlight --variable highlightjs=libs/highlight --variable highlightjs-theme=textmate --variable navigationjs=libs/navigation-1.1 --include-in-header include/googleanalytics.html --include-in-header include/favicon.html --include-before-body include/navbar.html</code></pre>
+<pre><code>## 
+## Output created: homework_assignment_1.html</code></pre>
+<pre><code>## 
+## 
+## processing file: homework_assignment_10.Rmd</code></pre>
+<pre><code>## 
+  |                                                                       
+  |                                                                 |   0%
+  |                                                                       
+  |.................................................................| 100%
+##   ordinary text without R code</code></pre>
+<pre><code>## output file: homework_assignment_10.knit.md</code></pre>
+<pre><code>## /Applications/RStudio.app/Contents/MacOS/pandoc/pandoc +RTS -K512m -RTS homework_assignment_10.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output homework_assignment_10.html --smart --email-obfuscation none --standalone --section-divs --template /Library/Frameworks/R.framework/Versions/3.3/Resources/library/rmarkdown/rmd/h/default.html --css octicons/octicons.css --css css/custom-style.css --variable &#39;theme:united&#39; --include-in-header /var/folders/n_/mkjrv6s16xx6d90hb2m3y6br0000gn/T//RtmpHPiX2r/rmarkdown-str24b45509d782.html --mathjax --variable &#39;mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#39; --no-highlight --variable highlightjs=libs/highlight --variable highlightjs-theme=textmate --variable navigationjs=libs/navigation-1.1 --include-in-header include/googleanalytics.html --include-in-header include/favicon.html --include-before-body include/navbar.html</code></pre>
+<pre><code>## 
+## Output created: homework_assignment_10.html</code></pre>
+<pre><code>## 
+## 
+## processing file: homework_assignment_2.Rmd</code></pre>
+<pre><code>## [1] &quot;Error with homework_assignment_2.Rmd&quot;</code></pre>
+<pre><code>## 
+## 
+## processing file: homework_assignment_3.Rmd</code></pre>
+<pre><code>## 
+  |                                                                       
+  |                                                                 |   0%
+  |                                                                       
+  |.................................................................| 100%
+##   ordinary text without R code</code></pre>
+<pre><code>## output file: homework_assignment_3.knit.md</code></pre>
+<pre><code>## /Applications/RStudio.app/Contents/MacOS/pandoc/pandoc +RTS -K512m -RTS homework_assignment_3.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output homework_assignment_3.html --smart --email-obfuscation none --standalone --section-divs --template /Library/Frameworks/R.framework/Versions/3.3/Resources/library/rmarkdown/rmd/h/default.html --css octicons/octicons.css --css css/custom-style.css --variable &#39;theme:united&#39; --include-in-header /var/folders/n_/mkjrv6s16xx6d90hb2m3y6br0000gn/T//RtmpHPiX2r/rmarkdown-str24b47923c36b.html --mathjax --variable &#39;mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#39; --no-highlight --variable highlightjs=libs/highlight --variable highlightjs-theme=textmate --variable navigationjs=libs/navigation-1.1 --include-in-header include/googleanalytics.html --include-in-header include/favicon.html --include-before-body include/navbar.html</code></pre>
+<pre><code>## 
+## Output created: homework_assignment_3.html</code></pre>
+<pre><code>## 
+## 
+## processing file: homework_assignment_4.Rmd</code></pre>
+<pre><code>## 
+  |                                                                       
+  |                                                                 |   0%
+  |                                                                       
+  |.................................................................| 100%
+##   ordinary text without R code</code></pre>
+<pre><code>## output file: homework_assignment_4.knit.md</code></pre>
+<pre><code>## /Applications/RStudio.app/Contents/MacOS/pandoc/pandoc +RTS -K512m -RTS homework_assignment_4.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output homework_assignment_4.html --smart --email-obfuscation none --standalone --section-divs --template /Library/Frameworks/R.framework/Versions/3.3/Resources/library/rmarkdown/rmd/h/default.html --css octicons/octicons.css --css css/custom-style.css --variable &#39;theme:united&#39; --include-in-header /var/folders/n_/mkjrv6s16xx6d90hb2m3y6br0000gn/T//RtmpHPiX2r/rmarkdown-str24b41af2e3ef.html --mathjax --variable &#39;mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#39; --no-highlight --variable highlightjs=libs/highlight --variable highlightjs-theme=textmate --variable navigationjs=libs/navigation-1.1 --include-in-header include/googleanalytics.html --include-in-header include/favicon.html --include-before-body include/navbar.html</code></pre>
+<pre><code>## 
+## Output created: homework_assignment_4.html</code></pre>
+<pre><code>## 
+## 
+## processing file: homework_assignment_5.Rmd</code></pre>
+<pre><code>## 
+  |                                                                       
+  |                                                                 |   0%
+  |                                                                       
+  |.................................................................| 100%
+##   ordinary text without R code</code></pre>
+<pre><code>## output file: homework_assignment_5.knit.md</code></pre>
+<pre><code>## /Applications/RStudio.app/Contents/MacOS/pandoc/pandoc +RTS -K512m -RTS homework_assignment_5.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output homework_assignment_5.html --smart --email-obfuscation none --standalone --section-divs --template /Library/Frameworks/R.framework/Versions/3.3/Resources/library/rmarkdown/rmd/h/default.html --css octicons/octicons.css --css css/custom-style.css --variable &#39;theme:united&#39; --include-in-header /var/folders/n_/mkjrv6s16xx6d90hb2m3y6br0000gn/T//RtmpHPiX2r/rmarkdown-str24b440526dbb.html --mathjax --variable &#39;mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#39; --no-highlight --variable highlightjs=libs/highlight --variable highlightjs-theme=textmate --variable navigationjs=libs/navigation-1.1 --include-in-header include/googleanalytics.html --include-in-header include/favicon.html --include-before-body include/navbar.html</code></pre>
+<pre><code>## 
+## Output created: homework_assignment_5.html</code></pre>
+<pre><code>## 
+## 
+## processing file: homework_assignment_6.Rmd</code></pre>
+<pre><code>## 
+  |                                                                       
+  |                                                                 |   0%
+  |                                                                       
+  |.................................................................| 100%
+##   ordinary text without R code</code></pre>
+<pre><code>## output file: homework_assignment_6.knit.md</code></pre>
+<pre><code>## /Applications/RStudio.app/Contents/MacOS/pandoc/pandoc +RTS -K512m -RTS homework_assignment_6.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output homework_assignment_6.html --smart --email-obfuscation none --standalone --section-divs --template /Library/Frameworks/R.framework/Versions/3.3/Resources/library/rmarkdown/rmd/h/default.html --css octicons/octicons.css --css css/custom-style.css --variable &#39;theme:united&#39; --include-in-header /var/folders/n_/mkjrv6s16xx6d90hb2m3y6br0000gn/T//RtmpHPiX2r/rmarkdown-str24b463a230fa.html --mathjax --variable &#39;mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#39; --no-highlight --variable highlightjs=libs/highlight --variable highlightjs-theme=textmate --variable navigationjs=libs/navigation-1.1 --include-in-header include/googleanalytics.html --include-in-header include/favicon.html --include-before-body include/navbar.html</code></pre>
+<pre><code>## 
+## Output created: homework_assignment_6.html</code></pre>
+<pre><code>## 
+## 
+## processing file: homework_assignment_7.Rmd</code></pre>
+<pre><code>## 
+  |                                                                       
+  |                                                                 |   0%
+  |                                                                       
+  |......................                                           |  33%
+##   ordinary text without R code
+## 
+## 
+  |                                                                       
+  |...........................................                      |  67%
+## label: codeToCreateDataset (with options) 
+## List of 2
+##  $ include: logi FALSE
+##  $ echo   : logi FALSE</code></pre>
+<pre><code>## Quitting from lines 9-24 (homework_assignment_7.Rmd)</code></pre>
+<pre><code>## 
+## [1] &quot;Error with homework_assignment_7.Rmd&quot;</code></pre>
+<pre><code>## 
+## 
+## processing file: homework_assignment_8.Rmd</code></pre>
+<pre><code>## 
+  |                                                                       
+  |                                                                 |   0%
+  |                                                                       
+  |.................................................................| 100%
+##   ordinary text without R code</code></pre>
+<pre><code>## output file: homework_assignment_8.knit.md</code></pre>
+<pre><code>## /Applications/RStudio.app/Contents/MacOS/pandoc/pandoc +RTS -K512m -RTS homework_assignment_8.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output homework_assignment_8.html --smart --email-obfuscation none --standalone --section-divs --template /Library/Frameworks/R.framework/Versions/3.3/Resources/library/rmarkdown/rmd/h/default.html --css octicons/octicons.css --css css/custom-style.css --variable &#39;theme:united&#39; --include-in-header /var/folders/n_/mkjrv6s16xx6d90hb2m3y6br0000gn/T//RtmpHPiX2r/rmarkdown-str24b428dfc684.html --mathjax --variable &#39;mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#39; --no-highlight --variable highlightjs=libs/highlight --variable highlightjs-theme=textmate --variable navigationjs=libs/navigation-1.1 --include-in-header include/googleanalytics.html --include-in-header include/favicon.html --include-before-body include/navbar.html</code></pre>
+<pre><code>## 
+## Output created: homework_assignment_8.html</code></pre>
+<pre><code>## 
+## 
+## processing file: homework_assignment_9.Rmd</code></pre>
+<pre><code>## 
+  |                                                                       
+  |                                                                 |   0%
+  |                                                                       
+  |.................................................................| 100%
+##   ordinary text without R code</code></pre>
+<pre><code>## output file: homework_assignment_9.knit.md</code></pre>
+<pre><code>## /Applications/RStudio.app/Contents/MacOS/pandoc/pandoc +RTS -K512m -RTS homework_assignment_9.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output homework_assignment_9.html --smart --email-obfuscation none --standalone --section-divs --template /Library/Frameworks/R.framework/Versions/3.3/Resources/library/rmarkdown/rmd/h/default.html --css octicons/octicons.css --css css/custom-style.css --variable &#39;theme:united&#39; --include-in-header /var/folders/n_/mkjrv6s16xx6d90hb2m3y6br0000gn/T//RtmpHPiX2r/rmarkdown-str24b47b621912.html --mathjax --variable &#39;mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#39; --no-highlight --variable highlightjs=libs/highlight --variable highlightjs-theme=textmate --variable navigationjs=libs/navigation-1.1 --include-in-header include/googleanalytics.html --include-in-header include/favicon.html --include-before-body include/navbar.html</code></pre>
+<pre><code>## 
+## Output created: homework_assignment_9.html</code></pre>
+<pre><code>## 
+## 
+## processing file: HW_1_solution.Rmd</code></pre>
+<pre><code>## [1] &quot;Error with homework_solutions/HW_1_solution.Rmd&quot;</code></pre>
+<pre><code>## 
+## 
+## processing file: HW_10_solution.Rmd</code></pre>
+<pre><code>## [1] &quot;Error with homework_solutions/HW_10_solution.Rmd&quot;</code></pre>
+<pre><code>## 
+## 
+## processing file: HW_2_solution.Rmd</code></pre>
+<pre><code>## [1] &quot;Error with homework_solutions/HW_2_solution.Rmd&quot;</code></pre>
+<pre><code>## 
+## 
+## processing file: HW_3_solution.Rmd</code></pre>
+<pre><code>## [1] &quot;Error with homework_solutions/HW_3_solution.Rmd&quot;</code></pre>
+<pre><code>## 
+## 
+## processing file: HW_4_solution.Rmd</code></pre>
+<pre><code>## [1] &quot;Error with homework_solutions/HW_4_solution.Rmd&quot;</code></pre>
+<pre><code>## 
+## 
+## processing file: HW_5_solution.Rmd</code></pre>
+<pre><code>## [1] &quot;Error with homework_solutions/HW_5_solution.Rmd&quot;</code></pre>
+<pre><code>## 
+## 
+## processing file: HW_6_solution.Rmd</code></pre>
+<pre><code>## [1] &quot;Error with homework_solutions/HW_6_solution.Rmd&quot;</code></pre>
+<pre><code>## 
+## 
+## processing file: HW_7_solution.Rmd</code></pre>
+<pre><code>## [1] &quot;Error with homework_solutions/HW_7_solution.Rmd&quot;</code></pre>
+<pre><code>## 
+## 
+## processing file: HW_8_solution.Rmd</code></pre>
+<pre><code>## [1] &quot;Error with homework_solutions/HW_8_solution.Rmd&quot;</code></pre>
+<pre><code>## 
+## 
+## processing file: HW_9_solution.Rmd</code></pre>
+<pre><code>## [1] &quot;Error with homework_solutions/HW_9_solution.Rmd&quot;</code></pre>
+<pre><code>## 
+## 
+## processing file: index.Rmd</code></pre>
+<pre><code>## 
+  |                                                                       
+  |                                                                 |   0%
+  |                                                                       
+  |.................................................................| 100%
+##   ordinary text without R code</code></pre>
+<pre><code>## output file: index.knit.md</code></pre>
+<pre><code>## /Applications/RStudio.app/Contents/MacOS/pandoc/pandoc +RTS -K512m -RTS index.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output index.html --smart --email-obfuscation none --standalone --section-divs --template /Library/Frameworks/R.framework/Versions/3.3/Resources/library/rmarkdown/rmd/h/default.html --css octicons/octicons.css --css css/custom-style.css --variable &#39;theme:united&#39; --include-in-header /var/folders/n_/mkjrv6s16xx6d90hb2m3y6br0000gn/T//RtmpHPiX2r/rmarkdown-str24b4655c2c06.html --mathjax --variable &#39;mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#39; --no-highlight --variable highlightjs=libs/highlight --variable highlightjs-theme=textmate --variable navigationjs=libs/navigation-1.1 --include-in-header include/googleanalytics.html --include-in-header include/favicon.html --include-before-body include/navbar.html</code></pre>
+<pre><code>## 
+## Output created: index.html</code></pre>
+<pre><code>## 
+## 
+## processing file: intro_to_R.Rmd</code></pre>
+<pre><code>## [1] &quot;Error with intro_to_R.Rmd&quot;</code></pre>
+<pre><code>## 
+## 
+## processing file: OLDhypothesis_testing.Rmd</code></pre>
+<pre><code>## [1] &quot;Error with OLDhypothesis_testing.Rmd&quot;</code></pre>
+<pre><code>## 
+## 
+## processing file: probability.Rmd</code></pre>
+<pre><code>## [1] &quot;Error with probability.Rmd&quot;</code></pre>
+<pre><code>## 
+## 
+## processing file: R_Skills_Practice.Rmd</code></pre>
+<pre><code>## 
+  |                                                                       
+  |                                                                 |   0%
+  |                                                                       
+  |.................................................................| 100%
+##   ordinary text without R code</code></pre>
+<pre><code>## output file: R_Skills_Practice.knit.md</code></pre>
+<pre><code>## /Applications/RStudio.app/Contents/MacOS/pandoc/pandoc +RTS -K512m -RTS R_Skills_Practice.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output R_Skills_Practice.html --smart --email-obfuscation none --standalone --section-divs --template /Library/Frameworks/R.framework/Versions/3.3/Resources/library/rmarkdown/rmd/h/default.html --css octicons/octicons.css --css css/custom-style.css --variable &#39;theme:united&#39; --include-in-header /var/folders/n_/mkjrv6s16xx6d90hb2m3y6br0000gn/T//RtmpHPiX2r/rmarkdown-str24b464e71e7.html --mathjax --variable &#39;mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#39; --no-highlight --variable highlightjs=libs/highlight --variable highlightjs-theme=textmate --variable navigationjs=libs/navigation-1.1 --include-in-header include/googleanalytics.html --include-in-header include/favicon.html --include-before-body include/navbar.html</code></pre>
+<pre><code>## 
+## Output created: R_Skills_Practice.html</code></pre>
+<pre><code>## 
+## 
+## processing file: REBUILD-SITE.spin.Rmd</code></pre>
+<pre><code>## [1] &quot;Error with REBUILD-SITE.spin.Rmd&quot;</code></pre>
+<pre><code>## 
+## 
+## processing file: schedule.Rmd</code></pre>
+<pre><code>## 
+  |                                                                       
+  |                                                                 |   0%
+  |                                                                       
+  |.................................................................| 100%
+##   ordinary text without R code</code></pre>
+<pre><code>## output file: schedule.knit.md</code></pre>
+<pre><code>## /Applications/RStudio.app/Contents/MacOS/pandoc/pandoc +RTS -K512m -RTS schedule.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output schedule.html --smart --email-obfuscation none --standalone --section-divs --template /Library/Frameworks/R.framework/Versions/3.3/Resources/library/rmarkdown/rmd/h/default.html --css octicons/octicons.css --css css/custom-style.css --variable &#39;theme:united&#39; --include-in-header /var/folders/n_/mkjrv6s16xx6d90hb2m3y6br0000gn/T//RtmpHPiX2r/rmarkdown-str24b4817f7ed.html --mathjax --variable &#39;mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#39; --no-highlight --variable highlightjs=libs/highlight --variable highlightjs-theme=textmate --variable navigationjs=libs/navigation-1.1 --include-in-header include/googleanalytics.html --include-in-header include/favicon.html --include-before-body include/navbar.html</code></pre>
+<pre><code>## 
+## Output created: schedule.html</code></pre>
+<pre><code>## 
+## 
+## processing file: summary_stats.Rmd</code></pre>
+<pre><code>## [1] &quot;Error with summary_stats.Rmd&quot;</code></pre>
+<pre><code>## 
+## 
+## processing file: UNRELEASED_examtopics.Rmd</code></pre>
+<pre><code>## 
+  |                                                                       
+  |                                                                 |   0%
+  |                                                                       
+  |.................................................................| 100%
+##   ordinary text without R code</code></pre>
+<pre><code>## output file: UNRELEASED_examtopics.knit.md</code></pre>
+<pre><code>## /Applications/RStudio.app/Contents/MacOS/pandoc/pandoc +RTS -K512m -RTS UNRELEASED_examtopics.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output UNRELEASED_examtopics.html --smart --email-obfuscation none --standalone --section-divs --template /Library/Frameworks/R.framework/Versions/3.3/Resources/library/rmarkdown/rmd/h/default.html --css octicons/octicons.css --css css/custom-style.css --variable &#39;theme:united&#39; --include-in-header /var/folders/n_/mkjrv6s16xx6d90hb2m3y6br0000gn/T//RtmpHPiX2r/rmarkdown-str24b45d95ecc1.html --mathjax --variable &#39;mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#39; --no-highlight --variable highlightjs=libs/highlight --variable highlightjs-theme=textmate --variable navigationjs=libs/navigation-1.1 --include-in-header include/googleanalytics.html --include-in-header include/favicon.html --include-before-body include/navbar.html</code></pre>
+<pre><code>## 
+## Output created: UNRELEASED_examtopics.html</code></pre>
+<pre><code>## 
+## 
+## processing file: visualization.Rmd</code></pre>
+<pre><code>## [1] &quot;Error with visualization.Rmd&quot;</code></pre>
+<pre><code>## 
+## 
+## processing file: workflow.Rmd</code></pre>
+<pre><code>## [1] &quot;Error with workflow.Rmd&quot;</code></pre>
+<pre><code>## [[1]]
+## [1] &quot;Error with automation.Rmd&quot;
+## 
+## [[2]]
+## [1] &quot;/Users/wabarr/Dropbox/ANTH 6413 - Stats/HomPal-Stats-Website/datasets.html&quot;
+## 
+## [[3]]
+## [1] &quot;Error with distributions.Rmd&quot;
+## 
+## [[4]]
+## [1] &quot;/Users/wabarr/Dropbox/ANTH 6413 - Stats/HomPal-Stats-Website/gettinghelp.html&quot;
+## 
+## [[5]]
+## [1] &quot;/Users/wabarr/Dropbox/ANTH 6413 - Stats/HomPal-Stats-Website/homework_assignment_1.html&quot;
+## 
+## [[6]]
+## [1] &quot;/Users/wabarr/Dropbox/ANTH 6413 - Stats/HomPal-Stats-Website/homework_assignment_10.html&quot;
+## 
+## [[7]]
+## [1] &quot;Error with homework_assignment_2.Rmd&quot;
+## 
+## [[8]]
+## [1] &quot;/Users/wabarr/Dropbox/ANTH 6413 - Stats/HomPal-Stats-Website/homework_assignment_3.html&quot;
+## 
+## [[9]]
+## [1] &quot;/Users/wabarr/Dropbox/ANTH 6413 - Stats/HomPal-Stats-Website/homework_assignment_4.html&quot;
+## 
+## [[10]]
+## [1] &quot;/Users/wabarr/Dropbox/ANTH 6413 - Stats/HomPal-Stats-Website/homework_assignment_5.html&quot;
+## 
+## [[11]]
+## [1] &quot;/Users/wabarr/Dropbox/ANTH 6413 - Stats/HomPal-Stats-Website/homework_assignment_6.html&quot;
+## 
+## [[12]]
+## [1] &quot;Error with homework_assignment_7.Rmd&quot;
+## 
+## [[13]]
+## [1] &quot;/Users/wabarr/Dropbox/ANTH 6413 - Stats/HomPal-Stats-Website/homework_assignment_8.html&quot;
+## 
+## [[14]]
+## [1] &quot;/Users/wabarr/Dropbox/ANTH 6413 - Stats/HomPal-Stats-Website/homework_assignment_9.html&quot;
+## 
+## [[15]]
+## [1] &quot;Error with homework_solutions/HW_1_solution.Rmd&quot;
+## 
+## [[16]]
+## [1] &quot;Error with homework_solutions/HW_10_solution.Rmd&quot;
+## 
+## [[17]]
+## [1] &quot;Error with homework_solutions/HW_2_solution.Rmd&quot;
+## 
+## [[18]]
+## [1] &quot;Error with homework_solutions/HW_3_solution.Rmd&quot;
+## 
+## [[19]]
+## [1] &quot;Error with homework_solutions/HW_4_solution.Rmd&quot;
+## 
+## [[20]]
+## [1] &quot;Error with homework_solutions/HW_5_solution.Rmd&quot;
+## 
+## [[21]]
+## [1] &quot;Error with homework_solutions/HW_6_solution.Rmd&quot;
+## 
+## [[22]]
+## [1] &quot;Error with homework_solutions/HW_7_solution.Rmd&quot;
+## 
+## [[23]]
+## [1] &quot;Error with homework_solutions/HW_8_solution.Rmd&quot;
+## 
+## [[24]]
+## [1] &quot;Error with homework_solutions/HW_9_solution.Rmd&quot;
+## 
+## [[25]]
+## [1] &quot;/Users/wabarr/Dropbox/ANTH 6413 - Stats/HomPal-Stats-Website/index.html&quot;
+## 
+## [[26]]
+## [1] &quot;Error with intro_to_R.Rmd&quot;
+## 
+## [[27]]
+## [1] &quot;Error with OLDhypothesis_testing.Rmd&quot;
+## 
+## [[28]]
+## [1] &quot;Error with probability.Rmd&quot;
+## 
+## [[29]]
+## [1] &quot;/Users/wabarr/Dropbox/ANTH 6413 - Stats/HomPal-Stats-Website/R_Skills_Practice.html&quot;
+## 
+## [[30]]
+## [1] &quot;Error with REBUILD-SITE.spin.Rmd&quot;
+## 
+## [[31]]
+## [1] &quot;/Users/wabarr/Dropbox/ANTH 6413 - Stats/HomPal-Stats-Website/schedule.html&quot;
+## 
+## [[32]]
+## [1] &quot;Error with summary_stats.Rmd&quot;
+## 
+## [[33]]
+## [1] &quot;/Users/wabarr/Dropbox/ANTH 6413 - Stats/HomPal-Stats-Website/UNRELEASED_examtopics.html&quot;
+## 
+## [[34]]
+## [1] &quot;Error with visualization.Rmd&quot;
+## 
+## [[35]]
+## [1] &quot;Error with workflow.Rmd&quot;</code></pre>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

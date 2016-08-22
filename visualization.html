@@ -109,7 +109,6 @@ button.code-folding-btn:focus {
 </style>
 
 
-
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
@@ -131,7 +130,7 @@ $(document).ready(function () {
     <ul id="navbar-ul">
       <li><a href="index.html"><span class="mega-octicon octicon-home"></span></a></li>
       <li><a href="datasets.html">Data</a></li>
-      <li><a href="homework.html">Schedule</a></li>
+      <li><a href="schedule.html">Schedule</a></li>
       <li><a href="ANTH6413_syllabus.docx">Syllabus</a></li>
       <li><a href="gettinghelp.html">Getting Help</a></li>
       
@@ -158,16 +157,15 @@ $(document).ready(function () {
 <p>We will use a built in dataset called <code>diamonds</code>. Lets take a look at the head (i.e. first few rows) of this dataset.</p>
 <pre class="r"><code>library(ggplot2)
 head(diamonds)</code></pre>
-<pre><code>## Source: local data frame [6 x 10]
-## 
-##   carat       cut  color clarity depth table price     x     y     z
-##   (dbl)    (fctr) (fctr)  (fctr) (dbl) (dbl) (int) (dbl) (dbl) (dbl)
-## 1  0.23     Ideal      E     SI2  61.5    55   326  3.95  3.98  2.43
-## 2  0.21   Premium      E     SI1  59.8    61   326  3.89  3.84  2.31
-## 3  0.23      Good      E     VS1  56.9    65   327  4.05  4.07  2.31
-## 4  0.29   Premium      I     VS2  62.4    58   334  4.20  4.23  2.63
-## 5  0.31      Good      J     SI2  63.3    58   335  4.34  4.35  2.75
-## 6  0.24 Very Good      J    VVS2  62.8    57   336  3.94  3.96  2.48</code></pre>
+<pre><code>## # A tibble: 6 x 10
+##   carat       cut color clarity depth table price     x     y     z
+##   &lt;dbl&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;ord&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1  0.23     Ideal     E     SI2  61.5    55   326  3.95  3.98  2.43
+## 2  0.21   Premium     E     SI1  59.8    61   326  3.89  3.84  2.31
+## 3  0.23      Good     E     VS1  56.9    65   327  4.05  4.07  2.31
+## 4  0.29   Premium     I     VS2  62.4    58   334  4.20  4.23  2.63
+## 5  0.31      Good     J     SI2  63.3    58   335  4.34  4.35  2.75
+## 6  0.24 Very Good     J    VVS2  62.8    57   336  3.94  3.96  2.48</code></pre>
 <div id="univariate-plot" class="section level3">
 <h3>Univariate plot</h3>
 <p>The simplest usage of <code>qplot()</code> is to provide a variable for the x axis, and a dataframe in which to look for this variable. <code>qplot()</code> will attempt to guess the best <code>geom</code> (graphical geometric representation) with which to display the data. Here we plot a histogram of diamond weights. As we would expect….most diamonds are small, so the graph is skewed.</p>
@@ -334,7 +332,6 @@ with_boxplot</code></pre>
 $(document).ready(function () {
   $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
 });
-
 
 </script>
 

@@ -63,3 +63,14 @@ strong {
   background-color:#19668E;
   border-color:#19668E;
 }
+
+.small-code pre code {
+  font-size: 1em;
+}
+
+.footer {
+    color: black;
+    top: 90%;
+    text-align:right;
+    width:100%;
+}

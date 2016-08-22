@@ -3,6 +3,12 @@ ANTH 6413: Introduction
 autosize: true
 left: 80%
 
+<style>
+.small-code pre code {
+  font-size: 1em;
+}
+</style>
+
 <br>
 
 ![pyramid](images/pyramid.png)

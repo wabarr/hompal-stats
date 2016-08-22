@@ -4,6 +4,8 @@ incremental:true
 
 ![ANOVA](http://www.phdcomics.com/comics/archive/phd082707s.gif)
 
+
+
 Basic Goal of ANOVA
 ==================
 
@@ -21,12 +23,12 @@ Intuitive Picture of ANOVA
 =====================
 incremental:false
 
-![plot of chunk unnamed-chunk-1](ANOVA-figure/unnamed-chunk-1-1.png) 
+![plot of chunk unnamed-chunk-1](ANOVA-figure/unnamed-chunk-1-1.png)
 
 Black bars at top represent variances ignoring groups.
 
 ***
-![plot of chunk unnamed-chunk-2](ANOVA-figure/unnamed-chunk-2-1.png) 
+![plot of chunk unnamed-chunk-2](ANOVA-figure/unnamed-chunk-2-1.png)
 
 Colored bars at top represent variances within groups.
 
@@ -62,7 +64,7 @@ y <- grandMean + c(-5, 5) + myError
 qplot(groups, y, geom="boxplot", fill=groups)
 ```
 
-![plot of chunk unnamed-chunk-4](ANOVA-figure/unnamed-chunk-4-1.png) 
+![plot of chunk unnamed-chunk-4](ANOVA-figure/unnamed-chunk-4-1.png)
 
 ANOVA linear model - Simulation
 ===================
@@ -74,7 +76,7 @@ y <- grandMean + c(-0.3, 0.3) + myError
 qplot(groups, y, geom="boxplot", fill=groups)
 ```
 
-![plot of chunk unnamed-chunk-5](ANOVA-figure/unnamed-chunk-5-1.png) 
+![plot of chunk unnamed-chunk-5](ANOVA-figure/unnamed-chunk-5-1.png)
 
 The steps in a one-way ANOVA
 ==============
@@ -155,7 +157,7 @@ bartlett.test(iris$Petal.Length ~ iris$Species)
 	Bartlett test of homogeneity of variances
 
 data:  iris$Petal.Length by iris$Species
-Bartlett's K-squared = 55.4225, df = 2, p-value = 9.229e-13
+Bartlett's K-squared = 55.423, df = 2, p-value = 9.229e-13
 ```
 
 ANOVA in R
@@ -170,7 +172,7 @@ incremental:false
 plot(lm(iris$Petal.Length ~ iris$Species))
 ```
 
-![plot of chunk unnamed-chunk-8](ANOVA-figure/unnamed-chunk-8-1.png) ![plot of chunk unnamed-chunk-8](ANOVA-figure/unnamed-chunk-8-2.png) ![plot of chunk unnamed-chunk-8](ANOVA-figure/unnamed-chunk-8-3.png) ![plot of chunk unnamed-chunk-8](ANOVA-figure/unnamed-chunk-8-4.png) 
+![plot of chunk unnamed-chunk-8](ANOVA-figure/unnamed-chunk-8-1.png)![plot of chunk unnamed-chunk-8](ANOVA-figure/unnamed-chunk-8-2.png)![plot of chunk unnamed-chunk-8](ANOVA-figure/unnamed-chunk-8-3.png)![plot of chunk unnamed-chunk-8](ANOVA-figure/unnamed-chunk-8-4.png)
 
 
 Two-Way ANOVA

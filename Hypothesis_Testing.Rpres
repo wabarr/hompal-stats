@@ -183,16 +183,33 @@ When you find statistical significance, you have to ask (how big is the effect? 
 
 Statistical Significance versus Biological Significance
 ===================================================================
+incremental:true
 
-Imagine a sample of millions of people that showed two populations differed in height by an average of 0.6mm (p= 0.00002).  
+```{r echo=FALSE}
+pops <- data.frame(height=c(rnorm(1000000, mean=176.4), rnorm(1000000,mean=176.57)), pop=c(rep("A", 1000000), rep("B", 1000000)))
+
+ggplot2::qplot(x=pop, y=height, data=pops[sample(1:nrow(pops), 10000),], fill=pop, geom="boxplot") + ggplot2::theme_bw(20)
+
+```
+
+***
+
+Two populations (n=millions) differ in height by about 0.01% (p<0.0000000001)
 
 This is a very statistically significant result.
 
 **Should I care? Is this biologically meaningful?**
 
-The overwhelming take-away message of this test is that the populations are nearly the same. 
 
 ## Don't be a slave to $p<0.05$ !!!!!
+
+p-values don't measure effect size!!!!
+========================
+incremental: false
+
+Many bacon eaters rushed to this conclusion last year!
+
+![processedmeat](images/processed_meat.png)
 
 
 Three Hypothesis Testing Frameworks

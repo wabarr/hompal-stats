@@ -165,16 +165,28 @@ When you find statistical significance, you have to ask (how big is the effect? 
 
 Statistical Significance versus Biological Significance
 ===================================================================
+incremental:true
 
-Imagine a sample of millions of people that showed two populations differed in height by an average of 0.6mm (p= 0.00002).  
+![plot of chunk unnamed-chunk-5](hypothesis_testing-figure/unnamed-chunk-5-1.png)
+
+***
+
+Two populations (n=millions) differ in height by about 0.01% (p<0.0000000001)
 
 This is a very statistically significant result.
 
 **Should I care? Is this biologically meaningful?**
 
-The overwhelming take-away message of this test is that the populations are nearly the same. 
 
 ## Don't be a slave to $p<0.05$ !!!!!
+
+p-values don't measure effect size!!!!
+========================
+incremental: false
+
+Many bacon eaters rushed to this conclusion last year!
+
+![processedmeat](images/processed_meat.png)
 
 
 Three Hypothesis Testing Frameworks
@@ -263,7 +275,7 @@ sample(ants$n_Ants)
 ```
 
 ```
- [1] 12 12  6 10  4 10  9  6  9  7
+ [1] 12  6 10 12  7  6 10  9  4  9
 ```
 
 Monte Carlo - Step 2 - Shuffle
@@ -290,12 +302,12 @@ incremental:false
 
 We can look at the results with a histogram
 ***
-![plot of chunk unnamed-chunk-9](hypothesis_testing-figure/unnamed-chunk-9-1.png)
+![plot of chunk unnamed-chunk-10](hypothesis_testing-figure/unnamed-chunk-10-1.png)
 
 Monte Carlo - Step 3 - one or two tailed?
 ===================================================================
 
-![plot of chunk unnamed-chunk-10](hypothesis_testing-figure/unnamed-chunk-10-1.png)
+![plot of chunk unnamed-chunk-11](hypothesis_testing-figure/unnamed-chunk-11-1.png)
 ***
 
 
@@ -319,7 +331,7 @@ count_extreme_diffs / 1000
 ```
 
 ```
-[1] 0.045
+[1] 0.04
 ```
 
 Monte Carlo 
@@ -418,7 +430,7 @@ fdist <- qplot(x=xrange, y=yvals, geom="line") +
 fdist
 ```
 
-![plot of chunk unnamed-chunk-12](hypothesis_testing-figure/unnamed-chunk-12-1.png)
+![plot of chunk unnamed-chunk-13](hypothesis_testing-figure/unnamed-chunk-13-1.png)
 
 
 Parametric - Step 3 - Compute the p-value
@@ -442,7 +454,7 @@ The upper tail probability can be computed easily because we are dealing with a 
 fdist + geom_vline(xintercept = 8.78, col="red")
 ```
 
-![plot of chunk unnamed-chunk-14](hypothesis_testing-figure/unnamed-chunk-14-1.png)
+![plot of chunk unnamed-chunk-15](hypothesis_testing-figure/unnamed-chunk-15-1.png)
 
 Parametric - Step 3 - Compute the p-value
 ===================================================================

@@ -275,7 +275,7 @@ sample(ants$n_Ants)
 ```
 
 ```
- [1] 10 12 10  6  4  9  7  6 12  9
+ [1]  4  6 10  6  9  9  7 12 12 10
 ```
 
 Monte Carlo - Step 2 - Shuffle
@@ -331,7 +331,7 @@ count_extreme_diffs / 1000
 ```
 
 ```
-[1] 0.035
+[1] 0.037
 ```
 
 Monte Carlo 

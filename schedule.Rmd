@@ -1,5 +1,7 @@
 ---
 title: "Schedule, Readings, & Homework" 
+output: 
+  html_document
 ---
 
 ## Due at beginning of class on the day listed. 
@@ -7,8 +9,8 @@ title: "Schedule, Readings, & Homework"
 
 | Date  | Demo | Homework  | Reading |
 | --------- | -------------------------  | ------------------ | ------------------ |
-| August 29 | [Intro to Course](intro_to_course.html) [Intro to R](intro_to_R.html) | [Try R Tutorial](http://tryr.codeschool.com) | - |
-| September 5 | **Labor Day, No Class** | - | - |
+| August 29 | [Intro to Course](intro_to_course.html) & [Intro to R](intro_to_R.html) | [Try R Tutorial](http://tryr.codeschool.com) | - |
+| September 5 | **Labor Day, No Class** | - | [R Markdown Cheat Sheet](readings_pdf/rmarkdown-cheatsheet.pdf) |
 | September 12 | [Visualizing Data](visualization.html) & [Automation](automation.html) |  - | [dplyr vignette](http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html) | - |
 | September 19|  [Probability](probability.html) - [Distributions](distributions.html) - [Summary Stats](summary_stats.html) |  - | Gotelli: Ch 1 - 3 | - |
 | September 26 | [Hypothesis Testing](hypothesis_testing.html) | -  | [Blog post](https://oikosjournal.wordpress.com/2011/10/11/frequentist-vs-bayesian-statistics-resources-to-help-you-choose/); [Youtube Video](https://youtu.be/42QuXLucH3Q); Gotelli: Ch 4 - 5 | - | 

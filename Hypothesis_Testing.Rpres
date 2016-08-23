@@ -381,13 +381,12 @@ Parametric
 Parametric - Step 1 - Test Statistic
 ===================================================================
 
-F statistic or F ratio - useful for comparing weather group means differ
+F statistic or F ratio - useful for comparing whether group means differ
 
 Basis for ***ANOVA***
 
 $$ F = \frac{(variance\ between\ groups + variance\ within\ groups)}{variance\ within\ groups}$$
 
-![anova](http://www.soc.napier.ac.uk/~cs181/Modules/CM/images/ANOVA-df.png)
 
 Parametric - Step 1 - Test Statistic
 ===================================================================

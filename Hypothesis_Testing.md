@@ -58,7 +58,7 @@ We want to test the hypothesis of a relationship between sex and femoral head di
 
 ***
 
-![plot of chunk unnamed-chunk-2](hypothesis_testing-figure/unnamed-chunk-2-1.png) 
+![plot of chunk unnamed-chunk-2](hypothesis_testing-figure/unnamed-chunk-2-1.png)
 
 Null Hypothesis 
 ===================================================================
@@ -100,11 +100,11 @@ Because we are assuming that the null hypothesis is true for the moment, we can 
 The all powerful p-value
 ===================================================================
 
-![plot of chunk unnamed-chunk-3](hypothesis_testing-figure/unnamed-chunk-3-1.png) 
+![plot of chunk unnamed-chunk-3](hypothesis_testing-figure/unnamed-chunk-3-1.png)
 
 ***
 
-![plot of chunk unnamed-chunk-4](hypothesis_testing-figure/unnamed-chunk-4-1.png) 
+![plot of chunk unnamed-chunk-4](hypothesis_testing-figure/unnamed-chunk-4-1.png)
 
 The all powerful p-value
 ===================================================================
@@ -263,7 +263,7 @@ sample(ants$n_Ants)
 ```
 
 ```
- [1]  4 12 10 10  7  9  6 12  6  9
+ [1] 12 12  6 10  4 10  9  6  9  7
 ```
 
 Monte Carlo - Step 2 - Shuffle
@@ -290,12 +290,12 @@ incremental:false
 
 We can look at the results with a histogram
 ***
-![plot of chunk unnamed-chunk-9](hypothesis_testing-figure/unnamed-chunk-9-1.png) 
+![plot of chunk unnamed-chunk-9](hypothesis_testing-figure/unnamed-chunk-9-1.png)
 
 Monte Carlo - Step 3 - one or two tailed?
 ===================================================================
 
-![plot of chunk unnamed-chunk-10](hypothesis_testing-figure/unnamed-chunk-10-1.png) 
+![plot of chunk unnamed-chunk-10](hypothesis_testing-figure/unnamed-chunk-10-1.png)
 ***
 
 
@@ -319,7 +319,7 @@ count_extreme_diffs / 1000
 ```
 
 ```
-[1] 0.044
+[1] 0.045
 ```
 
 Monte Carlo 
@@ -379,13 +379,12 @@ Parametric
 Parametric - Step 1 - Test Statistic
 ===================================================================
 
-F statistic or F ratio - useful for comparing weather group means differ
+F statistic or F ratio - useful for comparing whether group means differ
 
 Basis for ***ANOVA***
 
 $$ F = \frac{(variance\ between\ groups + variance\ within\ groups)}{variance\ within\ groups}$$
 
-![anova](http://www.soc.napier.ac.uk/~cs181/Modules/CM/images/ANOVA-df.png)
 
 Parametric - Step 1 - Test Statistic
 ===================================================================
@@ -419,7 +418,7 @@ fdist <- qplot(x=xrange, y=yvals, geom="line") +
 fdist
 ```
 
-![plot of chunk unnamed-chunk-12](hypothesis_testing-figure/unnamed-chunk-12-1.png) 
+![plot of chunk unnamed-chunk-12](hypothesis_testing-figure/unnamed-chunk-12-1.png)
 
 
 Parametric - Step 3 - Compute the p-value
@@ -443,7 +442,7 @@ The upper tail probability can be computed easily because we are dealing with a 
 fdist + geom_vline(xintercept = 8.78, col="red")
 ```
 
-![plot of chunk unnamed-chunk-14](hypothesis_testing-figure/unnamed-chunk-14-1.png) 
+![plot of chunk unnamed-chunk-14](hypothesis_testing-figure/unnamed-chunk-14-1.png)
 
 Parametric - Step 3 - Compute the p-value
 ===================================================================

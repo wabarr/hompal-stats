@@ -6,7 +6,7 @@ title: "Datasets"
 **Note: files have .txt extension so that they render in the broswer, but may use tab characters ('\\t') or commas as column separators.**
 
 Dataset Name | Source of data
-----------------------------------------  | ---------------------------------------
+-------------------------------------  | ------------------------------------
 [Isler_et_al_brains.txt](datasets/Isler_et_al_brains.txt) | [Isler et al, 2008](http://dx.doi.org/10.1016/j.jhevol.2008.08.004)
 [Living_Primates_Diet_Gomez_Verdu_2012.txt](datasets/Living_Primates_Diet_Gomez_Verdu_2012.txt) | [Gomez & Verdu, 2012](http://dx.doi.org/10.1093/sysbio/syr127)
 [Howell_craniometry.txt](datasets/Howell_craniometry.txt) | [website](http://web.utk.edu/~auerbach/HOWL.htm)
@@ -40,24 +40,10 @@ Dataset Name | Source of data
 [ungs.txt](datasets/ungs.txt) | [Shultz and Dunbar, 2006](http://dx.doi.org/10.1098/rspb.2005.3283)
 [Bininda_Emonds_correctedDates_FULLPHYLOG.txt](datasets/Bininda_Emonds_correctedDates_FULLPHYLOG.txt) | [Bininda Emonds et al., 2007](http://dx.doi.org/10.1038/nature05634)
 [winter_korean.txt](datasets/winter_korean.txt) | [Winter & Grawunder, 2012](http://dx.doi.org/10.1016/j.wocn.2012.08.006)
-[test_data_chimp.txt](datasets/test_data_chimp.txt) | fake data
-[test_regression_data.txt](datasets/test_regression_data.txt) | fake data
 [presidents.txt](datasets/presidents.txt) | built in dataset R
 [plant_measurements.txt](datasets/plant_measurements.txt) | from Crawley R book
 [bodysize_sex_rank.txt](datasets/bodysize_sex_rank.txt) | fake data
 [hair_eye.txt](datasets/hair_eye.txt) | built in dataset R
 
-<!--
-<ul>
-`r 
-#dynamically create links for database
-paste0('<li><a href=', 
-      list.files("datasets", recursive=TRUE, full=TRUE),
-      '>',
-      list.files("datasets", recursive=TRUE),
-      '</li>',collapse="")
-
-`
-
-</ul>
--->
+<!--[test_data_chimp.txt](datasets/test_data_chimp.txt) | fake data
+[test_regression_data.txt](datasets/test_regression_data.txt) | fake data-->

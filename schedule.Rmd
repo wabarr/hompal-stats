@@ -9,20 +9,20 @@ output:
 
 | Date  | Demo | Homework  | Reading |
 | --------- | -------------------------  | ------------------ | ------------------ |
-| August 29 | [Intro to Course](intro_to_course.html) & [Intro to R](intro_to_R.html) | [Try R Tutorial](http://tryr.codeschool.com) | - |
+| August 29 | [Intro to Course](intro_to_course.html) & [Intro to R](intro_to_R.html)     | [Try R Tutorial](http://tryr.codeschool.com) | - |
 | September 5 | **Labor Day, No Class** | - | [R Markdown Cheat Sheet](readings_pdf/rmarkdown-cheatsheet.pdf) |
-| September 12 | [Visualizing Data](visualization.html) & [Automation](automation.html) |  - | [dplyr vignette](http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html) | - |
-| September 19|  [Probability](probability.html) - [Distributions](distributions.html) - [Summary Stats](summary_stats.html) |  - | Gotelli: Ch 1 - 3 | - |
-| September 26 | [Hypothesis Testing](hypothesis_testing.html) | -  | [Blog post](https://oikosjournal.wordpress.com/2011/10/11/frequentist-vs-bayesian-statistics-resources-to-help-you-choose/); [Youtube Video](https://youtu.be/42QuXLucH3Q); Gotelli: Ch 4 - 5 | - | 
-| October 3 | [Correlation and Regression](regression.html) |  -  | Gotelli: Ch 9  | 
+| September 12 | [Visualizing Data](visualization.html) & [Automation](automation.html) |  [Homework #1]() | [dplyr vignette](http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html) | - |
+| September 19|  [Probability](probability.html) - [Distributions](distributions.html) - [Summary Stats](summary_stats.html) |  [Homework #2]() | Gotelli: Ch 1 - 3 | - |
+| September 26 | [Hypothesis Testing](hypothesis_testing.html) | [Homework #3]()  | [Blog post](https://oikosjournal.wordpress.com/2011/10/11/frequentist-vs-bayesian-statistics-resources-to-help-you-choose/); [Youtube Video](https://youtu.be/42QuXLucH3Q); Gotelli: Ch 4 - 5 | - | 
+| October 3 | [Correlation and Regression](regression.html) | [Homework #4]()  | Gotelli: Ch 9  | 
 | October 10| **Exam I** | - | - | - |
-| October 17 |  [Tidy Data](tidyR.html) & [ANOVA and ANCOVA](ANOVA.html) |  - | Gotelli: Ch 10  | 
+| October 17 |  [Tidy Data](tidyR.html) & [ANOVA and ANCOVA](ANOVA.html) |  [Homework #5]() | Gotelli: Ch 10  | 
 | October 24 |  **Fall Break** | - | [R Skills Practice](R_Skills_Practice.html) | - |
-| October 31 | [Power](power_analysis.html) & [Categorical Data](categorical_data.html) |  - |  Gotelli: Ch 11 |
-| Novermber 7 | [Multivariate Stats: I](Multivariate_I.html) & [Multivariate Stats: II](Multivariate_II.html) |  - | Manly Ch. 1 - 5 | - | - |
-| November 14 |   [Workflow](workflow.html) & [Multivariate Stats: III](Multivariate_III.html) |  - | Manly Ch. 6 - 12 | 
-| November	21 | [Comparative Methods](comparative_methods.html) | - | - | - |
-| November 28 | [String Formatting and Filesystem](String_Formatting_Filesystem.html) & [Non-Parametrics](nonparametrics.html)  | - | - | - | 
+| October 31 | [Power](power_analysis.html) & [Categorical Data](categorical_data.html) |  [Homework #6]() |  Gotelli: Ch 11 |
+| Novermber 7 | [Multivariate Stats: I](Multivariate_I.html) & [Multivariate Stats: II](Multivariate_II.html) |  [Homework #7]() | Manly Ch. 1 - 5 | - | - |
+| November 14 |   [Workflow](workflow.html) & [Multivariate Stats: III](Multivariate_III.html) |  [Homework #8]() | Manly Ch. 6 - 12 | 
+| November	21 | [Comparative Methods](comparative_methods.html) | [Homework #9]()  | - | - |
+| November 28 | [String Formatting and Filesystem](String_Formatting_Filesystem.html) & [Non-Parametrics](nonparametrics.html)  | [Homework #10]() | - | - | 
 | December 5 | **Student Presentations** | - | - |
 | December 12 | **Exam II** | - | - | - |
 

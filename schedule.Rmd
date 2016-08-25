@@ -3,7 +3,7 @@ title: "Schedule, Readings, & Homework"
 output: 
   html_document
 ---
-
+ 
 ## Due at beginning of class on the day listed. 
 
 

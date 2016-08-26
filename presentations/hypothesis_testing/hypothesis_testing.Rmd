@@ -90,14 +90,12 @@ The alternative hypothesis is focused on the pattern in the data...not the cause
 
 ## The all powerful p-value 
 
-***<span class='red2>typeItype2.jpg</span>***
 
 In terms of conditional probability, the p value represents 
 
 $$ P(Data\ |\ H_0) $$
 
 ## The all powerful p-value 
-
 
 
 For baboons, use T-test to compare means.
@@ -108,7 +106,6 @@ Because we are assuming that the null hypothesis is true for the moment, we can 
 
 ## The all powerful p-value 
 
-
 ```{r echo=FALSE}
 library(ggplot2)
 xrange <- seq(-15, 15, 0.05)
@@ -116,7 +113,7 @@ qplot(x=xrange, y=dt(xrange, df = 1000), geom="line",  main="Density of T-Distri
 
 ```
 
-***
+## The all powerful p-value 
 
 ```{r echo=FALSE}
 qplot(x=xrange, y=dt(xrange, df = 24), geom="line",  main="Density of T-Distribution df=23") +
@@ -131,7 +128,6 @@ qplot(x=xrange, y=dt(xrange, df = 24), geom="line",  main="Density of T-Distribu
 Our T-test would return a very low p value.
 
 Highly unlikely to get two sex groups with means as different as ours, if the variation was attributable only to chance. 
-
 We know this because we know the distribution of the T statistic when the null hypothesis if true. 
 
 ## If you only remember one thing from this class... 
@@ -150,8 +146,9 @@ $H_0$ False | Type II error ($\beta$)| Correct!
 
 ## Errors in Hypothesis Testing 
 
+<img src="../../images/typeItype2.jpg" height=400px>
 
-<img src="../../images/typeItype2.jpg" height=500px>
+Which type of error is worse?
 
 ## Errors in Hypothesis Testing 
 
@@ -169,39 +166,40 @@ The risk of Type I and Type II error rates are inversely related to one other.
 
 This relationship is not simple, though. Type II error rates depend on a lot of things, like the sample size and strength of the effect.
 
-## Statistical Significance versus Biological Significance 
+## Statistical Significance versus Significance 
 
 
 Given very large sample sizes, the risk of Type II errors is low, but this also means the risk of Type I errors is high. 
 
 Tiny, virtually meaningless differences can become statistically significant.
 
-When you find statistical significance, you have to ask (how big is the effect? should I care?)
+When you find statistical significance, you have to ask 
 
-## Statistical Significance versus Biological Significance 
+> - how big is the effect? 
+> - should I care?
 
+## Statistical Significance versus Significance {.columns-2}
 
-Two populations (n=1million) differ in height by about 0.01% (p<0.0000000001)
-
-```{r echo=FALSE, fig.width=8, fig.height=3}
+```{r echo=FALSE, fig.width=5, fig.height=5}
 pops <- data.frame(height=c(rnorm(1000000, mean=176.4), rnorm(1000000,mean=176.57)), pop=c(rep("A", 1000000), rep("B", 1000000)))
 
 ggplot2::qplot(x=pop, y=height, data=pops[sample(1:nrow(pops), 10000),], fill=pop, geom="boxplot") + ggplot2::theme_bw(20)
 
 ```
 
+- Two populations (n=1,000,000)
+- differ in height by about 0.01% (p<0.0000000001)
+- **Should I care? Is this biologically meaningful?**
 
-**Should I care? Is this biologically meaningful?**
-
-## Statistical Significance versus Biological Significance 
+## Statistical Significance versus Significance 
 
 <span class='red2'>**Don't be a slave to $p<0.05$ !!!!!**</span>
 
 <span class='red2'>**p-values don't measure effect size!!!!**</span>
 
-## Significance versus effect size
+## Statistical significance versus effect size
 
-Many bacon eaters rushed to this conclusion last year!
+Many bacon lovers rushed to this conclusion last year!
 
 <img src='../../images/processed_meat.png' height=500px>
 
@@ -295,19 +293,18 @@ for(i in 1:1000) {
 
 
 We can look at the results with a histogram
-***
-```{r echo=FALSE}
-qplot(results, main="mean differences, shuffled counts") + theme_bw(24)
-```
-
-## Monte Carlo - Step 3 - one or two tailed? 
-
 
 ```{r echo=FALSE}
-qplot(results, main="mean differences, shuffled counts") + theme_bw(24)
+histres <- qplot(results, bins=10, color=I("white"), main="mean differences, shuffled counts") + theme_bw(24)
+histres
 ```
-***
 
+## Monte Carlo - Step 3 - one or two tailed? {.columns-2}
+
+
+```{r echo=FALSE, fig.width=4, fig.height=4}
+histres + theme_bw(13)
+```
 
 When we compute the p value, we will ask how many  differences computed on the randomized data are as extreme as our actual mean difference. 
 
@@ -317,7 +314,7 @@ We are looking at the absolute value, of the difference, ***so we want a 1 taile
 
 
 
-## Monte Carlo - Step 4 - Calculate p 
+## Monte Carlo - Step 4 - Calculate p {.build}
 
 
 To get our 1-tailed p-value, we just count up how many of the mean differences in the randomized data are as big as (or bigger than) our observed mean difference (3.75).
@@ -326,6 +323,12 @@ To get our 1-tailed p-value, we just count up how many of the mean differences i
 count_extreme_diffs <- sum(results >= 3.75)
 count_extreme_diffs / 1000
 
+```
+
+Shortcut...for a <span style="color:gold;">&#9733;</span> who can explain how this works?
+
+```{r}
+mean(results >= 3.75)
 ```
 
 ## Monte Carlo  
@@ -341,23 +344,25 @@ If there is no relationship between habitat and and nest count, we would expect 
 
 Low p values do not mean the alternative hypothesis has been proven.
 
-## Monte Carlo Pros and Cons 
+## Monte Carlo Pros and Cons {.build}
 
 
-# Pros:
-*  fewest assumptions
-*  null hypothesis is very clear and easy to understand
+Pros:
 
-# Cons:
-*  you have to "roll-your-own"
-*  you don't get the same answer every time
+> - fewest assumptions
+> - null hypothesis is very clear and easy to understand
+
+Cons:
+
+> - you have to "roll-your-own"
+> - you don't get the same answer every time
 
 ## Parametric 
 
 
-![normal](http://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Normal_Distribution_PDF.svg/700px-Normal_Distribution_PDF.svg.png)
+![](http://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Normal_Distribution_PDF.svg/700px-Normal_Distribution_PDF.svg.png)
 
-***
+## Parametric 
 
 Assumes data were sampled from a specified distribution (usually normal distribution). 
 
@@ -401,7 +406,9 @@ $$ F = 33.75 / 3.84 = 8.78 $$
 
 The null hypothesis is data were drawn from  single population.
 
-If true, then our F ratio tends to be about 1. Larger and larger values of F are less and less likely to be observed under the null hypothesis.  
+If true, then our F ratio tends to be about 1 (similar variance between and within groups)
+
+Larger and larger values of F are less and less likely to be observed under the null hypothesis.  
 
 The F statistic follows a known ***F distribution***.
 
@@ -409,18 +416,22 @@ The F statistic follows a known ***F distribution***.
 
  
 
-```{r fig.width=18}
+```{r fig.width=9, fig.height=3}
 xrange <- seq(1, 14, 0.1)
 yvals <- df(xrange, df1 = 1, df2=8)
-fdist <- qplot(x=xrange, y=yvals, geom="line") + 
-    theme_bw(20) + 
+fdist <- qplot(x=xrange, y=yvals, geom="line") +  theme_bw(20) + 
     labs(x="F statistic", y="probability")
 fdist
+
 ```
 
 
-## Parametric - Step 3 - Compute the p-value 
+## Parametric - Step 3 - Compute the p-value {.columns-2}
 
+```{r}
+fdist + 
+  geom_vline(xintercept = 8.78, col="red")
+```
 
 The upper tail probability can be computed easily because we are dealing with a known distribution. 
 
@@ -428,16 +439,12 @@ The upper tail probability can be computed easily because we are dealing with a 
 1 - pf(8.78, df1=1, df2=8)
 ```
 
-***
-
-```{r}
-fdist + geom_vline(xintercept = 8.78, col="red")
-```
 
 ## Parametric - Step 3 - Compute the p-value 
 
+For another <span style="color:gold;">&#9733;</span>
 
-***What does this p-value of 0.018 mean?***
+***Who can tell me what this p-value of 0.018 means?***
 
 ## If you only remember one thing from this class... 
 
@@ -448,30 +455,28 @@ Low p values do not mean the alternative hypothesis has been proven.
 ## Parametric Assumptions 
 
 
-*  data independent
-*  data come from specified distribution
-*  additional tests make additional assumptions - these are sometimes most critical
+>- data independent
+>- data come from specified distribution
+>- additional tests make additional assumptions - these are sometimes most critical
 
-## Parametric Pros and Cons 
+## Parametric Pros and Cons {.build}
 
 
-# Pros
-*  ubiquitous in standard stats packages, textbooks, articles
-*  extremely well understood (by statisticians)
+Pros
 
-# Cons
-*  easy to misuse
-    *  p values misinterpreted
-    *  assumptions not always tested
-*  less flexible than Monte Carlo
+>- ubiquitous in standard stats packages, textbooks, articles
+>- extremely well understood (by statisticians)
+
+Cons
+
+> - easy to misuse
+  > -  p values misinterpreted
+  > -  assumptions not always tested
+> - less flexible than Monte Carlo
 
 ## Bayesian 
 
-type:sub-section
-
-![bayes](http://upload.wikimedia.org/wikipedia/commons/d/d4/Thomas_Bayes.gif)
-
-***
+![](http://upload.wikimedia.org/wikipedia/commons/d/d4/Thomas_Bayes.gif)
 
 Bayes' theorem discovered by Rev. Thomas Bayes in the mid-18th century
 
@@ -523,15 +528,11 @@ What are the expected probability distributions for our parameters ***before*** 
 
 Can either use uninformative ***flat*** priors, or base them off of our previous knowledge about ant colony densities in field and forest. 
 
-## Bayesian - Step 3 - Priors 
+## Bayesian - Step 3 - Priors {.columns-2}
 
+<img src="../../images/frequentists_vs_bayesians.png" height=500px>
 
 Incorporating ***prior*** knowledge into hypothesis testing is fundamental distinction
-
-***
-
-![xkcd](frequentists_vs_bayesians.png)
-
 
 ## Bayesian - Step 4 - Likelihood 
 
@@ -553,7 +554,7 @@ $$Posterior\ Probability = \frac{Prior\ Probability * Likelihood}{Marginal\ Like
 
 Now we just do the math to calculate the posterior distributions for our parameters.  We can then use Monte Carlo to produce an expected distribution of F value with our posterior values. 
 
-![antsposterior](ants_posterior.jpg)
+<img src='../../images/ants_posterior.jpg'>
 
 ## Bayesian - Step 7 - Interpret 
 
@@ -564,21 +565,20 @@ Much higher than our parametric or Monte Carlo estimates
 
 Would change if we used different priors
 
-## Bayesian 
+## Bayesian {.build}
 
 
-# Pros
+Pros
 
-*  Explicitly builds on previous work (which reflects scientific progress, and the way we think)
-*  Intuitive interpretation, less prone to cookbook critical values of p
+>- Explicitly builds on previous work (which reflects scientific progress, and the way we think)
+>- Intuitive interpretation, less prone to cookbook critical values of p
 
-# Cons
+Cons
 
-*  It is really friggin' complicated
-*  Use of different priors results in different information, potentially subjective
+>- It is really friggin' complicated
+>- Use of different priors results in different information, potentially subjective
 
-## Summary 
-
+## Summary {.build}
 
 
 Most of what you do will be parametric stats: be sure to think about assumptions

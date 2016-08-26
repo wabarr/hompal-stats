@@ -1,6 +1,8 @@
 ---
 title: "Probability"
-output: html_document
+output: 
+  ioslides_presentation:
+    widescreen: yes
 ---
 
 ## Basic Probability
@@ -11,7 +13,11 @@ To get a real measure of this, we have to observe an infinite number of ***trial
 
 ## Sampling in R
 
-There are functions that make it very easy to sample from vectors in R.  Imagine a vector of 1000 individuals.  We can use the `sample()` function to draw a sample of 10 individuals from this population (without replacement).  Notice that when we do this twice, the samples are very rarely identical. 
+There are functions that make it very easy to sample from vectors in R.
+
+We can use the `sample()` function to draw a sample of 10 individuals from this population. 
+
+Notice that when we do this twice, the samples are very rarely identical. 
 
 ```{r}
 individuals <- 1:1000
@@ -21,17 +27,20 @@ sample(individuals, 10, replace = TRUE)
 
 ## Quantifying probability
 
-### Outcome = what happens during a particular event
-### Sample space = the universe of possible outcomes.  
+**Outcome** = what happens during a particular event
 
-Outcomes should be ***exhaustive*** in describing the sample space and the outcomes should be ***mutually exclusive***. When these conditions are met, then the sum of probabilities for all outcomes in the sample space is 1.
+**Sample space** = the universe of possible outcomes.  
 
-### Complex events = composites of simple events (Logical OR)
+Outcomes should be ***exhaustive*** in describing the sample space and the outcomes should be ***mutually exclusive***. 
+
+When these conditions are met, then the sum of probabilities for all outcomes in the sample space is 1.
+
+## Complex events = composites of simple events (Logical OR)
   *  sum the probabilities of simple events
   *  e.g. probability of drawing a King from a deck of cards is the sum of the probability of drawing each of the 4 distinct kings 
   $$1/52 + 1/52 + 1/52 + 1/52 = 4/52 = 1/13 $$
   
-### Shared events = multiple simultaneous occurrences of simple events (Logical AND)
+## Shared events = multiple simultaneous occurrences of simple events (Logical AND)
   *  multiply the probabilities of simple events
   *  assume that events are ***independent*** of one another
       *  e.g. probability of drawing the Ace of spades and the 2 of clubs is the product of the probability of drawing each one separately 
@@ -43,7 +52,7 @@ The sample space can be described as a ***set*** of all possible outcomes.  For 
 
 $$ Tosses = \{(H, H, H), (H, H, T), (H, T, H), (H, T, T), (T, H, H), (T, H, T), (T, T, H), (T, T, T)\}$$
 
-### intersection
+## intersection
 
 The intersection of two sets A and B represents the elements in common to both sets. The probability of the intersection of A and B represents the probability of the shared event A AND B. Assuming A and B are independent:
 
@@ -60,21 +69,29 @@ y <- c(3,4,5)
 intersect(x, y)
 ```
 
-### union
+## union
 
-The union of two sets A and B consists of all the shared elements of A and B. The probability of the union of two sets represents the probability of the complex event A OR B. To compute it we add the probabilities of A and B, and subtract the probability of the intersection between A and B, so as not to double count. 
+The union of two sets A and B consists of all the shared elements of A and B. 
+
+The probability of the union of two sets represents the probability of the complex event A OR B. 
+
+To compute it we add the probabilities of A and B, and subtract the probability of the intersection between A and B, so as not to double count. 
 
 $$ P(A \cup B) = P(A) + P(B) - P(A \cap B)$$
 
-<span class="mega-octicon octicon-puzzle"></span> What is the probability of getting the same three outcomes for each of three coin flips?
+**Challenge**  - What is the probability of getting the same three outcomes for each of three coin flips?
+
+## union
 
 There is a function in R to calculate the union.
 
 ```{r}
+x
+y
 union(x, y)
 ```
 
-### test for membership
+## test for membership
 
 Sometimes it is useful to test whether an element is a member of a set.  There is an R function for that.  
 
@@ -83,9 +100,15 @@ Sometimes it is useful to test whether an element is a member of a set.  There i
 1 %in% y
 ```
 
-### complement
+**Note**:this is an operator function. You don't need (), it works like  `+` 
 
-The complement of a set is all the elements that are not in a set.  The set $heads$ is all the elements that start with heads in the $tosses$ set.  The complement of this set $heads^c$ represents all the other elements that don't start with heads. 
+## complement 
+
+The complement of a set is all the elements that are not in a set.  
+
+The set $heads$ is all the elements that start with heads in the $tosses$ set.  
+
+The complement of this set $heads^c$ represents all the other elements that don't start with heads. 
 
 ## Conditional Probability
 

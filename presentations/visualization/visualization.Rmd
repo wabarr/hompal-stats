@@ -1,0 +1,260 @@
+---
+title: "Visualizing Data"
+output: 
+  ioslides_presentation:
+    widescreen: true
+---
+
+
+## I am opinionated when it comes to graphics in R. {.build}
+
+Base graphis in R are a bit kludgy.
+
+I prefer to use the `ggplot2` package. 
+
+You need to install this package using the standard package manager: Tools > Package Manager. Then you will load the package using the command `library(ggplot2)`.
+
+`ggplot2` provides a convenient function called `qplot()` for making quick plots that don't require a lot of customization. 
+
+## Basic Plotting
+
+We will use a built in dataset called `diamonds`.  Lets take a look at the head (i.e. first few rows) of this dataset.
+
+```{r}
+library(ggplot2)
+head(diamonds)
+```
+
+
+## Univariate plot {.columns-2}
+
+The simplest usage is to provide a variable for the x axis, and a dataframe in which to look for this variable.  
+
+`qplot()` will attempt to guess the best `geom` (graphical geometric representation) with which to display the data. 
+
+Here we plot a histogram of diamond weights. 
+
+```{r fig.width=5}
+library(ggplot2)
+qplot(x=carat, data=diamonds)
+```
+
+## Bivariate Plot
+
+If we specify an additional variable for the y axis, then the default `geom` is a scatter of points.
+
+This time we will also specify a value for `main` which is the main title. 
+
+```{r cache=TRUE, fig.width=10, fig.height=3}
+qplot(x=carat, y=price, data=diamonds, main="Diamond Weight by Price")
+```
+
+## Boxplot {.build .columns-2}
+
+Now lets plot clarity by carat. 
+
+```{r cache=TRUE, fig.width=3.5, fig.height=3.5}
+qplot(x=clarity, y=carat, data=diamonds)
+```
+
+
+Need to specify our `geom`.
+
+We ask for `geom='boxplot'`
+
+```{r cache=TRUE, fig.width=3.5, fig.height=3.5}
+qplot(x=clarity, y=carat, 
+      data=diamonds, geom="boxplot")
+```
+
+## Layers {.build}
+
+Add a line representing a linear regression. Start with the bivariate plot, then add a new layer. 
+
+```{r cache=TRUE, fig.width=10, fig.height=3}
+weight_by_price <- qplot(x=carat, y=price, data=diamonds, main="Diamond Weight by Price")
+
+weight_by_price + stat_smooth(method="lm")
+```
+
+## Annotation
+
+Another common layer you will want to add is an annotation layer.  The `annotate()` function lets you do that.  
+
+```{r cache=TRUE, fig.width=10, fig.height=3}
+weight_by_price + 
+  annotate("text", x=2, y=24000, label="Here is a nice annotation, dear reader.")
+```
+
+## Challenge 
+
+The relationship on the previous plot is clearly not linear.  
+
+Recreate the plot in log space by computing the natural log of both variables. 
+
+Don't save intermediate logged variables, log the variables on-the-fly when you make the plot. 
+
+## Color, Size, Shape, Fill {.columns-2 .build}
+
+Visualize a third variable by changing:
+
+>- color or fill
+>- shape or size of points 
+
+```{r cache=TRUE, fig.height=3, fig.width=5}
+qplot(x=carat, y=price, 
+      data=diamonds, color=clarity)
+qplot(x=carat, y=price, 
+      data=diamonds, shape=cut)
+```
+
+## Facets {.build}
+
+When we have so many data points, it is hard to tell what is going on.
+
+It would be nice to have a grid of sub-plots, so we can see the effect of these factors on the relationship between price and size. 
+
+We can use the `facets` argument and tell it which factors we want to use, as in `facets=row_var~column_var`
+
+## Facets  {.build}
+
+```{r cache=TRUE, fig.width=10, fig.height=4}
+qplot(x=carat, y=price, data=diamonds, 
+      main="Diamond Weight by Price", facets=cut~clarity)
+```
+
+## Themes - Customize look and feel
+
+`theme_bw()` which gets rid of the default grey background. 
+
+You can also specify a value for the base text size, to increase size for presentations, etc. All the text elements will scale intelligently. 
+
+Also check out `theme_classic()`
+
+## Themes - Customize look and feel
+
+```{r cache=TRUE, fig.height=4}
+
+qplot(x=carat, y=price, data=diamonds, 
+      main="theme_bw", color=clarity) + 
+  theme_bw(20)
+
+```
+
+## Themes - Customize look and feel
+
+```{r , fig.height=4}
+qplot(x=carat, y=price, data=diamonds, 
+      main="theme_classic", color=clarity) + 
+  theme_classic(20)
+```
+
+## Default Themes {.build .columns-2}
+
+You can set the theme at the beginning of your script for all subsequent plots
+
+
+```{r cache=TRUE, fig.width=3, fig.height=3}
+library(ggthemes)
+theme_set(theme_excel())
+qplot(depth, table, data=diamonds) +
+  stat_smooth(method='lm')
+qplot(price, data=diamonds)
+
+```
+
+## The real `ggplot()`
+
+You can't get the full benefits of ggplot using the `qplot()` shortcut.
+
+`ggplot2` is based on the so-called "Grammar of Graphics", which is a terminology for describing how data is mapped to aesthetic properties to make informative graphics. 
+
+Plots are comprised of the following elements:
+
+## The real `ggplot()` {.build}
+
+**background elements** (shared by all layers in a plot)
+
+> - <span class='red2'>coordinate system</span> (usually Cartesian, so we don't often directly change this)
+> - <span class='red2'>data</span> - a dataframe which applies to all layers
+> - <span class='red2'>scales</span> - mapping of data values into plot values (either coordinates or aesthetic properties like color values)
+
+**facets (optional)** - specification of subplots within a plot, mapped to a column in the dataframe
+
+## The real `ggplot()` {.build}
+
+**layers which are layered over the background**
+
+> - <span class='red2'>mapping</span> - optional linking of data columns to aesthetic elements (color,shape,etc), that only apply to a particular layer
+> - <span class='red2'>data</span> - an optional additional dataframe used only in a particular layer
+> - <span class='red2'>stat</span> - a statistical transformation of rows in the dataframe (often this is the identity transformation)
+> - <span class='red2'>geom</span> - choice of how to graphically represent the stat
+      
+## The `ggplot()` workflow
+
+*   invoke the `ggplot()` function to set background elements which will apply to all layers.
+    * supply a base dataframe
+    * use `aes()` to map dataframe columns to aesthetics. Things you can set include
+        * `color`
+        * `fill` (the color of polygons or boxplots)
+        * `shape`
+        * `size` 
+        * `alpha` (i.e. transparency)
+    *   Anything not getting mapped to a column (e.g. `color="blue"`) doesn't go inside a call to `aes()`
+    *   Use `facet_grid()` or `facet_wrap()` to add faceting formula. 
+    
+## The `ggplot()` workflow
+
+*   Add layers to the plot, usually using one of the `geom_xxx()` functions like:
+    *  `geom_point()`
+    *  `geom_histogram()`
+    *  `geom_bar()`
+    *  `geom_path()`, `geom_rect()`, `geom_polygon()`
+    *  `geom_abline()`
+    *  `geom_text()`
+    *  `geom_hline()` and `geom_vline()`
+    *  **Note** you can map aesthetics specific to a layer by supplying the appropriate arguments to these functions
+    *  **Warning** most of these functions will automatically inherit the aesthetics from the background.  If you want to override this behavior (e.g. to use a different dataframe), you can use the argument `inherit.aes=FALSE`
+
+## The `ggplot()` workflow
+
+*   add an annotation layer `annotate()` to your plot (you can supply more complicated annotations by using a bonafide text layer using `geom_text()`)
+*   Style the plot and tweak axes etc.
+    * Themes are a useful shortcut 
+    * There are some helper functions for tweaking plots
+      * `labs(x="The X axis label", title="my nice little graph")`
+      * `guides()` to tweak legend
+      * `scale_x_continuous(limits=c(0,10))` to customize x scale
+      * `scale_fill_xxx()` and `scale_color_xxx()` for customizing color choices    
+*   Export the plot in a useful format using `ggsave()`
+*   Submit for publication.
+
+## A full example
+
+First we set up the background: 
+
+```{r cache=T}
+background <- ggplot(data = diamonds, aes(x = clarity, y=price))
+```
+
+<span class="mega-octicon octicon-question"></span> What happens when you type `background` in the interpreter at this point?
+
+## A full example
+
+Now we add a boxplot layer:
+
+```{r cache=T, fig.width=10, fig.height=4}
+with_boxplot <- background + geom_boxplot(aes(fill=cut))
+with_boxplot
+```
+
+## A full example
+
+Finally, I style my plot with a theme, and make a couple of tweaks
+
+```{r cache=T, fig.width=10, fig.height=4}
+with_boxplot + theme_bw(20) + 
+  labs(title="Price by Clarity") + scale_y_continuous(limits=c(0,25000)) + 
+  annotate("text", x=4.5, y=23000, label="Lots of outliers", size= 4)
+```
+

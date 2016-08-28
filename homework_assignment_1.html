@@ -143,17 +143,16 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore">Homework Assignment #1</h1>
-<h4 class="date"><em>due January 26, 2015</em></h4>
+<h4 class="date"><em>due Sept 12</em></h4>
 
 </div>
 
 
-<div id="note-you-should-write-your-homework-assignments-as-an-r-markdown-document-and-then-use-the-knit-button-in-rstudio-to-produce-a-stand-alone-html-document-containing-all-your-r-code-as-well-as-the-results-including-graphs-produced-by-your-r-code.-submit-this-single-.html-file-on-blackboard.-be-sure-that-your-document-includes-headers-indicating-which-question-you-are-answering-1-2-etc." class="section level4">
-<h4><strong>Note:</strong> You should write your homework assignments as an R markdown document, and then use the knit button in RStudio to produce a stand-alone html document containing all your R code, as well as the results (including graphs) produced by your R code. Submit this single .html file on blackboard. Be sure that your document includes headers indicating which question you are answering (#1, #2, etc).</h4>
-<p>This <a href="http://www.rstudio.com/wp-content/uploads/2015/01/rmarkdown-cheatsheet.pdf">cheatsheet</a> is helpful for using R markdown.</p>
+<p><strong>Instructions:</strong> You should write your homework assignments as an R markdown document. Use the knit button in RStudio to produce a stand-alone html document containing all your R code, as well as the results (including graphs) produced by your R code. Submit this single .html file on blackboard. Be sure that your document includes headers indicating which question you are answering (#1, #2, etc).</p>
+<p>This <a href="readings_pdf/rmarkdown-cheatsheet.pdf">cheatsheet</a> is helpful for using R markdown.</p>
 <div class="figure">
-<img src="knit_button.png" title="the knit button in R studio" alt="knit button" />
-<p class="caption">knit button</p>
+<img src="images/knit_button.png" alt="" />
+
 </div>
 <hr />
 <ol style="list-style-type: decimal">
@@ -163,7 +162,7 @@ $(document).ready(function () {
 <li>use the <code>length()</code> function to display the number of elements in <code>nouns</code></li>
 <li>use indexing to create a new vector consisting of the first 4 elements of <code>nouns</code>.</li>
 <li>use indexing to create a new vector consisting of only the last 8 elements of <code>nouns</code>.</li>
-<li>use indexing to create a new vector of the 1st, 3rd - 6th, and 10th elements of <code>nouns</code> (the length of the resulting vector should be 6)</li>
+<li>use indexing to create a new vector of the 1st, 3rd through 6th, and 10th elements of <code>nouns</code> (the length of the resulting vector should be 6)</li>
 <li>create a new vector with the elements of <code>nouns</code> in reverse order.</li>
 </ul></li>
 <li>Using functions
@@ -176,7 +175,7 @@ $(document).ready(function () {
 <li>Organizing data
 <ul>
 <li>Download <a href="datasets/bad_data_organization.xls">this excel spreadsheet</a></li>
-<li>This spreadsheet is not in a form that can be read into R. Think about why not, keeping in mind <a href="intro_to_R.html#data-input">this information on data input</a>.</li>
+<li>This spreadsheet is not in a form that can be read into R. Think about why not, keeping in mind <a href="presentations/intro2R/intro2R.html#32">this information on data input</a>.</li>
 <li>Re-organize the excel sheet to make it readable in R. Use excel to export it as a text file (or .csv) and read in the data into R. Make sure that the R markdown file you turn in prints out the dataframe, so I can see that you succesfully completed this step.</li>
 <li>Describe in words at least two major things that were wrong (from the perspective of an R user) with the original organization of this data file.</li>
 </ul></li>
@@ -187,10 +186,9 @@ $(document).ready(function () {
 <li>Produce a simple table showing the counts of males and females. Hint: check out the <code>table()</code> function</li>
 <li>Use the <code>hist()</code> function to make a plot of the natural log of the skull measurements.</li>
 <li>Use <em>logical indexing</em> (discused in the in-class demo) to subset the dataframe to include only individuals with skull measurements greater than 250 and save your results to a variable.</li>
-<li>Use the <code>subset()</code> function to subset the dataframe to include only individuals with measurements less than 250, and save your results to a variable.</li>
+<li>Use the <code>subset()</code> function to subset the dataframe to include only individuals with measurements less than 250, and save your results to another variable.</li>
 </ul></li>
 </ol>
-</div>
 
 
 

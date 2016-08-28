@@ -1,15 +1,15 @@
 ---
 title: 'Homework Assignment #1'
 
-date: "due January 26, 2015"
+date: "due Sept 12"
 output: html_document
 ---
 
-#### **Note:** You should write your homework assignments as an R markdown document, and then use the knit button in RStudio to produce a stand-alone html document containing all your R code, as well as the results (including graphs) produced by your R code. Submit this single .html file on blackboard. Be sure that your document includes headers indicating which question you are answering (#1, #2, etc).
+**Instructions:** You should write your homework assignments as an R markdown document. Use the knit button in RStudio to produce a stand-alone html document containing all your R code, as well as the results (including graphs) produced by your R code. Submit this single .html file on blackboard. Be sure that your document includes headers indicating which question you are answering (#1, #2, etc).
 
-This [cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/01/rmarkdown-cheatsheet.pdf) is helpful for using R markdown.
+This [cheatsheet](readings_pdf/rmarkdown-cheatsheet.pdf) is helpful for using R markdown.
 
-![knit button][knitbutton]
+![](images/knit_button.png)
 
 ***
 
@@ -18,7 +18,7 @@ This [cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/01/rmarkdown-ch
     * use the `length()` function to display the number of elements in `nouns`
     * use indexing to create a new vector consisting of the first 4 elements of `nouns`.
     * use indexing to create a new vector consisting of only the last 8 elements of `nouns`.
-    * use indexing to create a new vector of the 1st, 3rd - 6th, and 10th elements of `nouns` (the length of the resulting vector should be 6)
+    * use indexing to create a new vector of the 1st, 3rd through 6th, and 10th elements of `nouns` (the length of the resulting vector should be 6)
     * create a new vector with the elements of `nouns` in reverse order.
 
 2. Using functions  
@@ -29,7 +29,7 @@ This [cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/01/rmarkdown-ch
     
 3. Organizing data
     * Download [this excel spreadsheet](datasets/bad_data_organization.xls)
-    * This spreadsheet is not in a form that can be read into R.  Think about why not, keeping in mind [this information on data input](intro_to_R.html#data-input).
+    * This spreadsheet is not in a form that can be read into R.  Think about why not, keeping in mind [this information on data input](presentations/intro2R/intro2R.html#32).
     * Re-organize the excel sheet to make it readable in R.  Use excel to  export it as a text file (or .csv) and read in the data into R. Make sure that the R markdown file you turn in prints out the dataframe, so I can see that you succesfully completed this step.
     * Describe in words at least two major things that were wrong (from the perspective of an R user) with the original organization of this data file.   
 
@@ -39,10 +39,8 @@ This [cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/01/rmarkdown-ch
     * Produce a simple table showing the counts of males and females. Hint: check out the `table()` function
     * Use the `hist()` function to make a plot of the natural log of the skull measurements. 
     * Use *logical indexing* (discused in the in-class demo) to subset the dataframe to include only individuals with skull measurements greater than 250 and save your results to a variable. 
-    * Use the `subset()` function to subset the dataframe to include only individuals with measurements less than 250, and save your results to a variable. 
-    
-    
-[knitbutton]: knit_button.png "the knit button in R studio"
+    * Use the `subset()` function to subset the dataframe to include only individuals with measurements less than 250, and save your results to another variable. 
+
     
     
     

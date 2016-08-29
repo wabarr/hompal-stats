@@ -45,22 +45,31 @@ You can create a vector using the `c()` function (**c** stands for **combine**).
 ```{r}
 vector1 <- c(1,2,3,4,5,6,7,8,9,10)
 vector2 <- c(11,12,13,14,15,16,17,18,19,20)
-vector_this_will_be_text <- c(21,22,23,24,25,26,27,28,29,"thirty")
 ```
 
 ## Atomic vectors {.build}
 
-Atomic vectors are very powerful, because many of the basic functions and operations in R are **vectorized**, meaning that they operate on all elements of a vector in sequence. 
+Many of the basic functions and operations in R are **vectorized**, meaning that they operate on all elements of a vector in sequence. 
 
 For example, to add the elements of `vector1` with the corresponding elements in `vector2`, you simply add the vectors, because the `+` function is vectorized. 
-
-You can assume that **most** of the base functions in R are vectorized. 
 
 This is one of the fundamental advantages of R. 
 
 ```{r}
 vector1 + vector2
 ```
+
+## Atomic vectors {.build}
+
+What happens when I try this?
+
+```{}
+vector3 <- c(21,22,23,24,25,26,27,28,29,"thirty")
+```
+
+What type of vector is `vector3`?
+
+What happens when I do this? `vector2 + vector3`
 
 ## Accessing values within a vector {.build}
 
@@ -74,7 +83,7 @@ What about `vector2[3:5]`? HINT: the `:` operator makes a sequence of integers.
 
 Extract the first, fifth, and ninth element of `vector2` that you created earlier.
 
-## Negative Indexing
+## Negative Indexing {.build}
 
 When you use negative indices, then the referenced elements are **removed** from the resulting vector. 
 
@@ -259,6 +268,12 @@ iris$Petal.Area <- iris$Petal.Length * iris$Petal.Width
 iris$Petal.Area
 ```
 
+## Adding a new column with `$` {.build}
+
+<span class="red2">Note:</span> Adding a calculated column like this is less error prone and more repeatable than doing it in Excel.....
+
+You should store the data in a spreadsheet, and then manipulate it in R. 
+
 ## Functions {.build}
 
 Functions are the heart of R.
@@ -388,6 +403,10 @@ Read in the file called "femur_lengths.txt" directly from the following URL
 http://hompal-stats.wabarr.com/datasets/femur_lengths.txt
 
 Save to an object called `femora`.
+
+Use the `str()` function to examine the data type of each column.  You can also do the same thing in R Studio in the Environment tab. 
+
+Use the `mean()` function to calculate the mean of all the femur lengths.
 
 ## Data Output
 

@@ -3,6 +3,8 @@ title: "Datasets"
 
 ---
 
+**These files are for educational purposes only for leaning data analysis. In some cases, they are taken from published papers. The copies of the datasets on this website could contain errors in transcription.  Always look to the original source and cite the original paper.**
+
 **Note: files have .txt extension so that they render in the broswer, but may use tab characters ('\\t') or commas as column separators.**
 
 Dataset Name | Source of data

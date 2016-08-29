@@ -25,6 +25,12 @@ Who would be OK with changing the course time to 3:30 - 6:00PM?
 - Get hands-on experience implementing analyses with real world data
 - Learn practical tools for doing "data-science"
 
+## All fields are becoming more data intensive
+
+<div class="centered">
+  <img src="../../images/matrix.png" width=850>
+</div>
+
 ## "Data-science"
 
 **Data science** is an industry buzzword and cliche

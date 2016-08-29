@@ -28,10 +28,10 @@ this is the only pie chart you will see all semester.
 From wikipedia:
 
 
-> "Data science is an interdisciplinary field about **processes and systems**
-> to **extract knowledge or insights from data** in various forms, either structured 
+> "Data science is an interdisciplinary field about <span class="red2">**processes and systems**</span>
+> to <span class="red2">**extract knowledge or insights from data**</span> in various forms, either structured 
 > or unstructured, which is a continuation of some of the data analysis fields 
-> such as **statistics**, data mining, and predictive analytics."
+> such as <span class="red2">**statistics**</span>, data mining, and predictive analytics."
 
 
 > - **It is also a big part of what scientists do!**
@@ -47,16 +47,24 @@ From wikipedia:
 
 > - We will spend a lot of time on the "how"
 > - You will become very familiar with the nuts-and-bolts of analyzing data
+> - Most of your grade comes from practical exercises
 
+## Grading
 
+Assignment                  | Percent
+--------------------------------------------------------|---------------
+Weekly homework assignments - submitted on Blackboard  | 40%
+Practical Exam 1 | 20%
+Practical Exam 2 | 20%
+Class Project | 20%
 
 ## Outcome of the course
 
-When you leave this course, I expect you to be empowered to:
+When you leave this course, I hope you are empowered to:
 
 > -  collect your data in a format that makes your life easier
 > -  explore patterns in your data
-> -  test meaningful hypotheses
+> -  test meaningful hypotheses using appropriate statistical tools
 > -  communicate these results
 
 
@@ -111,9 +119,11 @@ A rapidly growing system of user contributed packages.
 
 <img src='../../images/rstudio.png' height=500px>
 
-## Course Website
 
+## Course Website
 
 http://hompal-stats.wabarr.com
 
-Check out the website, then do the Introduction To R
+Let's check out the website then do the Introduction To R
+
+<span class='red2'>**Note**:</span> First homework assignment is due on September 12. 

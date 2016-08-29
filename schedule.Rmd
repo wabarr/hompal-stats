@@ -15,16 +15,16 @@ output:
 | September 19|  [Probability]() - [Distributions]() - [Summary Stats]() |  [Homework #2]() | Gotelli: Ch 1 - 3 | - |
 | September 26 | [Hypothesis Testing]() | [Homework #3]()  | [Blog post](https://oikosjournal.wordpress.com/2011/10/11/frequentist-vs-bayesian-statistics-resources-to-help-you-choose/); [Youtube Video](https://youtu.be/42QuXLucH3Q); Gotelli: Ch 4 - 5 | - | 
 | October 3 | [Correlation and Regression]() | [Homework #4]()  | Gotelli: Ch 9  | 
-| October 10| **Exam I** | - | - | - |
+| October 10| **Practical Exam I** | - | - | - |
 | October 17 |  [Tidy Data]() & [ANOVA and ANCOVA]() |  [Homework #5]() | Gotelli: Ch 10  | 
-| October 24 |  **Fall Break** | - | [R Skills Practice]() | - |
+| October 24 |  **Fall Break** | [R Skills Practice]() | - | - |
 | October 31 | [Power]() & [Categorical Data]() |  [Homework #6]() |  Gotelli: Ch 11 |
 | Novermber 7 | [Multivariate Stats: I]() & [Multivariate Stats: II]() |  [Homework #7]() | Manly Ch. 1 - 5 | - | - |
 | November 14 |   [Workflow]() & [Multivariate Stats: III]() |  [Homework #8]() | Manly Ch. 6 - 12 | 
 | November	21 | [Comparative Methods]() | [Homework #9]()  | - | - |
 | November 28 | [String Formatting and Filesystem]() & [Non-Parametrics]()  | [Homework #10]() | - | - | 
 | December 5 | **Student Presentations** | - | - |
-| December 12 | **Exam II** | - | - | - |
+| December 12 | **Practical Exam II** | - | - | - |
 
 For reference, here is a link to [GW's Academic Calendar](https://www.gwu.edu/academic-calendar)
 

@@ -29,7 +29,7 @@ This [cheatsheet](readings_pdf/rmarkdown-cheatsheet.pdf) is helpful for using R 
     
 3. Organizing data
     * Download [this excel spreadsheet](datasets/bad_data_organization.xls)
-    * This spreadsheet is not in a form that can be read into R.  Think about why not, keeping in mind [this information on data input](presentations/intro2R/intro2R.html#32).
+    * This spreadsheet is not in a form that can be read into R.  Think about why not, keeping in mind this information on data input you learned in the introduction to R lecture.
     * Re-organize the excel sheet to make it readable in R.  Use excel to  export it as a text file (or .csv) and read in the data into R. Make sure that the R markdown file you turn in prints out the dataframe, so I can see that you succesfully completed this step.
     * Describe in words at least two major things that were wrong (from the perspective of an R user) with the original organization of this data file.   
 

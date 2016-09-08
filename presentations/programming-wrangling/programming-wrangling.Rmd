@@ -92,15 +92,15 @@ Write a `for` loop to examine the law of large numbers to illustrate how, as sam
 * calculate the mean of this sample, and be sure to save these results to the appropriate place in the results vector
 * finally, make a plot of the results with the integers 1 to 2000 on the x axis, and the corresponding value from the results vector on the y axis
 
-## solution
+<!-- ## solution -->
 
-```{r}
-results <- numeric(2000)
-for(i in 1:2000){
-  results[i] <- mean(rnorm(n=i, mean=100, sd=30))
-}
-plot(1:2000, results, pch=16)
-```
+<!-- ```{r} -->
+<!-- results <- numeric(2000) -->
+<!-- for(i in 1:2000){ -->
+<!--   results[i] <- mean(rnorm(n=i, mean=100, sd=30)) -->
+<!-- } -->
+<!-- plot(1:2000, results, pch=16) -->
+<!-- ``` -->
 
 
 ## `lapply()`

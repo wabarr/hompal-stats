@@ -5,7 +5,7 @@ date: "due Sept 12"
 output: html_document
 ---
 
-**Instructions:** You should write your homework assignments as an R markdown document. Use the knit button in RStudio to produce a stand-alone html document containing all your R code, as well as the results (including graphs) produced by your R code. Submit this single .html file on blackboard. Be sure that your document includes headers indicating which question you are answering (#1, #2, etc).
+**Instructions:** You should write your homework assignments as an R markdown document. Use the knit button in RStudio to produce a stand-alone html document containing all your R code, as well as the results (including graphs) produced by your R code. Submit this single .html file on blackboard. Be sure that your document includes headers indicating which question you are answering (#1, #2, etc). **Note:** You will have to zip your assignment a .zip file to upload it to Blackboard, as Blackboard doesn't like .html files. 
 
 This [cheatsheet](readings_pdf/rmarkdown-cheatsheet.pdf) is helpful for using R markdown.
 

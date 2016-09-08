@@ -325,6 +325,31 @@ rnorm(1000, mean=20, sd=1.4) %>% log %>% hist(main="my nice histogram")
 hist(log(rnorm(1000, mean=20, sd=1.4)))
 ```
 
+## `do()`
+
+do anything to grouped data
+
+```{r}
+linearModels <- loans %>% group_by(State) %>%
+  do(regression=lm(UNSubsidizedDL~SubsidizedDL, data=.))
+linearModels
+```
+
+## `do()`
+
+
+<pre class="prettyprint lang-r">
+linearModels <- loans %>% group_by(State) %>%
+  do(regression=lm(UNSubsidizedDL~SubsidizedDL, data=.))
+linearModels
+</pre>
+
+```{r}
+linearModels %>% 
+  summarize(sum=summary(regression)$r.squared)
+```
+
+
 ## Challenge
 
 Using the `diamonds` dataset that is built in to the `ggplot2` package:

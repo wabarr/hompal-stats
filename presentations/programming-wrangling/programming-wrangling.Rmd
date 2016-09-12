@@ -155,11 +155,20 @@ myList <- list(firstOne=1, nextOne="too", lastOne=rnorm(10))
 myList
 ```
 
-## most often use double brackets `[[]]` to index a list
+## often use double brackets `[[]]` to index a list
 
 ```{r}
 myList[[3]]
+myList[3]
 ```
+
+For five marks....what is the difference?
+
+## `[[]]` versus `[]`
+
+
+<img src='../../images/pepper.png' width=900>
+
 
 ## lists can (optionally) have named elements, that can be accessed using the `$` operator 
 

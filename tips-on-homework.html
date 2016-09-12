@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Tips On Homework</title>
+
+<script src="libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-57395681-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+
+<style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet"
+      href="libs/highlight/textmate.css"
+      type="text/css" />
+<script src="libs/highlight/highlight.js"></script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="octicons/octicons.css" type="text/css" />
+<link rel="stylesheet" href="css/custom-style.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script src="libs/navigation-1.1/tabsets.js"></script>
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+<div id="navbar">
+  <div id="navbar-container">
+    <ul id="navbar-ul">
+      <li><a href="index.html"><span class="mega-octicon octicon-home"></span></a></li>
+      <li><a href="datasets.html">Data</a></li>
+      <li><a href="schedule.html">Schedule</a></li>
+      <li><a href="ANTH6413_syllabus.docx">Syllabus</a></li>
+      <li><a href="gettinghelp.html">Getting Help</a></li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Tips On Homework</h1>
+
+</div>
+
+
+<p><br></p>
+<div id="put-your-name-in-the-file-name" class="section level1">
+<h1>1. Put your name in the file-name</h1>
+<p>Something like <code>barr_hw1.html</code>. Always zip the file!</p>
+<p><br><br><br></p>
+</div>
+<div id="always-diplay-output" class="section level1">
+<h1>2. Always diplay output!</h1>
+<p>If you are answering a question, don’t make me study your code to know if it worked….be sure to show me.</p>
+<div id="dont-do-this." class="section level2">
+<h2>Don’t do this….</h2>
+<pre class="r"><code>myVar &lt;- rnorm(100)
+negatives &lt;- myVar[myVar&lt;0]</code></pre>
+</div>
+<div id="do-this" class="section level2">
+<h2>Do this…</h2>
+<pre class="r"><code>myVar &lt;- rnorm(100)
+negatives &lt;- myVar[myVar&lt;0]
+negatives</code></pre>
+<pre><code>##  [1] -2.32303558 -0.69098231 -0.01120667 -0.12090151 -1.11384565
+##  [6] -0.59036758 -0.17942686 -0.43491673 -0.28417282 -0.07306317
+## [11] -0.08003175 -0.86473435 -1.40917327 -0.31804772 -1.85276929
+## [16] -0.15726937 -1.25071729 -0.37921778 -1.84772270 -0.10637325
+## [21] -0.10036768 -0.13731612 -0.21607100 -2.09965968 -0.24439167
+## [26] -0.39402201 -0.81944815 -1.01823370 -0.36643331 -0.44950926
+## [31] -0.63770606 -1.12164549 -1.40680184 -0.45167957 -1.58579279
+## [36] -0.33665515 -0.38702955 -0.58966783 -0.02822101 -0.42002646
+## [41] -0.85808357 -1.15260706 -1.15587745 -0.16971556 -0.56134423
+## [46] -1.23893560 -1.57438856 -0.28882243 -1.03148121 -1.48250049
+## [51] -1.22000171 -1.55355883 -0.34080836</code></pre>
+</div>
+<div id="now-i-can-easily-see-that-your-code-does-what-it-should-be-doing" class="section level2">
+<h2>Now I can easily see that your code does what it should be doing</h2>
+<p><br><br><br></p>
+</div>
+</div>
+<div id="make-use-of-rmarkdown-formattingwhich-is-easier-to-read" class="section level1">
+<h1>3. Make use of Rmarkdown formatting…which is easier to read?</h1>
+<div id="option-1" class="section level2">
+<h2>OPTION 1</h2>
+</div>
+</div>
+<div id="question-1" class="section level1">
+<h1>Question 1</h1>
+</div>
+<div id="two-paragraphs-on-hipsters" class="section level1">
+<h1>Two paragraphs on hipsters</h1>
+<p>Kogi brunch shabby chic wolf. Quinoa cronut direct trade meh 90’s. Austin actually etsy celiac flannel bushwick narwhal freegan asymmetrical bitters cred fanny pack distillery taxidermy. Locavore 90’s celiac vegan kinfolk pabst. Swag waistcoat everyday carry, listicle umami meh humblebrag mustache you probably haven’t heard of them deep v helvetica occupy cray normcore. Jean shorts lumbersexual vegan franzen craft beer, microdosing narwhal VHS. Pickled actually church-key chia williamsburg.</p>
+<p>Messenger bag master cleanse lomo, lyft before they sold out marfa humblebrag. Viral sustainable activated charcoal franzen, kogi flexitarian raclette biodiesel put a bird on it fingerstache ethical hell of paleo shoreditch cardigan. Af 8-bit offal, neutra tofu tacos brunch ramps forage authentic organic waistcoat fam biodiesel +1. 90’s swag raclette, occupy williamsburg street art meditation pork belly cliche. Cliche deep v drinking vinegar 90’s slow-carb jean shorts. Pabst keytar bespoke deep v vice, occupy gochujang poutine man bun meggings. Leggings gastropub trust fund poutine, cold-pressed tattooed flannel kombucha.</p>
+</div>
+<div id="option-2" class="section level1">
+<h1>Option 2</h1>
+<pre class="r"><code># Question 1
+
+## Two paragraphs on hipsters
+
+#Kogi brunch shabby chic wolf. Quinoa cronut direct trade meh 90&#39;s. Austin actually etsy celiac flannel bushwick narwhal freegan asymmetrical bitters cred fanny pack distillery taxidermy. Locavore 90&#39;s celiac vegan kinfolk pabst. Swag waistcoat everyday carry, listicle umami meh humblebrag mustache you probably haven&#39;t heard of them deep v helvetica occupy cray normcore. Jean shorts lumbersexual vegan franzen craft beer, microdosing narwhal VHS. Pickled actually church-key chia williamsburg.
+
+#Messenger bag master cleanse lomo, lyft before they sold out marfa humblebrag. Viral sustainable activated charcoal franzen, kogi flexitarian raclette biodiesel put a bird on it fingerstache ethical hell of paleo shoreditch cardigan. Af 8-bit offal, neutra tofu tacos brunch ramps forage authentic organic waistcoat fam biodiesel +1. 90&#39;s swag raclette, occupy williamsburg street art meditation pork belly cliche. Cliche deep v drinking vinegar 90&#39;s slow-carb jean shorts. Pabst keytar bespoke deep v vice, occupy gochujang poutine man bun meggings. Leggings gastropub trust fund poutine, cold-pressed tattooed flannel kombucha.</code></pre>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+---
+title: "Tips On Homework"
+output: html_document
+---
+
+<br>
+
+# 1. Put your name in the file-name
+
+Something like `barr_hw1.html`. Always zip the file!
+
+<br><br><br>
+
+# 2. Always diplay output!
+
+If you are answering a question, don't make me study your code to know if it worked....be sure to show me. 
+
+## Don't do this....
+
+```{r}
+myVar <- rnorm(100)
+negatives <- myVar[myVar<0]
+```
+
+## Do this...
+
+```{r}
+myVar <- rnorm(100)
+negatives <- myVar[myVar<0]
+negatives
+```
+
+## Now I can easily see that your code does what it should be doing
+
+<br><br><br>
+
+# 3. Make use of Rmarkdown formatting...which is easier to read?
+
+## OPTION 1
+
+# Question 1 
+
+# Two paragraphs on hipsters
+
+Kogi brunch shabby chic wolf. Quinoa cronut direct trade meh 90's. Austin actually etsy celiac flannel bushwick narwhal freegan asymmetrical bitters cred fanny pack distillery taxidermy. Locavore 90's celiac vegan kinfolk pabst. Swag waistcoat everyday carry, listicle umami meh humblebrag mustache you probably haven't heard of them deep v helvetica occupy cray normcore. Jean shorts lumbersexual vegan franzen craft beer, microdosing narwhal VHS. Pickled actually church-key chia williamsburg.
+
+Messenger bag master cleanse lomo, lyft before they sold out marfa humblebrag. Viral sustainable activated charcoal franzen, kogi flexitarian raclette biodiesel put a bird on it fingerstache ethical hell of paleo shoreditch cardigan. Af 8-bit offal, neutra tofu tacos brunch ramps forage authentic organic waistcoat fam biodiesel +1. 90's swag raclette, occupy williamsburg street art meditation pork belly cliche. Cliche deep v drinking vinegar 90's slow-carb jean shorts. Pabst keytar bespoke deep v vice, occupy gochujang poutine man bun meggings. Leggings gastropub trust fund poutine, cold-pressed tattooed flannel kombucha.
+
+# Option 2 
+
+```{r}
+
+# Question 1
+
+## Two paragraphs on hipsters
+
+#Kogi brunch shabby chic wolf. Quinoa cronut direct trade meh 90's. Austin actually etsy celiac flannel bushwick narwhal freegan asymmetrical bitters cred fanny pack distillery taxidermy. Locavore 90's celiac vegan kinfolk pabst. Swag waistcoat everyday carry, listicle umami meh humblebrag mustache you probably haven't heard of them deep v helvetica occupy cray normcore. Jean shorts lumbersexual vegan franzen craft beer, microdosing narwhal VHS. Pickled actually church-key chia williamsburg.
+
+#Messenger bag master cleanse lomo, lyft before they sold out marfa humblebrag. Viral sustainable activated charcoal franzen, kogi flexitarian raclette biodiesel put a bird on it fingerstache ethical hell of paleo shoreditch cardigan. Af 8-bit offal, neutra tofu tacos brunch ramps forage authentic organic waistcoat fam biodiesel +1. 90's swag raclette, occupy williamsburg street art meditation pork belly cliche. Cliche deep v drinking vinegar 90's slow-carb jean shorts. Pabst keytar bespoke deep v vice, occupy gochujang poutine man bun meggings. Leggings gastropub trust fund poutine, cold-pressed tattooed flannel kombucha.
+```

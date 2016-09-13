@@ -47,22 +47,3 @@ library(ggplot2)
 crania <- read.table("http://hompal-stats.wabarr.com/datasets/Howell_craniometry.txt",sep=",", header=TRUE, na=0)
 qplot(GOL, BBH, data=crania) + facet_wrap(~Population) + theme_bw(20)
 ```
-
-<!-- ## Problem 3 -->
-
-<!-- Recreate this figure using the tools in `ggplot2`. The data come from the [Zachos et al 2001 deep sea oxygen isotope dataset](datasets/Zachos2001Climate.txt). Make a line graph of the o18 values against time, and include rectangular overlays that show the geological epochs of the Cenozoic.   -->
-
-<!-- ![zachos][1] -->
-
-<!-- Use these approximate start dates for the geological epochs:  -->
-
-<!--     epoch = c("Paleocene", "Eocene", "Oligocene", "Miocene", "Pliocene", "Pleistocene", "Holocene") -->
-<!--     start = c(65, 58.8, 33.9, 23.03, 5.5, 1.8, 0.01) -->
-
-<!-- **Note:** The original dataset is noisy.  Use a convolution filter with the `filter()` function to reduce noise in the dataset. -->
-
-<!-- **Note one more thing:** This is a good example of a case in which you need separate dataframes for separate layers. -->
-
-<!-- ## Good luck! -->
-
-<!-- [1]: zachosdata.png "zachos" -->

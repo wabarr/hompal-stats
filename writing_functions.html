@@ -810,17 +810,15 @@ hljs.initHighlightingOnLoad();
 <section data-transition="linear" data-transition-speed="default">
 <h3>Anatomy of a Function</h3>
 <div class="slideContent" >
-<pre><code class="r">isMeanBigger &lt;- function(myVector){
-  vecMean &lt;- mean(myVector)
-  vecMedian &lt;- median(myVector)
-  test &lt;- vecMean &gt; vecMedian
+<pre><code class="r">isItADuck &lt;- function(input){
+  test &lt;- input == &quot;duck&quot;
   return(test)
 }
 </code></pre>
 
 <ul>
-<li> <code>isMeanBigger</code> = the name of the function</li>
-<li> <code>myVector</code> = the only argument for this function</li>
+<li> <code>isItADuck</code> = the name of the function</li>
+<li> <code>input</code> = the only argument for this function</li>
 <li>  all the code between the curly brackets <code>{}</code> is the body of the function</li>
 <li> we use <code>return()</code> to specify what gets returned when we call the function (in this case it will be <code>TRUE</code> or <code>FALSE</code>, because we are returning the result of a logical test)</li>
 </ul>
@@ -831,10 +829,8 @@ hljs.initHighlightingOnLoad();
 <section data-state="alert" data-transition="linear" data-transition-speed="default">
 <h3>Anatomy of a Function</h3>
 <div class="slideContent" >
-<pre><code class="r">isMeanBigger &lt;- function(myVector){
-  vecMean &lt;- mean(myVector)
-  vecMedian &lt;- median(myVector)
-  test &lt;- vecMean &gt; vecMedian
+<pre><code class="r">isItADuck &lt;- function(input){
+  test &lt;- input == &quot;duck&quot;
   return(test)
 }
 </code></pre>
@@ -842,10 +838,10 @@ hljs.initHighlightingOnLoad();
 <h2>Critical Points</h2>
 
 <ol>
-<li> the names <code>myVector</code>, <code>vecMean</code>, <code>vecMedian</code>, and <code>test</code> do not exist outside the function (i.e. after running the above code, you will get the following error if you type <code>myVector</code> into the R interpreter)</li>
+<li> the names <code>input</code> and <code>test</code> do not exist outside the function (i.e. after running the above code, you will get the following error if you type <code>input</code> into the R interpreter)</li>
 </ol>
 
-<pre><code>Error in eval(expr, envir, enclos) : object &#39;myVector&#39; not found
+<pre><code>Error in eval(expr, envir, enclos) : object &#39;input&#39; not found
 </code></pre>
 
 </div>
@@ -854,10 +850,8 @@ hljs.initHighlightingOnLoad();
 <section data-state="alert" data-transition="linear" data-transition-speed="default">
 <h3>Anatomy of a Function</h3>
 <div class="slideContent" >
-<pre><code class="r">isMeanBigger &lt;- function(myVector){
-  vecMean &lt;- mean(myVector)
-  vecMedian &lt;- median(myVector)
-  test &lt;- vecMean &gt; vecMedian
+<pre><code class="r">isItADuck &lt;- function(input){
+  test &lt;- input == &quot;duck&quot; 
   return(test)
 }
 </code></pre>
@@ -875,22 +869,20 @@ hljs.initHighlightingOnLoad();
 <section data-transition="linear" data-transition-speed="default">
 <h3>Asking a function to run</h3>
 <div class="slideContent" >
-<pre><code class="r">isMeanBigger &lt;- function(myVector){
-  vecMean &lt;- mean(myVector)
-  vecMedian &lt;- median(myVector)
-  test &lt;- vecMean &gt; vecMedian
+<pre><code class="r">isItADuck &lt;- function(input){
+  test &lt;- input == &quot;duck&quot; 
   return(test)
 }
 </code></pre>
 
 <p>I assume you ran the code above in R (i.e. you defined our function)</p>
 
-<p>Now we can call the function with a specified vector as an argument. </p>
+<p>Now we can call the function with a specified value for our argument. </p>
 
-<pre><code class="r">isMeanBigger(myVector = rlnorm(1000))
+<pre><code class="r">isItADuck(&quot;cat&quot;)
 </code></pre>
 
-<pre><code>[1] TRUE
+<pre><code>[1] FALSE
 </code></pre>
 
 </div>
@@ -899,17 +891,17 @@ hljs.initHighlightingOnLoad();
 <section data-state="alert" data-transition="linear" data-transition-speed="default">
 <h3>Asking a function to run</h3>
 <div class="slideContent" >
-<pre><code class="r">isMeanBigger(myVector = rlnorm(1000))
+<pre><code class="r">isItADuck(&quot;cat&quot;)
 </code></pre>
 
-<pre><code>[1] TRUE
+<pre><code>[1] FALSE
 </code></pre>
 
 <h2>Critical Points</h2>
 
-<p>When we ask <code>isMeanBigger()</code> to run, it needs an argument called <code>myVector</code>. <strong><em>But remember, this value this doesn&#39;t exist outside the function.</em></strong></p>
+<p>When we ask <code>isItADuck()</code> to run, it needs an argument called <code>input</code>. <strong><em>But remember, this value this doesn&#39;t exist outside the function.</em></strong></p>
 
-<p>We solved this problem by providing <code>rlnorm(1000)</code> as the value of <code>myVector</code>.  This vector contains 1000 draws from a lognormal distribution. </p>
+<p>We solved this problem by providing <code>&quot;cat&quot;</code> as the value of <code>input</code>.</p>
 
 </div>
 
@@ -917,15 +909,33 @@ hljs.initHighlightingOnLoad();
 <section data-state="alert" data-transition="linear" data-transition-speed="default">
 <h3>Asking a function to run</h3>
 <div class="slideContent" >
-<pre><code class="r">isMeanBigger(myVector = rlnorm(1000))
+<pre><code class="r">isItADuck(&quot;cat&quot;)
 </code></pre>
 
-<pre><code>[1] TRUE
+<pre><code>[1] FALSE
 </code></pre>
 
 <h2>Critical Points</h2>
 
-<p>Our function computed mean and median, did the logical test, and returned the result.  In this case, the result was <code>TRUE</code> because the mean is much bigger than the median. </p>
+<p>Our function took an argument, determined whether or not it was a duck, and returned either <code>TRUE</code> or <code>FALSE</code></p>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
+<h3>Now we can re-use this function over and over</h3>
+<div class="slideContent" >
+<pre><code class="r">animals &lt;- c(&quot;cat&quot;, &quot;dog&quot;, &quot;duck&quot;, &quot;chicken&quot;)
+for(animal in animals){
+  print(isItADuck(animal))
+}
+</code></pre>
+
+<pre><code>[1] FALSE
+[1] FALSE
+[1] TRUE
+[1] FALSE
+</code></pre>
 
 </div>
 

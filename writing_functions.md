@@ -17,16 +17,14 @@ Anatomy of a Function
 ========================================================
 
 ```r
-isMeanBigger <- function(myVector){
-  vecMean <- mean(myVector)
-  vecMedian <- median(myVector)
-  test <- vecMean > vecMedian
+isItADuck <- function(input){
+  test <- input == "duck"
   return(test)
 }
 ```
 
-*  `isMeanBigger` = the name of the function
-*  `myVector` = the only argument for this function
+*  `isItADuck` = the name of the function
+*  `input` = the only argument for this function
 *   all the code between the curly brackets `{}` is the body of the function
 *  we use `return()` to specify what gets returned when we call the function (in this case it will be `TRUE` or `FALSE`, because we are returning the result of a logical test)
 
@@ -36,19 +34,17 @@ type:alert
 
 
 ```r
-isMeanBigger <- function(myVector){
-  vecMean <- mean(myVector)
-  vecMedian <- median(myVector)
-  test <- vecMean > vecMedian
+isItADuck <- function(input){
+  test <- input == "duck"
   return(test)
 }
 ```
 ## Critical Points
 
-1.  the names `myVector`, `vecMean`, `vecMedian`, and `test` do not exist outside the function (i.e. after running the above code, you will get the following error if you type `myVector` into the R interpreter)
+1.  the names `input` and `test` do not exist outside the function (i.e. after running the above code, you will get the following error if you type `input` into the R interpreter)
 
 ```
-Error in eval(expr, envir, enclos) : object 'myVector' not found
+Error in eval(expr, envir, enclos) : object 'input' not found
 ```
 
 
@@ -58,10 +54,8 @@ type:alert
 
 
 ```r
-isMeanBigger <- function(myVector){
-  vecMean <- mean(myVector)
-  vecMedian <- median(myVector)
-  test <- vecMean > vecMedian
+isItADuck <- function(input){
+  test <- input == "duck" 
   return(test)
 }
 ```
@@ -77,10 +71,8 @@ Asking a function to run
 
 
 ```r
-isMeanBigger <- function(myVector){
-  vecMean <- mean(myVector)
-  vecMedian <- median(myVector)
-  test <- vecMean > vecMedian
+isItADuck <- function(input){
+  test <- input == "duck" 
   return(test)
 }
 ```
@@ -88,15 +80,15 @@ isMeanBigger <- function(myVector){
 
 I assume you ran the code above in R (i.e. you defined our function)
 
-Now we can call the function with a specified vector as an argument. 
+Now we can call the function with a specified value for our argument. 
 
 
 ```r
-isMeanBigger(myVector = rlnorm(1000))
+isItADuck("cat")
 ```
 
 ```
-[1] TRUE
+[1] FALSE
 ```
 
 Asking a function to run
@@ -105,18 +97,18 @@ type:alert
 
 
 ```r
-isMeanBigger(myVector = rlnorm(1000))
+isItADuck("cat")
 ```
 
 ```
-[1] TRUE
+[1] FALSE
 ```
 
 ## Critical Points
 
-When we ask `isMeanBigger()` to run, it needs an argument called `myVector`. ***But remember, this value this doesn't exist outside the function.***
+When we ask `isItADuck()` to run, it needs an argument called `input`. ***But remember, this value this doesn't exist outside the function.***
 
-We solved this problem by providing `rlnorm(1000)` as the value of `myVector`.  This vector contains 1000 draws from a lognormal distribution. 
+We solved this problem by providing `"cat"` as the value of `input`.
 
 
 
@@ -126,16 +118,34 @@ type:alert
 
 
 ```r
-isMeanBigger(myVector = rlnorm(1000))
+isItADuck("cat")
 ```
 
 ```
-[1] TRUE
+[1] FALSE
 ```
 
 ## Critical Points
 
-Our function computed mean and median, did the logical test, and returned the result.  In this case, the result was `TRUE` because the mean is much bigger than the median. 
+Our function took an argument, determined whether or not it was a duck, and returned either `TRUE` or `FALSE`
+
+Now we can re-use this function over and over
+=================================
+
+
+```r
+animals <- c("cat", "dog", "duck", "chicken")
+for(animal in animals){
+  print(isItADuck(animal))
+}
+```
+
+```
+[1] FALSE
+[1] FALSE
+[1] TRUE
+[1] FALSE
+```
 
 Summary
 ===============================================================

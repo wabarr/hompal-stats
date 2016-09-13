@@ -85,7 +85,7 @@ gather()
 
 Makes it easier to get the full benefit from ggplot2
 
-![plot of chunk unnamed-chunk-3](tidyR-figure/unnamed-chunk-3-1.png) 
+![plot of chunk unnamed-chunk-3](tidyR-figure/unnamed-chunk-3-1.png)
 
 separate()
 ==========
@@ -100,9 +100,9 @@ gAstrag %>%
 ```
 
 ```
-Source: local data frame [2,618 x 3]
-
+# A tibble: 2,618 x 3
    individual      genus    species
+*      <fctr>      <chr>      <chr>
 1   AMNH81690  Aepyceros   melampus
 2   AMNH82050  Aepyceros   melampus
 3   AMNH83534  Aepyceros   melampus
@@ -113,7 +113,7 @@ Source: local data frame [2,618 x 3]
 8   AMNH82033 Alcelaphus buselaphus
 9   AMNH82159 Alcelaphus buselaphus
 10  AMNH88406  Beatragus    hunteri
-..        ...        ...        ...
+# ... with 2,608 more rows
 ```
 
 spread()

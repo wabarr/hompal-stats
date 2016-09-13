@@ -1,16 +1,12 @@
 Writing Functions
 ========================================================
  
-## It has come to my attention that writing functions in R is confusing for people. 
-
-## This makes me sad, because:
-
-# You need to know how to write functions!!!!
+## Writing custom functions is an easy way to encapsulate code that you want to re-use
 
 Anatomy of a Function
 ========================================================
 
-# A function has:
+# Functions have:
 
 *  a ***name***
 *  1 or more ***arguments***

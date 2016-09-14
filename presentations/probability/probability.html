@@ -83,13 +83,19 @@
           </hgroup>
   </slide>
 
-<slide class=''><hgroup><h2>Basic Probability</h2></hgroup><article  id="basic-probability">
+<slide class=''><hgroup><h2>Basic Probability</h2></hgroup><article  id="basic-probability" class="build">
 
 <p>Probability represents how likely an event is to occur. The probability of an outcome can be measured as \[ P = \frac{\#\ Outcomes}{\#\ Trials}\]</p>
 
-<p>To get a real measure of this, we have to observe an infinite number of <strong><em>trials</em></strong>, which is impossible. Instead, we are stuck merely observing a <strong><em>sample</em></strong> of possible trials. We try to make this sample as representative as we can, but sometimes logistics and chance conspire to make a sample of trials unrepresentative. If the sample of trials is unrepresentative, then our estimate of probability may be badly wrong.</p>
+<p>To get a real measure of this, we have to observe an infinite number of <strong><em>trials</em></strong>, which is impossible.</p>
 
-</article></slide><slide class=''><hgroup><h2>Sampling in R</h2></hgroup><article  id="sampling-in-r">
+<p>Instead, we are stuck merely observing a <strong><em>sample</em></strong> of possible trials.</p>
+
+<p>We try to make this sample as representative as we can, but sometimes logistics and chance conspire to make a sample of trials unrepresentative.</p>
+
+<p>If the sample of trials is unrepresentative, then our estimate of probability may be badly wrong.</p>
+
+</article></slide><slide class=''><hgroup><h2>Sampling in R</h2></hgroup><article  id="sampling-in-r" class="build">
 
 <p>There are functions that make it very easy to sample from vectors in R.</p>
 
@@ -100,13 +106,13 @@
 <pre class = 'prettyprint lang-r'>individuals &lt;- 1:1000
 sample(individuals, 10)</pre>
 
-<pre >##  [1]  62 423  91 542 531 559 566 283 481 567</pre>
+<pre >##  [1] 843 854 795 457 133 368 622 494 574 264</pre>
 
 <pre class = 'prettyprint lang-r'>sample(individuals, 10, replace = TRUE)</pre>
 
-<pre >##  [1] 672 536 159  56 801 326 443 138 571 770</pre>
+<pre >##  [1] 585 905 442 353 219 360 861 810 615 784</pre>
 
-</article></slide><slide class=''><hgroup><h2>Quantifying probability</h2></hgroup><article  id="quantifying-probability">
+</article></slide><slide class=''><hgroup><h2>Quantifying probability</h2></hgroup><article  id="quantifying-probability" class="build">
 
 <p><strong>Outcome</strong> = what happens during a particular event</p>
 
@@ -116,48 +122,41 @@ sample(individuals, 10)</pre>
 
 <p>When these conditions are met, then the sum of probabilities for all outcomes in the sample space is 1.</p>
 
-</article></slide><slide class=''><hgroup><h2>Complex events = composites of simple events (Logical OR)</h2></hgroup><article  id="complex-events-composites-of-simple-events-logical-or">
+</article></slide><slide class=''><hgroup><h2>Complex events = composites of simple events (Logical OR)</h2></hgroup><article  id="complex-events-composites-of-simple-events-logical-or" class="build">
 
-<ul>
-<li>sum the probabilities of simple events</li>
-<li>e.g. probability of drawing a King from a deck of cards is the sum of the probability of drawing each of the 4 distinct kings \[1/52 + 1/52 + 1/52 + 1/52 = 4/52 = 1/13 \]</li>
-</ul>
+<p>sum the probabilities of simple events</p>
 
-</article></slide><slide class=''><hgroup><h2>Shared events = multiple simultaneous occurrences of simple events (Logical AND)</h2></hgroup><article  id="shared-events-multiple-simultaneous-occurrences-of-simple-events-logical-and">
+<p>e.g. probability of drawing a King from a deck of cards is the sum of the probability of drawing each of the 4 distinct kings</p>
 
-<ul>
-<li>multiply the probabilities of simple events</li>
-<li>assume that events are <strong><em>independent</em></strong> of one another
+<p>\[1/52 + 1/52 + 1/52 + 1/52 = 4/52 = 1/13 \]</p>
 
-<ul>
-<li>e.g. probability of drawing the Ace of spades and the 2 of clubs is the product of the probability of drawing each one separately \[1/52 * 1/52 = 1/2704\]</li>
-</ul></li>
-</ul>
+</article></slide><slide class=''><hgroup><h2>Shared events = multiple simultaneous occurrences of simple events (Logical AND)</h2></hgroup><article  id="shared-events-multiple-simultaneous-occurrences-of-simple-events-logical-and" class="build">
 
-</article></slide><slide class=''><hgroup><h2>Set operations</h2></hgroup><article  id="set-operations">
+<p>multiply the probabilities of simple events</p>
 
-<p>The sample space can be described as a <strong><em>set</em></strong> of all possible outcomes. For example, if we flip a coin exactly 3 times and observe the results, then the set of possible outcomes is:</p>
+<p>assume that events are <strong><em>independent</em></strong> of one another</p>
+
+<p>e.g. probability of drawing the Ace of spades and the 2 of clubs is the product of the probability of drawing each one separately</p>
+
+<p>\[ 1/52 * 1/52 = 1/2704 \]</p>
+
+</article></slide><slide class=''><hgroup><h2>Set operations</h2></hgroup><article  id="set-operations" class="build smaller">
+
+<p>The sample space can be described as a <strong><em>set</em></strong> of all possible outcomes.</p>
+
+<p>For example, if we flip a coin exactly 3 times and observe the results, then the set of possible outcomes is:</p>
 
 <p>\[ Tosses = \{(H, H, H), (H, H, T), (H, T, H), (H, T, T), (T, H, H), (T, H, T), (T, T, H), (T, T, T)\}\]</p>
 
-</article></slide><slide class=''><hgroup><h2>intersection</h2></hgroup><article  id="intersection">
+</article></slide><slide class=''><hgroup><h2>intersection (shared events)</h2></hgroup><article  id="intersection-shared-events" class="build">
 
-<p>The intersection of two sets A and B represents the elements in common to both sets. The probability of the intersection of A and B represents the probability of the shared event A AND B. Assuming A and B are independent:</p>
+<p>The intersection of two sets A and B represents the elements in common to both sets.</p>
+
+<p>The probability of the intersection of A and B represents the probability of the shared event A AND B. Assuming A and B are independent:</p>
 
 <p>\[ P(A \cap B) = P(A) * P(B) \]</p>
 
-<p><span class="mega-octicon octicon-puzzle">
-</span> What is the probability of getting the sequence (H, T) on the first two flips? What about the sequence (H, T, T)?</p>
-
-<p>There is a function in R to calculate the intersection of 2 sets.</p>
-
-<pre class = 'prettyprint lang-r'>x &lt;- c(1,2,3)
-y &lt;- c(3,4,5)
-intersect(x, y)</pre>
-
-<pre >## [1] 3</pre>
-
-</article></slide><slide class=''><hgroup><h2>union</h2></hgroup><article  id="union">
+</article></slide><slide class=''><hgroup><h2>union (complex events)</h2></hgroup><article  id="union-complex-events" class="build">
 
 <p>The union of two sets A and B consists of all the shared elements of A and B.</p>
 
@@ -167,39 +166,22 @@ intersect(x, y)</pre>
 
 <p>\[ P(A \cup B) = P(A) + P(B) - P(A \cap B)\]</p>
 
-<p><strong>Challenge</strong> - What is the probability of getting the same three outcomes for each of three coin flips?</p>
-
-</article></slide><slide class=''><hgroup><h2>union</h2></hgroup><article  id="union-1">
-
-<p>There is a function in R to calculate the union.</p>
-
-<pre class = 'prettyprint lang-r'>x</pre>
-
-<pre >## [1] 1 2 3</pre>
-
-<pre class = 'prettyprint lang-r'>y</pre>
-
-<pre >## [1] 3 4 5</pre>
-
-<pre class = 'prettyprint lang-r'>union(x, y)</pre>
-
-<pre >## [1] 1 2 3 4 5</pre>
-
-</article></slide><slide class=''><hgroup><h2>test for membership</h2></hgroup><article  id="test-for-membership">
+</article></slide><slide class=''><hgroup><h2>test for membership</h2></hgroup><article  id="test-for-membership" class="build">
 
 <p>Sometimes it is useful to test whether an element is a member of a set. There is an R function for that.</p>
 
-<pre class = 'prettyprint lang-r'>1 %in% x</pre>
+<pre class = 'prettyprint lang-r'>mySet &lt;- c(5, 10, 11)
+5 %in% mySet</pre>
 
 <pre >## [1] TRUE</pre>
 
-<pre class = 'prettyprint lang-r'>1 %in% y</pre>
+<pre class = 'prettyprint lang-r'>12 %in% mySet</pre>
 
 <pre >## [1] FALSE</pre>
 
 <p><strong>Note</strong>:this is an operator function. You don&#39;t need (), it works like <code>+</code></p>
 
-</article></slide><slide class=''><hgroup><h2>complement</h2></hgroup><article  id="complement">
+</article></slide><slide class=''><hgroup><h2>complement</h2></hgroup><article  id="complement" class="build">
 
 <p>The complement of a set is all the elements that are not in a set.</p>
 
@@ -207,13 +189,13 @@ intersect(x, y)</pre>
 
 <p>The complement of this set \(heads^c\) represents all the other elements that don&#39;t start with heads.</p>
 
-</article></slide><slide class=''><hgroup><h2>Conditional Probability</h2></hgroup><article  id="conditional-probability">
+</article></slide><slide class=''><hgroup><h2>Conditional Probability</h2></hgroup><article  id="conditional-probability" class="build">
 
 <p>Sometimes probabilities in a complex event depend on previous outcomes. To calculate the probability of A given B, we use the following formula.</p>
 
 <p>\[P(A|B) = \frac{P(A\cap B)}{P(B)}\]</p>
 
-</article></slide><slide class=''><hgroup><h2>Conditional Probabilty is fundamental</h2></hgroup><article  id="conditional-probabilty-is-fundamental">
+</article></slide><slide class=''><hgroup><h2>Conditional Probabilty is fundamental</h2></hgroup><article  id="conditional-probabilty-is-fundamental" class="build">
 
 <p>It forms the basis of frequentist statistics, as well as Bayesian statistcs, which we will talk about much more next week.</p></article></slide>
 

@@ -1,11 +1,52 @@
 ---
-title: "lapply()"
+title: "apply family of functions"
 output: 
   ioslides_presentation:
     widescreen: yes
 ---
 
-## We didn't get to this topic last week... 
+## We didn't get to this topic last week...
+
+Functions that help avoid writing `for()` loops
+
+## The apply() family of functions
+
+These functions are called "functionals" because they take a function as an argument, and apply that function in specified ways
+
+- `apply()` - function applied to rows or colums of dataframe/matrix
+- `tapply()` - function applied to vector, grouped by a factor
+- `lapply()` - function applied to each element of a vector 
+
+## `apply()` 
+
+3 main arguments:
+
+> - X - name of the dataframe or matrix
+> - MARGIN - whether to apply function over rows (1) or colums (2)
+> - FUN - name of function to apply
+
+## `apply()` {.smaller}
+
+```{r}
+myDF <- iris[,1:4]
+head(myDF)
+apply(myDF, MARGIN=1, FUN=sum)
+```
+
+## `tapply()`
+
+3 main arguments:
+
+> - X - name of the vector
+> - INDEX - name of factor used to group X
+> - FUN - function to apply to the groups of X specified by INDEX
+
+## `tapply()` {.smaller}
+
+```{r}
+head(chickwts)
+tapply(chickwts$weight, INDEX = chickwts$feed, FUN=mean)
+```
 
 ## `lapply()`
 

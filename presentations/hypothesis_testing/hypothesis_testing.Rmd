@@ -13,7 +13,7 @@ library(ggplot2)
 theme_set(theme_bw(20))
 ```
 
-<img src="http://imgs.xkcd.com/comics/null_hypothesis.png" style="width:300px;">
+<img src="../../images/null_hypothesis.png" style="width:300px;">
 
 ## Induction versus Deduction 
 
@@ -190,6 +190,7 @@ ggplot2::qplot(x=pop, y=height, data=pops[sample(1:nrow(pops), 10000),], fill=po
 - Two populations (n=1,000,000)
 - differ in height by about 0.01% (p<0.0000000001)
 - **Should I care? Is this biologically meaningful?**
+- Depends....but for many questions the answer is no. 
 
 ## Statistical Significance versus Significance 
 
@@ -197,9 +198,9 @@ ggplot2::qplot(x=pop, y=height, data=pops[sample(1:nrow(pops), 10000),], fill=po
 
 <span class='red2'>**p-values don't measure effect size!!!!**</span>
 
-## Statistical significance versus effect size
+## Statistical significance versus effect size {.smaller}
 
-Many bacon lovers rushed to this conclusion last year!
+Many bacon lovers learned difference between effect size and significance last year
 
 <img src='../../images/processed_meat.png' height=500px>
 
@@ -245,7 +246,7 @@ In Monte Carlo analysis, data are randomly reshuffled over and over to specify t
 
 ## Monte Carlo - Step 1 - Test statistic 
 
-We will use the absolute value of the mean group means.  We will need to calculate this over and over, so we will make a function to do it.
+We will use the absolute value of the group means.  We will need to calculate this over and over, so we will make a function to do it.
 
 ```{r}
 
@@ -325,16 +326,18 @@ count_extreme_diffs / 1000
 
 ```
 
-Shortcut...for a <span style="color:gold;">&#9733;</span> who can explain how this works?
+Shortcut...
 
 ```{r}
 mean(results >= 3.75)
 ```
 
+for a <span style="color:gold;">&#9733;</span> who can explain how this works?
+
 ## Monte Carlo  
 
 
-***What does our p value of approx. 0.03 mean?***
+***What does our p value of `r mean(results >= 3.75)` mean?***
 
 If there is no relationship between habitat and and nest count, we would expect to observe data with a mean difference as extreme as ours about 3% of the time. 
 
@@ -428,7 +431,7 @@ fdist
 
 ## Parametric - Step 3 - Compute the p-value {.columns-2}
 
-```{r}
+```{r fig.width=4, fig.height=4}
 fdist + 
   geom_vline(xintercept = 8.78, col="red")
 ```
@@ -470,8 +473,8 @@ Pros
 Cons
 
 > - easy to misuse
-  > -  p values misinterpreted
-  > -  assumptions not always tested
+> -  p values misinterpreted
+> -  assumptions not always tested
 > - less flexible than Monte Carlo
 
 ## Bayesian 

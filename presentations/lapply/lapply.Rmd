@@ -5,6 +5,14 @@ output:
     widescreen: yes
 ---
 
+## Happy International Talk Like a Pirate Day 2016 {.build}
+
+What is a pirate's favorite programming language?
+
+R.......Although there are those that say his true love be the C.
+
+\~ Tariq Khokhar (@tkb)
+
 ## We didn't get to this topic last week...
 
 Functions that help avoid writing `for()` loops

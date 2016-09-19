@@ -25,7 +25,7 @@ c) Next, model variable growth rates for each individual. Create a vector of gro
 
 d) Finally, simulate stochastic fluctuations in environment reflecting the fact that different years have different environmental conditions. Reset `body.sizes` to its original values. Repeat the variable growth scenario, but each year multiply ALL individuals with a single scaling factor representing the productivity that particular year. Have that scaling factor be drawn from a normal distribution with mean 1 and standard deviation of 0.2. Save the results to `body.sizes.environmentalgrowth`.
 
-e) Test all four distributions for normality. Which ones are normal, which aren’t? Produce Q-Q plots of all four. Verbally describe the deviations from normality.
+e) Do a Shapiro-Wilk test for normality on all four distributions. Which ones are normal, which aren’t? Produce Q-Q plots of all four. Verbally describe the deviations from normality.
 
 f) To conclude, answer the following questions:
 

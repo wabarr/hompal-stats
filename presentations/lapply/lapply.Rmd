@@ -25,13 +25,17 @@ These functions are called "functionals" because they take a function as an argu
 - `tapply()` - function applied to vector, grouped by a factor
 - `lapply()` - function applied to each element of a vector 
 
-## `apply()` 
+## apply() {.build}
 
 3 main arguments:
 
 > - X - name of the dataframe or matrix
 > - MARGIN - whether to apply function over rows (1) or colums (2)
 > - FUN - name of function to apply
+
+*Important:* `X` will be converted to a matrix (which, like an atomic vector, only holds one type of data)
+
+This can result in some of your columns being converted from numeric to character data. 
 
 ## `apply()` {.smaller}
 

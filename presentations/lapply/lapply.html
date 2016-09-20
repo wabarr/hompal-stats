@@ -105,7 +105,7 @@
 <li><code>lapply()</code> - function applied to each element of a vector</li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2><code>apply()</code></h2></hgroup><article  id="apply">
+</article></slide><slide class=''><hgroup><h2>apply()</h2></hgroup><article  id="apply" class="build">
 
 <p>3 main arguments:</p>
 
@@ -114,6 +114,10 @@
 <li>MARGIN - whether to apply function over rows (1) or colums (2)</li>
 <li>FUN - name of function to apply</li>
 </ul>
+
+<p><em>Important:</em> <code>X</code> will be converted to a matrix (which, like an atomic vector, only holds one type of data)</p>
+
+<p>This can result in some of your columns being converted from numeric to character data.</p>
 
 </article></slide><slide class=''><hgroup><h2><code class="smaller">apply()</code></h2></hgroup><article  id="apply-1">
 
@@ -238,21 +242,21 @@ myList</pre>
 ## [1] &quot;too&quot;
 ## 
 ## $lastOne
-##  [1]  0.78284933  1.83955557 -1.69885174  1.09829381  1.76327000
-##  [6] -1.48162616  0.05240307  1.09194476 -0.05977229 -0.91848047</pre>
+##  [1] -1.43516084  0.28822327  0.21018245 -0.80270635 -1.56083236
+##  [6]  1.08996484  1.05562266  0.06107649  0.31161434  1.40672808</pre>
 
 </article></slide><slide class=''><hgroup><h2>often use double brackets <code>[[]]</code> to index a list</h2></hgroup><article  id="often-use-double-brackets-to-index-a-list">
 
 <pre class = 'prettyprint lang-r'>myList[[3]]</pre>
 
-<pre >##  [1]  0.78284933  1.83955557 -1.69885174  1.09829381  1.76327000
-##  [6] -1.48162616  0.05240307  1.09194476 -0.05977229 -0.91848047</pre>
+<pre >##  [1] -1.43516084  0.28822327  0.21018245 -0.80270635 -1.56083236
+##  [6]  1.08996484  1.05562266  0.06107649  0.31161434  1.40672808</pre>
 
 <pre class = 'prettyprint lang-r'>myList[3]</pre>
 
 <pre >## $lastOne
-##  [1]  0.78284933  1.83955557 -1.69885174  1.09829381  1.76327000
-##  [6] -1.48162616  0.05240307  1.09194476 -0.05977229 -0.91848047</pre>
+##  [1] -1.43516084  0.28822327  0.21018245 -0.80270635 -1.56083236
+##  [6]  1.08996484  1.05562266  0.06107649  0.31161434  1.40672808</pre>
 
 <p>For five marks&#8230;.what is the difference?</p>
 
@@ -288,15 +292,15 @@ myResults[1:3]</pre>
 
 <pre >## [[1]]
 ##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-## -2.56600 -0.70950  0.11390  0.06547  0.65450  2.64700 
+## -2.21400 -0.77440 -0.05563 -0.07812  0.57340  2.51500 
 ## 
 ## [[2]]
 ##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-## -1.95700 -0.68490 -0.04864 -0.03184  0.61220  3.05800 
+## -1.95800 -0.55400  0.13080  0.08661  0.72640  2.17800 
 ## 
 ## [[3]]
-##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-## -2.97900 -0.52040  0.07189  0.04672  0.69800  3.07700</pre></article></slide>
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+## -2.5700 -0.9252 -0.2533 -0.1927  0.5327  2.6240</pre></article></slide>
 
 
   <slide class="backdrop"></slide>

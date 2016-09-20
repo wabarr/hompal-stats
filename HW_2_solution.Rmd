@@ -1,0 +1,91 @@
+---
+title: "Homework #2 - Solution"
+output: html_document
+---
+
+## Problem 1
+
+### points possible
+a.  0.33 pt - load data
+b.  0.33 pt - str
+c.  2pts - geomean
+d.  2pts - for loop
+e.  0.33pt - add results vector to dataframe
+
+### part a
+
+```{r cache=TRUE}
+crania <-read.table("http://hompal-stats.wabarr.com/datasets/Howell_craniometry.txt", sep=",", header=TRUE, na.strings = 0)
+head(crania)
+```
+
+### part b
+
+```{r}
+str(crania)
+```
+
+### part c
+
+```{r}
+geomean <- function(vec) {
+  product <- prod(vec, na.rm = TRUE)
+  n <- sum(!is.na(vec))
+  return(product ^ (1/n))
+}
+```
+
+### part d
+
+
+```{r cache=TRUE}
+results <- numeric(2524) #empty numeric vector of length 2524
+for(index in 1:2524){
+  results[index] <- geomean(crania[index,5:86])
+}
+
+head(results, 100)
+```
+
+### part e
+
+```{r}
+crania$geomean <- results
+str(crania)
+```
+
+## Problem 2
+
+### points possible
+a. 1pt means
+b. 2pts lapply test numeric
+c. 2pts figure
+
+### Part a
+
+```{r}
+library(dplyr)
+crania %>% 
+  group_by(Population, Sex) %>%
+  summarise(meanGOL = mean(GOL), meanXCB = mean(XCB), meanZYB=mean(ZYB), meanSIS = mean(SIS))
+```
+
+### Part b
+
+```{r}
+myFUN <- function(column) {
+  if(is.numeric(column)){return(mean(column, na.rm=TRUE))}
+  else {return("Not Numeric")}
+}
+
+lapply(crania, FUN = myFUN)
+```
+### Part c
+
+
+
+```{r cache=TRUE, echo=TRUE,  fig.width=16, fig.height=9}
+library(ggplot2)
+qplot(GOL, BBH, data=crania) + facet_wrap(~Population) + theme_bw(20)
+```
+

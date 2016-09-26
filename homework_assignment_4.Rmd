@@ -5,7 +5,7 @@ title: "Homework # 4"
 
 ## Problem 1
 
-In 25 words or less, what does a p-value mean? ***Be careful!!!!***
+In 25 words or less, what does a p-value represent? ***Be careful!!!!***
 
 
 ## Problem 2

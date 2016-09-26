@@ -246,7 +246,7 @@ In Monte Carlo analysis, data are randomly reshuffled over and over to specify t
 
 ## Monte Carlo - Step 1 - Test statistic 
 
-We will use the absolute value of the group means.  We will need to calculate this over and over, so we will make a function to do it.
+We will use the absolute value of the differnce in group means.  We will need to calculate this over and over, so we will make a function to do it.
 
 ```{r}
 

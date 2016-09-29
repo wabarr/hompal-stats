@@ -1,0 +1,32 @@
+---
+title: "Class Project Proposal Questions"
+date: "Due Oct. 17th"
+output: html_document
+---
+
+**Upload a knitted .html file with answers to the following questions.  Combine this .html file with the .html file for Homework #5 into a single zip file, and submit the zip file as your assignment on blackboard.**
+
+For this project, you will analyze a real dataset (either your own, or one drawn from published data) to address a specific research research question (or several related questions). If you are using a published dataset, you should propose a novel question to test with these data, rather than recreating an analysis from a prior study. 
+
+You should choose a question that is applicable to a technique common in your area of research interest....hopefully one that you aren't too familiar with (we want you to learn something here!) 
+
+For the presentation, you will be walking the class through the process of analyzing your data (including an Rmarkdown document that includes all R code used to make all visuals and to perform all statistical analysis). Your presentation should take approximately 25 minutes.
+
+## Research Question
+
+- Explicitly state the question that you will be exploring in this project.
+
+## Data
+
+- What data do you need to test your hypothesis / answer your question?
+- What would be the headers of a dataframe containing these data? What datatypes?
+- Where will you be getting these data?
+
+## Analysis
+
+- Will you do any statistical transformations (e.g. log transform) to any of the variables?
+- Which statistical tests (e.g. regression, ANCOVA, Discriminant Function Analysis) will you be using to test your hypothesis? 
+
+## Visualization
+
+- What kind of graphical plots will you be making? Be specific (e.g. I will make a scatter plot of log body mass on the x-axis against log femur length on the y-axis. )

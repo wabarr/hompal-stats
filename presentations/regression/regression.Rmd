@@ -417,4 +417,20 @@ Response variable is always continuous.
 > *  Explanatory variables both continuous and categorical
 >     *  **ANCOVA** (Analysis of Covariance)
 
-￼
+# In Class Regression Exercise
+
+## Gordon et al. 2008
+
+<img src=../../images/gordon_2008.png width=800>
+
+## Import data
+
+> - [Howell Craniometric Data](http://hompal-stats.wabarr.com/datasets/Howell_craniometry.txt)
+> - [Fossil Data](http://hompal-stats.wabarr.com/datasets/Gordon_2008_cranial.txt)
+
+## Calculate Geomean for GOL,BBH,XCB,BNL,BPL,ASB
+
+## Make Plots
+
+Overlay 
+## Do Regressions

@@ -9,7 +9,6 @@
 <meta name="generator" content="pandoc" />
 
 
-<meta name="author" content="Andrew Barr" />
 
 
 <title>Homework #5</title>
@@ -143,8 +142,6 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore">Homework #5</h1>
-<h4 class="author"><em>Andrew Barr</em></h4>
-<h4 class="date"><em>due March 16th</em></h4>
 
 </div>
 
@@ -153,7 +150,7 @@ $(document).ready(function () {
 <h2>Problem 1</h2>
 <p>Use the data set of measurements of antelope astragali from <a href="datasets/barr_astrag_2014.txt">Barr (2014)</a>.</p>
 <ol style="list-style-type: upper-alpha">
-<li>Read in the data, saving it to a variable called <code>astrag</code>. Hint: be sure to specify the separator character in the data, which is a tab (represented in R as <code>\t</code>).</li>
+<li>Read in the data, saving it to a variable called <code>astrag</code>.</li>
 <li>Make a scatterplot with the natural logarithm of measurement <code>B</code> on the x-axis and the natural logarithm of measurement <code>DistRad</code> on the y-axis.</li>
 <li>Calculate the ordinary least-squares (OLS) regression for DistRad as a function of B, and print a <code>summary()</code> of this data.</li>
 <li>Calculate the reduced major axis regression (RMA) for the same variables. <strong>Note</strong> the <code>lmodel2</code> package uses “RMA”&quot; to refer to “Ranged Major Axis”, which is different. You want what <code>lmodel2</code> calls Standardized Major Axis (SMA), which is equivalent to what we call reduced major axis (RMA) in our literature.</li>
@@ -161,6 +158,7 @@ $(document).ready(function () {
 <li>Add both the OLS and the RMA regression lines to the plot created in 1B. Make sure the two lines have different colors and/or line types, and that they are labeled so I know which is which.</li>
 <li>use the <code>plot()</code> function to plot regression diagnostic plots for the OLS regression. Do the assumptions of linear regression appear to be met? Explain your answer.</li>
 <li>Extract the residuals from the OLS regression, and make a histogram of them, with the appropriate labels and title for the plot.</li>
+<li>Calculate the species means for both variables, and add the species means as a new layer on your scatterplot.</li>
 </ol>
 </div>
 

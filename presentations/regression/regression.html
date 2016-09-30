@@ -502,18 +502,58 @@ print(results)</pre>
 
 <p><img src=../../images/gordon_2008.png width=800></p>
 
-</article></slide><slide class=''><hgroup><h2>Import data</h2></hgroup><article  id="import-data">
+</article></slide><slide class=''><hgroup><h2>Gordon et al. 2008</h2></hgroup><article  id="gordon-et-al.-2008-1">
+
+<p>We are going to look at the scaling relationship between overall size and BBH (basion-bregma-height) in humans and fossil hominins</p>
+
+<p><img src=../../images/BBH_cranium.png></p>
+
+</article></slide><slide class=''><hgroup><h2>Exercise Step 1 - Import data</h2></hgroup><article  id="exercise-step-1---import-data">
 
 <ul class = 'build'>
-<li><a href='http://hompal-stats.wabarr.com/datasets/Howell_craniometry.txt' title=''>Howell Craniometric Data</a></li>
-<li><a href='http://hompal-stats.wabarr.com/datasets/Gordon_2008_cranial.txt' title=''>Fossil Data</a></li>
+<li><code>heads</code> - <a href='http://hompal-stats.wabarr.com/datasets/Howell_craniometry.txt' title=''>Howell Craniometric Data</a></li>
+<li><code>fossils</code> - <a href='http://hompal-stats.wabarr.com/datasets/Gordon_2008_cranial.txt' title=''>Fossil Data</a></li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>Calculate Geomean for GOL,BBH,XCB,BNL,BPL,ASB</h2></hgroup><article  id="calculate-geomean-for-golbbhxcbbnlbplasb">
+</article></slide><slide class=''><hgroup><h2>Exercise Step 2 - Calculate Geomean</h2></hgroup><article  id="exercise-step-2---calculate-geomean">
 
-</article></slide><slide class=''><hgroup><h2>Make Plots</h2></hgroup><article  id="make-plots">
+<p>Calculate the geomean for each individual in both data sets using the variables GOL, BBH, XCB, BNL, BPL, ASB</p>
 
-<p>Overlay ## Do Regressions</p></article></slide>
+<p>Add this data to a new column called <code>geomean</code></p>
+
+<pre class = 'prettyprint lang-r'>geomean &lt;- function(x, na.rm = TRUE) {
+  product &lt;- prod(x, na.rm = TRUE)
+  n &lt;- sum(!is.na(x))
+  geo &lt;- product ^ (1/n)
+  return(geo)
+  }</pre>
+
+</article></slide><slide class=''><hgroup><h2>Exercise Step 3 - Do Regression</h2></hgroup><article  id="exercise-step-3---do-regression">
+
+<p>Do an Ordinary Least Squares regression of <code>log(BBH)</code> as a function of <code>log(geomean)</code> for the modern data and a separate one for the fossils</p>
+
+</article></slide><slide class=''><hgroup><h2>Exercise Step 4 - Make Plots</h2></hgroup><article  id="exercise-step-4---make-plots">
+
+<p>Make a plot of <code>log(BBH)</code> as a function of <code>log(geomean)</code></p>
+
+<ul>
+<li>plot the modern humans
+
+<ul>
+<li>and add the modern human regression line to the plot</li>
+</ul></li>
+<li>add a new layer with the fossil data, being sure to differentiate them visually
+
+<ul>
+<li>add the fossil regression line to the plot, using a diffent kind of line (e.g. dashed, or a different color)</li>
+</ul></li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Exercise Step 5 - Interpret</h2></hgroup><article  id="exercise-step-5---interpret">
+
+<p>How do the fossils compare to the modern humans?</p>
+
+<p>How does LB1 (<em>H. floresiensis</em>) compare to other species?</p></article></slide>
 
 
   <slide class="backdrop"></slide>

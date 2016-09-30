@@ -423,14 +423,48 @@ Response variable is always continuous.
 
 <img src=../../images/gordon_2008.png width=800>
 
-## Import data
+## Gordon et al. 2008
 
-> - [Howell Craniometric Data](http://hompal-stats.wabarr.com/datasets/Howell_craniometry.txt)
-> - [Fossil Data](http://hompal-stats.wabarr.com/datasets/Gordon_2008_cranial.txt)
+We are going to look at the scaling relationship between overall size and BBH (basion-bregma-height) in humans and fossil hominins
 
-## Calculate Geomean for GOL,BBH,XCB,BNL,BPL,ASB
+<img src=../../images/BBH_cranium.png>
 
-## Make Plots
+## Exercise Step 1 - Import data
 
-Overlay 
-## Do Regressions
+> - `heads` - [Howell Craniometric Data](http://hompal-stats.wabarr.com/datasets/Howell_craniometry.txt)
+> - `fossils` - [Fossil Data](http://hompal-stats.wabarr.com/datasets/Gordon_2008_cranial.txt)
+
+## Exercise Step 2 - Calculate Geomean
+
+Calculate the geomean for each individual in both data sets using the variables GOL, BBH, XCB, BNL, BPL, ASB 
+
+Add this data to a new column called `geomean`
+
+```{r}
+geomean <- function(x, na.rm = TRUE) {
+  product <- prod(x, na.rm = TRUE)
+  n <- sum(!is.na(x))
+  geo <- product ^ (1/n)
+  return(geo)
+  }
+```
+
+## Exercise Step 3 - Do Regression
+
+Do an Ordinary Least Squares regression of `log(BBH)` as a function of `log(geomean)` for the modern data and a separate one for the fossils
+
+## Exercise Step 4 - Make Plots
+
+Make a plot of `log(BBH)` as a function of `log(geomean)`
+
+*  plot the modern humans
+    *  and add the modern human regression line to the plot
+*  add a new layer with the fossil data, being sure to differentiate them visually
+    *  add the fossil regression line to the plot, using a diffent kind of line (e.g. dashed, or a different color)
+
+## Exercise Step 5 - Interpret
+
+How do the fossils compare to the modern humans?
+
+How does LB1 (*H. floresiensis*) compare to other species? 
+

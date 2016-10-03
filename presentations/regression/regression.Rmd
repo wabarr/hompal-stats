@@ -8,10 +8,11 @@ output:
 
 <img src="http://imgs.xkcd.com/comics/sustainable.png" height=500px> 
 
-## Correlation versus Causation 
-
+## Correlation doesn't imply Causation {.build}
 
 <img src="http://www.venganza.org/images/PiratesVsTemp.png">
+
+But it may, if there is a good independent reason to think that X influences Y.
 
 ## Regression implies X causes Y {.build}
 
@@ -67,7 +68,7 @@ Once you decide on a line, then the value of Y equals:
 
 </div>
 
-## Finding the best line
+## Finding the best line {.build}
 
 <div class="columns-2">
 
@@ -76,11 +77,11 @@ plotdat <- data.frame(meanresp = mean(response), meanpred=mean(predictor))
 basicPlot + geom_point(data=plotdat, aes(x=meanpred, y=meanresp), size=8, color="red")
 ```
 
-Once we decide on linear regression, we have to find best line
+> - Once we decide on linear regression, we have to find best line
 
-There is unexplained variation in Y, so points don't fall on straight line (why?)
+> - There is unexplained variation in Y, so points don't fall on straight line (why?)
 
-Many lines pass through $(\bar{X},\bar{Y})$.  How do we pick the best one?
+> - Many lines pass through $(\bar{X},\bar{Y})$.  How do we pick the best one?
 
 </div>
 
@@ -217,7 +218,7 @@ This is referred to as **partitioning** a sum of squares.
 
 This leads to calculation of $r^2$, AKA the **coefficient of determination**
 
-$$\frac{SS_{reg}}{SS_Y}=\frac{SS_{reg}}{SS_{reg} + RSS}$$
+$$r^2 = \frac{SS_{reg}}{SS_Y}=\frac{SS_{reg}}{SS_{reg} + RSS}$$
 
 The square root of this value is known as $r$ or the **product-moment correlation coefficient**. 
 
@@ -234,10 +235,10 @@ The slope measures the strength of the effect of $X$ on $Y$.  The slope is a mea
 
 ## Hypothesis Testing ANOVA tables 
 
-Source | Degrees of Freedom (df) | Sum of squares (SS) | Mean Square (MS) | Expected Mean Square | F-ratio | P-value
+Source | Degrees of Freedom (df) | Sum of squares (SS) | Mean Square (MS)| F-ratio | P-value
 ----|----|----|----|----|----|----
-Regression|1|$SS_{reg}=\sum\limits_{i=1}^n (\hat{Y}_i-\bar{Y})^2$|$\frac{SS_{reg}}{1}$|$\sigma^2 + \beta_i^2 \sum\limits_{i=1}^2 X_i^2$|$\frac{SS_{reg}/1}{RSS/(n-2)}$|F dist
-Residual|n-2|$RSS=\sum\limits_{i-1}^n(Y_i - \hat{Y}_i)^2$|$\frac{RSS}{(n-2)}$|$\sigma^2$
+Regression|1|$SS_{reg}=\sum\limits_{i=1}^n (\hat{Y}_i-\bar{Y})^2$|$\frac{SS_{reg}}{1}$|$\frac{SS_{reg}/1}{RSS/(n-2)}$|F dist
+Residual|n-2|$RSS=\sum\limits_{i-1}^n(Y_i - \hat{Y}_i)^2$|$\frac{RSS}{(n-2)}$|
 
 *  $\bar{Y}$ = mean of Y
 *  $\hat{Y}_i$ = predicted value from regression

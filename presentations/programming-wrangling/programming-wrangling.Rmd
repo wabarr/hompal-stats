@@ -285,6 +285,27 @@ Adds new columns that are some function of existing columns
 mutate(loans, Total_Loans = SubsidizedDL + UNSubsidizedDL)
 ```
 
+## `rowwise()`
+
+Mutate works as expected when you want to manupulate whole columns at once, but sometimes you want to do something on a row-by-row basis.
+
+For example: this code doesn't work as you might expect
+
+```{r}
+myDF <- data.frame(x=c(1,2,3), y=c(10, 11, 12))
+mutate(myDF, sum=sum(x, y))
+```
+
+## `rowwise()`
+
+But this code computes the sum on a row-by-row basis, as you might expect
+
+```{r}
+myDF <- data.frame(x=c(1,2,3), y=c(10, 11, 12))
+mutate(rowwise(myDF), sum=sum(x, y))
+```
+
+
 ## `summarise()`
 
 Summarizes data into a single row.  This may seem not that useful, but it will become useful when we start grouping data. 

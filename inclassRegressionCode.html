@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Andrew Barr" />
+
+
+<title>In Class Regression Exercise</title>
+
+<script src="libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-57395681-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+
+<style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet"
+      href="libs/highlight/textmate.css"
+      type="text/css" />
+<script src="libs/highlight/highlight.js"></script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="octicons/octicons.css" type="text/css" />
+<link rel="stylesheet" href="css/custom-style.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script src="libs/navigation-1.1/tabsets.js"></script>
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+<div id="navbar">
+  <div id="navbar-container">
+    <ul id="navbar-ul">
+      <li><a href="index.html"><span class="mega-octicon octicon-home"></span></a></li>
+      <li><a href="datasets.html">Data</a></li>
+      <li><a href="schedule.html">Schedule</a></li>
+      <li><a href="gettinghelp.html">Getting Help</a></li>
+      <li><a href="ANTH6413_syllabus.docx">Syllabus</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">In Class Regression Exercise</h1>
+<h4 class="author"><em>Andrew Barr</em></h4>
+<h4 class="date"><em>10/4/2016</em></h4>
+
+</div>
+
+
+<div id="get-set-up" class="section level2">
+<h2>Get set up</h2>
+<pre class="r"><code>heads &lt;- read.delim(&quot;http://hompal-stats.wabarr.com/datasets/Howell_craniometry.txt&quot;, sep=&quot;,&quot;)
+fossils &lt;- read.delim(&quot;http://hompal-stats.wabarr.com/datasets/Gordon_2008_cranial.txt&quot;, sep=&quot;,&quot;)
+
+geomean &lt;- function(x, na.rm = TRUE) {
+  product &lt;- prod(x, na.rm = TRUE)
+  n &lt;- sum(!is.na(x))
+  geo &lt;- product ^ (1/n)
+  return(geo)
+}</code></pre>
+</div>
+<div id="add-geomean-column-with-dplyr" class="section level2">
+<h2>add geomean column with dplyr</h2>
+<p>The thing I was missing yesterday in class was that I forgot about the <code>dplyr</code> function called <code>rowwise()</code>.</p>
+<p>Normall, when you are mutating colums, it assumes you want to do operations columnwise (like multiply a whole column of values by another whole column of values). This works because the multipication function in R is already smart enough to do the multiplication element-by element.</p>
+<p>But our <code>geomean()</code> function expects a vector of numeric values, not whole columns. So we must tell dplyr to do our operation <code>rowwise()</code></p>
+<pre class="r"><code>library(dplyr)
+heads &lt;- heads %&gt;%
+  rowwise %&gt;%
+  mutate(geomeans = geomean(c(GOL, BBH, XCB, BNL, BPL, ASB)))
+
+fossils &lt;- fossils %&gt;%
+  rowwise %&gt;%
+  mutate(geomeans = geomean(c(GOL, BBH, XCB, BNL, BPL, ASB)))</code></pre>
+</div>
+<div id="alternative-way-to-do-it-with-a-for-loop" class="section level2">
+<h2>alternative way to do it with a for loop</h2>
+<pre class="r"><code>geomeans &lt;- numeric(nrow(heads))
+for(i in 1:nrow(heads)){
+ geomeans[i] &lt;- geomean(heads[i,c(&quot;GOL&quot;, &quot;BBH&quot;, &quot;XCB&quot;, &quot;BNL&quot;, &quot;BPL&quot;, &quot;ASB&quot;)]) 
+}
+heads$geomeans &lt;- geomeans
+
+
+geomeans &lt;- numeric(nrow(fossils))
+for(i in 1:nrow(fossils)){
+  geomeans[i] &lt;- geomean(fossils[i,c(&quot;GOL&quot;, &quot;BBH&quot;, &quot;XCB&quot;, &quot;BNL&quot;, &quot;BPL&quot;, &quot;ASB&quot;)]) 
+}
+fossils$geomeans &lt;- geomeans</code></pre>
+</div>
+<div id="do-regression" class="section level2">
+<h2>do regression</h2>
+<pre class="r"><code>myRegression &lt;- lm(log(BBH)~log(geomeans), data=heads)
+summary(myRegression)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = log(BBH) ~ log(geomeans), data = heads)
+## 
+## Residuals:
+##       Min        1Q    Median        3Q       Max 
+## -0.146617 -0.022905  0.001303  0.025667  0.117008 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   -0.04479    0.08724  -0.513    0.608    
+## log(geomeans)  1.02469    0.01816  56.438   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.03653 on 2522 degrees of freedom
+## Multiple R-squared:  0.5581, Adjusted R-squared:  0.5579 
+## F-statistic:  3185 on 1 and 2522 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div id="make-the-plot" class="section level2">
+<h2>make the plot</h2>
+<pre class="r"><code>library(ggplot2)
+modernHeads &lt;- ggplot(data=heads, mapping=aes(x=log(geomeans), y=log(BBH))) + 
+  geom_point(color=&quot;grey80&quot;, size=1) + 
+  stat_smooth(method=&quot;lm&quot;, se=FALSE, color=&quot;grey60&quot;) + 
+  theme_bw(20)
+modernHeads</code></pre>
+<p><img src="inclassRegressionCode_files/figure-html/unnamed-chunk-4-1.png" width="768" /></p>
+<pre class="r"><code>modernHeads + 
+  geom_point(data=fossils, mapping=aes(color=Species), size=2) + 
+  stat_smooth(method=&quot;lm&quot;, data = fossils, se=FALSE, linetype=2)</code></pre>
+<p><img src="inclassRegressionCode_files/figure-html/unnamed-chunk-4-2.png" width="768" /></p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

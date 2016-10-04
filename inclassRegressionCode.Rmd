@@ -1,0 +1,83 @@
+---
+title: "In Class Regression Exercise"
+author: "Andrew Barr"
+date: "10/4/2016"
+output: html_document
+---
+
+## Get set up
+
+```{r setup}
+
+heads <- read.delim("http://hompal-stats.wabarr.com/datasets/Howell_craniometry.txt", sep=",")
+fossils <- read.delim("http://hompal-stats.wabarr.com/datasets/Gordon_2008_cranial.txt", sep=",")
+
+geomean <- function(x, na.rm = TRUE) {
+  product <- prod(x, na.rm = TRUE)
+  n <- sum(!is.na(x))
+  geo <- product ^ (1/n)
+  return(geo)
+}
+
+```
+
+
+## add geomean column with dplyr
+
+The thing I was missing yesterday in class was that I forgot about the `dplyr` function called `rowwise()`.
+
+Normall, when you are mutating colums, it assumes you want to do operations columnwise (like multiply a whole column of values by another whole column of values).  This works because the multipication function in R is already smart enough to do the multiplication element-by element.  
+
+But our `geomean()` function expects a vector of numeric values, not whole columns.  So we must tell dplyr to do our operation `rowwise()`
+
+```{r message=FALSE}
+library(dplyr)
+heads <- heads %>%
+  rowwise %>%
+  mutate(geomeans = geomean(c(GOL, BBH, XCB, BNL, BPL, ASB)))
+
+fossils <- fossils %>%
+  rowwise %>%
+  mutate(geomeans = geomean(c(GOL, BBH, XCB, BNL, BPL, ASB)))
+  
+```
+
+## alternative way to do it with a for loop
+
+```{r eval=FALSE}
+geomeans <- numeric(nrow(heads))
+for(i in 1:nrow(heads)){
+ geomeans[i] <- geomean(heads[i,c("GOL", "BBH", "XCB", "BNL", "BPL", "ASB")]) 
+}
+heads$geomeans <- geomeans
+
+
+geomeans <- numeric(nrow(fossils))
+for(i in 1:nrow(fossils)){
+  geomeans[i] <- geomean(fossils[i,c("GOL", "BBH", "XCB", "BNL", "BPL", "ASB")]) 
+}
+fossils$geomeans <- geomeans
+```
+
+## do regression
+
+```{r}
+myRegression <- lm(log(BBH)~log(geomeans), data=heads)
+summary(myRegression)
+```
+
+## make the plot
+
+```{r fig.width=8, fig.height=8}
+library(ggplot2)
+modernHeads <- ggplot(data=heads, mapping=aes(x=log(geomeans), y=log(BBH))) + 
+  geom_point(color="grey80", size=1) + 
+  stat_smooth(method="lm", se=FALSE, color="grey60") + 
+  theme_bw(20)
+modernHeads
+
+modernHeads + 
+  geom_point(data=fossils, mapping=aes(color=Species), size=2) + 
+  stat_smooth(method="lm", data = fossils, se=FALSE, linetype=2)
+```
+

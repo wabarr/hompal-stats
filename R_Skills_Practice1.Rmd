@@ -32,7 +32,7 @@ This includes data on vehicles, and includes the model, the miles per gallon (mp
 - write a simple function that accepts a single numeric vector argument called `X`.  
      - The function should return a count of how many values in `X`  are greater than the mean value of `X`
 
-Example: If you ran your function on this vector `c(16.86350, 17.27193, 16.29412, 21.59090, 14.93115, 20.33967, 22.47104)` you should get a return value of 6, because the mean of that vector is 18.53, and 3 values are greater than this mean value. 
+Example: If you ran your function on this vector `c(16.86350, 17.27193, 16.29412, 21.59090, 14.93115, 20.33967, 22.47104)` you should get a return value of 3, because the mean of that vector is 18.53, and 3 values are greater than this mean value. 
 
 ```{r echo=FALSE, eval=FALSE, include=FALSE}
 myFUN <- function(x){

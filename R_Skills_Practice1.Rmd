@@ -1,0 +1,41 @@
+---
+title: "Skills Practice"
+output: html_document
+---
+
+# This is solely to help you prepare your R skills for the exam
+
+# This is NOT a comprehensive exam review
+
+# Theoretical topics are important too!
+
+
+## Subsetting, Indexing, Summary Stats
+
+We will use the built in `mtcars` dataset (just type `mtcars` and it already exists in R)
+
+This includes data on vehicles, and includes the model, the miles per gallon (mpg), number of cylinders (cyl), the size of the engine in cubic inches, (disp) and the  weight in tons (wt), as well as other info.
+
+-  make a new dataframe that only includes 6 cylinder vehicles (all columns)
+-  How many vehicles have a displacement higher than 300?
+-  What are the mean horsepower (hp) ratings for vehicles with 4, 6, and 8 cylinders (cyl)?
+
+## Regression
+
+-  Read this dataset into R http://hompal-stats.wabarr.com/datasets/ungs.txt and save to a variable called `ungulates`
+-  Do an OLS regression of the log of brain size as a function of the log of body mass
+-  Be sure to be able to pick out and interpret the overall p-value, the $r^2$ value, the f-statistic, the slope, the intercept, etc.
+-  Make a scatter plot of these two variables, and add the regression line to the plot. Color code the points based on the diet of each species, and make sure you have a plot legend. 
+
+## Writing simple functions
+
+- write a simple function that accepts a single numeric vector argument called `X`.  
+     - The function should return a count of how many values in `X`  are greater than the mean value of `X`
+
+Example: If you ran your function on this vector `c(16.86350, 17.27193, 16.29412, 21.59090, 14.93115, 20.33967, 22.47104)` you should get a return value of 6, because the mean of that vector is 18.53, and 3 values are greater than this mean value. 
+
+```{r echo=FALSE, eval=FALSE, include=FALSE}
+myFUN <- function(x){
+  return(sum(x>mean(x)))
+}
+```

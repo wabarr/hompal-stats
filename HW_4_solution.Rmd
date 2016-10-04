@@ -1,0 +1,58 @@
+---
+title: "Homework # 4 - Solution"
+
+---
+## 12 points total for the homework
+
+## Problem 1  - 3 pts 
+
+The p value represents the probability of the observed data (or more extreme data), assuming the null hypothesis is true.  
+
+## Problem 2
+
+### part A - 2pts
+```{r}
+foots <- read.table("http://hompal-stats.wabarr.com/datasets/american_women_feet.txt", header=TRUE)
+library(ggplot2)
+thePlot <- qplot(height, 
+            foot_length, 
+            data=foots, 
+            main="foot length by height in fake american women", 
+            ylab="foot length(cm)", 
+            xlab="height(cm)")
+
+thePlot + theme_bw(18)
+```
+
+### part B - 2pts
+
+```{r}
+cors <- numeric(10000)
+for(each in 1:10000){
+  cors[each] <- abs(cor(foots$height, sample(foots$foot_length)))
+}
+
+```
+
+### part C - 1pt
+
+```{r}
+qplot(cors, main="test statistics from 10,000 iterations", xlab="absolute value of correlation coefficient") + theme_bw(18)
+```
+
+### part D - 1pt
+
+```{r}
+original.cor <- abs(cor(foots$foot_length, foots$height))
+original.cor
+
+```
+
+### part E - 1pt
+```{r}
+sum(cors>=original.cor) / length(cors)
+```
+
+### part F - 2pts
+
+Our set of 10,000 reshuffled vectors represented the null hypothesis in which there was no systematic relationship between height and foot length.  None of the test statistics computed on  reshuffled data was as extreme as our observed test statistic on the unshuffled data.  Thus, we should reject the null hypothesis and conclude that there is a relationship between the two variables. 

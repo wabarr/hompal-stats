@@ -164,7 +164,7 @@ geomean &lt;- function(x, na.rm = TRUE) {
 <div id="add-geomean-column-with-dplyr" class="section level2">
 <h2>add geomean column with dplyr</h2>
 <p>The thing I was missing yesterday in class was that I forgot about the <code>dplyr</code> function called <code>rowwise()</code>.</p>
-<p>Normall, when you are mutating colums, it assumes you want to do operations columnwise (like multiply a whole column of values by another whole column of values). This works because the multipication function in R is already smart enough to do the multiplication element-by element.</p>
+<p>Normally, when you are mutating columns, it assumes you want to do operations column-wise (like multiply a whole column of values by another whole column of values). This works because the multiplication function in R is already smart enough to do the multiplication element-by element.</p>
 <p>But our <code>geomean()</code> function expects a vector of numeric values, not whole columns. So we must tell dplyr to do our operation <code>rowwise()</code></p>
 <pre class="r"><code>library(dplyr)
 heads &lt;- heads %&gt;%

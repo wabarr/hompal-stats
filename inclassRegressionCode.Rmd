@@ -26,7 +26,7 @@ geomean <- function(x, na.rm = TRUE) {
 
 The thing I was missing yesterday in class was that I forgot about the `dplyr` function called `rowwise()`.
 
-Normall, when you are mutating colums, it assumes you want to do operations columnwise (like multiply a whole column of values by another whole column of values).  This works because the multipication function in R is already smart enough to do the multiplication element-by element.  
+Normally, when you are mutating columns, it assumes you want to do operations column-wise (like multiply a whole column of values by another whole column of values).  This works because the multiplication function in R is already smart enough to do the multiplication element-by element.  
 
 But our `geomean()` function expects a vector of numeric values, not whole columns.  So we must tell dplyr to do our operation `rowwise()`
 

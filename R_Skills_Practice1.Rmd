@@ -7,7 +7,7 @@ output: html_document
 
 # This is NOT a comprehensive exam review
 
-# Theoretical topics are important too!
+# Theoretical topics are important too! 
 
 
 ## Subsetting, Indexing, Summary Stats

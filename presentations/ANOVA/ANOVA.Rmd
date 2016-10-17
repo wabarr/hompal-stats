@@ -1,7 +1,8 @@
 ---
 title: ANOVA & ANCOVA
 output: 
-   ioslides_presentation
+   ioslides_presentation:
+       widescreen: true
 ---
 
 ## ANOVA & ANCOVA
@@ -20,7 +21,7 @@ Each observation is called a **replicate** and is assumed to be independent from
 
 So how do we compare group means?  
 
-**Confusingly, it's all about variances (hence ANOVA).**
+<div class="red">**Confusingly, it's all about variances (hence ANOVA).**</div>
 
 ## Intuitive Picture of ANOVA {.columns-2}
 
@@ -120,10 +121,13 @@ flowers <- data.frame(unmanipulated = c(10,12,12,13), control=c(9,11,11,12), tre
 flowers
 ```
 
+These data represent 12 experimental plots to see the effect of soil temperature on the flowering period in larkspur flowers.  The treatment plots had heating coils installed and activated.  The control plot had heating coils installed but never turned on.  The unmanipulated plots were untouched. 
+
+We want to know if there is a difference in mean flowering length between these groups. 
+
 ## Who can do this on the board??
 
 ## Walking through the ANOVA 
-
 
 Source | degrees freedom | SS | Mean Square (MS) | Expected Mean Square | F-ratio
 ----|----|----|----|----|----|----
@@ -147,19 +151,25 @@ Total|an-1|$\sum\limits_{i=1}^a\sum\limits_{j=1}^n(Y_{ij} - \bar{Y})^2$|$\frac{S
 
 ## ANOVA in R {.smaller}
 
-```
+```{r}
 myMod <- lm(iris$Petal.Length~iris$Species)
 summary(myMod)
+```
+
+## ANOVA in R {.smaller}
+```{r}
 anova(myMod)
 ```
 
 
 
-## Checking assumptions
+## Checking assumptions {.smaller .columns-2}
 
-```{r}
+```{r fig.width=4}
+plot(iris$Petal.Length ~ iris$Species)
 #Homogeneity of variances
 bartlett.test(iris$Petal.Length ~ iris$Species)
+
 ```
 
 
@@ -167,8 +177,16 @@ bartlett.test(iris$Petal.Length ~ iris$Species)
 ## Checking assumptions
 
 
-```{r}
-plot(lm(iris$Petal.Length ~ iris$Species))
+```{}
+plot(myMod)
+```
+```{r echo=FALSE, fig.width=8.5}
+par(mfrow=c(2,2))
+plot(myMod, which=1)
+plot(myMod, which=2)
+plot(myMod, which=3)
+plot(myMod, which=5)
+par(mfrow=c(1,1))
 ```
 
 
@@ -181,21 +199,33 @@ $$Y_{ij}=\mu + A_i + B_j + AB_{ij} + \epsilon_{ij}$$
 
 With more than one factor, we have the possibility of non-additive effects of one factor on the other.  These are called **interaction terms**
 
-
-
 ## Simple model (no interaction) {.smaller}
 
 ```{r}
 data(warpbreaks)
 model <- lm(warpbreaks$breaks ~ warpbreaks$tension + warpbreaks$wool)
-summary(model)
+anova(model)
 ```
+
+## Two-way ANOVA {.build}
+
+Have possibility of non-additive effects, where value of factor A influences value of factor B
+
+## Interpreting ANOVA interactions 
+
+<img src="../../images/ANOVA_interpretation.jpg" height=500px>
 
 ## More complex model (with interaction) {.smaller}
 
 ```{r}
 modelInteraction <- lm(warpbreaks$breaks ~ warpbreaks$tension * warpbreaks$wool)
-summary(modelInteraction)
+anova(modelInteraction)
+```
+
+## More complex model (with interaction) {.smaller}
+
+```{r}
+interaction.plot(warpbreaks$tension, warpbreaks$wool, warpbreaks$breaks)
 ```
 
 ## Two-Way ANOVA in R - Order Matters {.smaller .build}
@@ -219,10 +249,7 @@ This is only true is the sample sizes differ.
 
 This behavior differs from all other stats packages. You can read more about the [ANOVA controversy in R](http://goanna.cs.rmit.edu.au/~fscholer/anova.php).  You can use the `car` package to compute ANOVA in the same way as SPSS or other packages
 
-## Interpreting ANOVA interactions 
 
-
-<img src="../../images/ANOVA_interpretation.jpg" height=500px>
 
 
 ## ANCOVA 
@@ -235,6 +262,20 @@ It's a hybrid of regression and ANOVA
 Think of it as doing an ANOVA on the residuals of a regression
 
 $$Y_{ij}=\mu + A_i + \beta_i(X_{ij} - \bar{X_i}) + \epsilon_{ij}$$
+
+## ANCOVA example
+
+**Question:** does Femoral Head Diameter differ in male and female baboons after accounting for differences in overall size?
+
+Is the slope of FHD ~ BM the same in the two groups?
+
+```{r echo=F}
+baboons <- read.table("http://hompal-stats.wabarr.com/datasets/baboons.txt", header=T)
+qplot(x=BM, y=FHD,color=SEX, data=baboons) + 
+  stat_smooth(method="lm") + 
+  theme_bw(20)
+```
+
 
 ## ANCOVA in R {.smaller}
 
@@ -264,4 +305,27 @@ anova(lm(baboons$FHD ~ baboons$SEX + baboons$BM))
 <img src="../../images/ANCOVA_interpretation.jpg" height=500px>
 
 
-## Work through
+## Work through example of brain size
+
+```{r}
+brains <- read.csv("http://hompal-stats.wabarr.com/datasets/Boddy_2012_data.txt")
+head(brains)
+```
+
+## Question
+
+Do primates a different average brain size from other mammals, when controling for bodysize?
+
+```{r fig.width=7, echo=F, message=F}
+library(ggplot2)
+library(dplyr)
+brains <- brains %>% mutate(group=Order=="Primates")
+brains$group <- factor(brains$group)
+levels(brains$group) <- c("Non-Primate","Primate")
+qplot(data=brains, x=log(Body.Mass..g.), y=log(Brain.Mass..g.),
+  color=group) + 
+  theme_bw(15) + 
+  stat_smooth(method="lm") + 
+  scale_color_manual(values=c("grey80", "red"))
+
+```

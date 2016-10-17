@@ -1,0 +1,126 @@
+---
+title: Tidy Data
+output:
+    ioslides_presentation
+---
+
+## Data Shapes - short versus long {.smaller}
+
+### Short
+
+```
+animal    nToes   size                smell
+chicken   4       small               so-so
+cow       2       big         objectionable
+pig       2       medium  more_objectionable
+```
+### Long
+
+```
+animal   variable              value
+cow     size                	big
+cow    	nToes                     2
+cow    	smell         objectionable
+pig     size                 medium
+pig    	nToes                     2
+pig    	smell    more_objectionable
+chicken size                  small
+chicken nToes                     4
+chicken smell                 so-so
+```
+
+## But the long form is stupid! {.build}
+
+<h2>Why would I ever use it??</h2>
+
+## I'm glad you asked. {.build}
+
+### Two reasons come up most often:
+
+> 1. You want to take advantage of `group_by()` in the `dplyr` package to do complex stuff
+
+> 2. You want to take advantage of `facets` in `ggplot2`
+
+## dplyr and ggplot2 just work better on the long form 
+
+(which makes sense, as all these packages are part of the [hadleyverse](http://adolfoalvarez.cl/the-hitchhikers-guide-to-the-hadleyverse/)) 
+
+## Example data {.smaller}
+
+```{r message=FALSE} 
+filepath <- "http://hompal-stats.wabarr.com/datasets/studentgrades.txt"
+grades <- read.table(filepath, header=T, sep=',')
+head(grades)
+```
+
+## Three main functions {.build}
+
+**`gather()`**  takes multiple columns, and collapse them into two key - value columns 
+
+**`separate()`**  takes a single column and splits it into two columns based on some text character
+
+**`spread()`**  takes two columns (key - value pairs) and spreads them into separate columns
+
+## gather() {.smaller}
+
+Collapses multiple columns into two key - value pairs
+
+
+```{r}
+library(tidyr)
+head(grades)
+grades <- gather(grades, key = "test", value="grade", exam1, exam2, exam3)
+head(grades)
+```
+
+This allows you to use the `test` variable in facets, to make multiple plots easily
+
+## gather() {.smaller}
+
+```{r echo=TRUE}
+library(ggplot2)
+qplot(x=TA, y=grade, geom='boxplot', data=grades, fill=TA) + 
+  facet_wrap(~test, nrow = 3) + 
+  theme_bw(15)
+```
+
+
+## separate() {.smaller}
+
+
+takes a single column and splits it into two based on some text character
+
+```{r}
+head(grades)
+grades %>% separate(students, into=c("lastname","firstname"), sep = " ")
+```
+
+## spread() {.smaller}
+
+Does the opposite of `gather()`. Spreads single column across multiple columns
+
+```{r}
+head(grades)
+grades %>% spread(key=test, value=grade)
+```
+
+## Challenge -  using this dataset {.smaller}
+
+```{r message=FALSE}
+library(dplyr)
+filepath <- "http://hompal-stats.wabarr.com/datasets/barr_astrag_2014.txt"
+astrag <- read.table(filepath, header=TRUE, sep="\t")
+head(astrag)
+```
+
+## Challenge - Make this Plot {.smaller}
+
+```{r echo=FALSE, fig.width=8.5, warning=FALSE}
+gAstrag <- astrag %>% 
+           gather(key="measurement", 
+                  value="value", ACF:WAT)
+qplot(x=Habitat, y=value, data=na.omit(gAstrag), 
+      fill= Habitat, geom="boxplot") + 
+      facet_wrap(facets=~measurement, 
+                 scales="free_y") + theme_bw()
+```

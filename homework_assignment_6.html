@@ -153,7 +153,7 @@ $(document).ready(function () {
 <li>Make a boxplot of feeding rate by sex</li>
 <li>Make a boxplot of feeding rate by group</li>
 <li>Show the ANOVA table for the two way ANOVA</li>
-<li>Explore the interaction between the two factors by creating a plot analogous to figure 10.3 (p 329) in the Gotelli book. Put the group on the X axis, and the mean feeding rate for each group on the Y axis (make this a line going across all factor levels). Color code the lines by sex. E. Explain whether or not there is an interaction between the two factors.</li>
+<li>Explore the interaction between the two factors by creating a plot analogous to figure 10.3 (p 329) in the Gotelli book. Put the group on the X axis, and the mean feeding rate for each group on the Y axis (make this a line going across all factor levels). Color code the lines by sex. <em>Do not use the <code>interaction.plot()</code> shortcut to make this plot.</em> E. Explain whether or not there is an interaction between the two factors.</li>
 </ol>
 </div>
 <div id="problem-2" class="section level2">
@@ -175,7 +175,7 @@ $(document).ready(function () {
 <li>simulate the y variable using the supplied parameters</li>
 <li>make a boxplot with the groups on the x axis and the value of y on the y axis (you may have to explicitly <code>print</code> your plot if you use ggplot2 from within your function)</li>
 <li>do the ANOVA</li>
-<li>return the p value from the anova (hint: if you save the results of <code>lm()</code> in an object called <code>myMod</code>, you can calculate the p value using this code <code>pf(summary(myMod)$fstatistic[1],summary(myMod)$fstatistic[2],summary(myMod)$fstatistic[3], lower.tail = FALSE)</code>)</li>
+<li>return the p value from the anova</li>
 </ul>
 <div id="play-around-with-your-function-and-systematically-change-the-parameters-to-get-a-feel-for-how-the-parameters-change-the-p-value." class="section level3">
 <h3>Play around with your function, and systematically change the parameters to get a feel for how the parameters change the p-value.</h3>

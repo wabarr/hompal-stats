@@ -16,9 +16,9 @@ output:
 | September 26 | [Hypothesis Testing](presentations/hypothesis_testing/hypothesis_testing.html) | [Homework #3](homework_assignment_3.html) - [Solution](HW_3_solution.html) | [Blog post](https://oikosjournal.wordpress.com/2011/10/11/frequentist-vs-bayesian-statistics-resources-to-help-you-choose/); [Youtube Video](https://youtu.be/42QuXLucH3Q); Gotelli: Ch 4 - 5 | - | 
 | October 3 | [Correlation and Regression](presentations/regression/regression.html) | [Homework #4](homework_assignment_4.html) - [Solution](HW_4_solution.html) | Gotelli: Ch 9  | 
 | October 10| **Practical Exam I** | [R Skills Practice](R_Skills_Practice1.html) | - | - |
-| October 17 |  [Tidy Data](presentations/tidyR/tidyR.html) & [ANOVA and ANCOVA](presentations/ANOVA/ANOVA.html) |  [Homework #5](homework_assignment_5.html) - [Class Project Proposal Due](project_proposal_questions.html) | Gotelli: Ch 10  | 
+| October 17 |  [Tidy Data](presentations/tidyR/tidyR.html) & [ANOVA and ANCOVA](presentations/ANOVA/ANOVA.html) |  [Homework #5](homework_assignment_5.html) - [Solution](HW_5_solution.html) - [Class Project Proposal Due](project_proposal_questions.html) | Gotelli: Ch 10  | 
 | October 24 |  **Fall Break** | [Bonus - Advanced ggplot homework](advanced_ggplot_homework.html) | - | - |
-| October 31 | [Power]() & [Categorical Data]() |  [Homework #6]() |  Gotelli: Ch 11 |
+| October 31 | [Power]() & [Categorical Data]() |  [Homework #6](homework_assignment_6.html) |  Gotelli: Ch 11 |
 | November 7 | [Multivariate Stats: I]() & [Multivariate Stats: II]() |  [Homework #7]() | Manly Ch. 1 - 5 | - | - |
 | November 14 |   [Workflow]() & [Multivariate Stats: III]() |  [Homework #8]() | Manly Ch. 6 - 12 | 
 | November	21 | [Comparative Methods]() | [Homework #9]()  | - | - |

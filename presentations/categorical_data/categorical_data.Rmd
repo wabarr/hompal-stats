@@ -84,7 +84,7 @@ Site | *A. afarensis* | *Ar. ramidus* |  *Aepyceros melampus*
 Hadar | 120 | 0 | 600
 Aramis | 0 | 90 | 220
 
-<p class="red2>Intuitively, what would you expect the value of each cell to be assuming the row and column variable are unrelated???</p>
+<p class="red2">Intuitively, what would you expect the value of each cell to be assuming the row and column variable are unrelated???</p>
 
 ## Hypothesis Testing - Expected Values {.build}
 

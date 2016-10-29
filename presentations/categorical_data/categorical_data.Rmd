@@ -110,7 +110,7 @@ Expected value of this cell is $0.0814 * 1030 = 83.84$
 
 Shortcut for computing expected cell frequencies:
 
-$$\hat{Y}_{i,j} = \frac{{row\ total}\times{column\ total}}{sample\ size} = \frac{\sum\limits_{j=1}^mY_{i,j}\times\sum\limits_{i=1}^nY_{i,j}}{N}$$
+$$\hat{Y}_{i,j} = \frac{row\ total\times{column\ total}}{sample\ size} = \frac{\sum\limits_{j=1}^mY_{i,j}\times\sum\limits_{i=1}^nY_{i,j}}{N}$$
 
 <p class="red2">**Volunteer:** calculate by hand on board!</p>
 

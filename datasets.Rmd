@@ -49,6 +49,7 @@ Dataset Name | Source of data
 [PanTHERIA_1-0_WR05_Aug2008.txt](datasets/PanTHERIA_1-0_WR05_Aug2008.txt) | [Pantheria](http://esapubs.org/Archive/ecol/E090/184/metadata.htm) 
 [character-deaths.txt](datasets/character-deaths.txt) | [github](https://github.com/ceebu/GOT-from-Kaggle/blob/master/character-deaths.csv)
 [studentgrades.txt](datasets/studentgrades.txt) | fake data
+[party_affiliation.txt](datasets/party_affilitation.txt) | [UFL online stats course](http://www.stat.ufl.edu/~presnell/Courses/sta4504-2000sp/R/R-CDA.pdf)
 
 <!--[test_data_chimp.txt](datasets/test_data_chimp.txt) | fake data
 [test_regression_data.txt](datasets/test_regression_data.txt) | fake data-->

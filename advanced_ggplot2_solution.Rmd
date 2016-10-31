@@ -6,6 +6,7 @@ output: html_document
 
 ### points possible
 *  1 pt base setup
+*  1 pt reverse axes
 *  3 pts filter
 *  3 rectangles
 *  2 points theme elements

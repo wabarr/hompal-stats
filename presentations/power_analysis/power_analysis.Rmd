@@ -5,8 +5,11 @@ output:
     widescreen: yes
 ---
 
-## Power Analysis allows you to ask:
+## Happy Halloween
 
+<img src="../../images/normalparanormal.jpg" height:500px>
+
+## Power Analysis allows you to ask:
 
 <div class="red2">How big of a sample do I need to detect a given effect size with a given level of confidence.</div>
 

@@ -18,7 +18,7 @@ output:
 | October 10| **Practical Exam I** | [R Skills Practice](R_Skills_Practice1.html) | - | - |
 | October 17 |  [Tidy Data](presentations/tidyR/tidyR.html) & [ANOVA and ANCOVA](presentations/ANOVA/ANOVA.html) |  [Homework #5](homework_assignment_5.html) - [Solution](HW_5_solution.html) - [Class Project Proposal Due](project_proposal_questions.html) | Gotelli: Ch 10  | 
 | October 24 |  **Fall Break** | [Bonus - Advanced ggplot homework](advanced_ggplot_homework.html) - [solution](advanced_ggplot2_solution.html) | - | - |
-| October 31 | [Power](presentations/power_analysis/power_analysis.html) & [Categorical Data](presentations/categorical_data/categorical_data.html) |  [Homework #6](homework_assignment_6.html) |  Gotelli: Ch 11 |
+| October 31 | [Power](presentations/power_analysis/power_analysis.html) & [Categorical Data](presentations/categorical_data/categorical_data.html) |  [Homework #6](homework_assignment_6.html) - [Solution](HW_6_solution.html) |  Gotelli: Ch 11 |
 | November 7 | [Multivariate Stats: I]() & [Multivariate Stats: II]() |  [Homework #7](homework_assignment_7.html) | Manly Ch. 1 - 5 | - | - |
 | November 14 |   [Workflow]() & [Multivariate Stats: III]() |  [Homework #8]() | Manly Ch. 6 - 12 | 
 | November	21 | [Comparative Methods]() | [Homework #9]()  | - | - |

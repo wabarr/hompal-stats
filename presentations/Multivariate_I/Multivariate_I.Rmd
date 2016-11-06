@@ -371,3 +371,9 @@ y <- y * c(-1, 1)
 qplot(x=x,y=y, color=rep(c("A", "B"), 25), size=I(5)) + theme_bw(30) + labs(x="LD1", y="LD2") + guides(color="none")
 ```
 
+## DFA in R
+
+```{r}
+library(MASS)
+#lda
+```

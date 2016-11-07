@@ -10,127 +10,55 @@ output:
 
 <img src="../../images/beaver_duck.jpg" height=400px>
 
+## Discriminant Function Analysis {.build}
 
-## Principal Components Analysis {.build}
+start with $p$ variables measured for $m$ groups.  
 
-Like DFA, PCA is an ordination technique
+DFA finds a linear combination of the $p$ variables that maximizes the distance between groups
 
-Goal is to "summarize" variation in multivariate data
+$$Z = a_1X_1 + a_2X_2 + ... + a_pX_p$$
 
-Reduce the number of dimensions needed to describe most of the variance
+DFA tries to maximise the F ratio of between group to within group variation ($M_B/M_W$)
 
-## PCA - Intuitively 
+This is an eigenvalue problem
 
-Start with some data points
-
-<img src="../../images/PCA_schematics/0.jpg" width=900>
-
-## PCA - Intuitively 
-
-Examine the variance of the points along some axis...
+## Discriminant Function Analysis {.build}
 
 
-<img src="../../images/PCA_schematics/1.jpg" width=900>
+Assuming you have more measurements than groups, there will be $m - 1$ **canonical discriminant functions** that maximize the ratio $M_B/M_W$. 
 
-## PCA - Intuitively 
+These are indicated by $Z_1$, $Z_2$, $...$, $Z_{m-1}$.
 
+$Z_1$ captures as much distance between groups as possible. 
 
-This axis covers much more variance in our points...
+$Z_2$ captures as much variation as possible, subject to the condition that the variation captured is uncorrelated (**orthogonal**) to $Z_1$, and so on with the remaining canonical discriminant functions. 
 
-<img src="../../images/PCA_schematics/2.jpg" width=900>
+## Discriminant Function Analysis {.build .smaller}
 
+First two discriminant functions often captures majority of group differences.  
 
-## PCA - Intuitively 
-
-Imagine these points in some XY coordinate system....
-
-
-<img src="../../images/PCA_schematics/3.jpg" width=900>
-
-## PCA - Intuitively 
-
-We can still find the axis of maximum variation....
-
-<img src="../../images/PCA_schematics/4.jpg" width=900>
-
-## PCA - Intuitively 
-
-Then we find the orthogonal axis, 90$^\circ$ from major axis
-
-<img src="../../images/PCA_schematics/5.jpg" width=900>
-
-## PCA - Intuitively 
-
-Next, we rotate the data to use the two new principal components axes we found...
-
-<img src="../../images/PCA_schematics/6.jpg" width=900>
-
-## PCA - operationally {.build}
-
-> *  Starting with the covariance matrix
-> *  The eigenvalues of this matrix are the variances explained by each PC
-> *  The eigenvectors of this matrix are the contributions of each original variable to the PC
-> *  The eigenvectors can be thought of as "transformation equations" to convert a datapoint from the original space to the PC space
-
-## PCA - more details {.build}
+If so, we can use  reduced set of variables to visualize $p$ dimensional dataset in 2 dimensions.
 
 
-> *  We start with $p$ variables for $n$ individuals
-> *  The first PC is the linear combination of all the variables:
-> *  $PC1 = a_1X_1 + a_2X_2 + ... + a_pX_p$
-> *  PC1 is chosen to vary as much as possible for all the individuals, subject to the condition that the sum of the squared $a$ terms is 1
-> *  Subsequent PCs are uncorrelated with the prior PCs
 
-## PCA - even more details {.build}
-
-
-> 1.  (sometimes) **scale** and **center** your variables to have a mean of 0 and variance of 1.
-> 2.  Calculate the covariance matrix (this will be a correlation matrix if you did step 1)
-> 3.  Find the eigenvalues (variances of the PCs) and corresponding eigenvectors (the loadings for each variable) for the covariance/correlation matrix
-> 4.  Ignore the components that (hopefully) explain very little variance, and focus on the first few components
-
-## Principal Components Analysis in R {.build}
-
-There are 2 functions in R
-
-> *  `prcomp()` 
-> *  `princomp()`
-
-These differ in their implementation and default arguments, but provide similar results. 
-
-However, `prcomp()` is preferred for numerical accuracy
-
-## PCA - Learn by Example 
-
-```{r echo=FALSE, fig.width=10}
+```{r, echo=FALSE, fig.height=4}
 library(ggplot2)
-library(gridExtra)
-theme_set(theme_bw(15))
-sepal<-qplot(Sepal.Length, Sepal.Width, data=iris, color=Species, main="Iris Sepal", size=I(6))
-petal<-qplot(Petal.Length, Petal.Width, data=iris, color=Species, main="Iris Petal", size=I(6))
-grid.arrange(sepal, petal, nrow=1)
+x <- rnorm(50, mean=25, sd=8)
+y <- rnorm(50, mean=24, sd=8)
+x <- x * c(-1, 1)
+y <- y * c(-1, 1)
+qplot(x=x,y=y, color=rep(c("A", "B"), 25), size=I(5)) + theme_bw(30) + labs(x="LD1", y="LD2") + guides(color="none")
 ```
 
-## PCA - Learn by Example {.smaller}
+## Learn By Doing - DFA in R
 
-
-```{r}
-irisPCA <- prcomp(iris[,1:4], 
-                  scale=TRUE, center=TRUE)
-irisPCA
-summary(irisPCA)
+```{}
+library(MASS)
+lda()
 ```
 
-## PCA - Learn by Example {.smaller}
-
-
-```{r echo=TRUE, fig.width=10}
-qplot(irisPCA$x[,1], 
-      irisPCA$x[,2], 
-      xlab="PC1", ylab="PC2", main="Iris PCA", color=iris$Species, size=I(6))
-```
-
-
+Do a DFA of the iris data using the `mass::lda()` function
+'
 ## Correspondence Analysis {.build}
 
 

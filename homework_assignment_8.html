@@ -9,9 +9,7 @@
 <meta name="generator" content="pandoc" />
 
 
-<meta name="author" content="Andrew Barr" />
 
-<meta name="date" content="2015-03-30" />
 
 <title>Homework Assignment #8</title>
 
@@ -144,8 +142,6 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore">Homework Assignment #8</h1>
-<h4 class="author"><em>Andrew Barr</em></h4>
-<h4 class="date"><em>March 30, 2015</em></h4>
 
 </div>
 
@@ -153,8 +149,9 @@ $(document).ready(function () {
 <div id="problem-1" class="section level2">
 <h2>Problem 1</h2>
 <ol style="list-style-type: upper-alpha">
-<li>Load <a href="http://hompal-stats.wabarr.com/datasets/Howell_craniometry.txt">Howell’s craniometric dataset</a> and get rid of all the columns except for the following: ID, Sex, Population, BNL, MDH, EKB, ZOR, BAA, NBA.</li>
-<li>Use the <code>pairs()</code> function on just the 6 numeric variables (exclude the ID variable) in order to get a feel for the covariance among the variables.</li>
+<li>Load <a href="http://hompal-stats.wabarr.com/datasets/Howell_craniometry.txt">Howell’s craniometric dataset</a></li>
+<li>Get rid of unwanted data. Select only the following columns: <span style="color:red;">ID, Sex, Population, BNL, MDH, EKB, ZOR, BAA, NBA</span>. Filter the dataset to only include individuals from the following populations: <span style="color:red;">BUSHMAN, PERU, NORSE, ZULU</span>.</li>
+<li>Use the <code>pairs()</code> function on just the 6 numeric variables (exclude the ID variable) in order to get a visual feel for the covariance among the variables.</li>
 <li>Calculate the variance / covariance matrix for the 6 numeric variables.</li>
 </ol>
 </div>
@@ -162,7 +159,7 @@ $(document).ready(function () {
 <h2>Problem 2</h2>
 <ol style="list-style-type: upper-alpha">
 <li>Compute a Euclidian distance matrix for the 6 numerical variables. <strong>Save this to a variable, DO NOT PRINT THIS TO THE SCREEN OR INCLUDE IT IN THE OUTPUT</strong></li>
-<li>Perform a hierarchical cluster analysis using the distance matrix you just computed.</li>
+<li>Perform a hierarchical cluster analysis using the distance matrix you just computed. Use the <code>hclust()</code> function for this</li>
 <li>Plot the cluster analysis dendrogram.</li>
 </ol>
 </div>
@@ -170,9 +167,10 @@ $(document).ready(function () {
 <h2>Problem 3</h2>
 <ol style="list-style-type: upper-alpha">
 <li>Perform a discriminant function analysis to see how well the 6 numeric variables predict the Population. Use the <code>lda()</code> function in the MASS package.</li>
-<li>Use the <code>predict()</code> function to predict how each of the datapoints would be classified. Save the predictions in a variable called <code>predictions</code>. Explore the list of predictions (there is a lot of useful stuff in there!!!)</li>
+<li>Which of the six variables is the most important for discriminating between populations? Justify your answer.</li>
+<li>Use the <code>predict()</code> function to predict how each of the datapoints would be classified by your discriminant function analysis. Save the predictions in a variable called <code>predictions</code>. Explore the list of predictions (there is a lot of useful stuff in there!!!)</li>
 <li>Extract the predicted population (in the <code>class</code> portion of the <code>predictions</code> object). Calculate the proportion of these predictions that are the same as their known population.</li>
-<li>Look at the <code>x</code> portion of the <code>predictions</code> object. This contains the actual canononical discriminant scores for each individual. Make a scatterplot of the first and second discriminant functions. Color code the points by the actual population.</li>
+<li>Look at the <code>x</code> portion of the <code>predictions</code> object. This contains the actual canonical discriminant scores for each individual. Make a scatter plot of the first and second discriminant functions. Color code the points by the actual population (not the predicted population, which may be different).</li>
 <li>Was this DFA successful in discriminating groups? Why or why not? Explain your answer.</li>
 </ol>
 </div>

@@ -92,5 +92,18 @@ pander(summary(prcomp(mtcars)))
 ```
 
 
+## Challenge
+
+Test the hypothesis that hair color is related to eye color using this dataset http://hompal-stats.wabarr.com/datasets/hair_eye.txt
+
+Create a new markdown document that has three sections.  Make sure your document has a table of contents.
+
+> * Data Description - describes the dataset
+> * Chi-square - performs a chi-square and makes a nice table using `pander`
+> * Conclusion - write out your conclusion based on the chi-square
+
+
+```{r}
+```
 
  

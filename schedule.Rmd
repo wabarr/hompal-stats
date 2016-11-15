@@ -21,7 +21,7 @@ output:
 | October 31 | [Power](presentations/power_analysis/power_analysis.html) & [Categorical Data](presentations/categorical_data/categorical_data.html) |  [Homework #6](homework_assignment_6.html) - [Solution](HW_6_solution.html) |  Gotelli: Ch 11 |
 | November 7 | [Multivariate Stats: I](presentations/Multivariate_I/Multivariate_I.html) & [Multivariate Stats: II](presentations/Multivariate_II/Multivariate_II.html) |  [Homework #7](homework_assignment_7.html) - [Solution](HW_7_solution.html) | Manly Ch. 1 - 5 | - | - |
 | November 14 |   [String Formatting and Filesystem](presentations/String_Formatting_Filesystem/String_Formatting_Filesystem.html) & [Workflow](presentations/workflow/workflow.html) & [Multivariate Stats: III](presentations/Multivariate_III/Multivariate_III.html) |  [Homework #8](homework_assignment_8.html) | Manly Ch. 6 - 12 | 
-| November	21 | [Comparative Methods]() | [Homework #9]()  | - | - |
+| November	21 | [Comparative Methods]() | [Homework #9](homework_assignment_9.html)  | - | - |
 | November 28 |  [Non-Parametrics]()  | [Homework #10]() | - | - | 
 | December 5 | **Student Presentations** | - | - |
 | December 12 | **Practical Exam II** | - | - | - |

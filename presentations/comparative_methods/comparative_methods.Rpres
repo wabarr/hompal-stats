@@ -2,7 +2,7 @@ Comparative Methods
 ========================================================
 incremental:true 
 
-![darwin_tree.jpg](darwin_tree.jpg)
+<img src="../../images/darwin_tree.jpg">
 
 Anatomy of a phylogenetic tree
 ================ 
@@ -130,7 +130,7 @@ Read in [this ruminant phylogeny](http://hompal-stats.wabarr.com/datasets/rumina
 
 Drop all tips except the following: `"Alcelaphus_buselaphus", "Sigmoceros_lichtensteinii", "Connochaetes_gnou", "Connochaetes_taurinus", "Beatragus_hunteri", "Damaliscus_lunatus", "Damaliscus_pygargus"`
 
-Hint you can use `drop.tip()` or `extract.clade()` - ***Brian: don't spoil the fun!***
+Hint you can use `drop.tip()` or `extract.clade()` 
 
 
 ```{r echo=FALSE}

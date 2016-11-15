@@ -2,12 +2,12 @@ Comparative Methods
 ========================================================
 incremental:true 
 
-![darwin_tree.jpg](darwin_tree.jpg)
+<img src="../../images/darwin_tree.jpg">
 
 Anatomy of a phylogenetic tree
 ================ 
 
-![plot of chunk unnamed-chunk-1](comparative_methods-figure/unnamed-chunk-1-1.png) 
+![plot of chunk unnamed-chunk-1](comparative_methods-figure/unnamed-chunk-1-1.png)
 
 ***
 
@@ -24,7 +24,7 @@ trees are ***hierarchical***, the pattern of branching is the ***topology***, an
 Same topology, different representation
 =====================
 
-![plot of chunk unnamed-chunk-2](comparative_methods-figure/unnamed-chunk-2-1.png) 
+![plot of chunk unnamed-chunk-2](comparative_methods-figure/unnamed-chunk-2-1.png)
 
 ***
 
@@ -38,11 +38,11 @@ Same topology, different representation
 ========================
 incremental:false
 
-![plot of chunk unnamed-chunk-3](comparative_methods-figure/unnamed-chunk-3-1.png) 
+![plot of chunk unnamed-chunk-3](comparative_methods-figure/unnamed-chunk-3-1.png)
 
 ***
 
-![plot of chunk unnamed-chunk-4](comparative_methods-figure/unnamed-chunk-4-1.png) 
+![plot of chunk unnamed-chunk-4](comparative_methods-figure/unnamed-chunk-4-1.png)
 
 Phylogenetic Trees in R
 ========================
@@ -61,7 +61,7 @@ Phylogenetic Trees in R
 incremental:false
 left:55
 
-![plot of chunk unnamed-chunk-6](comparative_methods-figure/unnamed-chunk-6-1.png) 
+![plot of chunk unnamed-chunk-6](comparative_methods-figure/unnamed-chunk-6-1.png)
 
 *** 
 
@@ -146,7 +146,7 @@ Read in [this ruminant phylogeny](http://hompal-stats.wabarr.com/datasets/rumina
 
 Drop all tips except the following: `"Alcelaphus_buselaphus", "Sigmoceros_lichtensteinii", "Connochaetes_gnou", "Connochaetes_taurinus", "Beatragus_hunteri", "Damaliscus_lunatus", "Damaliscus_pygargus"`
 
-Hint you can use `drop.tip()` or `extract.clade()` - ***Brian: don't spoil the fun!***
+Hint you can use `drop.tip()` or `extract.clade()` 
 
 
 
@@ -155,7 +155,7 @@ Challenge
 ==============
 incremental:false
 
-![plot of chunk unnamed-chunk-12](comparative_methods-figure/unnamed-chunk-12-1.png) 
+![plot of chunk unnamed-chunk-12](comparative_methods-figure/unnamed-chunk-12-1.png)
 
 ***
 
@@ -189,13 +189,13 @@ incremental:false
 
 ### statistics assumes
 
-![plot of chunk unnamed-chunk-13](comparative_methods-figure/unnamed-chunk-13-1.png) 
+![plot of chunk unnamed-chunk-13](comparative_methods-figure/unnamed-chunk-13-1.png)
 
 ***
 
 ### evolution provides
 
-![plot of chunk unnamed-chunk-14](comparative_methods-figure/unnamed-chunk-14-1.png) 
+![plot of chunk unnamed-chunk-14](comparative_methods-figure/unnamed-chunk-14-1.png)
 
 
 
@@ -203,7 +203,7 @@ The Problem - Graphically
 ==========
 left:60
 
-![plot of chunk unnamed-chunk-15](comparative_methods-figure/unnamed-chunk-15-1.png) 
+![plot of chunk unnamed-chunk-15](comparative_methods-figure/unnamed-chunk-15-1.png)
 
 ***
 
@@ -217,7 +217,7 @@ The Problem is Insidious
 ===================
 left:40
 
-![plot of chunk unnamed-chunk-16](comparative_methods-figure/unnamed-chunk-16-1.png) 
+![plot of chunk unnamed-chunk-16](comparative_methods-figure/unnamed-chunk-16-1.png)
 
 ***
 
@@ -258,7 +258,7 @@ Brownian Motion
 ==================
 left:60
 
-![plot of chunk unnamed-chunk-17](comparative_methods-figure/unnamed-chunk-17-1.png) 
+![plot of chunk unnamed-chunk-17](comparative_methods-figure/unnamed-chunk-17-1.png)
  
 ***
  
@@ -274,7 +274,7 @@ Brownian motion is assumed in 95%+ of studies you will read
 Phylogenetic Generalized Linear Model
 ============
 
-![plot of chunk unnamed-chunk-18](comparative_methods-figure/unnamed-chunk-18-1.png) 
+![plot of chunk unnamed-chunk-18](comparative_methods-figure/unnamed-chunk-18-1.png)
 
 *** 
 
@@ -302,11 +302,11 @@ lambda - branch length transformations
 ===============
 incremental:false
 
-![plot of chunk unnamed-chunk-19](comparative_methods-figure/unnamed-chunk-19-1.png) 
+![plot of chunk unnamed-chunk-19](comparative_methods-figure/unnamed-chunk-19-1.png)
 
 *** 
 
-![plot of chunk unnamed-chunk-20](comparative_methods-figure/unnamed-chunk-20-1.png) 
+![plot of chunk unnamed-chunk-20](comparative_methods-figure/unnamed-chunk-20-1.png)
 
 Estimating lambda
 =============

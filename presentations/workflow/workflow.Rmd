@@ -1,9 +1,8 @@
 ---
 title: "A few notes on workflow"
 output: 
-  html_document:
-    toc: yes
-    toc_float: yes
+  html_document: 
+    theme: spacelab
 ---
 
 ## Section headings {.build}

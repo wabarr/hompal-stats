@@ -51,6 +51,7 @@ Dataset Name | Source of data
 [studentgrades.txt](datasets/studentgrades.txt) | fake data
 [party_affiliation.txt](datasets/party_affilitation.txt) | [UFL online stats course](http://www.stat.ufl.edu/~presnell/Courses/sta4504-2000sp/R/R-CDA.pdf)
 [BinindaEmondsBestDates.nex](datasets/BinindaEmondsBestDates.nex) |  [Bininda Emonds et al., 2007](http://dx.doi.org/10.1038/nature05634)
+[BinindaEmondsBestDatesUngulates.nex](datasets/BinindaEmondsBestDatesUngulates.nex) | [Bininda Emonds et al., 2007](http://dx.doi.org/10.1038/nature05634)
 
 <!--[test_data_chimp.txt](datasets/test_data_chimp.txt) | fake data
 [test_regression_data.txt](datasets/test_regression_data.txt) | fake data-->

@@ -2,7 +2,7 @@ Comparative Methods
 ========================================================
 incremental:true 
 
-<img src="../../images/darwin_tree.jpg">
+<img src="../../images/darwin_tree.jpg" height=500px>
 
 Anatomy of a phylogenetic tree
 ================ 
@@ -358,3 +358,9 @@ Example:
 ```{}
 pgls(response ~ predictor1 + predictor2, data=myCompData, lambda="ML")
 ```
+
+Challenge
+=================
+
+Read in this data on ungulate brain and body size http://hompal-stats.wabarr.com/datasets/ungs.csv
+

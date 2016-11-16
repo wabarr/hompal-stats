@@ -1,0 +1,63 @@
+#NEXUS
+[R-package APE, Wed Nov 16 16:24:27 2016]
+
+BEGIN TAXA;
+	DIMENSIONS NTAX = 25;
+	TAXLABELS
+		Ammotragus_lervia
+		Hemitragus_jemlahicus
+		Rupicapra_rupicapra
+		Antilope_cervicapra
+		Gazella_dorcas
+		Litocranius_walleri
+		Cephalophus_natalensis
+		Cephalophus_nigrifrons
+		Cephalophus_zebra
+		Sylvicapra_grimmia
+		Cephalophus_monticola
+		Raphicerus_melanotis
+		Neotragus_moschatus
+		Oreotragus_oreotragus
+		Bos_grunniens
+		Cervus_elaphus
+		Cervus_nippon
+		Dama_dama
+		Giraffa_camelopardalis
+		Hyemoschus_aquaticus
+		Tragulus_javanicus
+		Sus_scrofa
+		Camelus_bactrianus
+		Tapirus_terrestris
+		Equus_zebra
+	;
+END;
+BEGIN TREES;
+	TRANSLATE
+		1	Ammotragus_lervia,
+		2	Hemitragus_jemlahicus,
+		3	Rupicapra_rupicapra,
+		4	Antilope_cervicapra,
+		5	Gazella_dorcas,
+		6	Litocranius_walleri,
+		7	Cephalophus_natalensis,
+		8	Cephalophus_nigrifrons,
+		9	Cephalophus_zebra,
+		10	Sylvicapra_grimmia,
+		11	Cephalophus_monticola,
+		12	Raphicerus_melanotis,
+		13	Neotragus_moschatus,
+		14	Oreotragus_oreotragus,
+		15	Bos_grunniens,
+		16	Cervus_elaphus,
+		17	Cervus_nippon,
+		18	Dama_dama,
+		19	Giraffa_camelopardalis,
+		20	Hyemoschus_aquaticus,
+		21	Tragulus_javanicus,
+		22	Sus_scrofa,
+		23	Camelus_bactrianus,
+		24	Tapirus_terrestris,
+		25	Equus_zebra
+	;
+	TREE * UNTITLED = [&R] (((((((((1:15.4,2:15.4,3:15.4)'953':7.6,((4:7.6,5:7.6)'970':2.9,6:10.5)'969':12.5,((((7:2.5,8:2.5)'989':4.4,9:6.9)'984_Cephalophus1*':1.2,10:8.1)'983':4.7,11:12.8)'982_Cephalophinae':10.2,12:23,13:23,14:23)'939':4.5,15:27.5)'938_Bovidae':0.2,((16:7.9,17:7.9)'1039':4.4,18:12.3)'1038':15.4)'937':0.1,19:27.8)'936':20.9,(20:18,21:18)'1048_Tragulidae':30.7)'935':19.1,22:67.8)'933':2.9,23:70.7)'932_Cetartiodactyla':12.7,(24:55.8,25:55.8)'1106_Perissodactyla':27.6)'931';
+END;

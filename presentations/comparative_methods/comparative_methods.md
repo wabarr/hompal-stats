@@ -334,18 +334,24 @@ Example:
 pgls(response ~ predictor1 + predictor2, data=myCompData, lambda="ML")
 ```
 
-Challenge
+Challenge 1
 =================
 
-Read in this data on ungulate brain and body size http://hompal-stats.wabarr.com/datasets/ungs.txt
+* Read in this data on ungulate brain and body size http://hompal-stats.wabarr.com/datasets/ungs.txt
 
-Replace the spaces in the Species columns with underscores.
+* Replace the spaces in the Species columns with underscores.
 
-Read in this phylogenetic tree using the `ape::read.nexus()` function http://hompal-stats.wabarr.com/datasets/BinindaEmondsBestDatesUngulates.nex This is a huge supertree of all mammals
+Challenge 2
+===============
 
-Challenge
+* Read in this phylogenetic tree using the `ape::read.nexus()` function http://hompal-stats.wabarr.com/datasets/BinindaEmondsBestDatesUngulates.nex 
+
+* Plot the tree
+
+Challenge 3
 ===========
 
-Use the `caper:comparative.data()` function to make the comparative data object
+* Use the `caper:comparative.data()` function to make the comparative data object. 
 
-Do a PGLS testing the hypothesis that ungulate brain size is a function of 
+* Do a PGLS testing the hypothesis that ungulate brain size is a function of body size and diet, while controlling for phylogeny assuming brownian motion. 
+

@@ -378,5 +378,9 @@ Challenge 3
 
 * Use the `caper:comparative.data()` function to make the comparative data object. 
 
-* Do a PGLS testing the hypothesis that ungulate brain size is a function of body size and diet, while controlling for phylogeny assuming brownian motion. 
+* Do a PGLS testing the hypothesis that ungulate brain size is a function of body size and diet, while controlling for phylogeny assuming a brownian motion model of evolution. 
 
+Generalized LS
+=========
+
+Phylogenetic autocorrelation is just one kind of residual autocorrelation.  Spatial autocorrelation is another type......

@@ -1,3 +1,11 @@
+Skills Challenge
+==================
+incremental:true
+
+1. Read in these two datasets: http://hompal-stats.wabarr.com/datasets/barr_astrag_2014.txt & http://hompal-stats.wabarr.com/datasets/ungulateMasses.txt
+2. Join these two dataframes together
+3. What is the slope of the linear relationship between the B variable and the body mass variable?
+
 Comparative Methods
 ========================================================
 incremental:true 

@@ -1,0 +1,122 @@
+---
+title: "Spatial Data in R"
+output: 
+  ioslides_presentation:
+    widescreen: yes
+
+---
+
+## Spatial data
+
+Lots of data in our field(s) are inherently spatial
+
+R has lots of tools for interacting with and analyzing spatial data
+
+
+```{r}
+```
+
+## the `sp` package
+
+The `sp` package is the workhorse of spatial mapping and analysis in R.
+
+It defines spatial classes (e.g. `SpatialPoints`, `SpatialPointsDataFrame`) that make it possible to work with spatial data. 
+
+## actual spatial data versus coordinates {.smaller .build}
+
+We often just have coordinate data, but this works differently in R from fully spatial data
+
+```{r eval=FALSE}
+myCoords <- data.frame(long = runif(20, min=35, max=36), lat = runif(20, min = 3, max=5))
+plot(myCoords)
+```
+
+```{r echo=F}
+set.seed(1234)
+myCoords <- data.frame(long = runif(20, min=35, max=36), lat = runif(20, min = 3, max=5))
+plot(myCoords)
+text(x=35.7, y=4.3, labels = "What is wrong with this plot?", col="red", cex=1.4)
+```
+
+## making spatial objects {.build .smaller}
+
+You can use the `SpatialPoints()` function to make your coordinates into a fully spatial object
+
+**Warning**: This function will assume that your columns are in the order: X coordinate, Y Coordinate
+
+For a gold star: Which is the x and which is the y when we are dealing with latitude and longitude?
+
+```{r}
+library(sp)
+spMyCoords <- SpatialPoints(coords = myCoords)
+```
+
+Now there are a plethora of spatial things you can do with these points that you couldn't before
+
+```{r}
+bbox(spMyCoords)
+```
+
+## making spatial objects {.build .smaller}
+
+```{r}
+plot(spMyCoords, axes=TRUE)
+```
+
+## maps {.smaller}
+
+The `maps` package provides basic maps that can serve as a backdrop to your points
+
+```{r}
+library(maps)
+world <- map(database = "world")
+```
+
+## maps {.smaller}
+
+
+### This is not an accurate election map!
+
+```{r}
+USA <- map(database="state", fill=TRUE, col=c("red","blue"))
+```
+
+
+## maps {.smaller}
+
+```{r}
+kenya <- map(database = "world", region="Kenya")
+```
+
+
+## Challenge
+
+Plot the `spCoords` points as solid blue filled circles on top of the Kenya map
+
+## RGoogleMaps
+
+```{r}
+library("RgoogleMaps")
+GW <- GetMap(center = c(38.899, -77.049), zoom = 17)
+PlotOnStaticMap(GW)
+```
+
+## RGoogleMaps
+
+```{R}
+GWSatellite <- GetMap(center = c(38.899, -77.049), zoom = 17, maptype = "satellite")
+PlotOnStaticMap(GWSatellite, lon=-77.0493, lat=38.899, pch=16, col="red", cex=2)
+```
+
+## Challenge
+
+Get a satellite image of Africa, and plot a blue + symbol on Khartoum  
+
+## GIS in R {.build}
+
+You can do almost anything in R that you can do in ArcGIS.  
+
+This is accomplished through additional packages, notably `rgdal` which is an R interface to the Geospatial Data Abstraction Library (GDAL), which is a great piece of open source software for spatial analysis. GDAL is the brains behind QGIS. 
+
+The `spatstats` package also implements a variety of spatial statitics. 
+

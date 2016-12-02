@@ -1,0 +1,33 @@
+---
+title: "Presentations Schedule and Rubric"
+output: html_document
+---
+
+
+## Schedule
+
+Each presenter has 20 minutes.  Please leave 3-4 minutes for questions. 
+
+| Time | Student|
+|------|--------|
+| 3:30 | Liz    |
+| 3:50 | Kim    |
+| 4:10 | Sam    |
+| 4:30 | Joanne |
+| 4:50 | Prucha |
+| 5:10 | Angie  |
+| 5:30 | Dan    |
+| 5:50 | Maryse |
+
+## Grading Rubric
+
+| Category                            | Percent of Grade | Extremely Poor (25%) | Seriously Lacking (50%) | Reasonably Good (75%) | Excellent (100%) |
+|-------------------------------------|------------------|----------------------|-------------------------|----------------|------------------|
+| Background Information              | 10%  |  Explanation of background wholly inadequate   for understanding the question   |    |     | Background clearly explained, giving the audience a crystal clear understanding of the question and its significance |
+| Research Question Clearly Stated    | 10%  | Research question is unintelligible.  No coherent question is articulated. |   |    |  Question is extremely clearly stated, along with hypotheses, expectations  |
+| Code Functionality and Organization | 30%  | Major error in submitted code.  Code did not do what it was supposed to do. |  |   | Code works exactly as advertised, and shows a clear grasp of all principles of coding learned this semester. |
+| Code Legibility                     | 5%  | Code was poorly formatted and written in a way that make is difficult to follow |    |    | Code was well organized and well formatted.  Extremely easy to follow and understand the flow of the data manipulation / analysis. |
+| Visualizations                      | 10%  |  Visualizations were not appropriate for the analyses / research question.  |  |  | Visualizations were visually compelling, and conveyed all information in a clear and concise way  |
+| Presentation Skills & Organization  | 25%  | Major difficulties in following the presentation due to problems with the delivery. Poor organization and logical flow that prevents understanding of the presentation. |  | | Exceptionally clear presentation skills.  Expert organization that present all aspects of presentation in a logical and compelling way. |
+| Question Answered                   | 10%  | In the end, presentation does not meaningfully address question. |  |  | Data and analyses presented are expertly suited to research question. Question is addressed in a clear and compelling way.  I feel like I really learned something from this!|
+| **Total**                           | **100.00%**  | | | |  |

@@ -23,7 +23,7 @@ output:
 | November 14 |   [String Formatting and Filesystem](presentations/String_Formatting_Filesystem/String_Formatting_Filesystem.html) & [Workflow](presentations/workflow/workflow.html) & [Multivariate Stats: III](presentations/Multivariate_III/Multivariate_III.html) |  [Homework #8](homework_assignment_8.html) - [Solution](HW_8_solution.html) | Manly Ch. 6 - 12 | 
 | November	21 | [Comparative Methods](presentations/comparative_methods/comparative_methods.html) | [Homework #9](homework_assignment_9.html) - [Solution](HW_9_solution.html) | - | - |
 | November 28 |  [Non-Parametrics](presentations/nonparametrics/nonparametrics) - [Spatial](presentations/spatial/spatial.html)  | [Homework #10](homework_assignment_10.html) - [Solution](HW_10_solution.html) | - | - | 
-| December 5 | **Student Presentations** | - | - |
+| December 5 | **Student Presentations** | [link to presentations](class_presentation_rubric_schedule.html) | - |
 | December 12 | **Practical Exam II** | - | - | - |
 
 For reference, here is a link to [GW's Academic Calendar](https://www.gwu.edu/academic-calendar)

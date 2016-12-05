@@ -8,16 +8,16 @@ output: html_document
 
 Each presenter has 20 minutes.  Please leave 3-4 minutes for questions. 
 
-| Time | Student|
-|------|--------|
-| 3:30 | Liz    |
-| 3:50 | Kim    |
-| 4:10 | Sam    |
-| 4:30 | Joanne |
-| 4:50 | Prucha |
-| 5:10 | Angie  |
-| 5:30 | Dan    |
-| 5:50 | Maryse |
+| Time | Student| File Links |
+|------|--------|---------|
+| 3:30 | Liz    |[link](F2016_student_presentations/Liz.html)|
+| 3:50 | Kim    |[link](F2016_student_presentations/Kim.html)|
+| 4:10 | Sam    |[link](F2016_student_presentations/Sam.html)|
+| 4:30 | Joanne |[link](F2016_student_presentations/Joanne.html)|
+| 4:50 | Prucha |[link](F2016_student_presentations/Prucha.html)|
+| 5:10 | Angie  |[link](F2016_student_presentations/Angie.html)|
+| 5:30 | Dan    |[link](F2016_student_presentations/Dan.html)|
+| 5:50 | Maryse |[link](F2016_student_presentations/Maryse.html) |
 
 ## Grading Rubric
 

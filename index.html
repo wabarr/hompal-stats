@@ -4,7 +4,7 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
@@ -19,6 +19,9 @@
 <script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+<link href="libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
+<script src="libs/highlightjs-1.1/highlight.js"></script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -33,10 +36,6 @@
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 
 <style type="text/css">code{white-space: pre;}</style>
-<link rel="stylesheet"
-      href="libs/highlight/textmate.css"
-      type="text/css" />
-<script src="libs/highlight/highlight.js"></script>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
@@ -109,10 +108,10 @@ button.code-folding-btn:focus {
 </style>
 
 
+
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
-<script src="libs/navigation-1.1/tabsets.js"></script>
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
@@ -146,35 +145,35 @@ $(document).ready(function () {
 </div>
 
 
-<div id="welcome-to-the-hompal-stats-course" class="section level2">
-<h2>Welcome to the Hompal Stats Course</h2>
+<div id="hompal-stats-course-fall-2018" class="section level2">
+<h2>Hompal Stats Course Fall 2018</h2>
 <table>
 <thead>
 <tr class="header">
-<th align="left">Instructor</th>
-<th align="left">W. Andrew Barr</th>
+<th>Instructor</th>
+<th>W. Andrew Barr</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Course Number</td>
-<td align="left">ANTH 6413</td>
+<td>Course Number</td>
+<td>ANTH 6413</td>
 </tr>
 <tr class="even">
-<td align="left">Meeting Time</td>
-<td align="left">Mondays 3:30PM - 6:00 PM</td>
+<td>Meeting Time</td>
+<td>Wednesday 9:00AM - 10:50AM</td>
 </tr>
 <tr class="odd">
-<td align="left">Location</td>
-<td align="left">SEH 6845 (Purple Meeting Room)</td>
+<td>Location</td>
+<td>SEH 6845 (Purple Meeting Room)</td>
 </tr>
 <tr class="even">
-<td align="left">Office Location</td>
-<td align="left">SEH 6685</td>
+<td>Office Location</td>
+<td>SEH 6685</td>
 </tr>
 <tr class="odd">
-<td align="left">Office Hours</td>
-<td align="left">Tues 12-2 or by appt</td>
+<td>Office Hours</td>
+<td>Tues 12-2 or by appt</td>
 </tr>
 </tbody>
 </table>
@@ -188,9 +187,13 @@ $(document).ready(function () {
 <script>
 
 // add bootstrap table styles to pandoc tables
-$(document).ready(function () {
+function bootstrapStylePandocTables() {
   $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
 });
+
 
 </script>
 
@@ -199,7 +202,7 @@ $(document).ready(function () {
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

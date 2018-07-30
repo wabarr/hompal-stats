@@ -3,12 +3,12 @@ title: "Analytical Methods in Evolutionary Anthropology"
 output: html_document
 ---
 
-## Welcome to the Hompal Stats Course
+## Hompal Stats Course Fall 2018
 
 Instructor | W. Andrew Barr
 ----- | --------
 Course Number | ANTH 6413
-Meeting Time | Mondays 3:30PM - 6:00 PM
+Meeting Time | Wednesday 9:00AM - 10:50AM
 Location | SEH 6845 (Purple Meeting Room) 
 Office Location | SEH 6685
 Office Hours | Tues 12-2 or by appt

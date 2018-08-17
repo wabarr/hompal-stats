@@ -1,5 +1,5 @@
 #navbar {
-  background-color: #005581;
+  background-color: #4D6BA5;
   color: white;
 }
 
@@ -38,7 +38,8 @@ li.nested ul a {
 
 
 h2 {
-  background-color:#FFFF99;
+  background-color:#D7E9F2;
+  padding: 10px 10px 10px 10px;
 }
 
 h2, h3 {

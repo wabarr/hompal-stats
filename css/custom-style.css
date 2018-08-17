@@ -3,6 +3,10 @@
   color: white;
 }
 
+strong, em {
+  color: #4D6BA5;
+}
+
 #navbar-container {
   width: 955px ;
   margin-right: auto;
@@ -50,10 +54,6 @@ tr:hover {
   background-color:#F2F2F2;
 }
 
-strong {
-  font-size:110%;
-  color: blue;
-}
 
 .list-group-item.active {
   background-color:#19668E;

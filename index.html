@@ -20,8 +20,8 @@
 <script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="libs/navigation-1.1/tabsets.js"></script>
-<link href="libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
-<script src="libs/highlightjs-1.1/highlight.js"></script>
+<link href="libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="libs/highlightjs-9.12.0/highlight.js"></script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -42,10 +42,12 @@
   }
 </style>
 <script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
 }
 </script>
 
@@ -101,6 +103,9 @@ img {
 }
 .tabbed-pane {
   padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
 }
 button.code-folding-btn:focus {
   outline: none;
@@ -177,6 +182,36 @@ $(document).ready(function () {
 </tr>
 </tbody>
 </table>
+</div>
+<div id="you-need-a-laptop" class="section level2">
+<h2>You need a laptop</h2>
+<p>For this course, you need a functioning laptop that you can install software on, and that you can bring to class every session. If this will present any difficulties for you please let me know right away.</p>
+</div>
+<div id="to-do-before-first-class-meeting" class="section level2">
+<h2>To Do Before First Class Meeting</h2>
+<p>In this course you will be learning the free and open-source software called R, using a helper program called R Studio. To make sure we can get off the ground running, please install the following software <strong><em>before the first day of class</em></strong></p>
+<ol style="list-style-type: decimal">
+<li>Download and Install R version 3.5.1
+<ul>
+<li>To to <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a></li>
+<li>Download the appropriate version for your operating system and install as you would any other software</li>
+</ul></li>
+<li>Download and Install R Studio Desktop Version 1.1.456
+<ul>
+<li>Go to <a href="https://www.rstudio.com/products/rstudio/download/#download" class="uri">https://www.rstudio.com/products/rstudio/download/#download</a></li>
+<li>Download the appropriate version for your operating system and install as you would any other software=</li>
+</ul></li>
+<li>Complete the DataCamp R tutorial at <a href="https://www.datacamp.com/courses/free-introduction-to-r" class="uri">https://www.datacamp.com/courses/free-introduction-to-r</a>
+<ul>
+<li>This requires creating a free account with Data Camp.<br />
+</li>
+<li>You just need to do the first section called <strong><em>Intro to basics</em></strong></li>
+</ul></li>
+</ol>
+</div>
+<div id="important-point-about-specific-versions" class="section level2">
+<h2>Important Point about Specific Versions</h2>
+<p>Even if you already have R and R Studio downloaded please check that you have these specific versions!! If you already have an old version, simply install the newer version on your computer!</p>
 </div>
 
 

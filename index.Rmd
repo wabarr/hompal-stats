@@ -12,3 +12,27 @@ Meeting Time | Wednesday 9:00AM - 10:50AM
 Location | SEH 6845 (Purple Meeting Room) 
 Office Location | SEH 6685
 Office Hours | Tues 12-2 or by appt
+
+## You need a laptop 
+
+For this course, you need a functioning laptop that you can install software on, and that you can bring to class every session.  If this will present any difficulties for you please let me know right away.
+
+## To Do Before First Class Meeting
+
+In this course you will be learning the free and open-source software called R, using a helper program called R Studio. To make sure we can get off the ground running, please install the following software ***before the first day of class***
+
+1.  Download and Install R version 3.5.1
+    *  To to https://cran.r-project.org/
+    *  Download the appropriate version for your operating system and install as you would any other software
+2.  Download and Install R Studio Desktop Version 1.1.456
+    *  Go to https://www.rstudio.com/products/rstudio/download/#download
+    *  Download the appropriate version for your operating system and install as you would any other software=
+3.  Complete the DataCamp R tutorial at https://www.datacamp.com/courses/free-introduction-to-r
+    *  This requires creating a free account with Data Camp.  
+    *  You just need to do the first section called ***Intro to basics***
+
+## Important Point about Specific Versions ##
+
+Even if you already have R and R Studio downloaded please check that you have these specific versions!! If you already have an old version, simply install the newer version on your computer!
+
+

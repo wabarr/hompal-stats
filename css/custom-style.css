@@ -25,9 +25,7 @@ strong, em {
 }
 
 #navbar ul li:hover {
-    color: black;
-    background-color:#D7E9F2;
-    
+    background-color:#6685c1;
 }
 
 #navbar ul li a {

@@ -9,7 +9,7 @@ output:
 
 | Date  | Demo | Homework  | Reading |
 | --------- | -------------------------  | ------------------ | ------------------ |
-| August 29     | [Intro to Course](presentations/intro2course/intro2course.html) & [Intro to R](presentations/intro2R/intro2R.html)     | [Try R Tutorial](http://tryr.codeschool.com) | [R Markdown Cheat Sheet](readings_pdf/rmarkdown-cheatsheet.pdf) |
+| August 29     | [Intro to Course](presentations/intro2course/intro2course.html) & [Intro to R](presentations/intro2R/intro2R.html)     | [Data Camp Intro to Basics](https://www.datacamp.com/courses/free-introduction-to-r) | [R Markdown Cheat Sheet](readings_pdf/rmarkdown-cheatsheet.pdf) |
 | September 5   | [Visualizing Data](presentations/visualization/visualization.html) & [Programming & Wrangling](presentations/programming-wrangling/programming-wrangling.html) | [Homework #1](homework_assignment_1.html) | [dplyr vignette](http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html) |
 | September 12  |  [lapply()](presentations/lapply/lapply.html) - [Probability](presentations/probability/probability.html) - [Summary Stats](presentations/summary_stats/summary_stats.html)  - [Distributions](presentations/distributions/distributions.html)  |  [Homework #2](homework_assignment_2.html)| Gotelli: Ch 1 - 3 | - |
 | September 19  |  [Hypothesis Testing](presentations/hypothesis_testing/hypothesis_testing.html) | [Homework #3](homework_assignment_3.html) | [Blog post](https://oikosjournal.wordpress.com/2011/10/11/frequentist-vs-bayesian-statistics-resources-to-help-you-choose/); [Youtube Video](https://youtu.be/42QuXLucH3Q); Gotelli: Ch 4 - 5 | - | 

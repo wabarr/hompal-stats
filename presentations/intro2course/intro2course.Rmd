@@ -12,12 +12,6 @@ output:
 
 this is the only pie chart you will see all semester.
 
-## Quick Poll
-
-We have someone with a confilct for the first 30 mins of class....
-
-Who would be OK with changing the course time to 3:30 - 6:00PM?
-
 ## Course Goals
 
 

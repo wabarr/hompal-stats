@@ -1,6 +1,6 @@
 ---
 title: "Homework Assignment #2"
-date: "Due Sept 19th"
+date: "Due Sept 12th"
 ---
 
 ### For each step, make sure your markdown document prints the relevant output, so that I can see <span class="mega-octicon octicon-eye"></span>  that your code works.  

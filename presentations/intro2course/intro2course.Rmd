@@ -33,11 +33,9 @@ From wikipedia:
 
 
 > "Data science is an interdisciplinary field about <span class="red2">**processes and systems**</span>
-> to <span class="red2">**extract knowledge or insights from data**</span> in various forms, either structured 
-> or unstructured, which is a continuation of some of the data analysis fields 
-> such as <span class="red2">**statistics**</span>, data mining, and predictive analytics."
+> to <span class="red2">**extract knowledge or insights from data**</span>.
 
-
+> - In private industry, you extract insight from data to make business decisions. 
 > - **It is also a big part of what scientists do!**
 > - Processes and systems for getting insight from data are important!
 
@@ -52,6 +50,7 @@ From wikipedia:
 > - We will spend a lot of time on the "how"
 > - You will become very familiar with the nuts-and-bolts of analyzing data
 > - Most of your grade comes from practical exercises
+> - I dont expect you to be a statistician (I sure as hell am not). But I do expect you to learn **how to extract insights from data**
 
 ## Grading
 
@@ -66,10 +65,10 @@ Class Project | 20%
 
 When you leave this course, I hope you are empowered to:
 
-> -  collect your data in a format that makes your life easier
-> -  explore patterns in your data
+> -  collect your data in a format that makes your future life easier
+> -  explore patterns in your data visually and statistically
 > -  test meaningful hypotheses using appropriate statistical tools
-> -  communicate these results
+> -  communicate these results effectively using graphs and prose
 
 
 ## Tools of the Trade
@@ -107,9 +106,9 @@ R is an **open-source** language and environment for statistical computing and g
 ## What is R?
 
 
-The 5th most popular programming language in the world
+One of the top 10 most widely used programming languages in the world in 2018.
 
-<img src='http://spectrum.ieee.org/image/Mjc5MjI0Ng.png' height=400px>
+<img src='https://spectrum.ieee.org/image/MzExNjk1OA.jpeg' height=400px>
 
 ## What is R?
 
@@ -130,4 +129,4 @@ http://hompal-stats.wabarr.com
 
 Let's check out the website then do the Introduction To R
 
-<span class='red2'>**Note**:</span> First homework assignment is due on September 12. 
+<span class='red2'>**Note**:</span> First homework assignment is due on September 5th. 

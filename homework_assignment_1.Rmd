@@ -1,7 +1,7 @@
 ---
 title: 'Homework Assignment #1'
 
-date: "due Sept 12"
+date: "due Sept 5th"
 output: html_document
 ---
 

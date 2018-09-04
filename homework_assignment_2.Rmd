@@ -9,32 +9,14 @@ date: "Due Sept 12th"
 
 a.  Load the [Howell's craniometric dataset](datasets/Howell_craniometry.txt) into R. This dataset includes 82 measurements on 2524 human crania from 28 populations [(measurement abbreviations detailed in this pdf)](datasets/Howell_Measurement_definitions.pdf). Note that a 0 indicates missing data in this dataset, so make sure to specify this when you read in the data.
 b.  Evaluate the structure of the dataframe using the `str()` function to make sure that it got read in correctly.  It should have 2524 observations of 86 variables.
-c.  The geometric mean is defined as the *n*-th root of the product of *n* numbers. Thus the geometric mean of 9, 6, 5, 4, and 3 would be calculated like this
- 
-```{r}
-product <- prod(c(9, 6, 5, 4, 3))
-geomean <- product ^ (1/5) 
-geomean
+c. Create a new dataframe containing only the `XFB`, `OBB`, and `SIS` varibles
+d.  Add a new column to the new dataframe that is the product of the `XFB`, `OBB`, and `SIS` variables.
 
-#Study the custom function below for calculating the geometric mean of a value of variables. Make sure you understand how it works....you will need to use in in the next step.  
-
-geomean<-function(myVector){
-  # accepts an argument called myVector, and calculates the geomean of the vector
-  # first, it counts the number of non-NA values in the vector before calculating the geomean
-  howManyAreNotNA <- sum(!is.na(myVector))
-  value <- prod(myVector^(1/howManyAreNotNA), na.rm=TRUE)
-  return(value)
-}
-```
-    
-d.  create a `results` vector, then write a `for` loop to go through each of the 2524 crania in the Howell's dataset, calculate the geometric mean of all available measurements, and then stores this in the appropriate slot in the `results` vector. Print only first 100 elements of the `results` vector to your markdown document. 
-e.  add this as a new column called `geomean` to the crania dataframe
 
 ## Problem 2
 
 a. Using `dplyr`, calculate the mean of the GOL, XCB, ZYB and SIS measurements for each population group by sex.  (i.e., calculate the mean value separately for NORSE males and NORSE females, and likewise for all groups). The resulting data frame should only have 6 columns. (one each for sex and population, and one for each of the 4 measurements).
-b. use a `for()` loop over each column of the crania dataframe. For each column, test if the column contains numeric data (using the `is.numeric()` function).  If it is numeric, calculate and return the mean value, being careful to remove NA values.  If the data are not numeric, return the string "Not Numeric". 
-c. Recreate the below figure exactly (including the theme) using the full cranial dataset. **Note**: you can control the size of the figures in your knitted document by including options in the code chunk. The default size is 6 for width and height.  The figure below is 16 wide and 9 high, like the following.
+b. Recreate the below figure exactly (including the theme) using the full cranial dataset. **Note**: you can control the size of the figures in your knitted document by including options in the code chunk. The default size is 6 for width and height.  The figure below is 16 wide and 9 high, like the following.
 
     \`\`\`{r fig.width=16, fig.height=9}
 

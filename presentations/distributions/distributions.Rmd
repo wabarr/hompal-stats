@@ -187,7 +187,7 @@ It is less likely to get many more or less than 2500 successes.
 
 <div class="columns-2 build">
 
-```{r echo=F, fig.width=5, fig.height=5}
+```{r echo=F, message=F, warning=F, fig.width=5, fig.height=5}
 library(ggplot2)
 library(gridExtra)
 dens <- qplot(x=1:100, y=dnorm(x=1:100, mean=60, sd=20), geom="line", size=I(2))  + labs(x="x", y="density", title="density")

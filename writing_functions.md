@@ -61,7 +61,7 @@ isItADuck <- function(input){
 ```
 ## Critical Points
 
-1.  the names `myVector`, `vecMean`, `vecMedian`, and `test` do not exist outside the function (i.e. after running the above code, you will get an error if you type `myVector` into the R interpreter)
+1.  the names `input` and `test` do not exist outside the function (i.e. after running the above code, you will get the following error if you type `input` into the R interpreter)
 
 2.  Nothing happens when we create the function.  Stuff happens later when we ***call*** the function with specific arguments. 
 

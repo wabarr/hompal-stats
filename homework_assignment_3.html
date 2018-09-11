@@ -4,7 +4,7 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
@@ -19,6 +19,9 @@
 <script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+<link href="libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="libs/highlightjs-9.12.0/highlight.js"></script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -33,20 +36,18 @@
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 
 <style type="text/css">code{white-space: pre;}</style>
-<link rel="stylesheet"
-      href="libs/highlight/textmate.css"
-      type="text/css" />
-<script src="libs/highlight/highlight.js"></script>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
   }
 </style>
 <script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
 }
 </script>
 
@@ -103,16 +104,19 @@ img {
 .tabbed-pane {
   padding-top: 12px;
 }
+.html-widget {
+  margin-bottom: 20px;
+}
 button.code-folding-btn:focus {
   outline: none;
 }
 </style>
 
 
+
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
-<script src="libs/navigation-1.1/tabsets.js"></script>
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
@@ -150,11 +154,9 @@ $(document).ready(function () {
 <h2>Question #1</h2>
 <p>Using the built-in <code>iris</code> dataset:</p>
 <ol style="list-style-type: lower-alpha">
-<li>use the <code>lapply()</code> function to test each numeric column for normality using the <code>shapiro.test()</code> function…saving the results to a list called <code>iris_results</code>.</li>
-<li>Use the <code>lapply()</code> function again to loop over <code>iris_results</code> and extract the p values.<br />
-</li>
-<li>make a histogram of each <code>iris</code> numeric variable, and annotate the plot with the corresponding p value.</li>
-<li>calculate the mean and median of <code>iris$Sepal.Length^2</code></li>
+<li>write a for() loop to test whether each numeric column in the <code>iris</code> dataset is normally distributed using the <code>shapiro.test()</code> function, and print out the p-value from this test <em>you must write a for loop to get credit for this question</em></li>
+<li>make a histogram of each <code>iris</code> numeric variable</li>
+<li>calculate the mean and median of the squared value of <code>iris$Sepal.Length</code> (calculated like this: <code>iris$Sepal.Length^2</code>).</li>
 <li>explain in words why these mean and median values are different.</li>
 </ol>
 </div>
@@ -184,9 +186,13 @@ $(document).ready(function () {
 <script>
 
 // add bootstrap table styles to pandoc tables
-$(document).ready(function () {
+function bootstrapStylePandocTables() {
   $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
 });
+
 
 </script>
 
@@ -195,7 +201,7 @@ $(document).ready(function () {
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

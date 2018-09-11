@@ -1,0 +1,93 @@
+---
+title: "for-loops"
+author: "20 minutes"
+date: "9/11/2018"
+output: ioslides_presentation
+---
+## for loops
+
+`for` loops will be familiar if you have ever used any other programming languages.  The basic structure looks like this:
+
+```{r results='hide'}
+vector <- 1:10
+for(i in vector){
+  #do something with i
+}
+```
+
+## for loops
+
+Here is a (slightly) more complicated example. 
+
+```{r }
+myVector <- 1:10
+for(counter in myVector){
+  result <- paste("counter ^ 2 = ", counter^2)
+  print(result)
+}
+```
+
+
+## explanation of previous loop
+
+-  We loop over a vector `1:100`, and sequentially assign its values to a temporary variable we are calling `counter`. (Note: we can call this variable whatever we want.) 
+-  Then R does what is within the curly braces `{}` for each iteration of the loop.
+-  In this case, it pastes together some text with the square of the value of `counter` and prints this all to the console. 
+
+-  <span class="mega-octicon octicon-question"></span> After running the above code, what is the value of `counter`? What is the value of `myVector`? Has this value changed?
+
+## getting stuff out of a loop
+
+-  Create a results vector in advance that is the same length as the vector we are looping over
+-  Then save the results each time in the appropriate slot. 
+
+```{r}
+integers <- c(10, 9, 8)
+results <- numeric(3)
+for(i in 1:length(results)){
+  results[i] <- integers[i] + 1
+}
+
+results
+
+```
+
+note...this is a great example of an unnecessary for() loop!
+
+## `if` statements
+
+-  Often during a loop, you may want to do diffent things based on a test
+-  Imagine a vector of germination outcomes from a seed experiment. 
+    *  0 indicates the seed did not germinate
+    *  1 indicates that the seed germinated
+- We can use the `if()` function to evaluate the outcome and provide context specific output. 
+
+---
+
+```{r}
+outcomes <- c(0,1,0,1,0,1,0,1,0,1,0,1,0,0)
+for(trial in outcomes){
+  if(trial == 1) print("Welcome to the world, plantling!")
+  else print("RIP")
+}
+```
+
+## Challenge
+
+Write a `for` loop to show how, as sample size increases, estimates of the mean of a population converge on the true value (this is known as the *law of large numbers*)
+
+* create a numeric results vector of length 2000
+* loop over each integer `i` from 1 to 2000
+* at each iteration use the `rnorm()` function to simulate a sample of size `i` from a population with a mean of 100 and standard deviation of 30.
+* calculate the mean of this sample, and be sure to save these results to the appropriate place in the results vector
+* finally, make a plot of the results with the integers 1 to 2000 on the x axis, and the corresponding value from the results vector on the y axis
+
+<!-- ## solution -->
+
+<!-- ```{r} -->
+<!-- results <- numeric(2000) -->
+<!-- for(i in 1:2000){ -->
+<!--   results[i] <- mean(rnorm(n=i, mean=100, sd=30)) -->
+<!-- } -->
+<!-- qplot(x=1:2000, y=results) -->
+<!-- ``` -->

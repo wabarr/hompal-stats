@@ -1,0 +1,62 @@
+---
+title: "Homework #2 - Solution"
+output: html_document
+---
+
+## Problem 1
+
+### 3 points possible
+a.  0.5 pt - load data
+b.  0.5 pt - str
+c.  1 pt - select columns
+d.  1 pt - add calculated column
+
+### part a
+
+```{r cache=TRUE}
+crania <-read.table("http://hompal-stats.wabarr.com/datasets/Howell_craniometry.txt", sep=",", header=TRUE, na.strings = 0)
+head(crania)
+```
+
+### part b
+
+```{r}
+str(crania)
+```
+
+
+### part c & d in one step with pipes
+
+```{r message=F}
+library(tidyverse)
+subsetCrania <- 
+  crania %>%
+  select(XFB, OBB, SIS) %>%
+  mutate(prod = XFB * OBB * SIS)
+subsetCrania
+```
+
+## Problem 2
+
+### points possible
+a. 1pt means
+c. 2pts figure
+
+### Part a
+
+```{r}
+library(dplyr)
+crania %>% 
+  group_by(Population, Sex) %>%
+  summarise(meanGOL = mean(GOL), meanXCB = mean(XCB), meanZYB=mean(ZYB), meanSIS = mean(SIS))
+```
+
+### Part b
+
+
+
+```{r cache=TRUE, echo=TRUE,  fig.width=16, fig.height=9}
+library(ggplot2)
+qplot(GOL, BBH, data=crania) + facet_wrap(~Population) + theme_bw(20)
+```
+

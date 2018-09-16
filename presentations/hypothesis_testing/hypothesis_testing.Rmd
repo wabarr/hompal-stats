@@ -1,5 +1,6 @@
 ---
 title: "Hypothesis Testing"
+author: "60 minutes"
 output: 
   ioslides_presentation:
     widescreen: yes
@@ -71,14 +72,14 @@ qplot(x=SEX, y=FHD, data=baboons,
   geom_point(color="red", size=3)
 ```
 
-## Null Hypothesis  
+## Null Hypothesis  {.build}
 
 
 The null hypothesis is the simplest possible explanation for a phenomenon.  This explanation is usually that random variation is responsible for any apparent pattern.
 
-In the case of our baboons,  the null hypothesis is that femoral head diameter is in NO way related to sex, and that any apparent association between the two is due to random chance.  
+**Question**: In the case of our baboons, what is the null hypothesis?
 
-## Alternatives to the Null 
+## Alternatives to the Null {.build}
 
 Next, we create one or more statistical alternative hypotheses.  
 
@@ -95,10 +96,10 @@ In terms of conditional probability, the p value represents
 
 $$ P(Data\ |\ H_0) $$
 
-## The all powerful p-value 
+## The all powerful p-value {.build}
 
 
-For baboons, use T-test to compare means.
+For baboons, we might use a T-test to compare means.
 
 Like all parametric statistics, the T-test returns a ***test statistic***.
 
@@ -248,18 +249,20 @@ In Monte Carlo analysis, data are randomly reshuffled over and over to specify t
 
 We will use the absolute value of the differnce in group means.  We will need to calculate this over and over, so we will make a function to do it.
 
-```{r}
+```{r message=F}
 
-abs.mean <- function(ant_counts, habitats) {
-  
-  means <- tapply(ant_counts, habitats, 
-                  FUN = mean)
-  
-  abs_diff <- abs(means[2] - means[1])
-  return(abs_diff)
+abs.mean <- function(df){
+  library(dplyr)
+  means <- 
+    df %>%
+    group_by(Habitat) %>%
+    summarize(meanAnts = mean(n_Ants))
+  return(
+    abs(means$meanAnts[1] - means$meanAnts[2])
+    )
 }
 
-abs.mean(ants$n_Ants, ants$Habitat)
+abs.mean(ants)
 ```
 
 ## Monte Carlo - Step 2 - Shuffle 
@@ -282,10 +285,9 @@ results <- numeric(1000)
 
 for(i in 1:1000) {
   
-  mix <- sample(ants$n_Ants)
-  results[i] <- abs.mean(
-                mix , ants$Habitat
-                )
+  mix <- ants
+  mix$n_Ants <- sample(mix$n_Ants)
+  results[i] <- abs.mean(mix)
 }
 ```
 

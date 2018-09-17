@@ -1,4 +1,6 @@
 ---
+title: Regression
+author: "80 Minutes"
 output: 
   ioslides_presentation:
     widescreen: yes

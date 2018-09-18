@@ -341,7 +341,7 @@ for a <span style="color:gold;">&#9733;</span> who can explain how this works?
 
 ***What does our p value of `r mean(results >= 3.75)` mean?***
 
-If there is no relationship between habitat and and nest count, we would expect to observe data with a mean difference as extreme as ours about 3% of the time. 
+If there is no relationship between habitat and and nest count, we would expect to observe data with a mean difference as extreme as ours about `r round(mean(results >= 3.75)*100, 2)`% of the time. 
 
 ## If you only remember one thing from this class... 
 

@@ -1,0 +1,150 @@
+---
+title: 'Homework # 3 - Solution'
+output: html_document
+---
+
+## Question 1
+
+a.  2pts shapiro test
+c.  2pts histogram
+d.  1pt mean and median
+e.  1pt why mean and median differ
+
+
+### Part A
+
+Note that columns 1 thorough 4 are the numeric columns in the `iris` dataset.
+
+```{r}
+
+for(i in 1:4){
+  print(shapiro.test(iris[,i])$p.value)
+}
+```
+
+### Part B
+
+```{r}
+library(ggplot2)
+qplot(iris$Sepal.Length) 
+qplot(iris$Sepal.Width) 
+qplot(iris$Petal.Length) 
+qplot(iris$Petal.Width) 
+```
+
+### Part D
+
+```{r}
+mean(iris$Sepal.Length^2)
+median(iris$Sepal.Length^2)
+```
+
+### Part E
+
+These values are different because the distribution of `iris$Sepal.Length^2` is asymmetric, as shown in the below histogram.  
+
+```{r}
+qplot(iris$Sepal.Length^2)
+```
+
+The distribution has a long right tail,  which heavily influences the mean, pulling it towards the larger values. The median is less affected by extreme values.
+
+## Question 2
+
+
+a.  1pt body mass vector
+b.  2pts growth loop
+c.  2pts vargrowth
+d.  2pts environmental vargrowth
+e.  2pts normality test
+f.  1pt questions
+
+### Part A
+
+```{r}
+body.sizes <- rnorm(1000, mean=10, sd=3)
+## make a copy so we can always go back
+body.sizes.original <- body.sizes
+```
+
+### Part B
+
+```{r}
+
+for(year in 1:10) {
+  body.sizes <- body.sizes * 1.15
+}
+
+#save the results
+body.sizes.growth <- body.sizes
+```
+
+### Part C
+
+```{r}
+growth.rates <- rnorm(1000, 1.15, 0.2)
+
+#reset the body.sizes variable
+body.sizes <- body.sizes.original
+
+for(year in 1:10) {
+  body.sizes <- body.sizes * growth.rates
+}
+
+body.sizes.vargrowth <- body.sizes
+```
+
+### Part D
+```{r}
+#reset the body.sizes variable
+body.sizes <- body.sizes.original
+
+for(year in 1:10) {
+  body.sizes <- body.sizes * growth.rates * rnorm(1, mean=1, sd=0.2)
+}
+
+body.sizes.environmentalgrowth <- body.sizes
+
+```  
+
+### Part E
+
+***Note:*** I made histograms too because I like them, but I didn't ask you to. 
+
+#### Original Body sizes
+
+```{r}
+qplot(body.sizes.original, main = "original")
+shapiro.test(body.sizes.original)
+qqnorm(body.sizes.original)
+```
+
+#### With simple growth rate
+
+```{r}
+qplot(body.sizes.growth, main = "with growth")
+shapiro.test(body.sizes.growth)
+qqnorm(body.sizes.growth)
+```
+
+#### With variable growth rates
+
+```{r}
+qplot(body.sizes.vargrowth, main = "variable growth")
+shapiro.test(body.sizes.vargrowth)
+qqnorm(body.sizes.vargrowth)
+```
+
+#### With variable growth rates and environmental variability year to year
+
+```{r}
+qplot(body.sizes.environmentalgrowth, main = "environmental growth")
+shapiro.test(body.sizes.environmentalgrowth)
+qqnorm(body.sizes.environmentalgrowth)
+```
+
+### Part F
+
+1.  Does growth of a normally-distributed population lead to non-normal distributions? ***No***
+    2.  Does variation in growth cause non-normality? ***Yes***
+    3.  Does environmental stochasticity reduce or amplify body size variation? ***It aplifies it...check out their standard deviations***

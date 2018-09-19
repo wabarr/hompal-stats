@@ -10,9 +10,9 @@ In 25 words or less, what does a p-value represent? ***Be careful!!!!***
 
 ## Problem 2
 
-Write your own Monte Carlo statistical analysis to test the hypothesis that foot size is correlated with stature (height). Use this [fake data set](datasets/american_women_feet.txt) on foot size in american women.
+Write your own Monte Carlo statistical analysis to test the hypothesis that foot size is correlated with stature (height). Use this [fake data set](datasets/american_feet.txt) on foot size in Americans.
 
-A. Use ggplot2 to create a scatter plot with height on the x-axis and foot length on the y-axis.  Make sure your plot has an informative title and make sure it looks good!
+A. Use ggplot2 to create a scatter plot with height on the x-axis and foot length on the y-axis, and add a line showing the relationship between the variables.  Make sure your plot has an informative title and make sure it looks good!
 
 B. Do the analysis:
 

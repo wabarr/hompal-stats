@@ -20,6 +20,16 @@ This includes data on vehicles, and includes the model, the miles per gallon (mp
 -  How many vehicles have a displacement higher than 300?
 -  What are the mean horsepower (hp) ratings for vehicles with 4, 6, and 8 cylinders (cyl)?
 
+## For loops
+
+Write a for loop to conduct a basic power analysis to answer the question: what is the statistical power of simple T test designed to tell if 2 group means differ from one another?
+
+To do the T test, you will simply do `t.test(x, y)` and you can extract the p value from this result by name e.g., `t.test(x, y)$p.value`
+
+For each iteration of your for loop, simulate a vector `x` which represents a sample size of 7 drawn from a normal distribution with a mean of 10.  Then simulate a vector `y` which represents a sample size of 7 drawn from a normal distribution with a mean of 12.  Use the T test to calculate the p value for the test.  Repeat this 1000 times. 
+
+Now, calculate the false negative rate $\beta$, which is reflected by the number of t tests returning a p value greater than 0.05 (remember, you know the group means are different in reality, because you simulated it that way). Finally, calculate the statistical power of this T test with these sample sizes and effect size like this: 1 - $\beta$.
+
 ## Regression
 
 -  Read this dataset into R http://hompal-stats.wabarr.com/datasets/ungs.txt and save to a variable called `ungulates`

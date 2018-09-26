@@ -21,7 +21,9 @@ thePlot <- qplot(height,
             ylab="foot length(cm)", 
             xlab="height(cm)")
 
-thePlot + theme_bw(18)
+thePlot + 
+  stat_smooth(method="lm") + 
+  theme_bw(18)
 ```
 
 ### part B - 2pts

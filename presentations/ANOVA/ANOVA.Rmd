@@ -1,5 +1,6 @@
 ---
 title: ANOVA & ANCOVA
+author: "60 minutes"
 output: 
    ioslides_presentation:
        widescreen: true

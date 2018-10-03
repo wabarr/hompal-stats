@@ -1,5 +1,6 @@
 ---
 title: Tidy Data
+author: "30 minutes"
 output:
     ioslides_presentation
 ---
@@ -43,7 +44,7 @@ chicken smell                 so-so
 
 ## dplyr and ggplot2 just work better on the long form 
 
-(which makes sense, as all these packages are part of the [hadleyverse](http://adolfoalvarez.cl/the-hitchhikers-guide-to-the-hadleyverse/)) 
+(which makes sense, as all these packages are part of the `tidyverse`
 
 ## Example data {.smaller}
 
@@ -53,11 +54,9 @@ grades <- read.table(filepath, header=T, sep=',')
 head(grades)
 ```
 
-## Three main functions {.build}
+## Two main functions {.build}
 
 **`gather()`**  takes multiple columns, and collapse them into two key - value columns 
-
-**`separate()`**  takes a single column and splits it into two columns based on some text character
 
 **`spread()`**  takes two columns (key - value pairs) and spreads them into separate columns
 
@@ -66,8 +65,8 @@ head(grades)
 Collapses multiple columns into two key - value pairs
 
 
-```{r}
-library(tidyr)
+```{r message=FALSE}
+library(tidyverse)
 head(grades)
 grades <- gather(grades, key = "test", value="grade", exam1, exam2, exam3)
 head(grades)
@@ -78,22 +77,11 @@ This allows you to use the `test` variable in facets, to make multiple plots eas
 ## gather() {.smaller}
 
 ```{r echo=TRUE}
-library(ggplot2)
 qplot(x=TA, y=grade, geom='boxplot', data=grades, fill=TA) + 
   facet_wrap(~test, nrow = 3) + 
   theme_bw(15)
 ```
 
-
-## separate() {.smaller}
-
-
-takes a single column and splits it into two based on some text character
-
-```{r}
-head(grades)
-grades %>% separate(students, into=c("lastname","firstname"), sep = " ")
-```
 
 ## spread() {.smaller}
 
@@ -107,7 +95,6 @@ grades %>% spread(key=test, value=grade)
 ## Challenge -  using this dataset {.smaller}
 
 ```{r message=FALSE}
-library(dplyr)
 filepath <- "http://hompal-stats.wabarr.com/datasets/barr_astrag_2014.txt"
 astrag <- read.table(filepath, header=TRUE, sep="\t")
 head(astrag)

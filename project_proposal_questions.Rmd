@@ -10,7 +10,7 @@ For this project, you will analyze a real dataset (either your own, or one drawn
 
 You should choose a question that is applicable to a technique common in your area of research interest....hopefully one that you aren't too familiar with (we want you to learn something here!) 
 
-For the presentation, you will be walking the class through the process of analyzing your data (including an Rmarkdown document that includes all R code used to make all visuals and to perform all statistical analysis). Your presentation should take approximately 25 minutes.
+For the presentation, you will be walking the class through the process of analyzing your data (including an Rmarkdown document that includes all R code used to make all visuals and to perform all statistical analysis). Your presentation should take approximately 15 minutes.
 
 ## Research Question
 

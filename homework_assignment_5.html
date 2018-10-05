@@ -156,7 +156,7 @@ $(document).ready(function () {
 <ol style="list-style-type: upper-alpha">
 <li>Read in the data, saving it to a variable called <code>astrag</code>.</li>
 <li>Make a scatterplot with the natural logarithm of measurement <code>B</code> on the x-axis and the natural logarithm of measurement <code>DistRad</code> on the y-axis.</li>
-<li>Calculate the ordinary least-squares (OLS) regression for DistRad as a function of B, and print a <code>summary()</code> of this data.</li>
+<li>Calculate the ordinary least-squares (OLS) regression for <code>log(DistRad)</code> as a function of <code>log(B)</code>, and print a <code>summary()</code> of this data.</li>
 <li>Calculate the reduced major axis regression (RMA) for the same variables. <strong>Note</strong> the <code>lmodel2</code> package uses “RMA”&quot; to refer to “Ranged Major Axis”, which is different. You want what <code>lmodel2</code> calls Standardized Major Axis (SMA), which is equivalent to what we call reduced major axis (RMA) in our literature.</li>
 <li>Is the OLS slope greater or less than the RMA slope?</li>
 <li>Add both the OLS and the RMA regression lines to the plot created in part B. Make sure the two lines have different colors and/or line types, and that they are labeled so I know which is which.</li>

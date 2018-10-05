@@ -15,5 +15,5 @@ E.  Is the OLS slope greater or less than the RMA slope?
 F.  Add both the OLS and the RMA regression lines to the plot created in part B.  Make sure the two lines have different colors and/or line types, and that they are labeled so I know which is which. 
 G.  use the `plot()` function to plot regression diagnostic plots for the OLS regression model. Do the assumptions of linear regression appear to be met? Explain your answer in complete sentences.
 H.  Extract the residuals from the OLS regression, and make a histogram of them, with the appropriate labels and title for the plot.
-I.  Calculate the species means for both variables, and add the species means as a new layer on the scatterplot created in part B.
+I.  Calculate the species means for both variables `B` and `DistRad`, and add the species means as a new layer on the scatterplot created in part B.
 

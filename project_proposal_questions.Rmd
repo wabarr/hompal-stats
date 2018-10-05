@@ -4,7 +4,7 @@ date: "Due Oct. 17th"
 output: html_document
 ---
 
-**Upload a knitted .html file with answers to the following questions.  Combine this .html file with the .html file for Homework #5 into a single zip file, and submit the zip file as your assignment on blackboard.**
+**Upload a knitted .html file with answers to the following questions.  There is a separate homework assignment on Blackboard where you can upload your responses.**
 
 For this project, you will analyze a real dataset (either your own, or one drawn from published data) to address a specific research research question (or several related questions). If you are using a published dataset, you should propose a novel question to test with these data, rather than recreating an analysis from a prior study. 
 

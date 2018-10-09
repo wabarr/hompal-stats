@@ -38,13 +38,13 @@ chicken smell                 so-so
 
 ### Two reasons come up most often:
 
-> 1. You want to take advantage of `group_by()` in the `dplyr` package to do complex stuff
+> * You want to take advantage of `group_by()` in the `dplyr` package to do complex stuff
 
-> 2. You want to take advantage of `facets` in `ggplot2`
+> * You want to take advantage of `facets` in `ggplot2`
 
 ## dplyr and ggplot2 just work better on the long form 
 
-(which makes sense, as all these packages are part of the `tidyverse`
+(which makes sense, as all these packages are part of the `tidyverse`)
 
 ## Example data {.smaller}
 
@@ -76,10 +76,13 @@ This allows you to use the `test` variable in facets, to make multiple plots eas
 
 ## gather() {.smaller}
 
-```{r echo=TRUE}
+```{r echo=TRUE, fig.width=8, fig.height=4}
 qplot(x=TA, y=grade, geom='boxplot', data=grades, fill=TA) + 
-  facet_wrap(~test, nrow = 3) + 
-  theme_bw(15)
+  facet_wrap(~test) + 
+  theme_bw(15) + 
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank())
 ```
 
 

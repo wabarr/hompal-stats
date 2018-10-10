@@ -1,0 +1,94 @@
+---
+title: 'Homework #5 - Solution'
+output: 
+  html_document
+---
+
+## 19 points total
+
+### Problem 1
+
+### A.  1 pt
+
+
+```{r}
+astrag <- read.table("http://hompal-stats.wabarr.com/datasets/barr_astrag_2014.txt", sep="\t", header=TRUE)
+```
+
+
+### B.  2 pts
+
+```{r}
+library(ggplot2)
+scatter <- ggplot() + 
+              geom_point(aes(x=log(B), y=log(DistRad)), data=astrag) +
+              labs(title="log(DistRad)~log(B)") + 
+              theme_bw(20)
+scatter
+```
+
+
+### C. 2 pts
+
+```{r}
+OLS_model <- lm(log(DistRad)~log(B), data=astrag) 
+summary(OLS_model)
+```
+
+
+### D.  3 pts
+
+```{r}
+library(lmodel2)
+RMA_model <- lmodel2(log(DistRad)~log(B), data=astrag)
+RMA_model
+```
+
+
+### E. 1 pts
+
+The OLS slope (1.108552) is less than the RMA slope (1.172325).
+
+
+### F.  3 pts
+
+```{r}
+reg_lines <- data.frame(slopes = c(RMA_model$reg[3,3],coef(OLS_model)[2]), 
+                        intercepts = c(RMA_model$reg[3,2], coef(OLS_model)[1]), method=c("RMA","OLS")
+                        )
+withRegLines <- scatter + 
+  geom_abline(aes(slope=slopes, intercept=intercepts, linetype=method, color=method), 
+              data=reg_lines, size=2, alpha=0.5) 
+withRegLines
+```
+
+
+
+### G. 3 pts
+
+```{r}
+plot(OLS_model)
+```
+ 
+There is evidence that the residuals are not normally distributed. 
+
+
+### H.  2pts
+
+```{r}
+qplot(resid(OLS_model), main="Histogram of residuals from OLS") + theme_bw(20)
+```
+
+### I. 2pts
+
+```{r message=F}
+library(dplyr)
+speciesMeans <- 
+  astrag %>% 
+    group_by(Taxon) %>%
+    summarize(logB=mean(log(B), na.rm=T), logDistRad=mean(log(DistRad), na.rm=T))
+
+withRegLines + 
+  geom_point(aes(x=logB, y=logDistRad), data=speciesMeans, color="blue", shape=15)
+
+```

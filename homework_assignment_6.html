@@ -4,7 +4,7 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
@@ -19,6 +19,9 @@
 <script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+<link href="libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="libs/highlightjs-9.12.0/highlight.js"></script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -33,20 +36,18 @@
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 
 <style type="text/css">code{white-space: pre;}</style>
-<link rel="stylesheet"
-      href="libs/highlight/textmate.css"
-      type="text/css" />
-<script src="libs/highlight/highlight.js"></script>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
   }
 </style>
 <script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
 }
 </script>
 
@@ -103,16 +104,19 @@ img {
 .tabbed-pane {
   padding-top: 12px;
 }
+.html-widget {
+  margin-bottom: 20px;
+}
 button.code-folding-btn:focus {
   outline: none;
 }
 </style>
 
 
+
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
-<script src="libs/navigation-1.1/tabsets.js"></script>
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
@@ -153,13 +157,12 @@ $(document).ready(function () {
 <li>Make a boxplot of feeding rate by sex</li>
 <li>Make a boxplot of feeding rate by group</li>
 <li>Show the ANOVA table for the two way ANOVA</li>
-<li><p>Explore the interaction between the two factors by creating a plot analogous to figure 10.3 (p 329) in the Gotelli book. Put the group on the X axis, and the mean feeding rate for each group on the Y axis (make this a line going across all factor levels). Color code the lines by sex. <em>Do not use the <code>interaction.plot()</code> shortcut to make this plot.</em></p></li>
-<li><p>Explain whether or not there is an interaction between the two factors.</p></li>
+<li>Make an interaction plot of your two way ANOVA E. Explain whether or not there is an interaction between the two factors.</li>
 </ol>
 </div>
 <div id="problem-2" class="section level2">
 <h2>Problem # 2</h2>
-<p>Write a function to simulate ANOVA type data, with two groups and some difference in means between the groups. You can simulate the data using the equation you saw in the ANOVA slide show.</p>
+<p>Write a function to simulate the kind of data suitable for ANOVA, with two groups and some difference in means between the groups. You can simulate the data using the equation you saw in the ANOVA slide show.</p>
 <p><span class="math display">\[Y_{ij}=\mu + A_i + \epsilon_{ij}\]</span></p>
 <p>Assume that the design is balanced (groups have same sample size).</p>
 <p>Your function should take the following arguments and default values:</p>
@@ -200,9 +203,13 @@ $(document).ready(function () {
 <script>
 
 // add bootstrap table styles to pandoc tables
-$(document).ready(function () {
+function bootstrapStylePandocTables() {
   $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
 });
+
 
 </script>
 
@@ -211,7 +218,7 @@ $(document).ready(function () {
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

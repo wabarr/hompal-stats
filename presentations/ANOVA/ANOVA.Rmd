@@ -24,10 +24,10 @@ So how do we compare group means?
 
 <div class="red">**Confusingly, it's all about variances (hence ANOVA).**</div>
 
-## Intuitive Picture of ANOVA {.columns-2}
+## Intuitive Picture of ANOVA
 
 
-```{r echo=FALSE, warnings=FALSE, message=FALSE, fig.width=4}
+```{r echo=FALSE, warnings=FALSE, message=FALSE, fig.width=9, fig.height=3}
 set.seed(1234)
 library(ggplot2)
 theme_set(theme_bw(15))
@@ -35,31 +35,32 @@ x <- rnorm(1000, mean=50, sd=2)
 y <- rnorm(1000, mean=44, sd=2)
 dat <- data.frame(x,y)
 library(reshape2)
+library(gridExtra)
 meltdat <- melt(dat)
-ggplot() + 
+diff <- ggplot() + 
   geom_histogram(aes(x=value, fill=variable), position="dodge", data=meltdat) + 
   annotate(geom = "segment", x=mean(meltdat$value) - (var(meltdat$value)/2), xend=mean(meltdat$value) + (var(meltdat$value)/2), y=150, yend=150, size=2) + 
   annotate(geom = "segment", x=mean(dat$x) - (var(dat$x)/2), xend=mean(dat$x) + (var(dat$x)/2), y=142, yend=142,size=2, color="#f35e5a") + 
   annotate(geom = "segment", x=mean(dat$y) - (var(dat$y)/2), xend=mean(dat$y) + (var(dat$y)/2), y=142, yend=142,size=2, color="#17b3b7") + 
   guides(fill=FALSE)
-```
 
-Black bars at top represent variances ignoring groups.
-
-```{r echo=FALSE, warnings=FALSE, message=FALSE, fig.width=4}
 x <- rnorm(1000, mean=50, sd=2)
 y <- rnorm(1000, mean=50, sd=2)
 dat <- data.frame(x,y)
 meltdat <- melt(dat)
-ggplot() + 
+similar <- ggplot() + 
   geom_histogram(aes(x=value, fill=variable), position="dodge", data=meltdat) + 
   annotate(geom = "segment", x=mean(meltdat$value) - (var(meltdat$value)/2), xend=mean(meltdat$value) + (var(meltdat$value)/2), y=150, yend=150,size=2) + 
   annotate(geom = "segment", x=mean(dat$x) - (var(dat$x)/2), xend=mean(dat$x) + (var(dat$x)/2), y=145, yend=145, size=2, color="#f35e5a") + 
   annotate(geom = "segment", x=mean(dat$y) - (var(dat$y)/2), xend=mean(dat$y) + (var(dat$y)/2), y=141, yend=141,size=2, color="#17b3b7") + 
   guides(fill=FALSE)
+
+gridExtra::grid.arrange(diff, similar, nrow=1)
 ```
 
 Colored bars at top represent variances within groups.
+
+Black bars at top represent variances ignoring groups.
 
 ## The ANOVA linear model {.build}
 

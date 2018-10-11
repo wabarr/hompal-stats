@@ -10,7 +10,9 @@ A.  Make a boxplot of feeding rate by sex
 B.  Make a boxplot of feeding rate by group
 C.  Show the ANOVA table for the two way ANOVA
 D.  Make an interaction plot of your two way ANOVA
-E. Explain whether or not there is an interaction between the two factors.  
+E.  Explain whether or not there is an interaction between the two factors.  
+
+**Note**: the first column of this dataset contains row numbers, so it doesn't have a column heading. This is a common situation, so there is an option in the `read.table()` function to deal with it. You simply indicate which column number contains the `row.names` (in this case the names are numbers!).  So the following code will work `read.table("https://hompal-stats.wabarr.com/datasets/lemurfeeding.txt", header=T, row.names = 1)`
 
 ## Problem # 2
 

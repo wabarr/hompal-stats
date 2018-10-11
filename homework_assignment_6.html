@@ -157,8 +157,10 @@ $(document).ready(function () {
 <li>Make a boxplot of feeding rate by sex</li>
 <li>Make a boxplot of feeding rate by group</li>
 <li>Show the ANOVA table for the two way ANOVA</li>
-<li>Make an interaction plot of your two way ANOVA E. Explain whether or not there is an interaction between the two factors.</li>
+<li>Make an interaction plot of your two way ANOVA</li>
+<li>Explain whether or not there is an interaction between the two factors.</li>
 </ol>
+<p><strong>Note</strong>: the first column of this dataset contains row numbers, so it doesn’t have a column heading. This is a common situation, so there is an option in the <code>read.table()</code> function to deal with it. You simply indicate which column number contains the <code>row.names</code> (in this case the names are numbers!). So the following code will work <code>read.table(&quot;https://hompal-stats.wabarr.com/datasets/lemurfeeding.txt&quot;, header=T, row.names = 1)</code></p>
 </div>
 <div id="problem-2" class="section level2">
 <h2>Problem # 2</h2>

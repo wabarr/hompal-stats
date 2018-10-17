@@ -152,7 +152,7 @@ myTable <- table(myData$site,myData$species)
 chisq.test(myTable)
 ```
 
-<p class="red2">Note that this function expects a contingency table, not two vectors</p>
+<p class="red2">Note, you can either pass two vectors of data, or a pre-made contingency table.</p>
 ## Fisher's Exact Test 
 
 

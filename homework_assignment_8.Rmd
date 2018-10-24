@@ -13,7 +13,9 @@ C.  Calculate the variance / covariance matrix for the 6 numeric variables.
 
 A.  Compute a Euclidian distance matrix for the 6 numerical variables.  **Save this to a variable, DO NOT PRINT THIS TO THE SCREEN OR INCLUDE IT IN THE OUTPUT**
 B.  Perform a hierarchical cluster analysis using the distance matrix you just computed. Use the `hclust()` function for this
-C.  Plot the cluster analysis dendrogram. 
+C.  Use the `plot()` function to plot the cluster analysis dendrogram. 
+D.  Interpret the plot visually. Which which single specimen (identified on the plot by its data-frame row number) is most distinct from all other specimens? 
+
 
 
 

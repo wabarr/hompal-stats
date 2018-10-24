@@ -6,7 +6,7 @@ output: html_document
 ## Problem 1
 
 A.  Load [Howell's craniometric dataset](http://hompal-stats.wabarr.com/datasets/Howell_craniometry.txt)
-B.  Get rid of unwanted data. Select only the following columns: <span style="color:red;">ID, Sex, Population, BNL, MDH, EKB, ZOR, BAA, NBA</span>. Filter the dataset to only include individuals from the following populations: <span style="color:red;">BUSHMAN, PERU, NORSE, ZULU</span>.
+B.  Get rid of unwanted data. Select only the following columns: <span style="color:red;">ID, Sex, Population, BNL, MDH, EKB, ZOR, BAA, NBA</span>. Filter the dataset to only include individuals from the following populations: <span style="color:red;">BUSHMAN, PERU, NORSE, ZULU</span>. Use this filtered dataset for all remaining questions in this homework. 
 C.  Calculate the variance / covariance matrix for the 6 numeric variables.
 
 ## Problem 2

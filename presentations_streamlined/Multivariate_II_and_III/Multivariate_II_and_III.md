@@ -1,11 +1,11 @@
 ---
-title: "Multivariate Statistics II"
+title: "Multivariate Statistics Continued"
 author: "Andrew Barr"
 output: 
   ioslides_presentation:
     widescreen: yes
 ---
-## Multivariate Stats II 
+## Multivariate Stats Continued 
 
 <img src="../../images/beaver_duck.jpg" height=400px>
 
@@ -40,14 +40,7 @@ If so, we can use  reduced set of variables to visualize $p$ dimensional dataset
 
 
 
-```{r, echo=FALSE, fig.height=4}
-library(ggplot2)
-x <- rnorm(50, mean=25, sd=8)
-y <- rnorm(50, mean=24, sd=8)
-x <- x * c(-1, 1)
-y <- y * c(-1, 1)
-qplot(x=x,y=y, color=rep(c("A", "B"), 25), size=I(5)) + theme_bw(30) + labs(x="LD1", y="LD2") + guides(color="none")
-```
+![plot of chunk unnamed-chunk-1](Multivariate_II_and_III-figure/unnamed-chunk-1-1.png)
 
 ## Learn By Doing - DFA in R
 
@@ -70,7 +63,8 @@ Do a DFA of the iris data using the `mass::lda()` function
 
 ## Correspondence Analysis {.smaller}
 
-```{r}
+
+```r
 bovids <- read.table("http://hompal-stats.wabarr.com/datasets/bovid_occurrences.txt", header=TRUE, sep="\t")
 library(tidyr)
 bovids <- spread(bovids, key=site, value=count)
@@ -79,27 +73,28 @@ bovids<-bovids[,2:9]
 head(bovids)
 ```
 
+```
+             site1 site2 site3 site4 site5 site6 site7 site8
+Aepyceros      155   219   214   183   295   330   185   369
+Connochaetes   185   281   297   276   136   159    86   172
+Gazella        184   291   313   295    95    98    61   114
+Tragelaphus     91   145   145   155   229   260   137   295
+```
+
 ## Correspondence Analysis {.smaller}
 
 * `ca` package in R
 *  Row points (red) appear close to rows with similar column values
 *  Column points (blue) appear close to columns with similar row values
 
-```{r echo=FALSE, fig.width=10, fig.height=4}
-library("ca")
-myCA <- ca(bovids)
-qplot(x=myCA$rowcoord[,1], myCA$rowcoord[,2], label=rownames(myCA$rowcoord), size=I(8), geom="text", color=I("blue")) + 
-  geom_text(aes(x=myCA$colcoord[,1], y=myCA$colcoord[,2]), label=rownames(myCA$colcoord), size=8, color="red") + 
-  labs(x="Dimension 1", y="Dimension 2", title="Corresponce Analysis - Bovid Abundances") + 
-  scale_x_continuous(limits=c(-2, 2))
-
-```
+![plot of chunk unnamed-chunk-3](Multivariate_II_and_III-figure/unnamed-chunk-3-1.png)
 
 ## Correspondence Analysis {.smaller}
 
 Code to do CA and make plot on previous page
 
-```{r results="hide", fig.keep="none"}
+
+```r
 library("ca")
 myCA <- ca(bovids)
 qplot(x=myCA$rowcoord[,1], 
@@ -115,5 +110,48 @@ qplot(x=myCA$rowcoord[,1],
                 color="red") + 
   labs(x="Dimension 1", y="Dimension 2", title="Corresponce Analysis - Bovid Abundances") + 
   scale_x_continuous(limits=c(-2, 2))
+```
 
+
+## Geometric Morphometrics (GM) 
+
+
+<img src="../../images/GM_monkey_skull.jpg">
+
+involves the analysis of Cartesian geometric coordinates rather than length, area, volume measurements
+
+## Steps in a GM analysis {.build}
+
+using the `geomorph` package in R
+
+> 1.  Get coordinate data (e.g., digitize outline from a photo, use a microscribe, get 3D coordinates from laser scanned specimen, etc)
+> 2.  Perform a Generalized Procrustes Analysis (GPA)
+> 3.  Analyze and visualze the results from the GPA
+
+## GM - Step 1 - Coordinates {.build}
+
+
+<img src="../../images/landmarks_talus.png" height=300px>
+
+> *  involves capturing homologous ***landmarks*** or ***semi-landmarks***
+> *  can be 2D or 3D
+> *  each specimen will have a unique ***configuration*** of landmarks in its own coordinate system
+
+## GM - Step 1 - Coordinates {.build .smaller}
+
+We will use 2D coordinate data of salamander head shape
+
+note that the landmark data is in a $p \times k \times n$ array
+
+
+
+
+
+
+
+
+
+
+```
+Error in library(geomorph) : there is no package called 'geomorph'
 ```

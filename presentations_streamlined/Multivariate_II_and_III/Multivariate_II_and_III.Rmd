@@ -85,6 +85,27 @@ head(predictions$class)
 head(predictions$posterior)
 ```
 
+## DFA in R
+
+The `predict()` function is also used to classify additional cases that did not go into the original discriminant function analysis
+
+```{r}
+newCases <- data.frame(
+  Sepal.Length = c(4.5, 6.7),
+  Sepal.Width = c(3.5, 2.5),
+  Petal.Length = c(1.5, 4),
+  Petal.Width = c(.75, 2)
+)
+
+```
+
+## DFA in R
+
+```{r}
+predict(DFA, newdata = newCases)
+```
+
+
 ## Correspondence Analysis {.build}
 
 

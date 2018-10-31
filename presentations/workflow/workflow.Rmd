@@ -15,7 +15,7 @@ But, some people are writing long responses as comments inside code chunks.
 
 Many other people aren't using the formatting tools correctly outside the code chunks. 
 
-Make sure you look at your knit file ane make sure it is easy to read!
+Make sure you look at your knit file and make sure it is easy to read!
 
 Show example
 

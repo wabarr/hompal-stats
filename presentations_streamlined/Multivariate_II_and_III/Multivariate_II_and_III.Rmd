@@ -49,15 +49,41 @@ y <- y * c(-1, 1)
 qplot(x=x,y=y, color=rep(c("A", "B"), 25), size=I(5)) + theme_bw(30) + labs(x="LD1", y="LD2") + guides(color="none")
 ```
 
-## Learn By Doing - DFA in R
+## DFA in R
 
-```{}
+```{r results="hide"}
 library(MASS)
-lda()
+DFA <- lda(Species ~ ., data=iris)
+DFA
 ```
 
-Do a DFA of the iris data using the `mass::lda()` function
+Can anyone guess what the . does in this formula?
 
+Results of the DFA are shown on the next page.
+
+
+## DFA in R
+
+```{r echo=F}
+DFA
+```
+
+## DFA in R
+
+```{r}
+plot(DFA)
+```
+
+## DFA in R {.columns-2}
+
+The LD scores for each point are not stored in the DFA object.  To get these, we need to use the `predict()` function. 
+
+```{r}
+predictions <- predict(DFA)
+head(predictions$x)
+head(predictions$class)
+head(predictions$posterior)
+```
 
 ## Correspondence Analysis {.build}
 
@@ -65,7 +91,7 @@ Do a DFA of the iris data using the `mass::lda()` function
 > *  A method for visualizing a 2-way contingency table
 > *  The goal is to have rows (often taxa) and colums (often sites) appear in same ordination plot
 > *  Often called ***reciprocal averaging***
-> *  Site scores are weighted averages of species values, and species scores are a weighted > average of site values
+> *  Site scores are weighted averages of species values, and species scores are a weighted  average of site values
 > *  useful for count data and presence/absence
 
 ## Correspondence Analysis {.smaller}

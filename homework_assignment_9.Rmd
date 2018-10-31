@@ -6,10 +6,16 @@ output: html_document
 ## Problem 1
 
 A.  load [this dataset](datasets/DIK-scap.txt) on scapula morphology in Pan, Homo and Gorilla, and the Dikika fossil child.  Details on this data can be found in [Alemseged et al, 2006](http://www.nature.com/nature/journal/v443/n7109/full/nature05047.html)
-B.  Calculate the natural log of all the numeric variables
-C.  Perform a discriminant function analysis (DFA) on the data. 
-D.  Which variable has the strongest positive contribution to LD1?  Which variable has the strongest negative contribution to LD1?
-E.  Make a beautiful plot (using ggplot) of LD1 versus LD2. Hint: to get the LD scores, use the `predict()` function on your discriminant function analysis model object.  This will give you access to the LD scores stored the `x` slot.
-F. 
-G. BONUS POINT: Surround the points corresponding to each taxon with a polygon to ease visualization. *Hint:* the `chull()` function can be used to compute convex hulls, which is the name for polygons that enclose groups of points.
+
+B.  Calculate the natural log of all the numeric variables. Save these in your existing dataframe.
+
+C.  Make a subset of the data including only the extant species (G, H, or P, representing Gorilla, Homo and Pan), excluding the Dikika fossil (D).  
+
+D.  Perform a discriminant function analysis (DFA) on the data. Which variable has the strongest loading on LD1?
+
+E.  Make a beautiful plot (using ggplot) of LD1 versus LD2. Hint: to get the LD scores, use the `predict()` function on your discriminant function analysis model object, as shown in class.
+
+F.  Plot the Dikika fossil on the DFA plot. 
+
+G.  BONUS POINT: Surround the points corresponding to each taxon with a polygon to ease visualization. *Hint:* the `chull()` function can be used to compute convex hulls, which is the name for polygons that enclose groups of points.
 

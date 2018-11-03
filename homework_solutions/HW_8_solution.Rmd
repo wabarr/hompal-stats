@@ -1,0 +1,115 @@
+---
+title: "Homework 8 Solution"
+output: html_document
+---
+
+## 13 pts total
+
+## Problem 1
+
+### A - 1pt
+
+```{r}
+howell <- read.table("http://hompal-stats.wabarr.com/datasets/Howell_craniometry.txt", header=TRUE, sep=",")
+library(dplyr)
+```
+
+### B - 1pt
+
+```{r}
+howell <- howell %>% 
+  dplyr::select(ID, Sex, Population, BNL, MDH, EKB, ZOR, BAA, NBA) %>%
+  dplyr::filter(Population %in% c("BUSHMAN", "PERU", "NORSE", "ZULU"))
+head(howell)
+```
+
+### C
+### 1pt
+```{r}
+cov(howell[,4:9])
+#gives the same results
+var(howell[,4:9])
+```
+
+## Problem 2
+
+### A - 1pt
+
+```{r cache=TRUE}
+distMat <- dist(x = howell[,4:9], method = "euclid")
+```
+
+### B - 1pt
+
+```{r cache=TRUE}
+HowellClust <- hclust(d = distMat, method = "average")
+```
+
+### C - 1pt
+
+```{r fig.width=12, fig.height=12, cache=TRUE}
+plot(HowellClust)
+```
+
+### D 1 pt
+
+Interpret the plot visually. Which which single specimen (identified on the plot by its row number on the plot) is most distinct from all other specimens? 
+
+Answer: specimen 19
+
+## Problem 3
+
+### A - 1pt
+
+```{r cache=TRUE}
+howellPCA <- prcomp(howell[,4:9], scale=TRUE)
+## equivalently, use a formula to specify the variables explicitly
+howellPCA <- prcomp(formula = ~ BNL + MDH + EKB + ZOR + BAA + NBA, data=howell, scale=TRUE)
+howellPCA
+
+```
+
+### B - 1pt
+
+```{r}
+howellPCA$rotation
+```
+
+`ZOR` loads strongest on PC1 with a loading of -0.5657892.  Note: it is the absolute value that matters here!
+
+
+### C - 1pt
+
+```{r}
+summary(howellPCA)
+```
+
+The cumulative proportion of variance up to and including PC2 is 0.7022
+
+### D - 3 pts
+
+```{r fig.width=7, fig.height=7}
+forPlot <- data.frame(howellPCA$x, howell$Population)
+library(ggplot2)
+pcPlot <- ggplot(forPlot, aes(x=PC1, y=PC2)) + 
+  geom_point(size=3,aes(color=howell.Population)) + 
+  labs(title="PCA of Howell Cranial Measurments", color="Population") + 
+  theme_bw(20) + 
+  theme(legend.position="top")
+pcPlot
+```
+
+### you get a quadruple gold star if you managed to plot the variable loadings on the scatterplot
+
+```{r fig.width=7, fig.height=7}
+forLoadings <- data.frame(howellPCA$rotation, x=rep(0, 6), y=rep(0,6), var=rownames(howellPCA$rotation))
+
+scalar <- 4
+
+pcPlot + 
+  geom_segment(data=forLoadings, 
+               aes(x=x, y=y, xend=PC1*scalar, yend=PC2*scalar), 
+               arrow = arrow()) + 
+  geom_text(data=forLoadings, 
+            aes(x=PC1*scalar*1.15, y=PC2*scalar*1.15, label=var))
+```

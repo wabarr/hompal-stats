@@ -4,7 +4,30 @@ output:
   html_document
 ---
  
-## Due at beginning of class on the day listed. 
+## Student Presentation Schedule
+
+| Date | Time | Presenter |
+|----------------|------------|------------|
+| November 28th  |  9:00 - 9:15     |   Josh       |
+| November 28th  |  9:15 - 9:30     |   Leanne     |
+| November 28th  |  9:30 - 9:45     |   Elaine     |
+| November 28th  |  9:45 - 10:00    |   **Break**    |
+| November 28th  |  10:00 - 10:15   |   Monica     |
+| November 28th  |  10:15 - 10:30   |   Victoria   |
+| November 28th  |  10:30 - 10:45   |   Louis      |
+|----------------|------------------|-------------|
+| December 5th   |  9:00 - 9:15     |   Courtney   |
+| December 5th   |  9:15 - 9:30     |   Ryan       |
+| December 5th   |  9:30 - 9:45     |   Nick       |
+| December 5th   |  9:45 - 10:00    |   **Break**    |
+| December 5th   |  10:00 - 10:15   |   Axelle     |
+| December 5th   |  10:15 - 10:30   |   Ayla       |
+| December 5th   |  10:30 - 10:45   |   Kristen    |
+
+
+## Homework Schedule
+
+### Due at beginning of class on the day listed. 
 
 
 | Date  | Demo | Homework  | Reading |

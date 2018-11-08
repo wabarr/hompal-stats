@@ -43,7 +43,7 @@ output:
 | October 24    | [Multivariate Stats: I](presentations_streamlined/Multivariate_I/Multivariate_I.html) | [Homework #7](homework_assignment_7.html) - [Solution](homework_solutions/HW_7_solution.html) |   |
 | October 31    | [Multivariate Stats: II](presentations_streamlined/Multivariate_II_and_III/Multivariate_II_and_III.html)  & [Workflow](presentations/workflow/workflow.html) | [Homework #8](homework_assignment_8.html) - [Solution](homework_solutions/HW_8_solution.html)| Manly Ch. 1 - 5  |
 | November 7    | [Comparative Methods](presentations/comparative_methods/comparative_methods.html)  | [Homework #9](homework_assignment_9.html)  | Manly Ch. 6 - 12 | 
-| November 14   | [Non-Parametrics](presentations/nonparametrics/nonparametrics) - [Spatial](presentations/spatial/spatial.html)  | [Homework #10]() | - | - | 
+| November 14   | [Non-Parametrics](presentations/nonparametrics/nonparametrics) - [Spatial](presentations/spatial/spatial.html)  | [Homework #10](homework_assignment_10.html) | - | - | 
 | November	21  | **Thanksgiving** |  -| - | - |
 | November 28   | **Student Presentations** | - | - |
 | December 5    | **Student Presentations** | - | - |

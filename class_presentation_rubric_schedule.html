@@ -4,7 +4,7 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
@@ -19,6 +19,9 @@
 <script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+<link href="libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="libs/highlightjs-9.12.0/highlight.js"></script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -33,20 +36,18 @@
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 
 <style type="text/css">code{white-space: pre;}</style>
-<link rel="stylesheet"
-      href="libs/highlight/textmate.css"
-      type="text/css" />
-<script src="libs/highlight/highlight.js"></script>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
   }
 </style>
 <script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
 }
 </script>
 
@@ -103,6 +104,9 @@ img {
 .tabbed-pane {
   padding-top: 12px;
 }
+.html-widget {
+  margin-bottom: 20px;
+}
 button.code-folding-btn:focus {
   outline: none;
 }
@@ -113,7 +117,6 @@ button.code-folding-btn:focus {
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
-<script src="libs/navigation-1.1/tabsets.js"></script>
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
@@ -147,57 +150,92 @@ $(document).ready(function () {
 </div>
 
 
-<div id="schedule" class="section level2">
-<h2>Schedule</h2>
-<p>Each presenter has 20 minutes. Please leave 3-4 minutes for questions.</p>
+<div id="student-presentation-schedule" class="section level2">
+<h2>Student Presentation Schedule</h2>
+<p>Each presenter has 15 minutes.</p>
 <table>
 <thead>
 <tr class="header">
+<th>Date</th>
 <th>Time</th>
-<th>Student</th>
-<th>File Links</th>
+<th>Presenter</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>3:30</td>
-<td>Liz</td>
-<td><a href="F2016_student_presentations/Liz.html">link</a></td>
+<td>November 28th</td>
+<td>9:00 - 9:15</td>
+<td>Josh</td>
 </tr>
 <tr class="even">
-<td>3:50</td>
-<td>Kim</td>
-<td><a href="F2016_student_presentations/Kim.html">link</a></td>
+<td>November 28th</td>
+<td>9:15 - 9:30</td>
+<td>Leanne</td>
 </tr>
 <tr class="odd">
-<td>4:10</td>
-<td>Sam</td>
-<td><a href="F2016_student_presentations/Sam.html">link</a></td>
+<td>November 28th</td>
+<td>9:30 - 9:45</td>
+<td>Elaine</td>
 </tr>
 <tr class="even">
-<td>4:30</td>
-<td>Joanne</td>
-<td><a href="F2016_student_presentations/Joanne.html">link</a></td>
+<td>November 28th</td>
+<td>9:45 - 10:00</td>
+<td><strong>Break</strong></td>
 </tr>
 <tr class="odd">
-<td>4:50</td>
-<td>Prucha</td>
-<td><a href="F2016_student_presentations/Prucha.html">link</a></td>
+<td>November 28th</td>
+<td>10:00 - 10:15</td>
+<td>Monica</td>
 </tr>
 <tr class="even">
-<td>5:10</td>
-<td>Angie</td>
-<td><a href="F2016_student_presentations/Angie.html">link</a></td>
+<td>November 28th</td>
+<td>10:15 - 10:30</td>
+<td>Victoria</td>
 </tr>
 <tr class="odd">
-<td>5:30</td>
-<td>Dan</td>
-<td><a href="F2016_student_presentations/Dan.html">link</a></td>
+<td>November 28th</td>
+<td>10:30 - 10:45</td>
+<td>Louis</td>
 </tr>
 <tr class="even">
-<td>5:50</td>
-<td>Maryse</td>
-<td><a href="F2016_student_presentations/Maryse.html">link</a></td>
+<td>—————-</td>
+<td>——————</td>
+<td>————-</td>
+</tr>
+<tr class="odd">
+<td>December 5th</td>
+<td>9:00 - 9:15</td>
+<td>Courtney</td>
+</tr>
+<tr class="even">
+<td>December 5th</td>
+<td>9:15 - 9:30</td>
+<td>Ryan</td>
+</tr>
+<tr class="odd">
+<td>December 5th</td>
+<td>9:30 - 9:45</td>
+<td>Nick</td>
+</tr>
+<tr class="even">
+<td>December 5th</td>
+<td>9:45 - 10:00</td>
+<td><strong>Break</strong></td>
+</tr>
+<tr class="odd">
+<td>December 5th</td>
+<td>10:00 - 10:15</td>
+<td>Axelle</td>
+</tr>
+<tr class="even">
+<td>December 5th</td>
+<td>10:15 - 10:30</td>
+<td>Ayla</td>
+</tr>
+<tr class="odd">
+<td>December 5th</td>
+<td>10:30 - 10:45</td>
+<td>Kristen</td>
 </tr>
 </tbody>
 </table>
@@ -300,8 +338,11 @@ $(document).ready(function () {
 <script>
 
 // add bootstrap table styles to pandoc tables
-$(document).ready(function () {
+function bootstrapStylePandocTables() {
   $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
 });
 
 
@@ -312,7 +353,7 @@ $(document).ready(function () {
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

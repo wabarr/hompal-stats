@@ -1,0 +1,99 @@
+---
+title: "Homework #9 - Solution"
+output: 
+  html_document:
+    toc: yes
+    toc_float: yes
+  
+---
+
+#### 8 pts total
+
+## Problem 1
+
+```{r include=FALSE}
+library(tidyverse)
+theme_set(theme_bw(30))
+```
+
+## A - 1pt
+
+load [this dataset](http://hompal-stats.wabarr.com/datasets/DIK-scap.txt) on scapula morphology in Pan, Homo and Gorilla, and the Dikika fossil child.  Details on this data can be found in [Alemseged et al, 2006](http://www.nature.com/nature/journal/v443/n7109/full/nature05047.html)
+
+```{r}
+scap <- read.table("http://hompal-stats.wabarr.com/datasets/DIK-scap.txt", header=TRUE)
+```
+
+## B - 1pt
+
+Calculate the natural log of all the numeric variables
+
+```{r}
+# log all the measurements, excluding the first row
+scap[,-1] <- log(scap[,-1])
+```
+
+## C - 1pt 
+
+Make a subset of the data including only the extant species (G, H, or P, representing Gorilla, Homo and Pan), excluding the Dikika fossil (D).  
+
+```{r}
+subset_scap <- dplyr::filter(scap, Taxon != "D")
+```
+
+## D  - 1pt
+
+Perform a discriminant function analysis on the data. Which variable has the strongest loading on LD1?
+
+```{r}
+library(MASS)
+DFA <- lda(x=subset_scap[,-1], grouping=subset_scap$Taxon)
+DFA
+```
+
+
+`PISFB` has the strongest loading
+
+## E - 2 points
+
+Make a beautiful plot (using ggplot) of LD1 versus LD2. Hint: to get the LD scores, use the `predict()` function on your discriminant function analysis model object, as shown in class.
+
+```{r}
+library(ggplot2)
+forPlot <- data.frame(predict(DFA)$x, taxon=subset_scap$Taxon)
+LDAscatter <- ggplot(forPlot, aes(x=LD1, y=LD2)) + geom_point(aes(color=taxon))
+LDAscatter
+```
+
+## F - 2 pt
+
+Plot the Dikika fossil on the DFA plot. 
+
+```{r}
+dikika <- dplyr::filter(scap, Taxon=="D")
+DIK_dfa <- predict(DFA, newdata = dikika[,-1])
+DIK_plot <- data.frame(DIK_dfa$x, label="DIK")
+
+LDAscatter + 
+  geom_point(data=DIK_plot,size=3) + 
+  geom_text(data=DIK_plot,aes(x=LD1, y=LD2 + 0.5, label=label))
+```
+
+## G - bonus point
+
+The easiest way I know how to do this is to use the `do()` function in `dplyr`.  Note: in the code below the dot (`.`) represents the dataframe passed from the `group_by` function through the pipe (actually it represents one dataframe per group, and `do()` will do something to each one of these dataframes). Usually in `dplyr`, the dataframe being passed by the pipe doesn't need to be explicitly referenced, it is passed on as the first positional argument.  `do()` gives you complete flexibility to do almost anything, but you have to explcitly tell it where to put the dataframe with the dot. 
+
+```{r}
+chulls <- forPlot %>% 
+  group_by(taxon) %>%
+  do(.[chull(.[,c("LD1", "LD2")]), c("LD1", "LD2")])
+
+
+LDAscatter + 
+  geom_polygon(data=chulls, 
+               mapping=aes(x=LD1, y=LD2, group=taxon, fill=taxon), 
+               alpha=0.2) + 
+  geom_point(data=DIK_plot,size=3) + 
+  geom_text(data=DIK_plot,aes(x=LD1, y=LD2 + 0.5, label=label))
+
+```
